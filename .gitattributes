@@ -1,0 +1,11 @@
+* text=auto
+*.json text eol=lf
+*.jsonl text eol=lf
+*.md text eol=lf
+*.py text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.png binary
+
+# The skill manifest is byte-addressed and includes legacy non-UTF-8 files.
+skills/current/** -text

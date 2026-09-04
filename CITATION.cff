@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "If you use the ChemTester skill system or release data, cite this repository and the upstream datasets listed in DATA_LICENSES.md."
+title: "ChemTester: Auditable Chemistry Skills and Evaluation Data"
+type: software
+authors:
+  - family-names: Wang
+    given-names: Cheng
+    email: wangchengxmu@xmu.edu.cn
+version: 0.1.0-preview
+date-released: 2026-09-04
+repository-code: "https://github.com/wangchengxmu/ChemTester"
+license: MIT
+

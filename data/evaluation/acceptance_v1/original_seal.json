@@ -1,0 +1,11 @@
+{
+  "schema_version": "chemtester-sealed-acceptance/v1",
+  "sealed_at": "2026-08-31T16:18:21.308931+08:00",
+  "performer_manifest_sha256": "53f8264fe58d3ac1cadf91765eca949ff70f332928c3d9ce1a26dd8ddbc759c0",
+  "evaluator_gold_sha256": "d19340e3fa843da4c8e4e4e52ce935a6d691273ba5cc22632a3be61dbb1c266f",
+  "suite_sha256": "3997d88168fb6c70cbc31525cbb1b0f1f1797bcc870b5da872bf32ca3041d90b",
+  "gating_item_count": 400,
+  "diagnostic_item_count": 11,
+  "runtime_snapshot_id": "runtime_20260831_161726",
+  "runtime_snapshot_tree_sha256": "cef29fa473a0bc1f2f93da9183445739807b5b943cd131602cad5f5af1d4ebf3"
+}

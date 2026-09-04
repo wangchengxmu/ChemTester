@@ -1,0 +1,1532 @@
+acid_base_constants_tools.Ka_Kb_relationship(Ka: float = None, Kb: float = None, temperature: float = 25.0) -> float
+acid_base_constants_tools.compare_acid_strengths(Ka1: float, Ka2: float) -> str
+acid_base_constants_tools.conjugate_base_strength(Ka: float, temperature: float = 25.0) -> float
+acid_base_constants_tools.is_strong_acid(Ka: float) -> bool
+acid_base_constants_tools.is_strong_base(Kb: float) -> bool
+acid_base_constants_tools.percent_ionization(h3o_conc: float, initial_conc: float) -> float
+acid_base_constants_tools.validate_approximation(Ka: float, C0: float, threshold: float = 0.05) -> bool
+acid_base_constants_tools.weak_acid_pH(Ka: float, initial_conc: float) -> float
+acid_base_constants_tools.weak_base_pH(Kb: float, initial_conc: float) -> float
+advanced_electrochemistry_tools.cell_potential_from_gibbs(delta_g: float, n: int) -> dict
+advanced_electrochemistry_tools.concentration_cell_potential(c_dilute: float, c_concentrated: float, n: int = 1, t: float = 298.15) -> dict
+advanced_electrochemistry_tools.electrolysis_charge(mass: float, molar_mass: float, n: int) -> dict
+advanced_electrochemistry_tools.electrolysis_mass(current: float, time_s: float, molar_mass: float, n: int) -> dict
+advanced_electrochemistry_tools.equilibrium_constant_from_e0(e0: float, n: int, t: float = 298.15) -> dict
+advanced_electrochemistry_tools.gibbs_from_cell_potential(e: float, n: int) -> dict
+advanced_electrochemistry_tools.nernst_25c(e0: float, n: int, q: float) -> dict
+advanced_electrochemistry_tools.nernst_potential(e0: float, n: int, q: float, t: float = 298.15) -> dict
+advanced_inorganic_tools.calculate_lfse(d_electrons: int, geometry: str = 'octahedral', spin: str = 'high') -> float
+advanced_inorganic_tools.count_electrons_neutral(metal: str, ligands: List[str], charge: int = 0) -> Tuple[int, int]
+advanced_inorganic_tools.count_electrons_oxidation(metal: str, ligands: List[str], charge: int = 0) -> Tuple[int, int, int]
+advanced_inorganic_tools.predict_geometry_18e(electron_count: int, d_electrons: int) -> str
+advanced_inorganic_tools.spin_only_moment(n: int) -> float
+advanced_inorganic_tools.unpaired_from_moment(mu_eff: float) -> int
+advanced_inorganic_tools.wavelength_from_wavenumber(wavenumber: float) -> float
+advanced_inorganic_tools.wavenumber_from_wavelength(wavelength_nm: float) -> float
+advanced_quantum_tools.bohr_to_angstrom(R_bohr: 'float') -> 'float'
+advanced_quantum_tools.born_oppenheimer_energy(hamiltonian_params: 'Dict[str, Any]') -> 'Dict[str, float]'
+advanced_quantum_tools.coulomb_integral(R: 'float', Z: 'float' = 1.0) -> 'float'
+advanced_quantum_tools.exchange_integral(R: 'float', Z: 'float' = 1.0) -> 'float'
+advanced_quantum_tools.h2_plus_energy(R: 'float', Z: 'float' = 1.0) -> 'Dict[str, float]'
+advanced_quantum_tools.h2_plus_energy_curve(R_range: 'Sequence[float] | None' = None, Z: 'float' = 1.0, n_points: 'int' = 100) -> 'Tuple[np.ndarray, np.ndarray, np.ndarray]'
+advanced_quantum_tools.hartree_to_eV(E_hartree: 'float') -> 'float'
+advanced_quantum_tools.overlap_integral(R: 'float', alpha: 'float' = 1.0, beta: 'float' = 1.0) -> 'float'
+advanced_quantum_tools.sum_1s_overlap_series(n: 'float', R: 'float') -> 'float'
+alkane_tools.alkane_properties(carbons: int) -> Dict
+alkane_tools.classify_alkyl_halide(carbons_alpha_to_halogen: int) -> str
+alkane_tools.count_isomers(carbons: int) -> int
+alkane_tools.dataclass(cls=None, /, *, init=True, repr=True, eq=True, order=False, unsafe_hash=False, frozen=False, match_args=True, kw_only=False, slots=False, weakref_slot=False)
+alkane_tools.find_parent_chain_length(structure: str) -> int
+alkane_tools.generate_iupac_name(parent_chain: int, substituents: List[Tuple[int, str]]) -> str
+alkane_tools.get_alkane_name(carbons: int) -> Tuple[str, str]
+alkane_tools.get_alkyl_group(name: str) -> alkane_tools.AlkylGroup
+alkane_tools.hydrocarbon_formula(carbons: int, saturation: str = 'alkane') -> str
+alkane_tools.naming_rules_summary() -> List[str]
+alkane_tools.number_chain(substituent_positions: List[int]) -> List[int]
+alkane_tools.test_alkane_names()
+alkane_tools.test_hydrocarbon_formulas()
+alkane_tools.test_isomer_counts()
+alkane_tools.test_iupac_naming()
+alkene_tools.alkene_reaction_summary(reaction_type: str) -> Dict
+alkene_tools.calculate_cyclohexane_a_value(substituent: str) -> float
+alkene_tools.calculate_degree_of_unsaturation(formula: str) -> int
+alkene_tools.compare_alkene_stability(alkenes: List[str]) -> List[Tuple[str, int]]
+alkene_tools.dataclass(cls=None, /, *, init=True, repr=True, eq=True, order=False, unsafe_hash=False, frozen=False, match_args=True, kw_only=False, slots=False, weakref_slot=False)
+alkene_tools.determine_e_z(substituents: Dict[str, Tuple[str, str]]) -> alkene_tools.EorZ
+alkene_tools.get_hydrogenation_heat(alkene: str) -> Optional[float]
+alkene_tools.predict_anti_markovnikov_product(alkene: str, reagent: str) -> str
+alkene_tools.predict_elimination_product(substrate: str, base: str, mechanism: str = 'E2') -> str
+alkene_tools.predict_major_conformation(substituent: str) -> str
+alkene_tools.predict_markovnikov_product(alkene: str, reagent: str) -> str
+alkene_tools.test_a_values()
+alkene_tools.test_degree_of_unsaturation()
+alkene_tools.test_hydrogenation()
+alkyl_halide_tools.calculate_halogenation_products(hydrogen_pools: List[alkyl_halide_tools.HydrogenPool], halogen: str = 'Cl') -> Dict[str, float]
+alkyl_halide_tools.calculate_oxidation_level(c_h_bonds: int, c_o_bonds: int = 0, c_n_bonds: int = 0, c_x_bonds: int = 0) -> int
+alkyl_halide_tools.classify_hydrogen_type(carbon_substitution: str) -> str
+alkyl_halide_tools.classify_redox_reaction(reactant_level: int, product_level: int) -> str
+alkyl_halide_tools.compare_oxidation_levels(compounds: Dict[str, Tuple]) -> List[str]
+alkyl_halide_tools.dataclass(cls=None, /, *, init=True, repr=True, eq=True, order=False, unsafe_hash=False, frozen=False, match_args=True, kw_only=False, slots=False, weakref_slot=False)
+alkyl_halide_tools.get_cx_bond_property(halogen: str, property_name: str) -> float
+alkyl_halide_tools.gilman_coupling(gilman_reagent: str, alkyl_halide: str) -> Dict[str, str]
+alkyl_halide_tools.grignard_acid_base_reaction(grignard: str, acid: str, acid_pka: float) -> Dict[str, str]
+alkyl_halide_tools.grignard_formation(alkyl_halide: str, solvent: str = 'ether') -> Dict[str, str]
+alkyl_halide_tools.identify_allylic_positions(alkene_structure: str) -> List[str]
+alkyl_halide_tools.predict_chlorination_products(molecule_name: str) -> Dict[str, float]
+alkyl_halide_tools.predict_nbs_product(alkene_name: str) -> str
+alkyl_halide_tools.select_alcohol_to_halide_reagent(alcohol_type: str, target_halide: str = 'Cl') -> Dict[str, str]
+alkyl_halide_tools.suzuki_coupling(boronic_acid: str, aryl_halide: str) -> Dict[str, str]
+alkyne_tools.alkylation_with_acetylide(acetylide: str, alkyl_halide: str) -> str
+alkyne_tools.alkyne_naming_rules() -> List[str]
+alkyne_tools.alkyne_reaction_summary() -> Dict
+alkyne_tools.can_form_acetylide(structure: str) -> bool
+alkyne_tools.classify_alkyne(structure: str) -> alkyne_tools.AlkyneType
+alkyne_tools.compare_triple_bond_properties() -> Dict[str, Tuple]
+alkyne_tools.dataclass(cls=None, /, *, init=True, repr=True, eq=True, order=False, unsafe_hash=False, frozen=False, match_args=True, kw_only=False, slots=False, weakref_slot=False)
+alkyne_tools.get_alkyne_formula(carbons: int) -> str
+alkyne_tools.is_terminal_alkyne(structure: str) -> bool
+alkyne_tools.predict_hydration_product(alkyne_type: alkyne_tools.AlkyneType, method: str) -> str
+alkyne_tools.predict_partial_hydrogenation_product(catalyst: str) -> Tuple[str, str]
+alkyne_tools.suitable_alkyl_halides_for_alkylation() -> List[str]
+alkyne_tools.suitable_base_for_deprotonation() -> Dict[str, str]
+alkyne_tools.synthesis_from_vicinal_dihalide() -> List[str]
+alkyne_tools.test_alkyne_classification()
+alkyne_tools.test_formulas()
+alkyne_tools.test_hydration()
+alkyne_tools.test_partial_hydrogenation()
+amine_tools.amine_basicity(amine: str) -> dict
+amine_tools.amine_classification(amine: str) -> dict
+amine_tools.hofmann_rearrangement(amide: str) -> dict
+amine_tools.reductive_amination_product(carbonyl: str, amine: str) -> dict
+amine_tools.sandmeyer_product(diazonium: str, reagent: str) -> dict
+amino_acid_tools.amino_acid_info(code: str) -> dict
+amino_acid_tools.codon_table(aa: str = None) -> dict
+amino_acid_tools.hydrophobicity_score(aa: str, scale: str = 'KD') -> dict
+amino_acid_tools.isoelectric_point(aa: str) -> dict
+amino_acid_tools.most_hydrophilic() -> dict
+amino_acid_tools.most_hydrophobic() -> dict
+amino_acid_tools.net_charge(aa: str, pH: float) -> dict
+amount_conversion_tools.convert_amount(value: 'float', from_type: 'str', to_type: 'str', molar_mass_g_per_mol: 'float | None' = None) -> 'float'
+amount_conversion_tools.mass_to_moles(mass_g: 'float', molar_mass_g_per_mol: 'float') -> 'float'
+amount_conversion_tools.moles_to_mass(moles: 'float', molar_mass_g_per_mol: 'float') -> 'float'
+amount_conversion_tools.moles_to_particles(moles: 'float') -> 'float'
+amount_conversion_tools.particles_to_moles(particles: 'float') -> 'float'
+amount_conversion_tools.sigfig_round(value: 'float', sigfigs: 'int') -> 'float'
+analytical_validation_tools.anova_analysis(groups_data: Dict[str, numpy.ndarray], alpha: float = 0.05) -> analytical_validation_tools.ANOVAResult
+analytical_validation_tools.calculate_confidence_interval(data: numpy.ndarray, confidence: float = 0.95) -> Tuple[float, float]
+analytical_validation_tools.dataclass(cls=None, /, *, init=True, repr=True, eq=True, order=False, unsafe_hash=False, frozen=False, match_args=True, kw_only=False, slots=False, weakref_slot=False)
+analytical_validation_tools.factorial_design(response: numpy.ndarray, factors: Dict[str, numpy.ndarray], levels: int = 2, alpha: float = 0.05) -> analytical_validation_tools.FactorialResult
+analytical_validation_tools.horwitz_equation(concentration: float) -> float
+analytical_validation_tools.lod_loq_calculation(concentrations: numpy.ndarray, signals: numpy.ndarray, method: str = 'calibration', signal_noise_ratio: Optional[float] = None, blank_signals: Optional[numpy.ndarray] = None) -> analytical_validation_tools.LODLOQResult
+analytical_validation_tools.method_validation_checklist(validation_type: str = 'assay', results: Optional[Dict[str, Union[float, str, bool]]] = None) -> Dict[str, analytical_validation_tools.ValidationCheck]
+analytical_validation_tools.precision_analysis(measurements: numpy.ndarray, groups: Optional[numpy.ndarray] = None, alpha: float = 0.05) -> analytical_validation_tools.PrecisionResult
+arrhenius_tools.activation_energy(k1: float, T1: float, k2: float, T2: float) -> float
+arrhenius_tools.activation_energy_from_slope(slope: float) -> float
+arrhenius_tools.arrhenius_k(A: float, Ea: float, T: float) -> float
+arrhenius_tools.arrhenius_plot_slope(Ea: float) -> float
+arrhenius_tools.catalyzed_rate_constant(k_uncat: float, Ea_uncat: float, Ea_cat: float, T: float) -> float
+arrhenius_tools.compare_rates(Ea: float, T1: float, T2: float) -> float
+arrhenius_tools.fraction_with_energy(Ea: float, T: float) -> float
+arrhenius_tools.frequency_factor(k: float, Ea: float, T: float) -> float
+arrhenius_tools.rate_at_temperature(k1: float, T1: float, Ea: float, T2: float) -> float
+arrhenius_tools.temperature_for_rate(k_target: float, A: float, Ea: float) -> float
+asymmetric_biocatalysis_tools.cofactor_regeneration_efficiency(nadh_initial_umol: float, nadh_consumed_umol: float, cosubstrate_mmol: float = None, ttn_target: int = 1000) -> dict
+asymmetric_biocatalysis_tools.dkr_calculator(conversion: float, ee_product: float) -> dict
+asymmetric_biocatalysis_tools.enantioselectivity_from_E(E_value: float, conversion: float = None) -> dict
+asymmetric_carbonylation_tools.calculate_ee_from_conversion(conversion: float, ee_product: float, ee_substrate: float = 0.0) -> dict
+asymmetric_carbonylation_tools.estimate_co_insertion_rate(metal: str = 'Rh', ligand_denticity: int = 2, ligand_cone_angle: float = 140, temperature_C: float = 60, co_pressure_bar: float = 40) -> dict
+asymmetric_carbonylation_tools.predict_hydroformylation_regioselectivity(ligand_cone_angle: float, substrate_type: str = 'styrene', temperature_C: float = 60, pressure_bar: float = 40) -> dict
+asymmetric_nonconventional_tools.green_metrics(product_mass_g: float, waste_mass_g: float = None, reaction_mass_g: float = None, atom_economy: float = None, mw_product: float = None, mw_all_reagents: float = None, solvent_mass_g: float = None) -> dict
+asymmetric_nonconventional_tools.ionic_liquid_recyclability(num_cycles: int, ee_initial: float, ee_final: float, yield_initial: float = None, yield_final: float = None) -> dict
+asymmetric_nonconventional_tools.microwave_vs_thermal_rate(time_thermal_min: float, temp_thermal_C: float, time_microwave_min: float = None, temp_microwave_C: float = None, activation_energy_kcal: float = 20.0) -> dict
+asymmetric_synthesis_tools.binap_substrate_compatibility(substrate_class: 'str') -> 'dict'
+asymmetric_synthesis_tools.calculate_de(major_diast: 'float', minor_diast: 'float') -> 'float'
+asymmetric_synthesis_tools.calculate_dr(major_diast: 'float', minor_diast: 'float') -> 'float'
+asymmetric_synthesis_tools.calculate_ee(major_enantiomer: 'float', minor_enantiomer: 'float') -> 'float'
+asymmetric_synthesis_tools.calculate_er(major_enantiomer: 'float', minor_enantiomer: 'float') -> 'float'
+asymmetric_synthesis_tools.catalyst_loading_optimization(current_yield: 'float', current_ee: 'float', target_ee: 'float', current_loading: 'float' = 20.0, min_loading: 'float' = 1.0, max_loading: 'float' = 50.0) -> 'dict'
+asymmetric_synthesis_tools.dr_to_de(dr: 'float') -> 'float'
+asymmetric_synthesis_tools.ee_to_er(ee_percent: 'float') -> 'float'
+asymmetric_synthesis_tools.er_to_ee(er: 'float') -> 'float'
+asymmetric_synthesis_tools.proline_catalyzed_aldol_substrate_check(aldehyde_smiles: 'str') -> 'dict'
+asymmetric_synthesis_tools.sharpless_epoxidation_prediction(allylic_alcohol_smiles: 'str', tartrate: 'str' = 'L-(+)-DET') -> 'dict'
+atomic_composition_tools.average_atomic_mass(isotopes: 'list[tuple[float, float]]') -> 'float'
+atomic_composition_tools.charge_balance_ok(cation_charge: 'int', anion_charge: 'int', stoich: 'tuple[int, int]') -> 'bool'
+atomic_composition_tools.empirical_formula(element_mole_dict: 'dict[str, float]') -> 'dict[str, int]'
+atomic_composition_tools.simple_ionic_name(cation: 'str', cation_charge: 'int', anion: 'str') -> 'str'
+band_theory_tools.band_gap_energy(conductivity_300K: float, conductivity_0K: float = 0) -> float
+band_theory_tools.conductivity_temperature_dependence(Eg: float, T1: float, T2: float, sigma1: float) -> float
+band_theory_tools.doping_type_effect(dopant_type: str) -> Dict
+band_theory_tools.fermi_level_intrinsic(Eg: float, Nc: float = 2.8e+19, Nv: float = 1.04e+19) -> float
+band_theory_tools.intrinsic_carrier_concentration(Eg: float, temperature: float, Nc: float = 2.8e+19, Nv: float = 1.04e+19) -> float
+band_theory_tools.pn_junction_bias(bias_type: str) -> Dict
+band_theory_tools.semiconductor_material_properties(material: str) -> Dict
+bioinorganic_chemistry_tools.bohr_effect_shift(pH_initial: float, pH_final: float, P50_initial: float = 26.0, bohr_coeff: float = -0.5) -> Dict[str, float]
+bioinorganic_chemistry_tools.ca_atpase_rate(ca_concentration: float, V_max: float, K_m: float = 5e-07) -> Dict[str, float]
+bioinorganic_chemistry_tools.calcium_equilibrium_potential(ca_out: float, ca_in: float, temperature: float = 310.15) -> Dict[str, float]
+bioinorganic_chemistry_tools.calmodulin_saturation(ca_free: float, K_d: float = 1e-06, hill_n: float = 2.0) -> Dict[str, float]
+bioinorganic_chemistry_tools.carbonic_anhydrase_turnover(co2_concentration: float, enzyme_concentration: float, k_cat: float = 1000000.0, K_m: float = 0.01, time_seconds: float = 1.0) -> Dict[str, float]
+bioinorganic_chemistry_tools.chelation_selectivity(chelator: str, target_metal: str, competing_metal: str) -> Dict[str, float]
+bioinorganic_chemistry_tools.chelator_affinity(metal: str, chelator: str) -> Dict[str, float]
+bioinorganic_chemistry_tools.cisplatin_aquation_rate(chloride_concentration: float, pH: float = 7.4, temperature: float = 310.15) -> Dict[str, float]
+bioinorganic_chemistry_tools.co_poisoning_effect(co_hb_fraction: float, heme_total: float = 1.0) -> Dict[str, float]
+bioinorganic_chemistry_tools.dna_binding_constant(free_dna: float, free_metal: float, bound_complex: float) -> Dict[str, float]
+bioinorganic_chemistry_tools.et_distance_decay(distance: float, beta: float = 1.0, reference_rate: float = 10000000000000.0, reference_distance: float = 0) -> Dict[str, float]
+bioinorganic_chemistry_tools.fe_s_redox_potential(cluster_type: str = 'Fe4S4', oxidation_state: int = 2, protein_environment: str = 'ferredoxin') -> Dict[str, float]
+bioinorganic_chemistry_tools.fenton_reaction_rate(fe2_concentration: float, h2o2_concentration: float, k: float = 76) -> Dict[str, float]
+bioinorganic_chemistry_tools.get_module_status() -> Dict[str, <built-in function any>]
+bioinorganic_chemistry_tools.hydrogen_evolution_rate(hydrogenase_concentration: float, substrate_concentration: float, k_cat: float, K_m: float) -> Dict[str, float]
+bioinorganic_chemistry_tools.marcus_et_rate(delta_G: float, lambda_reorg: float, distance: float, beta: float = 1.0, k0: float = 10000000000000.0, temperature: float = 298.15) -> Dict[str, float]
+bioinorganic_chemistry_tools.melting_temp_shift(tm_alone: float, tm_complex: float, binding_constant: float) -> Dict[str, float]
+bioinorganic_chemistry_tools.nitrogenase_atp_cost(n2_moles: float, atp_per_n2: float = 16.0) -> Dict[str, float]
+bioinorganic_chemistry_tools.oxygen_reduction_potential(reduction_step: str = 'full') -> Dict[str, float]
+bioinorganic_chemistry_tools.oxygen_saturation_hill(pO2: float, P50: float = 26.0, hill_n: float = 2.8) -> Dict[str, float]
+bioinorganic_chemistry_tools.radioactivity_decay(initial_activity: float, half_life_hours: float, elapsed_hours: float) -> Dict[str, float]
+bioinorganic_chemistry_tools.sod_activity_rate(sod_concentration: float, o2_radical_concentration: float, k_cat: float = 2000000000.0) -> Dict[str, float]
+bioinorganic_chemistry_tools.zinc_binding_constant(inhibition_data: Dict[str, float]) -> Dict[str, float]
+bioinorganic_chemistry_tools.zinc_finger_affinity(folded_fraction: float, zn_free: float) -> Dict[str, float]
+bioinorganic_chemistry_tools.zinc_water_pka(ligand_field: str = '3His', metal_charge: int = 2) -> Dict[str, float]
+bohr_model_tools.J_to_kJ_per_mol(J)
+bohr_model_tools.energy_level(n)
+bohr_model_tools.energy_level_hydrogen_like(Z, n)
+bohr_model_tools.energy_transition(n_initial, n_final)
+bohr_model_tools.frequency_transition(n_initial, n_final)
+bohr_model_tools.ground_state_ionization_energy()
+bohr_model_tools.identify_spectral_series(n_final)
+bohr_model_tools.ionization_energy_from_level(n)
+bohr_model_tools.m_to_nm(m)
+bohr_model_tools.wavelength_hydrogen_like(Z, n_initial, n_final)
+bohr_model_tools.wavelength_transition(n_initial, n_final)
+bond_strengths_tools.bond_strength_order(bonds: List[Tuple[str, str, int]]) -> List[Tuple[str, str, int, float]]
+bond_strengths_tools.born_haber_lattice(delta_h_f: float, delta_h_s: float, bond_d: float, ie: float, ea: float) -> float
+bond_strengths_tools.compare_lattice_energies(compounds: List[Dict]) -> List[Tuple[str, float]]
+bond_strengths_tools.get_bond_energy(atom1: str, atom2: str, bond_order: int = 1) -> float
+bond_strengths_tools.lattice_energy_ionic(z_cation: int, z_anion: int, distance_pm: float) -> float
+bond_strengths_tools.multiple_bond_effect(atom1: str, atom2: str) -> Dict
+bond_strengths_tools.reaction_enthalpy_from_bonds(bonds_broken: List[Tuple[str, str, int]], bonds_formed: List[Tuple[str, str, int]]) -> float
+born_haber_tools.calculate_born_haber_cycle(compound: str, ionization_energies: list[float], electron_affinities: list[float], sublimation_energy: Optional[float] = None, bond_dissociation_energy: Optional[float] = None, atomization_energy: Optional[float] = None, lattice_energy: Optional[float] = None, formation_enthalpy: Optional[float] = None) -> dict
+born_haber_tools.calculate_formation_enthalpy(compound: str, ionization_energies: list[float], electron_affinities: list[float], lattice_energy: float, sublimation_energy: Optional[float] = None, bond_dissociation_energy: Optional[float] = None) -> float
+born_haber_tools.calculate_lattice_energy(compound: str, ionization_energies: list[float], electron_affinities: list[float], sublimation_energy: Optional[float] = None, bond_dissociation_energy: Optional[float] = None, formation_enthalpy: Optional[float] = None) -> float
+born_haber_tools.test_calculate_formation_enthalpy()
+born_haber_tools.test_calculate_lattice_energy()
+born_haber_tools.test_known_compound_data()
+born_haber_tools.test_mgo_formation_enthalpy()
+born_haber_tools.test_nacl_lattice_energy()
+bronsted_lowry_tools.Kw_value(temperature: float = 25.0) -> float
+bronsted_lowry_tools.classify_solution(h3o_conc: float, temperature: float = 25.0) -> str
+bronsted_lowry_tools.conjugate_acid(base: str, formula: str) -> str
+bronsted_lowry_tools.conjugate_base(acid: str, formula: str) -> str
+bronsted_lowry_tools.h3o_from_oh(oh_conc: float, temperature: float = 25.0) -> float
+bronsted_lowry_tools.identify_acid_base(reaction: str) -> Dict
+bronsted_lowry_tools.is_amphiprotic(formula: str) -> bool
+bronsted_lowry_tools.oh_from_h3o(h3o_conc: float, temperature: float = 25.0) -> float
+buffer_tools.buffer_after_addition(pKa: float, acid_mol: float, base_mol: float, added_acid: float = 0, added_base: float = 0, volume: float = 1.0) -> float
+buffer_tools.buffer_capacity(total_conc: float, ratio: float = 1.0) -> float
+buffer_tools.buffer_pH_from_Ka(Ka: float, base_conc: float, acid_conc: float) -> float
+buffer_tools.buffer_ratio(pH: float, pKa: float) -> float
+buffer_tools.design_buffer(target_pH: float, Ka_values: Dict[str, float]) -> str
+buffer_tools.henderson_hasselbalch(pKa: float, base_conc: float, acid_conc: float) -> float
+buffer_tools.optimal_buffer_pH(pKa: float) -> Tuple[float, float]
+calorimetry_tools.bomb_calorimeter_heat(C_cal, delta_T)
+calorimetry_tools.calorimeter_constant(q_known, delta_T)
+calorimetry_tools.coffee_cup_heat_rxn(mass_solution, specific_heat, delta_T, density=1.0, volume_mL=None)
+calorimetry_tools.delta_H_from_delta_U(delta_U, delta_n_gas, T=298)
+calorimetry_tools.delta_U_from_delta_H(delta_H, delta_n_gas, T=298)
+calorimetry_tools.enthalpy_per_mole(q_rxn, moles)
+calorimetry_tools.mixing_final_T(m1, c1, T1, m2, c2, T2)
+calorimetry_tools.moles_from_molarity(M, V_L)
+carbohydrate_chemistry_tools.disaccharide_info(name: str) -> dict
+carbohydrate_chemistry_tools.energy_comparison() -> dict
+carbohydrate_chemistry_tools.fiber_recommendation(age: int, gender: str) -> dict
+carbohydrate_chemistry_tools.glycogen_storage_info() -> dict
+carbohydrate_chemistry_tools.glycosidic_bond_digestibility(bond_type: str) -> dict
+carbohydrate_chemistry_tools.monosaccharide_info(name: str) -> dict
+carbohydrate_chemistry_tools.polysaccharide_info(name: str) -> dict
+chemometrics_tools.biplot_data(model: Dict, pc_x: int = 1, pc_y: int = 2, loading_scale: float = 1.0) -> Tuple[numpy.ndarray, numpy.ndarray]
+chemometrics_tools.cls_calibration(A: numpy.ndarray, C: numpy.ndarray) -> numpy.ndarray
+chemometrics_tools.cls_predict(A: numpy.ndarray, K: numpy.ndarray) -> numpy.ndarray
+chemometrics_tools.confidence_interval(data: numpy.ndarray, confidence: float = 0.95, axis: int = 0) -> Tuple[numpy.ndarray, numpy.ndarray]
+chemometrics_tools.cross_validate(X: numpy.ndarray, Y: numpy.ndarray, method: str = 'pls', max_components: int = 10, cv_folds: int = 5) -> Dict
+chemometrics_tools.descriptive_stats(data: numpy.ndarray, axis: int = 0) -> Dict
+chemometrics_tools.hypothesis_test(sample1: numpy.ndarray, sample2: Optional[numpy.ndarray] = None, test: str = 't-test', alpha: float = 0.05) -> Dict
+chemometrics_tools.leverage(n_samples: int, n_components: int) -> numpy.ndarray
+chemometrics_tools.mean_center(data: numpy.ndarray, axis: int = 0) -> Tuple[numpy.ndarray, numpy.ndarray]
+chemometrics_tools.msc(data: numpy.ndarray, reference: Optional[numpy.ndarray] = None) -> Tuple[numpy.ndarray, numpy.ndarray]
+chemometrics_tools.outlier_detection(model: Dict, residuals: numpy.ndarray, threshold_leverage: float = 2.0, threshold_residual: float = 3.0) -> Dict
+chemometrics_tools.pca_fit(data: numpy.ndarray, n_components: Optional[int] = None, center: bool = True, scale: bool = False) -> Dict
+chemometrics_tools.pca_transform(data: numpy.ndarray, model: Dict) -> numpy.ndarray
+chemometrics_tools.pcr_fit(X: numpy.ndarray, Y: numpy.ndarray, n_components: int = 2) -> Dict
+chemometrics_tools.pcr_predict(X: numpy.ndarray, model: Dict) -> numpy.ndarray
+chemometrics_tools.pls_fit(X: numpy.ndarray, Y: numpy.ndarray, n_components: int = 2, center: bool = True, scale: bool = False) -> Dict
+chemometrics_tools.pls_predict(X: numpy.ndarray, model: Dict) -> numpy.ndarray
+chemometrics_tools.rmsec_rmsep(Y_true: numpy.ndarray, Y_pred: numpy.ndarray, type: str = 'RMSEC') -> Dict
+chemometrics_tools.scores_loadings(model: Dict) -> Tuple[numpy.ndarray, numpy.ndarray]
+chemometrics_tools.scree_plot_data(model: Dict) -> Tuple[numpy.ndarray, numpy.ndarray]
+chemometrics_tools.snv(data: numpy.ndarray) -> numpy.ndarray
+chemometrics_tools.standardize(data: numpy.ndarray, axis: int = 0) -> Tuple[numpy.ndarray, numpy.ndarray, numpy.ndarray]
+chemometrics_tools.variance_explained(model: Dict, cumulative: bool = False) -> numpy.ndarray
+chm320_inorganic_tools.calculate_cf_splitting(metal: str, oxidation: int, geometry: Literal['octahedral', 'tetrahedral', 'square_planar'], ligand_strength: str = 'intermediate') -> Dict[str, float]
+chm320_inorganic_tools.calculate_lfse(d_electrons: int, geometry: Literal['octahedral', 'tetrahedral', 'square_planar'], spin: Literal['high', 'low'] = 'high', pairing_energy: float = None) -> Dict[str, float]
+chm320_inorganic_tools.calculate_magnetic_moment(n_unpaired: int, include_orbital: bool = False, orbital_contribution: float = 0.0) -> Dict[str, float]
+chm320_inorganic_tools.determine_spin_state_from_moment(d_electrons: int, mu_observed: float, geometry: str = 'octahedral') -> Dict[str, <built-in function any>]
+chm320_inorganic_tools.find_delta_from_transitions(d_n: int, observed_transitions_cm: Dict[str, float]) -> Dict[str, float]
+chm320_inorganic_tools.get_irving_williams_series() -> list
+chm320_inorganic_tools.get_spectrochemical_series() -> Dict[str, float]
+chm320_inorganic_tools.predict_spin_state(metal: str, oxidation: int, ligand_strength: str = 'intermediate') -> Dict[str, <built-in function any>]
+chm320_inorganic_tools.predict_transitions(d_n: int, delta_B_ratio: float, B: float = None) -> Dict[str, <built-in function any>]
+chromatography_tools.analyze_peak_pair(peak1: chromatography_tools.ChromatographicPeak, peak2: chromatography_tools.ChromatographicPeak, tM: float, column_length: float) -> Dict[str, float]
+chromatography_tools.baseline_separation_achieved(Rs: float) -> bool
+chromatography_tools.dataclass(cls=None, /, *, init=True, repr=True, eq=True, order=False, unsafe_hash=False, frozen=False, match_args=True, kw_only=False, slots=False, weakref_slot=False)
+chromatography_tools.external_standard_concentration(analyte_area: float, slope: float, intercept: float = 0) -> float
+chromatography_tools.internal_standard_concentration(analyte_area: float, internal_std_area: float, internal_std_conc: float, response_factor: float) -> float
+chromatography_tools.is_peak_acceptable(asymmetry: float, min_asym: float = 0.9, max_asym: float = 1.5) -> bool
+chromatography_tools.linear_velocity(column_length: float, dead_time: float) -> float
+chromatography_tools.minimum_plate_height(A: float, B: float, C: float) -> float
+chromatography_tools.optimal_velocity(B: float, C: float) -> float
+chromatography_tools.peak_asymmetry(leading_width: float, trailing_width: float) -> float
+chromatography_tools.phase_ratio(column_diameter: float, film_thickness: float) -> float
+chromatography_tools.plate_height(L: float, N: float) -> float
+chromatography_tools.resolution_from_parameters(N: float, alpha: float, k: float) -> float
+chromatography_tools.resolution_from_times(tR1: float, tR2: float, w1: float, w2: float) -> float
+chromatography_tools.response_factor(analyte_area: float, analyte_conc: float, internal_std_area: float, internal_std_conc: float) -> float
+chromatography_tools.retention_factor(tR: float, tM: float) -> float
+chromatography_tools.retention_time_from_k(k: float, tM: float) -> float
+chromatography_tools.selectivity_factor(k1: float, k2: float) -> float
+chromatography_tools.theoretical_plates(retention_time: float, width: float, use_half_height: bool = False) -> float
+chromatography_tools.van_deemter_height(A: float, B: float, C: float, u: float) -> float
+colligative_properties_tools.boiling_point_elevation(m: float, Kb: float = 0.512, i: int = 1) -> float
+colligative_properties_tools.freezing_point_depression(m: float, Kf: float = 1.86, i: int = 1) -> float
+colligative_properties_tools.get_solvent_constants(solvent: str) -> dict
+colligative_properties_tools.molar_mass_from_bp_elevation(mass_solute: float, mass_solvent_kg: float, delta_T: float, Kb: float = 0.512, i: int = 1) -> float
+colligative_properties_tools.molar_mass_from_fp_depression(mass_solute: float, mass_solvent_kg: float, delta_T: float, Kf: float = 1.86, i: int = 1) -> float
+colligative_properties_tools.molar_mass_from_osmotic_pressure(mass_solute: float, volume_L: float, Pi: float, T: float, i: int = 1) -> float
+colligative_properties_tools.new_boiling_point(m: float, Kb: float = 0.512, Tb_pure: float = 100.0, i: int = 1) -> float
+colligative_properties_tools.new_freezing_point(m: float, Kf: float = 1.86, Tf_pure: float = 0.0, i: int = 1) -> float
+colligative_properties_tools.osmotic_pressure(M: float, T: float, i: int = 1) -> float
+colligative_properties_tools.vanthoff_factor(formula: str, actual: bool = False) -> float
+colligative_properties_tools.vapor_pressure_depression(X_solute: float, P0: float) -> float
+colligative_properties_tools.vapor_pressure_lowering(X_solvent: float, P0: float) -> float
+colloid_tools.classify_by_particle_size(size_nm: float) -> str
+colloid_tools.compare_mixture_types() -> dict
+colloid_tools.filtration_behavior(particle_size_nm: float) -> str
+colloid_tools.get_colloid_examples(colloid_type: str) -> list
+colloid_tools.identify_colloid_type(dispersed: str, dispersing: str) -> str
+colloid_tools.settling_behavior(particle_size_nm: float) -> str
+colloid_tools.tyndall_effect_test(particle_size_nm: float) -> bool
+computational_chemistry_tools.boltzmann_distribution(energies: numpy.ndarray, temperature: float) -> numpy.ndarray
+computational_chemistry_tools.descriptor_calculator(smiles: str = None, molecular_weight: float = None, logP: float = None, h_bond_donors: int = None, h_bond_acceptors: int = None, rotatable_bonds: int = None, topological_polar_surface_area: float = None, num_atoms: int = None, num_heavy_atoms: int = None, num_rings: int = None, num_aromatic_rings: int = None, fraction_csp3: float = None) -> Dict[str, Union[float, Dict[str, float]]]
+computational_chemistry_tools.dft_energy_calculator(kinetic_energy: float, electron_nuclear_attraction: float, coulomb_energy: float, exchange_correlation_energy: float, nuclear_repulsion: float = 0.0) -> Dict[str, float]
+computational_chemistry_tools.exchange_correlation_function(rho: numpy.ndarray, grad_rho: Optional[numpy.ndarray] = None, functional_type: str = 'lda', rho_cutoff: float = 1e-10) -> Dict[str, Union[float, numpy.ndarray]]
+computational_chemistry_tools.j_max(B: float, T: float) -> dict
+computational_chemistry_tools.kinetic_energy_calculator(velocities: numpy.ndarray, masses: numpy.ndarray, units: str = 'gromacs') -> Dict[str, float]
+computational_chemistry_tools.lennard_jones(r: numpy.ndarray, epsilon: float, sigma: float) -> Dict[str, numpy.ndarray]
+computational_chemistry_tools.md_integrator(positions: numpy.ndarray, velocities: numpy.ndarray, forces: numpy.ndarray, masses: numpy.ndarray, dt: float, integrator: str = 'velocity_verlet') -> Dict[str, numpy.ndarray]
+computational_chemistry_tools.moment_of_inertia(m1: float, m2: float, r: float) -> dict
+computational_chemistry_tools.qsar_model_builder(X: numpy.ndarray, y: numpy.ndarray, method: str = 'mlr', n_components: int = 2, cross_validate: bool = True, n_folds: int = 5, random_state: int = 42) -> Dict[str, Union[numpy.ndarray, float, Dict]]
+computational_chemistry_tools.rotational_constant(I: float) -> dict
+computational_chemistry_tools.rotational_constant_calculator(masses: numpy.ndarray, coordinates: numpy.ndarray, units: str = 'amu_angstrom') -> Dict[str, Union[float, numpy.ndarray]]
+computational_chemistry_tools.rotational_energy(J: int, B: float, D: float = 0.0) -> dict
+computational_chemistry_tools.rotational_partition_function(rotational_constants: Union[float, Tuple[float, float, float]], temperature: float, symmetry_number: int = 1, molecule_type: str = 'diatomic', include_excited_states: bool = True, max_J: int = 100) -> Dict[str, float]
+computational_chemistry_tools.transition_frequency(J_lower: int, B: float, D: float = 0.0) -> dict
+computational_qc_tools.basis_set_info(basis_name: str) -> Dict
+computational_qc_tools.count_basis_functions(formula: str, basis_name: str) -> int
+computational_qc_tools.dft_functional_hierarchy() -> Dict[str, List[str]]
+computational_qc_tools.electron_correlation_energy(method: str, hf_energy: float, exact_energy: Optional[float] = None, correlation_fraction: Optional[float] = None) -> float
+computational_qc_tools.fock_matrix_element(h_ij: float, density: numpy.ndarray, coulomb_integrals: numpy.ndarray, exchange_integrals: numpy.ndarray, i: int, j: int) -> float
+computational_qc_tools.functional_type(functional_name: str) -> Dict
+computational_qc_tools.hartree_fock_energy(n_electrons: int, orbital_energies: List[float], core_electrons: int = 0) -> float
+computational_qc_tools.koopmans_ionization_potential(orbital_energy: float) -> float
+computational_qc_tools.mp2_energy_contribution(occupied_energies: List[float], virtual_energies: List[float], two_electron_integrals: Optional[numpy.ndarray] = None) -> float
+computational_qc_tools.parse_basis_notation(notation: str) -> Dict
+computational_qc_tools.recommend_basis_set(system_type: str, property_of_interest: str, accuracy: str = 'medium') -> List[str]
+computational_qc_tools.slater_determinant_normalization(n_electrons: int) -> float
+computational_qc_tools.sto_ng_exponent(n: int, zeta: float, element: str = 'H') -> List[float]
+computational_qc_tools.test_basis_set_info()
+computational_qc_tools.test_functional_type()
+computational_qc_tools.test_hartree_fock_energy()
+computational_qc_tools.test_parse_basis_notation()
+computational_qc_tools.test_slater_normalization()
+conformation_tools.calculate_1_3_diaxial_interactions(substituent: str) -> float
+conformation_tools.calculate_butane_energy(dihedral_angle: float) -> float
+conformation_tools.calculate_disubstituted_cyclohexane_energy(positions: Tuple[int, int], stereochemistry: str, substituents: Tuple[str, str]) -> float
+conformation_tools.calculate_equilibrium_distribution(energy_difference: float, temperature: float = 298.0) -> Tuple[float, float]
+conformation_tools.calculate_ethane_barrier() -> float
+conformation_tools.conformation_energy_profile(molecule: str) -> Dict[str, float]
+conformation_tools.dataclass(cls=None, /, *, init=True, repr=True, eq=True, order=False, unsafe_hash=False, frozen=False, match_args=True, kw_only=False, slots=False, weakref_slot=False)
+conformation_tools.explain_ring_strain(ring_size: int) -> str
+conformation_tools.get_a_value(substituent: str) -> float
+conformation_tools.get_ring_strain(ring_size: int) -> float
+conformation_tools.predict_cyclohexane_conformation(substituent: str) -> str
+conformation_tools.ring_flip_positions() -> Dict[str, str]
+conformation_tools.test_a_values()
+conformation_tools.test_conformation_prediction()
+conformation_tools.test_equilibrium()
+conformation_tools.test_ethane_barrier()
+conformation_tools.test_ring_strain()
+coordination_chemistry_tools.coordination_number(ligands: Dict[str, int]) -> int
+coordination_chemistry_tools.is_chelate(ligand: str) -> bool
+coordination_chemistry_tools.ligand_count_prefix(n: int) -> str
+coordination_chemistry_tools.name_ligand(ligand: str, is_anionic: bool = True) -> str
+coordination_chemistry_tools.name_metal(metal: str, charge: int, is_anionic_complex: bool = False) -> str
+coordination_chemistry_tools.predict_geometry(coord_num: int) -> str
+coordination_chemistry_tools.roman_numeral(n: int) -> str
+coupled_equilibria_tools.acid_enhanced_K(Ksp: float, Ka: float) -> float
+coupled_equilibria_tools.combine_equilibrium_constants(K_values: List[float]) -> float
+coupled_equilibria_tools.common_ion_effect_factor(common_ion_conc: float, stoich_coeff: int = 1) -> float
+coupled_equilibria_tools.complex_enhanced_K(Ksp: float, Kf: float) -> float
+coupled_equilibria_tools.coupled_system_summary(reactions: List[Dict]) -> Dict
+coupled_equilibria_tools.predict_dissolution_behavior(Ksp: float, Kf: float = None, Ka: float = None, conditions: Dict = None) -> str
+coupled_equilibria_tools.solubility_with_acid(Ksp: float, Ka: float, H_conc: float, anion_coeff: int = 1) -> float
+coupled_equilibria_tools.solubility_with_complex(Ksp: float, Kf: float, ligand_conc: float, n_ligands: int = 1) -> float
+covalent_bonding_tools.bond_polarity(element1: str, element2: str) -> tuple
+covalent_bonding_tools.classify_bond_type(element1: str, element2: str) -> dict
+covalent_bonding_tools.compare_bond_polarity(bonds: list) -> list
+covalent_bonding_tools.get_bond_energy(element1: str, element2: str, bond_order: int = 1) -> float
+covalent_bonding_tools.get_electronegativity(element: str) -> float
+covalent_bonding_tools.percent_ionic_character(element1: str, element2: str) -> float
+crystal_field_theory_tools.crystal_field_stabilization_energy(d_count: int, geometry: str = 'octahedral', high_spin: bool = True, Dq: float = 1.0) -> float
+crystal_field_theory_tools.d_electron_distribution(d_count: int, geometry: str = 'octahedral', high_spin: bool = True) -> Dict
+crystal_field_theory_tools.high_spin_or_low_spin(d_count: int, ligand: str) -> str
+crystal_field_theory_tools.is_paramagnetic(unpaired: int) -> bool
+crystal_field_theory_tools.magnetic_moment(unpaired: int) -> float
+crystal_field_theory_tools.pairing_energy_needed(d_count: int, geometry: str = 'octahedral', high_spin: bool = True) -> int
+crystal_field_theory_tools.predict_color(complementary: str = None, delta: float = None) -> str
+crystal_structures_tools.atoms_per_area_cubic(cell_type: str) -> int
+crystal_structures_tools.bravais_lattice_types() -> Dict
+crystal_structures_tools.cubic_lattice_radius(edge_length: float, cell_type: str) -> float
+crystal_structures_tools.edge_length_from_radius(radius: float, cell_type: str) -> float
+crystal_structures_tools.identify_crystal_system(a: float, b: float, c: float, alpha: float = 90, beta: float = 90, gamma: float = 90) -> str
+crystal_structures_tools.ionic_radius_ratio_rule(cation_radius: float, anion_radius: float) -> str
+crystal_structures_tools.unit_cell_volume_cubic(edge_length: float) -> float
+crystallography_tools.atomic_radius_from_lattice(edge_length: float, structure_type: str) -> float
+crystallography_tools.atoms_per_unit_cell(cell_type: str) -> int
+crystallography_tools.braggs_angle(n: int, wavelength: float, d_spacing: float) -> Optional[float]
+crystallography_tools.braggs_law(n: int = 1, wavelength: Optional[float] = None, d_spacing: Optional[float] = None, angle_deg: Optional[float] = None) -> Dict[str, float]
+crystallography_tools.coordination_number(structure_type: str) -> int
+crystallography_tools.crystal_density(n_atoms: int, atomic_mass: float, volume_angstrom3: float) -> float
+crystallography_tools.d_spacing_cubic(a: float, h: int, k: int, l: int) -> float
+crystallography_tools.d_spacing_from_bragg(n: int, wavelength: float, angle_deg: float) -> float
+crystallography_tools.d_spacing_general(crystal_system: str, params: Dict[str, float], h: int, k: int, l: int) -> float
+crystallography_tools.d_spacing_hexagonal(a: float, c: float, h: int, k: int, l: int) -> float
+crystallography_tools.d_spacing_monoclinic(a: float, b: float, c: float, beta_deg: float, h: int, k: int, l: int) -> float
+crystallography_tools.d_spacing_orthorhombic(a: float, b: float, c: float, h: int, k: int, l: int) -> float
+crystallography_tools.d_spacing_tetragonal(a: float, c: float, h: int, k: int, l: int) -> float
+crystallography_tools.diffraction_angles_for_planes(a: float, planes: list, wavelength: float = 1.5418, crystal_system: str = 'cubic') -> list
+crystallography_tools.get_xray_wavelength(source: str) -> float
+crystallography_tools.higher_order_angles(wavelength: float, d_spacing: float, max_order: int = 5) -> Dict[int, Optional[float]]
+crystallography_tools.identify_crystal_system_from_params(a: float, b: float, c: float, alpha: float = 90.0, beta: float = 90.0, gamma: float = 90.0) -> str
+crystallography_tools.intercepts_to_miller(intercepts: Tuple[float, float, float]) -> Tuple[int, int, int]
+crystallography_tools.is_reflection_possible(n: int, wavelength: float, d_spacing: float) -> bool
+crystallography_tools.lattice_parameter_from_radius(radius: float, structure_type: str) -> float
+crystallography_tools.miller_to_intercepts(h: int, k: int, l: int, a: float = 1.0, b: float = 1.0, c: float = 1.0) -> Tuple[float, float, float]
+crystallography_tools.packing_fraction(structure_type: str) -> float
+crystallography_tools.path_difference(d_spacing: float, angle_deg: float) -> float
+crystallography_tools.unit_cell_volume(cell_type: str, a: float, b: Optional[float] = None, c: Optional[float] = None, alpha: float = 90.0, beta: float = 90.0, gamma: float = 90.0) -> float
+density_tools.buoyancy_correction(mass_air: 'float', density_sample: 'float', density_air: 'float' = 0.0012, density_weights: 'float' = 8.0) -> 'float'
+density_tools.calculate_density(mass: 'float', volume: 'float') -> 'float'
+density_tools.calculate_specific_gravity(density: 'float', reference_density: 'float' = 1.0) -> 'float'
+density_tools.mass_from_density(density: 'float', volume: 'float') -> 'float'
+density_tools.test_buoyancy_correction()
+density_tools.test_calculate_density()
+density_tools.test_mass_from_density()
+density_tools.test_specific_gravity()
+density_tools.test_volume_from_density()
+density_tools.test_zero_division_errors()
+density_tools.volume_from_density(density: 'float', mass: 'float') -> 'float'
+diatomic_mo_tools.bond_energy_estimate(bond_order: float, reference_energy_kJ: float = 400) -> float
+diatomic_mo_tools.bond_length_estimate(bond_order: float, sum_covalent_radii_pm: float) -> float
+diatomic_mo_tools.bond_order(n_bonding: int, n_antibonding: int) -> float
+diatomic_mo_tools.bond_order_from_configuration(sigma_g_electrons: int = 0, sigma_u_electrons: int = 0, pi_u_electrons: int = 0, pi_g_electrons: int = 0, sigma_g2_electrons: int = 0, sigma_u2_electrons: int = 0) -> float
+diatomic_mo_tools.calculate_Lambda_from_electrons(lambda_values: List[int]) -> int
+diatomic_mo_tools.calculate_S_from_electrons(spin_values: List[float]) -> float
+diatomic_mo_tools.coulomb_integral_1s(R: float, Z: float = 1) -> float
+diatomic_mo_tools.count_unpaired_electrons(orbital_occupations: Dict[str, int]) -> int
+diatomic_mo_tools.electron_configuration_diatomic(Z_total: int, heteronuclear: bool = False) -> Dict
+diatomic_mo_tools.exchange_integral_1s(R: float, Z: float = 1) -> float
+diatomic_mo_tools.factorial(n, exact=False, extend='zero')
+diatomic_mo_tools.gerade_ungerade(nuclear_charge_product: float) -> str
+diatomic_mo_tools.get_diatomic_data(molecule: str) -> Dict
+diatomic_mo_tools.is_paramagnetic(n_unpaired_electrons: int) -> bool
+diatomic_mo_tools.mo_energy_h2_plus(R: float, n: int = 1, symmetric: bool = True) -> float
+diatomic_mo_tools.molecular_term_symbol_diatomic(total_spin_S: float, total_Lambda: int, total_omega: Optional[float] = None, inversion_symmetry: Optional[str] = None, reflection_symmetry: Optional[str] = None) -> str
+diatomic_mo_tools.orbital_symmetry_label(l: int, m: int) -> str
+diatomic_mo_tools.overlap_integral_1s(R: float) -> float
+diels_alder_tools.diels_alder_product(diene: str, dienophile: str) -> dict
+diels_alder_tools.diels_alder_reactivity_order(dienophiles: list) -> list
+diels_alder_tools.diene_conformation(diene: str) -> str
+diels_alder_tools.is_good_dienophile(compound: str) -> bool
+diels_alder_tools.predict_stereochemistry(diene: str, dienophile: str) -> dict
+dna_tools.check_palindrome(sequence: str) -> bool
+dna_tools.codon_table() -> Dict[str, str]
+dna_tools.complement(sequence: str, rna: bool = False) -> str
+dna_tools.gc_content(sequence: str) -> float
+dna_tools.molecular_weight_dna(sequence: str, single_stranded: bool = False) -> float
+dna_tools.reverse_complement(sequence: str, rna: bool = False) -> str
+dna_tools.tm_estimate(sequence: str, na_conc: float = 5e-08) -> float
+dna_tools.translate_dna(dna_sequence: str, frame: int = 0) -> str
+electrochemical_analysis_tools.amperometry_concentration(current: float, sensitivity: float) -> float
+electrochemical_analysis_tools.amperometry_current(concentration: float, sensitivity: float) -> float
+electrochemical_analysis_tools.conductivity_cell_constant(resistance: float, conductivity: float) -> float
+electrochemical_analysis_tools.conductivity_from_resistance(resistance: float, cell_constant: float) -> float
+electrochemical_analysis_tools.coulometry_charge(moles: float, n_electrons: int) -> float
+electrochemical_analysis_tools.coulometry_constant_current(current: float, time: float, n_electrons: int) -> float
+electrochemical_analysis_tools.coulometry_electrolysis_time(moles: float, current: float, n_electrons: int) -> float
+electrochemical_analysis_tools.coulometry_moles(charge: float, n_electrons: int) -> float
+electrochemical_analysis_tools.coulometry_purity(mass_sample: float, charge: float, n_electrons: int, molar_mass: float) -> float
+electrochemical_analysis_tools.cyclic_voltammetry_peak(concentration: float, area: float, diffusion_coeff: float, scan_rate: float, n: int, temperature: float = 25.0) -> float
+electrochemical_analysis_tools.dataclass(cls=None, /, *, init=True, repr=True, eq=True, order=False, unsafe_hash=False, frozen=False, match_args=True, kw_only=False, slots=False, weakref_slot=False)
+electrochemical_analysis_tools.faraday_constant() -> float
+electrochemical_analysis_tools.ion_selective_electrode(activity: float, slope: float = 0.05916, intercept: float = 0.0, charge: int = 1) -> float
+electrochemical_analysis_tools.ise_selectivity_coefficient(activity_analyte: float, activity_interferent: float, charge_analyte: int, charge_interferent: int) -> float
+electrochemical_analysis_tools.kohlrausch_equation(concentration: float, limiting_conductivity: float, kohlrausch_coefficient: float) -> float
+electrochemical_analysis_tools.limiting_current_concentration(limiting_current: float, K_constant: float) -> float
+electrochemical_analysis_tools.molar_conductivity(conductivity: float, concentration: float) -> float
+electrochemical_analysis_tools.nernst_slope(temperature: float = 25.0) -> float
+electrochemical_analysis_tools.ph_from_potential(E: float, E0: float = 0.0, slope: float = 0.05916) -> float
+electrochemical_analysis_tools.potentiometry_nernst(concentration: float, E0: float, n: int, temperature: float = 25.0) -> float
+electrochemical_analysis_tools.reference_potential_convert(E_measured: float, from_reference: str, to_reference: str, temperature: float = 25.0) -> float
+electrochemical_analysis_tools.scan_rate_effect(peak_current: float, scan_rate: float, new_scan_rate: float) -> float
+electrochemical_analysis_tools.voltammetry_half_wave_potential(E_anodic: float, E_cathodic: float) -> float
+electrode_potentials_tools.calculate_cell_potential_from_notation(anode_species: str, cathode_species: str) -> float
+electrode_potentials_tools.compare_oxidizing_strength(E1: float, species1: str, E2: float, species2: str) -> str
+electrode_potentials_tools.compare_reducing_strength(E1: float, species1: str, E2: float, species2: str) -> str
+electrode_potentials_tools.list_species_by_oxidizing_strength(species_list: List[str]) -> List[str]
+electrode_potentials_tools.lookup_potential(species: str) -> float
+electrode_potentials_tools.standard_cell_potential(E_cathode: float, E_anode: float) -> float
+electrode_potentials_tools.will_reaction_occur(E_cathode: float, E_anode: float) -> bool
+electrolysis_tools.charge_from_current_time(current: float, time: float) -> float
+electrolysis_tools.compare_galvanic_vs_electrolytic(E_cell: float) -> str
+electrolysis_tools.current_for_mass(mass: float, time: float, molar_mass: float, n_electrons: int) -> float
+electrolysis_tools.electrons_transferred(charge: float) -> float
+electrolysis_tools.gas_volume_at_stp(moles: float) -> float
+electrolysis_tools.mass_from_electrolysis(current: float, time: float, molar_mass: float, n_electrons: int) -> float
+electrolysis_tools.minimum_voltage_for_electrolysis(E_cell: float) -> float
+electrolysis_tools.moles_from_electrolysis(current: float, time: float, n_electrons: int) -> float
+electrolysis_tools.time_for_mass(mass: float, current: float, molar_mass: float, n_electrons: int) -> float
+electrolyte_tools.classify_electrolyte(formula: str) -> str
+electrolyte_tools.dissociation_equation(formula: str) -> str
+electrolyte_tools.format_ion(ion: str, charge: int) -> str
+electrolyte_tools.get_ion_charges(cation: str, anion: str) -> Optional[Tuple[int, int]]
+electrolyte_tools.ion_count(formula: str) -> int
+electrolyte_tools.is_soluble(cation: str, anion: str) -> bool
+electrolyte_tools.parse_ionic_formula(formula: str) -> Optional[Tuple[str, str]]
+electromagnetic_energy_tools.J_to_eV(J)
+electromagnetic_energy_tools.J_to_kJ_per_mol(J)
+electromagnetic_energy_tools.eV_to_J(eV)
+electromagnetic_energy_tools.frequency_from_wavelength(wavelength)
+electromagnetic_energy_tools.identify_spectral_region(wavelength_nm)
+electromagnetic_energy_tools.kinetic_energy_ejected_electron(photon_energy, work_function)
+electromagnetic_energy_tools.m_to_nm(m)
+electromagnetic_energy_tools.nm_to_m(nm)
+electromagnetic_energy_tools.photon_energy_from_frequency(frequency)
+electromagnetic_energy_tools.photon_energy_from_wavelength(wavelength)
+electromagnetic_energy_tools.threshold_frequency(work_function)
+electromagnetic_energy_tools.threshold_wavelength(work_function)
+electromagnetic_energy_tools.wavelength_from_energy(energy)
+electromagnetic_energy_tools.wavelength_from_frequency(frequency)
+electron_configuration_tools.electron_configuration(atomic_number, noble_gas_notation=True, use_exceptions=True)
+electron_configuration_tools.is_exception(atomic_number)
+electron_configuration_tools.orbital_diagram_electrons(subshell, electrons)
+electron_configuration_tools.parse_configuration(config_str)
+electron_configuration_tools.superscript(n)
+electron_configuration_tools.valence_electrons(atomic_number)
+electronic_spectroscopy_tools.electronic_selection_rules(L1: int, S1: float, J1: float, L2: int, S2: float, J2: float) -> Tuple[bool, str]
+electronic_spectroscopy_tools.electronic_term_symbol(multiplicity: int, L: int, J: Optional[float] = None) -> str
+electronic_spectroscopy_tools.energy_transfer_efficiency_distance(R: float, R0: float) -> float
+electronic_spectroscopy_tools.factorial(n, exact=False, extend='zero')
+electronic_spectroscopy_tools.fluorescence_rate(A: float) -> float
+electronic_spectroscopy_tools.forster_radius(k_D: float, tau_D: float, J_overlap: float, n_refractive: float, kappa2: float = 0.6666666666666666) -> float
+electronic_spectroscopy_tools.franck_condon_factor(v1: int, v2: int, delta_q: float, omega_ratio: float = 1.0) -> float
+electronic_spectroscopy_tools.ground_state_term(p_electrons: int) -> str
+electronic_spectroscopy_tools.huang_rhys_factor(delta_q: float, omega: float) -> float
+electronic_spectroscopy_tools.intersystem_crossing_rate(S1_T1_gap_J: float, spin_orbit_coupling_J: float) -> float
+electronic_spectroscopy_tools.intersystem_crossing_yield(k_isc: float, k_f: float, k_nr: float) -> float
+electronic_spectroscopy_tools.laporte_selection_rule(g_u_initial: str, g_u_final: str) -> Tuple[bool, str]
+electronic_spectroscopy_tools.molar_absorptivity_from_oscillator(f: float, bandwidth_nm: float, lambda_max_nm: float) -> float
+electronic_spectroscopy_tools.oscillator_strength(f: float) -> float
+electronic_spectroscopy_tools.phosphorescence_lifetime(A: float, ISC_rate: float) -> float
+electronic_spectroscopy_tools.quad(func, a, b, args=(), full_output=0, epsabs=1.49e-08, epsrel=1.49e-08, limit=50, points=None, weight=None, wvar=None, wopts=None, maxp1=50, limlst=50, complex_func=False)
+electronic_spectroscopy_tools.quantum_yield_fluorescence(k_f: float, k_nr: float, k_isc: float = 0) -> float
+electronic_spectroscopy_tools.quantum_yield_phosphorescence(k_p: float, k_nr_T: float) -> float
+electronic_spectroscopy_tools.transition_energy_eV(wavelength_nm: float) -> float
+electronic_spectroscopy_tools.transition_energy_wavelength(E_J: float) -> float
+electronic_spectroscopy_tools.transition_energy_wavenumber(wavelength_nm: float) -> float
+electronic_spectroscopy_tools.vertical_transition_energy(E_0: float, delta_E_reorg: float) -> float
+electronic_spectroscopy_tools.vibronic_progression_positions(E_00: float, omega_cm: float, max_v: int = 10) -> List[float]
+electronic_spectroscopy_tools.wavelength_from_wavenumber(wavenumber_cm: float) -> float
+energy_basics_tools.calories_to_joules(calories)
+energy_basics_tools.final_temperature(initial_T, heat, mass, specific_heat)
+energy_basics_tools.heat_capacity(mass, specific_heat)
+energy_basics_tools.heat_from_heat_capacity(C, delta_T)
+energy_basics_tools.heat_transfer(mass, specific_heat, delta_T)
+energy_basics_tools.joules_to_calories(joules)
+energy_basics_tools.joules_to_nutritional_cal(joules)
+energy_basics_tools.nutritional_cal_to_joules(Cal)
+energy_basics_tools.pressure_volume_work(pressure_atm, delta_V_L)
+energy_basics_tools.specific_heat_from_heat(mass, heat, delta_T)
+enthalpy_tools.delta_H_rxn_from_formation(reactants, products, delta_H_f_data=None)
+enthalpy_tools.heat_of_combustion_per_gram(delta_H_comb, molar_mass)
+enthalpy_tools.heat_of_combustion_per_volume(delta_H_comb, molar_mass, density)
+enthalpy_tools.heat_phase_change(moles, delta_H_phase)
+enthalpy_tools.hess_from_reactions(reaction_data, target_delta_H_f=None)
+enthalpy_tools.hess_law_combine(reactions, target_reaction=None)
+enthalpy_tools.multiply_reaction(delta_H, factor)
+enthalpy_tools.reverse_reaction(delta_H)
+enthalpy_tools.total_heat_with_phase_change(moles, c_solid, c_liquid, delta_T_solid, delta_T_liquid, delta_H_fusion)
+entropy_tools.compare_entropies(phases: list) -> str
+entropy_tools.entropy_change_heat(q_rev: float, T: float) -> float
+entropy_tools.entropy_change_microstates(W_initial: float, W_final: float) -> float
+entropy_tools.entropy_from_microstates(W: float) -> float
+entropy_tools.predict_entropy_sign_phase_change(initial_phase: str, final_phase: str) -> str
+entropy_tools.standard_entropy_change(S_products: list, S_reactants: list, coeffs_products: list = None, coeffs_reactants: list = None) -> float
+enzym_kinetics_tools.calculate_specificity_constant(Km: float, kcat: float) -> float
+enzym_kinetics_tools.curve_fit(f, xdata, ydata, p0=None, sigma=None, absolute_sigma=False, check_finite=None, bounds=(-inf, inf), method=None, jac=None, *, full_output=False, nan_policy=None, **kwargs)
+enzym_kinetics_tools.dataclass(cls=None, /, *, init=True, repr=True, eq=True, order=False, unsafe_hash=False, frozen=False, match_args=True, kw_only=False, slots=False, weakref_slot=False)
+enzym_kinetics_tools.dixon_plot_analysis(inhibitor_concentrations: numpy.ndarray, velocities: numpy.ndarray, substrate_concentration: float) -> Dict[str, <built-in function any>]
+enzym_kinetics_tools.enzyme_efficiency_classification(kcat_Km: float) -> str
+enzym_kinetics_tools.fit_michaelis_menten(substrate: numpy.ndarray, velocity: numpy.ndarray, p0: Optional[Tuple[float, float]] = None) -> Dict[str, float]
+enzym_kinetics_tools.inhibition_analysis(substrate: numpy.ndarray, velocity_control: numpy.ndarray, velocity_inhibited: numpy.ndarray, inhibitor_concentration: float, substrate_fixed: Optional[float] = None) -> Dict[str, <built-in function any>]
+enzym_kinetics_tools.lineweaver_burk_analysis(substrate: numpy.ndarray, velocity: numpy.ndarray, enzyme_concentration: Optional[float] = None) -> Dict[str, <built-in function any>]
+enzym_kinetics_tools.michaelis_menten_kinetics(substrate: numpy.ndarray, Km: float, Vmax: float) -> numpy.ndarray
+enzyme_kinetics_tools.classify_catalytic_efficiency(efficiency: float) -> str
+enzyme_kinetics_tools.compare_kinetic_methods(data_points: List[Tuple[float, float]]) -> Dict
+enzyme_kinetics_tools.eadie_hofstee_plot(data_points: List[Tuple[float, float]]) -> Dict
+enzyme_kinetics_tools.hanes_woolf_plot(data_points: List[Tuple[float, float]]) -> Dict
+enzyme_kinetics_tools.inhibition_analysis(data_uninhibited: List[Tuple[float, float]], data_inhibited: List[Tuple[float, float]], inhibitor_conc: float = None) -> Dict
+enzyme_kinetics_tools.lineweaver_burk_plot(data_points: List[Tuple[float, float]], return_plot_data: bool = True) -> Dict
+enzyme_kinetics_tools.michaelis_menten_kinetics(substrate_conc: float, KM: float, Vmax: float, enzyme_conc: Optional[float] = None) -> Dict
+enzyme_kinetics_tools.substrate_concentration_for_velocity(target_velocity: float, Vmax: float, KM: float) -> Dict
+enzyme_kinetics_tools.turnover_number(Vmax: float, enzyme_conc: float) -> Dict
+epoxide_tools.epoxide_from_alkene(alkene: str, method: str = 'peroxyacid') -> dict
+epoxide_tools.epoxide_ring_opening(epoxide: str, nucleophile: str, conditions: str) -> dict
+epoxide_tools.predict_regiochemistry(epoxide: str, conditions: str) -> dict
+equation_balancing_tools.balance_by_inspection(reactant_formulas, product_formulas, max_coeff=20)
+equation_balancing_tools.check_balance(reactants, products)
+equation_balancing_tools.complete_to_net_ionic(complete_ionic_eq)
+equation_balancing_tools.count_atoms(formula, coefficient=1)
+equation_balancing_tools.format_equation(balanced_eq)
+equation_balancing_tools.molecular_to_ionic(molecular_eq, solubility_rules=None)
+equation_balancing_tools.parse_formula(formula)
+equilibrium_constant_tools.Kc_to_Kp(Kc: float, delta_n: int, T: float) -> float
+equilibrium_constant_tools.Kp_to_Kc(Kp: float, delta_n: int, T: float) -> float
+equilibrium_constant_tools.Q_expression_string(products: Dict[str, int], reactants: Dict[str, int]) -> str
+equilibrium_constant_tools.calculate_Kc(equilibrium_concentrations: Dict[str, float], products: Dict[str, int], reactants: Dict[str, int]) -> float
+equilibrium_constant_tools.calculate_Qp(partial_pressures: Dict[str, float], products: Dict[str, int], reactants: Dict[str, int]) -> float
+equilibrium_constant_tools.concentration_from_Kc(Kc: float, known_concs: Dict[str, float], unknown_species: str, coeff: int, products: Dict[str, int], reactants: Dict[str, int]) -> float
+equilibrium_constant_tools.interpret_K(K: float) -> str
+equilibrium_tools.equilibrium_expression(products: Dict[str, int], reactants: Dict[str, int]) -> str
+equilibrium_tools.equilibrium_from_rates(kf: float, kr: float) -> float
+equilibrium_tools.is_homogeneous(phases: Dict[str, str]) -> bool
+equilibrium_tools.omit_from_expression(species: str, phase: str, solvent: str = None) -> bool
+equilibrium_tools.predict_direction(Q: float, K: float) -> str
+equilibrium_tools.rate_equality_condition(kf: float, kr: float, conc_A: float, conc_B: float) -> bool
+equilibrium_tools.reaction_quotient(concentrations: Dict[str, float], products: Dict[str, int], reactants: Dict[str, int]) -> float
+fblock_tools.actinide_ionic_radius(element: str, oxidation_state: int = 3, coordination_number: int = 6) -> Optional[float]
+fblock_tools.actinide_redox_potential(element: str, couple: str) -> Optional[float]
+fblock_tools.coordination_number_predict(element: str, oxidation_state: int = 3) -> List[int]
+fblock_tools.electron_config_fblock(element: str) -> Dict[str, int]
+fblock_tools.ionic_radius(element: str, oxidation_state: int = 3, coordination_number: int = 6) -> Optional[float]
+fblock_tools.jj_magnetic_moment(J: Union[int, float], g_J: float, n: Optional[int] = None) -> float
+fblock_tools.lande_g_factor(J: Union[int, float], L: Union[int, float], S: Union[int, float]) -> float
+fblock_tools.lanthanide_color(element: str, oxidation_state: int = 3) -> str
+fblock_tools.lanthanide_contraction(start: str = 'La', end: str = 'Lu', coordination_number: int = 6) -> float
+fblock_tools.list_actinide_oxidation_states(element: str) -> List[int]
+fblock_tools.magnetic_moment_f(element: str, oxidation_state: int = 3) -> float
+fblock_tools.magnetic_moment_jj(element: str, oxidation_state: int = 3) -> Dict[str, float]
+fblock_tools.oxidation_states(element: str) -> List[int]
+fblock_tools.unpaired_electrons_f(element: str, oxidation_state: int = 3) -> int
+fblock_tools.uranyl_bond_length(charge: int = 2) -> Dict[str, float]
+formal_charge_tools.average_bond_order(resonance_forms: List[Dict], atom1_idx: int, atom2_idx: int) -> float
+formal_charge_tools.best_lewis_structure(candidates: List[Dict]) -> Dict
+formal_charge_tools.fc_minimization_preferred(fc1: List[int], fc2: List[int]) -> bool
+formal_charge_tools.formal_charge(valence_electrons: int, lone_pairs: int, bonding_electrons: int) -> int
+formal_charge_tools.formal_charge_from_structure(element: str, lone_pairs: int, bonds: int) -> int
+formal_charge_tools.resonance_equivalent(structure1: Dict, structure2: Dict) -> bool
+formal_charge_tools.sum_formal_charges(formal_charges: List[int]) -> int
+formal_charge_tools.validate_formal_charges(formal_charges: List[int], expected_charge: int) -> bool
+formula_determination_tools.empirical_formula_subscripts(element_moles: 'Dict[str, float]', tol: 'float' = 0.05) -> 'Dict[str, int]'
+formula_determination_tools.molecular_formula_subscripts(empirical_subscripts: 'Dict[str, int]', empirical_molar_mass: 'float', molecular_molar_mass: 'float', tol: 'float' = 0.05) -> 'Dict[str, int]'
+formula_determination_tools.percent_to_moles(percent_by_mass: 'Dict[str, float]', atomic_masses: 'Dict[str, float]', basis_mass_g: 'float' = 100.0) -> 'Dict[str, float]'
+functional_group_tools.classify_electron_effect(group_name: str) -> str
+functional_group_tools.dataclass(cls=None, /, *, init=True, repr=True, eq=True, order=False, unsafe_hash=False, frozen=False, match_args=True, kw_only=False, slots=False, weakref_slot=False)
+functional_group_tools.determine_principal_group(groups: List[str]) -> str
+functional_group_tools.functional_group_summary() -> Dict
+functional_group_tools.get_naming_priority(group_name: str) -> int
+functional_group_tools.get_prefix(group_name: str) -> str
+functional_group_tools.get_suffix(group_name: str) -> str
+functional_group_tools.identify_functional_groups(smiles_or_formula: str) -> List[str]
+functional_group_tools.predict_boiling_point_trend(groups: List[str]) -> str
+functional_group_tools.predict_solubility(groups: List[str], carbons: int = 4) -> str
+functional_group_tools.test_identify_groups()
+functional_group_tools.test_principal()
+functional_group_tools.test_priorities()
+galvanic_cells_tools.cell_notation(anode_species: str, anode_solution: str, cathode_solution: str, cathode_species: str) -> str
+galvanic_cells_tools.cell_potential(E_cathode: float, E_anode: float) -> float
+galvanic_cells_tools.half_reactions_balanced(anode_reaction: str, cathode_reaction: str, n_electrons: int) -> Dict
+galvanic_cells_tools.identify_anode_cathode(E1: float, E2: float) -> Dict
+galvanic_cells_tools.overall_reaction(anode_half: str, cathode_half: str) -> str
+galvanic_cells_tools.predict_spontaneity(E_cell: float) -> str
+galvanic_cells_tools.strongest_oxidizing_agent(E_values: Dict) -> str
+galvanic_cells_tools.strongest_reducing_agent(E_values: Dict) -> str
+gas_laws_tools.avogadros_law(V1: Optional[float] = None, n1: Optional[float] = None, V2: Optional[float] = None, n2: Optional[float] = None) -> float
+gas_laws_tools.boyles_law(P1: Optional[float] = None, V1: Optional[float] = None, P2: Optional[float] = None, V2: Optional[float] = None) -> float
+gas_laws_tools.celsius_to_kelvin(celsius: float) -> float
+gas_laws_tools.charles_law(V1: Optional[float] = None, T1: Optional[float] = None, V2: Optional[float] = None, T2: Optional[float] = None) -> float
+gas_laws_tools.combined_gas_law(P1: Optional[float] = None, V1: Optional[float] = None, T1: Optional[float] = None, P2: Optional[float] = None, V2: Optional[float] = None, T2: Optional[float] = None) -> float
+gas_laws_tools.gay_lussacs_law(P1: Optional[float] = None, T1: Optional[float] = None, P2: Optional[float] = None, T2: Optional[float] = None) -> float
+gas_laws_tools.kelvin_to_celsius(kelvin: float) -> float
+gas_phase_dynamics_tools.activation_parameters_from_rates(T1: float, k1: float, T2: float, k2: float) -> Dict
+gas_phase_dynamics_tools.collision_cross_section(d1_m: float, d2_m: float) -> float
+gas_phase_dynamics_tools.collision_frequency(T: float, P: float, sigma_collision_m2: float, mu_amu: float) -> float
+gas_phase_dynamics_tools.collision_frequency_molar(T: float, P: float, sigma_collision_m2: float, mu_amu: float) -> float
+gas_phase_dynamics_tools.collision_theory_rate_constant(T: float, sigma_m2: float, mu_amu: float, E_a: float = 0) -> float
+gas_phase_dynamics_tools.deflection_angle(b: float, potential_func: <built-in function callable>, velocity: float, reduced_mass: float) -> float
+gas_phase_dynamics_tools.diffusion_controlled_rate_constant(T: float, eta_Pa_s: float, r1_m: float, r2_m: float) -> float
+gas_phase_dynamics_tools.eckart_potential(x: float, V0: float, V1: float = 0, a: float = 1) -> float
+gas_phase_dynamics_tools.eyring_equation(T: float, delta_G_double_dagger: float) -> float
+gas_phase_dynamics_tools.get_collision_diameter(molecule: str) -> float
+gas_phase_dynamics_tools.harmonic_barrier_height(V0: float, x0: float, force_constant: float) -> float
+gas_phase_dynamics_tools.impact_parameter_max(sigma_reaction: float) -> float
+gas_phase_dynamics_tools.is_diffusion_controlled(k_observed: float, k_diffusion: float) -> bool
+gas_phase_dynamics_tools.mean_free_path(T: float, P: float, sigma_collision: float) -> float
+gas_phase_dynamics_tools.pre_exponential_factor_tst(T: float, delta_S_double_dagger: float) -> float
+gas_phase_dynamics_tools.primary_kinetic_isotope_effect(m_light: float, m_heavy: float, T: float, E0_light: float, E0_heavy: float) -> float
+gas_phase_dynamics_tools.quad(func, a, b, args=(), full_output=0, epsabs=1.49e-08, epsrel=1.49e-08, limit=50, points=None, weight=None, wvar=None, wopts=None, maxp1=50, limlst=50, complex_func=False)
+gas_phase_dynamics_tools.reaction_coordinate_minimum(V: <built-in function callable>, x_range: Tuple[float, float], n_points: int = 1000) -> Tuple[float, float]
+gas_phase_dynamics_tools.reaction_cross_section_arrhenius(E: float, E_a: float, sigma_0: float) -> float
+gas_phase_dynamics_tools.reaction_cross_section_simple(E: float, E_threshold: float, sigma_max: float) -> float
+gas_phase_dynamics_tools.relative_velocity(T: float, mu_amu: float) -> float
+gas_phase_dynamics_tools.saddle_point_height(V: <built-in function callable>, reactant_energy: float, x_range: Tuple[float, float], n_points: int = 1000) -> float
+gas_phase_dynamics_tools.steric_factor(k_experimental: float, k_collision: float) -> float
+gas_phase_dynamics_tools.total_cross_section(energies_J: numpy.ndarray, sigma_func: <built-in function callable>) -> float
+gas_phase_dynamics_tools.tst_rate_constant(T: float, delta_H_double_dagger: float, delta_S_double_dagger: float, transmission_coeff: float = 1.0) -> float
+gas_phase_dynamics_tools.tunneling_correction_wigner(T: float, nu_TS_cm: float) -> float
+gas_pressure_tools.convert_pressure(value: float, from_unit: str, to_unit: str) -> float
+gas_pressure_tools.hydrostatic_pressure(height: float, density: float, g: float = 9.81) -> float
+gas_pressure_tools.manometer_pressure(manometer_type: str, height: float, P_atm: float = 101325, density: float = 13600) -> float
+gas_pressure_tools.pressure_at_depth(depth: float, P_surface: float = 101325, density: float = 1000, g: float = 9.81) -> float
+gas_pressure_tools.standard_pressure(unit: str = 'atm') -> float
+genetic_tools.amino_acid_to_codons(amino_acid: str) -> List[str]
+genetic_tools.classify_mutation(ref_codon: str, mut_codon: str) -> Dict
+genetic_tools.codon_degeneracy(amino_acid: str) -> int
+genetic_tools.codon_to_amino_acid(codon: str) -> str
+genetic_tools.complement_dna(sequence: str) -> str
+genetic_tools.find_orfs(sequence: str, min_length: int = 100) -> List[Dict]
+genetic_tools.find_restriction_sites(sequence: str, enzyme: str) -> List[int]
+genetic_tools.gc_content(sequence: str) -> float
+genetic_tools.hamming_distance(seq1: str, seq2: str) -> int
+genetic_tools.pcr_product_size(forward_pos: int, reverse_pos: int) -> int
+genetic_tools.primer_tm(sequence: str, na_conc: float = 50.0) -> float
+genetic_tools.reverse_complement(sequence: str) -> str
+genetic_tools.transcribe_dna(dna_sequence: str) -> str
+genetic_tools.translate_mrna(mrna_sequence: str, start_pos: int = 0) -> str
+gibbs_free_energy_tools.G_from_equilibrium_constant(K: float, T: float = 298.15) -> float
+gibbs_free_energy_tools.equilibrium_constant_from_G(delta_G: float, T: float = 298.15) -> float
+gibbs_free_energy_tools.gibbs_free_energy(delta_H: float, delta_S: float, T: float) -> float
+gibbs_free_energy_tools.maximum_work(delta_G: float) -> float
+gibbs_free_energy_tools.spontaneity_from_G(delta_G: float) -> str
+gibbs_free_energy_tools.standard_G_from_formation(Gf_products: list, Gf_reactants: list, coeffs_products: list = None, coeffs_reactants: list = None) -> float
+gibbs_free_energy_tools.temperature_spontaneity_range(delta_H: float, delta_S: float) -> Dict
+group_theory_tools.character(irrep: List[int], class_index: int) -> int
+group_theory_tools.count_symmetry_operations(point_group: str) -> int
+group_theory_tools.decompose_representation(reducible_chars: List[int], point_group: str, class_sizes: List[int] = None) -> Dict[str, int]
+group_theory_tools.direct_product(irrep1: List[int], irrep2: List[int]) -> List[int]
+group_theory_tools.direct_product_decomposition(irrep1_name: str, irrep2_name: str, point_group: str) -> Dict[str, int]
+group_theory_tools.dot_product_irrep(irrep1: List[int], irrep2: List[int], class_sizes: List[int], order: int) -> float
+group_theory_tools.get_character_table(point_group: str) -> Dict
+group_theory_tools.get_molecule_point_group(molecule: str) -> str
+group_theory_tools.has_horizontal_mirror(point_group: str) -> bool
+group_theory_tools.has_inversion_center(point_group: str) -> bool
+group_theory_tools.identity_matrix() -> numpy.ndarray
+group_theory_tools.inversion_matrix() -> numpy.ndarray
+group_theory_tools.is_ir_active(irrep: str, point_group: str) -> bool
+group_theory_tools.is_raman_active(irrep: str, point_group: str) -> bool
+group_theory_tools.mutual_exclusion_applies(point_group: str) -> bool
+group_theory_tools.reflection_matrix(plane: str = 'xy') -> numpy.ndarray
+group_theory_tools.rotation_matrix_axis(angle_deg: float, axis: str = 'z') -> numpy.ndarray
+halogen_tools.forms_noble_gas_compound(element: str) -> dict
+halogen_tools.halogen_disproportionates(element: str) -> dict
+halogen_tools.interhalogen_formula(halogen1: str, halogen2: str) -> dict
+halogen_tools.max_halogen_oxidation(metal: str, halogen: str) -> dict
+halogen_tools.oxidizing_power(element: str, phase: str = 'gas') -> dict
+ice_table_tools.build_ice_table(species: List[str], coefficients: Dict[str, int], initial: Dict[str, float], is_reactant: Dict[str, bool]) -> Dict
+ice_table_tools.check_approximation_valid(K: float, initial: float, x: float, threshold: float = 0.05) -> bool
+ice_table_tools.equilibrium_from_initial(initial: Dict[str, float], changes: Dict[str, float]) -> Dict[str, float]
+ice_table_tools.ice_table_simple(K: float, initial_reactant: float, coeff_reactant: int, coeff_product: int) -> Dict
+ice_table_tools.small_k_approximation(K: float, initial: float) -> float
+ice_table_tools.solve_quadratic(a: float, b: float, c: float) -> Tuple[float, float]
+ice_table_tools.stoichiometric_changes(x: float, coefficients: Dict[str, int], is_reactant: Dict[str, bool]) -> Dict[str, float]
+ice_table_tools.verify_equilibrium(equilibrium: Dict[str, float], K: float, products: Dict[str, int], reactants: Dict[str, int]) -> bool
+ideal_gas_law_tools.gas_density(P: float, M: float, T: float, R: float = 0.08206) -> float
+ideal_gas_law_tools.gas_stoichiometry(gas_volume: float, gas_moles_coeff: int, product_moles_coeff: int, molar_mass: float = None, conditions: str = 'STP') -> dict
+ideal_gas_law_tools.ideal_gas_law(P: Optional[float] = None, V: Optional[float] = None, n: Optional[float] = None, T: Optional[float] = None, R: float = 0.08206) -> float
+ideal_gas_law_tools.molar_mass_from_gas(d: float, P: float, T: float, R: float = 0.08206) -> float
+ideal_gas_law_tools.molar_volume(T: float = 273.15, P: float = 1.0, R: float = 0.08206) -> float
+ideal_gas_law_tools.moles_at_stp(V: float) -> float
+ideal_gas_law_tools.volume_at_stp(n: float) -> float
+integrated_rate_law_tools.calculate_r_squared(x: list, y: list, slope: float) -> float
+integrated_rate_law_tools.first_order_concentration(C0: float, k: float, t: float) -> float
+integrated_rate_law_tools.first_order_half_life(k: float) -> float
+integrated_rate_law_tools.first_order_time(C0: float, Ct: float, k: float) -> float
+integrated_rate_law_tools.half_life(order: int, k: float, C0: float = None) -> float
+integrated_rate_law_tools.identify_order_from_data(times: list, concentrations: list) -> Tuple[int, float]
+integrated_rate_law_tools.second_order_concentration(C0: float, k: float, t: float) -> float
+integrated_rate_law_tools.second_order_half_life(C0: float, k: float) -> float
+integrated_rate_law_tools.second_order_time(C0: float, Ct: float, k: float) -> float
+integrated_rate_law_tools.zero_order_concentration(C0: float, k: float, t: float) -> float
+integrated_rate_law_tools.zero_order_half_life(C0: float, k: float) -> float
+integrated_rate_law_tools.zero_order_time(C0: float, Ct: float, k: float) -> float
+intermolecular_forces_tools.classify_imf(molecule_type: str, has_h_bond_donor: bool = False, has_h_bond_acceptor: bool = False) -> str
+intermolecular_forces_tools.estimate_london_strength(molecular_mass: float, surface_area_factor: float = 1.0) -> float
+intermolecular_forces_tools.h_bond_capable(elements: List[str]) -> Tuple[bool, bool]
+intermolecular_forces_tools.imf_energy_range(force_type: str) -> Tuple[float, float]
+intermolecular_forces_tools.imf_strength_rank(force_type: str) -> int
+intermolecular_forces_tools.polarizability_trend(elements: List[str]) -> str
+intermolecular_forces_tools.predict_boiling_point_order(substances: List[Dict]) -> List[str]
+ionic_bonding_tools.compare_lattice_energy(compound1: tuple, compound2: tuple) -> str
+ionic_bonding_tools.ion_electron_config(element: str, charge: int) -> str
+ionic_bonding_tools.ionic_formula(cation: str, cation_charge: int, anion: str, anion_charge: int) -> str
+ionic_bonding_tools.is_ionic_compound(element1: str, element2: str) -> bool
+ionic_bonding_tools.predict_ion_charge(element: str, group: int = None) -> int | list
+ir_spectroscopy_tools.analyze_ir_spectrum(absorptions: list) -> dict
+ir_spectroscopy_tools.carbonyl_type(wavenumber: float) -> str
+ir_spectroscopy_tools.distinguish_compounds(compound1: str, compound2: str, key_difference: str = None) -> str
+ir_spectroscopy_tools.has_carbonyl(absorptions: list) -> dict
+ir_spectroscopy_tools.has_oh(absorptions: list) -> dict
+ir_spectroscopy_tools.identify_functional_group(wavenumber: float, tolerance: float = 10) -> list
+ir_spectroscopy_tools.ir_region(wavenumber: float) -> str
+ir_spectroscopy_tools.wavelength_to_wavenumber(wavelength: float) -> float
+ir_spectroscopy_tools.wavenumber_to_wavelength(wavenumber: float) -> float
+kinetic_theory_tools.average_speed(T: float, M: float, R: float = 8.314) -> float
+kinetic_theory_tools.compare_speeds(T: float, M1: float, M2: float) -> dict
+kinetic_theory_tools.grahams_law(M1: Optional[float] = None, M2: Optional[float] = None, rate1: Optional[float] = None, rate2: Optional[float] = None, time1: Optional[float] = None, time2: Optional[float] = None) -> float
+kinetic_theory_tools.kinetic_energy_per_mole(T: float, R: float = 8.314) -> float
+kinetic_theory_tools.kinetic_energy_per_molecule(T: float) -> float
+kinetic_theory_tools.most_probable_speed(T: float, M: float, R: float = 8.314) -> float
+kinetic_theory_tools.rms_speed(T: float, M: float, R: float = 8.314) -> float
+laser_photochemistry_tools.absorbance_from_transmittance(transmittance: float) -> float
+laser_photochemistry_tools.beer_lambert_absorbance(concentration: float, path_length: float, epsilon: float) -> float
+laser_photochemistry_tools.beer_lambert_transmittance(concentration: float, path_length: float, epsilon: float) -> float
+laser_photochemistry_tools.cavity_finesse(R: float) -> float
+laser_photochemistry_tools.cavity_mode_spacing(cavity_length: float) -> float
+laser_photochemistry_tools.coherence_length(wavelength: float, linewidth: float) -> float
+laser_photochemistry_tools.concentration_from_absorbance(absorbance: float, path_length: float, epsilon: float) -> float
+laser_photochemistry_tools.doppler_linewidth(frequency_Hz: float, temperature: float, mass_amu: float) -> float
+laser_photochemistry_tools.einstein_A_from_B(B_value: float, frequency_Hz: float) -> float
+laser_photochemistry_tools.einstein_B_absorption_from_B_emission(B_emission: float, g_upper: int, g_lower: int) -> float
+laser_photochemistry_tools.einstein_B_from_A(A_value: float, frequency_Hz: float) -> float
+laser_photochemistry_tools.energy_transfer_distance(k_ET: float, tau_0: float) -> float
+laser_photochemistry_tools.energy_transfer_efficiency(k_ET: float, tau_0: float) -> float
+laser_photochemistry_tools.epsilon_from_absorbance(absorbance: float, concentration: float, path_length: float) -> float
+laser_photochemistry_tools.excited_state_concentration(I_absorbed: float, tau: float) -> float
+laser_photochemistry_tools.fluorescence_lifetime(natural_lifetime: float, quenching_rate: float) -> float
+laser_photochemistry_tools.get_laser_info(laser_type: str) -> Dict
+laser_photochemistry_tools.half_life_from_rate_constant(k: float) -> float
+laser_photochemistry_tools.laser_gain_coefficient(sigma: float, delta_N: float) -> float
+laser_photochemistry_tools.laser_threshold_gain(gain_coefficient: float, mirror_R1: float, mirror_R2: float, length: float, loss_per_pass: float = 0) -> float
+laser_photochemistry_tools.natural_linewidth(A_value: float) -> float
+laser_photochemistry_tools.photochemical_rate(k: float, I_absorbed: float, quantum_yield: float) -> float
+laser_photochemistry_tools.photolysis_rate_constant(I_0: float, epsilon: float, path_length: float, quantum_yield: float) -> float
+laser_photochemistry_tools.photon_energy(wavelength_nm: float) -> float
+laser_photochemistry_tools.photon_energy_eV(wavelength_nm: float) -> float
+laser_photochemistry_tools.photon_flux_moles(power_W: float, wavelength_nm: float) -> float
+laser_photochemistry_tools.population_inversion_ratio(T: float, delta_E: float) -> float
+laser_photochemistry_tools.quantum_yield(reactant_consumed: float, photons_absorbed: float) -> float
+laser_photochemistry_tools.small_signal_gain_cross_section(A_value: float, wavelength_m: float, lineshape_width_Hz: float) -> float
+laser_photochemistry_tools.spontaneous_emission_lifetime(A_value: float) -> float
+laser_photochemistry_tools.stern_volmer_quenching(tau_0: float, tau: float, quencher_concentration: float) -> float
+laser_photochemistry_tools.transmittance_from_absorbance(absorbance: float) -> float
+le_chatelier_tools.apply_stress(K_initial: float, stress: Dict) -> Dict
+le_chatelier_tools.catalyst_effect() -> Dict
+le_chatelier_tools.predict_shift_concentration(stress_type: str, species: str, is_reactant: bool) -> str
+le_chatelier_tools.predict_shift_pressure(delta_n: int, pressure_change: str) -> str
+le_chatelier_tools.predict_shift_temperature(delta_H: float, temp_change: str) -> Tuple[str, bool]
+le_chatelier_tools.summarize_le_chatelier() -> Dict
+le_chatelier_tools.volume_change_moles(reactant_moles: int, product_moles: int, volume_change: str) -> str
+lewis_acid_base_tools.compare_brønsted_lewis(acid_type: str = None, base_type: str = None) -> str
+lewis_acid_base_tools.complex_ion_concentration(Kf: float, metal_conc: float, ligand_conc: float, n_ligands: int) -> float
+lewis_acid_base_tools.dissociation_constant(Kf: float) -> float
+lewis_acid_base_tools.formation_constant(complex_conc: float, metal_conc: float, ligand_conc: float, n_ligands: int) -> float
+lewis_acid_base_tools.identify_lewis_acid_base(species1: str, species2: str, species1_has_lone_pair: bool, species2_has_lone_pair: bool) -> Dict
+lewis_acid_base_tools.is_complex_ion_stable(Kf: float, threshold: float = 10000000000.0) -> bool
+lewis_acid_base_tools.ligand_needed_for_dissolution(Ksp: float, Kf: float, metal_conc_target: float, n_ligands: int) -> float
+lewis_acid_base_tools.metal_concentration_from_Kf(Kf: float, complex_conc: float, ligand_conc: float, n_ligands: int) -> float
+lewis_structures_tools.bonds_needed_for_octet(element: str, current_electrons: int = 0) -> int
+lewis_structures_tools.count_valence_electrons(atoms: list, charge: int = 0) -> int
+lewis_structures_tools.duet_rule(atom: str, electrons: int) -> bool
+lewis_structures_tools.is_octet_exception(element: str) -> tuple
+lewis_structures_tools.lewis_structure_summary(formula: str) -> dict
+lewis_structures_tools.octet_rule_violation(atoms: list, bonds: dict, lone_pairs: dict) -> list
+lewis_structures_tools.typical_bonds(element: str) -> int
+limiting_reactant_tools.atom_economy(molar_mass_product, molar_masses_reactants)
+limiting_reactant_tools.excess_remaining_moles(mol_excess_initial, mol_limiting, coeff_excess, coeff_limiting)
+limiting_reactant_tools.identify_limiting_by_product(mol_A, mol_B, coeff_A, coeff_B, coeff_product)
+limiting_reactant_tools.identify_limiting_by_ratio(mol_A, mol_B, coeff_A, coeff_B)
+limiting_reactant_tools.percent_yield(actual_yield, theoretical_yield)
+limiting_reactant_tools.theoretical_yield_mass(mol_limiting, coeff_limiting, coeff_product, molar_mass_product)
+limiting_reactant_tools.theoretical_yield_moles(mol_limiting, coeff_limiting, coeff_product)
+lipid_chemistry_tools.classify_saturation(n_double_bonds: int) -> dict
+lipid_chemistry_tools.fatty_acid_info(notation: str) -> dict
+lipid_chemistry_tools.iodine_value_interpret(value: float) -> dict
+lipid_chemistry_tools.melting_point_estimate(n_carbons: int, n_double_bonds: int) -> dict
+lipid_chemistry_tools.triglyceride_energy(fatty_acids: list) -> dict
+liquid_properties_tools.capillary_rise_height(surface_tension: float, contact_angle_deg: float, density: float, tube_radius: float, g: float = 9.81) -> float
+liquid_properties_tools.meniscus_shape(cohesive_strength: str, adhesive_strength: str) -> str
+liquid_properties_tools.surface_tension_prediction(imf_type: str, molecular_mass: float) -> str
+liquid_properties_tools.temperature_effect_on_viscosity(activation_energy: float, T1: float, T2: float, viscosity_T1: float) -> float
+liquid_properties_tools.viscosity_trend_comparison(substances: list) -> list
+liquid_properties_tools.work_of_adhesion(surface_tension_liquid: float, surface_tension_solid: float, interfacial_tension: float) -> float
+main_group_tools.catenation_trend(group: int) -> dict
+main_group_tools.inert_pair_effect(element: str) -> dict
+main_group_tools.predict_oxidation_state(element: str, group: int = None) -> dict
+main_group_tools.predict_oxide_type(element: str) -> dict
+mass_spec_tools.exact_mass(formula: dict) -> float
+mass_spec_tools.fragment_mass(molecular_ion: int, lost_mass: int) -> int
+mass_spec_tools.identify_fragment_loss(molecular_ion: int, fragment_mz: int) -> dict
+mass_spec_tools.m_plus_one_intensity(carbons: int, hydrogens: int = 0, nitrogens: int = 0) -> float
+mass_spec_tools.m_plus_two_intensity(carbons: int, oxygens: int = 0, sulfurs: int = 0, chlorines: int = 0, bromines: int = 0) -> float
+mass_spec_tools.molecular_weight(formula: dict) -> float
+mass_spec_tools.nominal_mass(formula: dict) -> int
+md_tools.berendsen_thermostat(velocities: numpy.ndarray, current_temp: float, target_temp: float, tau: float, dt: float) -> numpy.ndarray
+md_tools.initialize_velocities(n_atoms: int, temperature: float, masses: numpy.ndarray, seed: int = None) -> numpy.ndarray
+md_tools.kinetic_energy(velocities: numpy.ndarray, masses: numpy.ndarray) -> Tuple[float, float]
+md_tools.lennard_jones(r: float, epsilon: float, sigma: float) -> Tuple[float, float]
+md_tools.pbc_distance(r1: numpy.ndarray, r2: numpy.ndarray, box_size: numpy.ndarray) -> numpy.ndarray
+md_tools.pbc_wrap(positions: numpy.ndarray, box_size: numpy.ndarray) -> numpy.ndarray
+md_tools.rmsd(r1: numpy.ndarray, r2: numpy.ndarray) -> float
+md_tools.velocity_verlet_step(r: numpy.ndarray, v: numpy.ndarray, forces: numpy.ndarray, masses: numpy.ndarray, dt: float, force_func: Callable) -> Tuple[numpy.ndarray, numpy.ndarray]
+measurement_quant_tools.classify_change(description: 'str') -> 'str'
+measurement_quant_tools.sigfig_round(value: 'float', sigfigs: 'int') -> 'float'
+measurement_quant_tools.uncertainty_report(value: 'float', uncertainty: 'float') -> 'str'
+measurement_quant_tools.unit_convert(value: 'float', from_unit: 'str', to_unit: 'str') -> 'float'
+mechanism_tools.catalyst_effect(Ea_uncat: float, Ea_cat: float, T: float = 298) -> Dict
+mechanism_tools.classify_catalyst(catalyst_phase: str, reactant_phase: str) -> str
+mechanism_tools.elementary_rate_law(reactants: List[str], molecularity: str = 'bimolecular') -> str
+mechanism_tools.find_intermediates(mechanism: List[Dict]) -> List[str]
+mechanism_tools.identify_molecularity(reactants: int) -> str
+mechanism_tools.is_elementary_step_valid(rate_law: str, stoichiometry: str) -> bool
+mechanism_tools.overall_rate_law_from_mechanism(mechanism: List[Dict], rds_index: int = None) -> str
+mechanism_tools.steady_state_approximation(mechanism: List[Dict], intermediate: str) -> str
+metabolic_pathway_tools.acetyl_coa_from_fatty_acid(n_carbons: int) -> int
+metabolic_pathway_tools.beta_oxidation_rounds(n_carbons: int) -> int
+metabolic_pathway_tools.citric_acid_cycle_yield(acetyl_coa_molecules: int = 1) -> dict
+metabolic_pathway_tools.fatty_acid_atp_yield(n_carbons: int, saturated: bool = True, n_double_bonds: int = 0) -> dict
+metabolic_pathway_tools.gluconeogenesis_energy_cost() -> dict
+metabolic_pathway_tools.glycolysis_products(glucose_molecules: int = 1) -> dict
+metabolic_pathway_tools.total_atp_from_glucose(aerobic: bool = True) -> dict
+metabolism_tools.complete_glucose_oxidation(shuttle: str = 'malate-aspartate', glucose_molecules: int = 1) -> Dict
+metabolism_tools.fatty_acid_oxidation(n_carbons: int, saturated: bool = True, n_double_bonds: int = 0) -> Dict
+metabolism_tools.glycolysis_atp_yield(glucose_molecules: int = 1, aerobic: bool = True, shuttle: str = 'malate-aspartate') -> Dict
+metabolism_tools.respiratory_quotient(substrate: str = 'glucose') -> float
+metabolism_tools.tca_cycle_atp_yield(acetyl_coa: int = 2) -> Dict
+microscopy_tools.abbe_resolution_limit(wavelength_nm: float, na: float) -> float
+microscopy_tools.afm_force(spring_constant_n_m: float, deflection_nm: float) -> float
+microscopy_tools.afm_resolution(tip_radius_nm: float, feature_depth_nm: float) -> float
+microscopy_tools.afm_spring_constant(youngs_modulus_pa: float, width_um: float, thickness_um: float, length_um: float) -> float
+microscopy_tools.compare_optical_electron_resolution(optical_wavelength_nm: float, optical_na: float, electron_voltage_kv: float, electron_aperture: float = 0.01) -> Dict[str, float]
+microscopy_tools.dataclass(cls=None, /, *, init=True, repr=True, eq=True, order=False, unsafe_hash=False, frozen=False, match_args=True, kw_only=False, slots=False, weakref_slot=False)
+microscopy_tools.depth_of_field(wavelength_nm: float, na: float) -> float
+microscopy_tools.electron_wavelength_nonrelativistic(voltage_v: float) -> float
+microscopy_tools.electron_wavelength_relativistic(voltage_v: float) -> float
+microscopy_tools.numerical_aperture(refractive_index: float, half_angle_deg: float) -> float
+microscopy_tools.optimal_tem_aperture(voltage_kv: float, spherical_aberration_mm: float) -> float
+microscopy_tools.sem_magnification(display_size_mm: float, sample_size_mm: float) -> float
+microscopy_tools.sem_resolution(working_distance_mm: float, beam_voltage_kv: float, aperture_angle_rad: float = 0.01) -> float
+microscopy_tools.stm_current_ratio(distance_change_nm: float, constant_c: float = 10.0) -> float
+microscopy_tools.stm_tunneling_current(bias_voltage_v: float, distance_nm: float, constant_c: float = 10.0) -> float
+microscopy_tools.tem_resolution(spherical_aberration_mm: float, voltage_kv: float, coefficient: float = 0.43) -> float
+microscopy_tools.wavelength_from_voltage_simplified(voltage_kv: float) -> float
+molecular_geometry_tools.central_atom_position(geometry: str) -> str
+molecular_geometry_tools.dipole_moment(charge: float, distance: float) -> float
+molecular_geometry_tools.electron_pair_geometry(regions: int) -> str
+molecular_geometry_tools.hybridization(regions: int) -> str
+molecular_geometry_tools.is_polar_molecule(bond_dipoles: List[Tuple[float, float, float]], geometry: str) -> bool
+molecular_geometry_tools.molecular_structure(regions: int, lone_pairs: int) -> str
+molecular_geometry_tools.predict_bond_angles(regions: int, lone_pairs: int) -> List[float]
+molecular_geometry_tools.vsepr_structure(atoms: List[str], central_index: int) -> Dict
+molecular_orbital_tools.bond_order(nelectrons: int, nbonding: int, nantibonding: int) -> float
+molecular_orbital_tools.diatomic_mo_diagram(atom1: str, atom2: str, valence_electrons: int, period: int = 2) -> Dict
+molecular_orbital_tools.homo_lumo_gap(homo_energy: float, lumo_energy: float, unit: str = 'eV') -> float
+molecular_orbital_tools.ligand_field_splitting(geometry: str, ligand_field: str = 'intermediate') -> Dict
+molecular_orbital_tools.orbital_symmetry_match(orbital1: str, orbital2: str) -> bool
+molecular_orbital_tools.walsh_diagram_molecule(bond_angle: float, molecule_type: str = 'AH2') -> Dict
+molecular_spectroscopy_tools.anharmonic_fundamental(omega_e: float, omega_e_x_e: float) -> float
+molecular_spectroscopy_tools.anharmonic_vibrational_energy(v: int, omega_e: float, omega_e_x_e: float) -> float
+molecular_spectroscopy_tools.bond_length_from_B(B_cm: float, reduced_mass_amu: float) -> float
+molecular_spectroscopy_tools.centrifugal_distortion_constant(B_cm: float, wavenumber_cm: float) -> float
+molecular_spectroscopy_tools.dissociation_energy_vibrational(omega_e: float, omega_e_x_e: float) -> float
+molecular_spectroscopy_tools.distorted_rotational_line(J_lower: int, B_cm: float, D_cm: float) -> float
+molecular_spectroscopy_tools.doppler_broadening(wavenumber_cm: float, temperature: float, mass_amu: float) -> float
+molecular_spectroscopy_tools.frequency_to_wavenumber(frequency_GHz: float) -> float
+molecular_spectroscopy_tools.get_spectroscopic_constants(molecule: str) -> Dict
+molecular_spectroscopy_tools.is_ir_active(dipole_moment_change: bool) -> bool
+molecular_spectroscopy_tools.is_raman_active(polarizability_change: bool) -> bool
+molecular_spectroscopy_tools.most_populated_rotational_level(B_cm: float, temperature: float) -> int
+molecular_spectroscopy_tools.mutual_exclusion_rule(point_group: str) -> Dict[str, str]
+molecular_spectroscopy_tools.predict_rotational_spectrum(molecule: str, J_max: int = 10) -> List[Dict]
+molecular_spectroscopy_tools.predict_vibrational_rotational_band(molecule: str, J_max: int = 5) -> Dict
+molecular_spectroscopy_tools.raman_antistokes_shift(wavenumber_cm: float) -> float
+molecular_spectroscopy_tools.raman_line_positions(excitation_nm: float, wavenumber_cm: float) -> Dict[str, float]
+molecular_spectroscopy_tools.raman_stokes_shift(wavenumber_cm: float) -> float
+molecular_spectroscopy_tools.rotation_vibration_branch_position(J: int, B_cm: float, wavenumber_cm: float, branch: str = 'R') -> float
+molecular_spectroscopy_tools.rotational_constant_from_geometry(m1_amu: float, m2_amu: float, bond_length_m: float) -> float
+molecular_spectroscopy_tools.rotational_constant_from_line_spacing(spacing_cm: float) -> float
+molecular_spectroscopy_tools.rotational_degeneracy(J: int) -> int
+molecular_spectroscopy_tools.rotational_energy_J(J: int, B_cm: float) -> float
+molecular_spectroscopy_tools.rotational_energy_joules(J: int, B_cm: float) -> float
+molecular_spectroscopy_tools.rotational_energy_with_distortion(J: int, B_cm: float, D_cm: float) -> float
+molecular_spectroscopy_tools.rotational_line_frequency_GHz(J_lower: int, B_cm: float) -> float
+molecular_spectroscopy_tools.rotational_line_position(J_lower: int, B_cm: float) -> float
+molecular_spectroscopy_tools.rotational_line_spacing(B_cm: float) -> float
+molecular_spectroscopy_tools.rotational_partition_function_diatomic(B_cm: float, temperature: float) -> float
+molecular_spectroscopy_tools.rotational_population(J: int, B_cm: float, temperature: float) -> float
+molecular_spectroscopy_tools.rotational_raman_line_position(J: int, B_cm: float, branch: str) -> float
+molecular_spectroscopy_tools.rotational_raman_selection_rules(J_initial: int) -> List[int]
+molecular_spectroscopy_tools.rotational_selection_rule_microwave(J_initial: int) -> List[int]
+molecular_spectroscopy_tools.spectral_resolution_required(delta_nu_cm: float) -> float
+molecular_spectroscopy_tools.stokes_antistokes_intensity_ratio(wavenumber_cm: float, temperature: float) -> float
+molecular_spectroscopy_tools.vibration_rotation_band_gap(B_cm: float, wavenumber_cm: float) -> Dict
+molecular_spectroscopy_tools.vibrational_energy_v(v: int, wavenumber_cm: float) -> float
+molecular_spectroscopy_tools.vibrational_first_overtone(wavenumber_cm: float) -> float
+molecular_spectroscopy_tools.vibrational_selection_rule_ir(v_initial: int) -> List[int]
+molecular_spectroscopy_tools.vibrational_transition_fundamental(wavenumber_cm: float) -> float
+molecular_spectroscopy_tools.wavelength_to_wavenumber(wavelength_nm: float) -> float
+molecular_spectroscopy_tools.wavenumber_to_frequency(wavenumber_cm: float) -> float
+molecular_spectroscopy_tools.wavenumber_to_wavelength(wavenumber_cm: float) -> float
+nanomaterials_tools.cnt_electronic_properties(n: int, m: int, bond_length: float = 1.42) -> Dict[str, Union[float, str, bool]]
+nanomaterials_tools.exciton_bohr_radius(dielectric_constant: float, m_e_star: float, m_h_star: float) -> float
+nanomaterials_tools.nanoparticle_surface_area(diameter: float, shape: str = 'sphere', units: str = 'nm') -> Dict[str, float]
+nanomaterials_tools.particle_size_distribution(sizes: numpy.ndarray, weights: Optional[numpy.ndarray] = None) -> Dict[str, float]
+nanomaterials_tools.plasmon_resonance(material: str = 'Au', diameter: float = 10, shape: str = 'sphere', dielectric_medium: float = 1.0, units: str = 'nm') -> Dict[str, float]
+nanomaterials_tools.quantum_confinement_energy(radius: float, m_e_star: float, m_h_star: float, bulk_bandgap: float, dielectric_constant: float, units: str = 'nm') -> Dict[str, float]
+nanomaterials_tools.quantum_dot_emission_wavelength(material: str, diameter: float) -> Dict[str, float]
+nmr_splitting_tools.coupling_relationship(j_values: dict) -> list
+nmr_splitting_tools.intensity_ratios(n_neighbors: int) -> list
+nmr_splitting_tools.multiplet_name(n_peaks: int) -> str
+nmr_splitting_tools.neighbors_from_multiplet(multiplet: str) -> int
+nmr_splitting_tools.predict_spectrum_group(protons: int, neighbors: int) -> dict
+nmr_splitting_tools.splitting_pattern(n_neighbors: int) -> dict
+non_ideal_gas_tools.compressibility_factor(P: float, V: float, n: float, T: float, R: float = 0.08206) -> float
+non_ideal_gas_tools.deviation_from_ideal(P: float, V: float, n: float, T: float, R: float = 0.08206) -> dict
+non_ideal_gas_tools.get_vdw_constants(gas: str) -> tuple
+non_ideal_gas_tools.ideal_vs_real(n: float, V: float, T: float, a: float, b: float, R: float = 0.08206) -> dict
+non_ideal_gas_tools.van_der_waals_pressure(n: float, V: float, T: float, a: float, b: float, R: float = 0.08206) -> float
+non_ideal_gas_tools.van_der_waals_volume(n: float, P: float, T: float, a: float, b: float, R: float = 0.08206, tolerance: float = 0.001) -> float
+nuclear_chemistry_tools.activity(nuclei_count: int, decay_constant: float) -> float
+nuclear_chemistry_tools.balance_nuclear_equation(reactant_a: int, reactant_z: int, product_a: int, product_z: int) -> Tuple[int, int]
+nuclear_chemistry_tools.binding_energy(protons: int, neutrons: int, actual_mass: float) -> float
+nuclear_chemistry_tools.binding_energy_per_nucleon(protons: int, neutrons: int, actual_mass: float) -> float
+nuclear_chemistry_tools.daughter_nuclide(parent_a: int, parent_z: int, decay_type: str) -> Tuple[int, int]
+nuclear_chemistry_tools.decay_chain_steps(initial_a: int, initial_z: int, decay_types: list) -> list
+nuclear_chemistry_tools.decay_constant_to_half_life(decay_constant: float) -> float
+nuclear_chemistry_tools.half_life_to_decay_constant(half_life: float) -> float
+nuclear_chemistry_tools.predict_decay_mode(protons: int, neutrons: int) -> str
+nuclear_chemistry_tools.remaining_amount(initial_amount: float, time: float, half_life: float) -> float
+nuclear_chemistry_tools.remaining_fraction(time: float, half_life: float) -> float
+nuclear_chemistry_tools.time_to_decay(initial_amount: float, final_amount: float, half_life: float) -> float
+nucleotide_chemistry_tools.base_info(name: str) -> dict
+nucleotide_chemistry_tools.base_pairing(base1: str, base2: str) -> dict
+nucleotide_chemistry_tools.dna_vs_rna_bases() -> dict
+nucleotide_chemistry_tools.nucleoside_info(name: str) -> dict
+nucleotide_chemistry_tools.purine_or_pyrimidine(name: str) -> dict
+organic_chemistry_tools.alkane_name(carbons: int) -> str
+organic_chemistry_tools.classify_alcohol(carbons_alpha_to_OH: int) -> str
+organic_chemistry_tools.combustion_balance(carbons: int, hydrogens: int) -> Dict
+organic_chemistry_tools.degree_of_unsaturation(carbons: int, hydrogens: int, halogens: int = 0, nitrogens: int = 0) -> int
+organic_chemistry_tools.functional_group_suffix(group: str) -> str
+organic_chemistry_tools.hydrocarbon_formula(carbons: int, hydrocarbon_type: str = 'alkane') -> str
+organic_chemistry_tools.isomer_count_possible(carbons: int, hydrocarbon_type: str = 'alkane') -> int
+p_block_elements_tools.allotrope_exists(element: str) -> List[str]
+p_block_elements_tools.group_14_element(element: str) -> Dict
+p_block_elements_tools.group_oxidation_states(group: int) -> List[int]
+p_block_elements_tools.halogen_displacement(halogen1: str, halogen2: str) -> str
+p_block_elements_tools.halogen_property(element: str, property_name: str) -> float
+p_block_elements_tools.inert_pair_effect(group: int, period: int) -> str
+p_block_elements_tools.noble_gas_property(element: str) -> Dict
+p_block_elements_tools.p_block_oxide_type(element: str) -> str
+pericyclic_tools.cycloaddition_allowed(n_electrons: int, thermal: bool = True) -> dict
+pericyclic_tools.electrocyclic_stereochemistry(n_electrons: int, thermal: bool = True) -> dict
+pericyclic_tools.sigmatropic_allowed(i: int, j: int, thermal: bool = True) -> dict
+pericyclic_tools.teca_predict(n_electron_pairs: int, thermal: bool = True) -> dict
+periodic_trends_tools.bond_type_prediction(element1: str, element2: str) -> str
+periodic_trends_tools.classify_element(element: str) -> str
+periodic_trends_tools.compare_electronegativity(element1: str, element2: str) -> Dict
+periodic_trends_tools.oxide_type(element: str) -> str
+periodic_trends_tools.predict_atomic_radius_trend(element1: str, element2: str) -> str
+periodic_trends_tools.predict_ionization_energy_trend(element1: str, element2: str) -> str
+ph_calculations_tools.H3O_from_pH(pH: float) -> float
+ph_calculations_tools.Ka_from_pKa(pKa: float) -> float
+ph_calculations_tools.Kb_from_pKb(pKb: float) -> float
+ph_calculations_tools.OH_from_pOH(pOH: float) -> float
+ph_calculations_tools.classify_by_pH(pH: float, temperature: float = 25.0) -> str
+ph_calculations_tools.pH_from_H3O(h3o_conc: float) -> float
+ph_calculations_tools.pH_to_pOH(pH: float, temperature: float = 25.0) -> float
+ph_calculations_tools.pKa_from_Ka(Ka: float) -> float
+ph_calculations_tools.pKb_from_Kb(Kb: float) -> float
+ph_calculations_tools.pOH_from_OH(oh_conc: float) -> float
+ph_calculations_tools.pOH_to_pH(pOH: float, temperature: float = 25.0) -> float
+ph_calculations_tools.significant_figures_pH(conc: float, sig_figs: int = 2) -> float
+phase_diagram_tools.boiling_point_at_pressure(normal_bp: float, target_pressure: float, delta_H_vap: float) -> float
+phase_diagram_tools.clausius_clapeyron(P1: float, T1: float, T2: float, delta_H_vap: float) -> float
+phase_diagram_tools.critical_point_prediction(delta_H_vap: float, normal_boiling_point: float) -> Tuple[float, float]
+phase_diagram_tools.identify_phase(triple_point: Tuple[float, float], critical_point: Tuple[float, float], temperature: float, pressure: float, solid_liquid_slope: str = 'right') -> str
+phase_diagram_tools.normal_boiling_point(vapor_pressure_eq: <built-in function callable>, target_pressure: float = 1.0) -> float
+phase_diagram_tools.phase_transition_path(start_phase: str, end_phase: str) -> list
+phase_diagram_tools.vapor_pressure_at_temperature(P1: float, T1: float, T2: float, delta_H_vap: float) -> float
+phase_diagrams_tools.analyze_phase_diagram(substance: str) -> Dict
+phase_diagrams_tools.calculate_boiling_point_at_pressure(P: float, Tb_normal: float, deltaH_vap: float) -> float
+phase_diagrams_tools.calculate_critical_properties(a: float, b: float) -> Dict
+phase_diagrams_tools.calculate_sublimation_pressure(T: float, T_triple: float, P_triple: float, deltaH_sub: float) -> float
+phase_diagrams_tools.calculate_triple_point(Tb: float, Tm: float, deltaH_vap: float, deltaH_fus: float) -> Dict
+phase_diagrams_tools.calculate_vapor_pressure(T: float, T_ref: float, P_ref: float, deltaH_vap: float) -> float
+phase_diagrams_tools.get_phase_boundary_crossing(T1: float, P1: float, T2: float, P2: float, substance: str) -> List[Dict]
+phase_diagrams_tools.identify_phase(substance: str, T: float, P: float) -> str
+phase_diagrams_tools.is_supercritical(substance: str, T: float, P: float) -> bool
+phase_diagrams_tools.predict_phase_at_stp(substance: str) -> str
+phase_equilibria_tools.brentq(f, a, b, args=(), xtol=2e-12, rtol=np.float64(8.881784197001252e-16), maxiter=100, full_output=False, disp=True)
+phase_equilibria_tools.clapeyron_pressure_change(delta_H: float, delta_V: float, T: float, delta_T: float) -> float
+phase_equilibria_tools.clapeyron_slope(delta_H: float, delta_V: float, T: float) -> float
+phase_equilibria_tools.clausius_clapeyron_enthalpy(T1: float, P1: float, T2: float, P2: float) -> float
+phase_equilibria_tools.clausius_clapeyron_temperature(T1: float, P1: float, P2: float, delta_H_vap: float) -> float
+phase_equilibria_tools.clausius_clapeyron_vapor_pressure(T1: float, P1: float, T2: float, delta_H_vap: float) -> float
+phase_equilibria_tools.critical_compression_factor(Z_c: float = 0.27) -> float
+phase_equilibria_tools.entropy_of_vaporization(T_b: float, delta_H_vap: float) -> float
+phase_equilibria_tools.estimate_critical_properties(T_b: float, method: str = 'lydersen') -> Dict[str, float]
+phase_equilibria_tools.eutectic_composition(T_A: float, T_B: float, delta_H_A: float, delta_H_B: float, x_eutectic_guess: float = 0.5) -> float
+phase_equilibria_tools.get_phase_data(substance: str) -> Dict
+phase_equilibria_tools.gibbs_energy_phase(H: float, S: float, T: float) -> float
+phase_equilibria_tools.gibbs_phase_rule(C: int, P: int, num_reactions: int = 0) -> int
+phase_equilibria_tools.lever_rule_fraction(overall_comp: float, phase1_comp: float, phase2_comp: float) -> Tuple[float, float]
+phase_equilibria_tools.max_phases_at_equilibrium(C: int) -> int
+phase_equilibria_tools.melting_point_pressure_dependence(T_melt: float, delta_H_fus: float, rho_solid: float, rho_liquid: float, M: float) -> float
+phase_equilibria_tools.normal_boiling_point(delta_H_vap: float, vapor_pressure_at_T: Tuple[float, float]) -> float
+phase_equilibria_tools.phase_at_conditions(substance: str, T: float, P: float) -> str
+phase_equilibria_tools.phase_rule_interpretation(F: int) -> str
+phase_equilibria_tools.reduced_pressure(P: float, P_c: float) -> float
+phase_equilibria_tools.reduced_temperature(T: float, T_c: float) -> float
+phase_equilibria_tools.reduced_volume(V: float, V_c: float) -> float
+phase_equilibria_tools.temperature_from_antione(A: float, B: float, C: float, P: float) -> float
+phase_equilibria_tools.triple_point_from_phase_boundaries(solid_liquid_params: Tuple[float, float, float], liquid_gas_params: Tuple[float, float, float]) -> Tuple[float, float]
+phase_equilibria_tools.trouton_rule_check(T_b: float, delta_H_vap: float) -> Dict
+phase_equilibria_tools.vapor_pressure_antione(A: float, B: float, C: float, T: float) -> float
+polymer_tools.crystallinity_effect(crystallinity: str) -> dict
+polymer_tools.degree_of_polymerization(monomer_mw: float, polymer_mw: float) -> dict
+polymer_tools.polymer_type(polymer_name: str) -> dict
+polymer_tools.polymerization_method(monomer: str) -> dict
+polymer_tools.step_growth_dp(extent: float) -> dict
+potential_free_energy_tools.concentration_cell_potential(c_anode: float, c_cathode: float, n: int, T: float = 298.15) -> float
+potential_free_energy_tools.equilibrium_constant_from_potential(E_cell: float, n: int, T: float = 298.15) -> float
+potential_free_energy_tools.free_energy_from_potential(E_cell: float, n: int) -> float
+potential_free_energy_tools.nernst_equation(E_standard: float, n: int, Q: float, T: float = 298.15) -> float
+potential_free_energy_tools.potential_from_equilibrium_constant(K: float, n: int, T: float = 298.15) -> float
+potential_free_energy_tools.potential_from_free_energy(delta_G: float, n: int) -> float
+potential_free_energy_tools.reaction_quotient_from_potential(E_cell: float, E_standard: float, n: int) -> float
+potential_free_energy_tools.spontaneity_summary(E_cell: float) -> Dict
+protecting_groups_tools.dataclass(cls=None, /, *, init=True, repr=True, eq=True, order=False, unsafe_hash=False, frozen=False, match_args=True, kw_only=False, slots=False, weakref_slot=False)
+protecting_groups_tools.multi_protection_plan(functional_groups: Dict[str, List[str]], synthesis_conditions: List[str]) -> Dict[str, Any]
+protecting_groups_tools.orthogonality_check(pg_list: List[str]) -> Dict[str, Any]
+protecting_groups_tools.pg_selection(functional_group: str, conditions: List[str], priority: str = 'stability') -> Dict[str, Any]
+protecting_groups_tools.pg_stability_matrix(pg_list: List[str]) -> Dict[str, Any]
+protein_structure_tools.chou_fasman_predict(sequence: str) -> dict
+protein_structure_tools.compare_helix_types(n_residues: int) -> dict
+protein_structure_tools.helix_dipole(n_residues: int) -> dict
+protein_structure_tools.helix_h_bonds(n_residues: int, helix_type: str = 'alpha') -> dict
+protein_structure_tools.helix_length(n_residues: int, helix_type: str = 'alpha') -> dict
+protein_structure_tools.helix_turns(n_residues: int, helix_type: str = 'alpha') -> dict
+protein_structure_tools.ramachandran_check(phi: float, psi: float) -> dict
+protein_tools.chou_fasman_predict(sequence: str, window_size: int = 6, helix_threshold: float = 1.03, sheet_threshold: float = 1.05) -> protein_tools.SecondaryStructurePrediction
+protein_tools.dataclass(cls=None, /, *, init=True, repr=True, eq=True, order=False, unsafe_hash=False, frozen=False, match_args=True, kw_only=False, slots=False, weakref_slot=False)
+protein_tools.format_prediction(result: protein_tools.SecondaryStructurePrediction) -> str
+protein_tools.get_propensity_table() -> Dict[str, Dict[str, float]]
+protein_tools.helical_wheel(sequence: str, angle_per_residue: float = 100.0, radius: float = 1.0) -> Dict[str, <built-in function any>]
+protein_tools.ramachandran_check(phi: float, psi: float, residue_type: str = 'general') -> Dict[str, <built-in function any>]
+qsar_tools.applicability_domain(X_train: numpy.ndarray, X_test: numpy.ndarray, threshold: float = 3.0) -> Tuple[numpy.ndarray, numpy.ndarray]
+qsar_tools.lipinski_rule_of_five(properties: Dict[str, float]) -> Tuple[int, List[str]]
+qsar_tools.mae(y_true: numpy.ndarray, y_pred: numpy.ndarray) -> float
+qsar_tools.q2_loo(y_true: numpy.ndarray, y_pred_loo: numpy.ndarray) -> float
+qsar_tools.r_squared(y_true: numpy.ndarray, y_pred: numpy.ndarray) -> float
+qsar_tools.rmse(y_true: numpy.ndarray, y_pred: numpy.ndarray) -> float
+qsar_tools.tanimoto_similarity(fp1: Set, fp2: Set) -> float
+qsar_tools.vif(X: numpy.ndarray, feature_names: List[str] = None) -> Dict[str, float]
+quantitative_analysis_tools.combustion_empirical_formula(mass_CO2, mass_H2O, mass_sample=None, other_elements=None)
+quantitative_analysis_tools.combustion_moles_from_CO2(mass_CO2)
+quantitative_analysis_tools.combustion_moles_from_H2O(mass_H2O)
+quantitative_analysis_tools.gravimetric_mass_analyte(mass_precipitate, molar_mass_precipitate, molar_mass_analyte, mol_ratio)
+quantitative_analysis_tools.gravimetric_mass_percent(mass_precipitate, molar_mass_precipitate, molar_mass_analyte, mol_ratio, mass_sample)
+quantitative_analysis_tools.titration_molarity(M_titrant, V_titrant_mL, V_analyte_mL, coeff_ratio)
+quantitative_analysis_tools.titration_moles(M_titrant, V_titrant_L)
+quantum_approximations_tools.L_to_term_letter(L: int) -> str
+quantum_approximations_tools.angular_momentum_magnitude(j: float) -> float
+quantum_approximations_tools.count_microstates(orbital_type: str, n_electrons: int) -> int
+quantum_approximations_tools.degeneracy(J: float) -> int
+quantum_approximations_tools.factorial(n, exact=False, extend='zero')
+quantum_approximations_tools.fine_structure_splitting(L: int, S: float, zeta: float) -> Dict[float, float]
+quantum_approximations_tools.hund_ground_state(n_electrons: int, orbital_type: str, fill_fraction: Optional[float] = None) -> Dict[str, Union[str, int, float]]
+quantum_approximations_tools.multiplicity(S: float) -> int
+quantum_approximations_tools.perturbation_first_order_energy(psi0: numpy.ndarray, H_prime: numpy.ndarray) -> float
+quantum_approximations_tools.perturbation_first_order_wavefunction(psi0: numpy.ndarray, H_prime: numpy.ndarray, E0: float, unperturbed_energies: numpy.ndarray, unperturbed_states: numpy.ndarray) -> numpy.ndarray
+quantum_approximations_tools.perturbation_second_order_energy(psi0: numpy.ndarray, H_prime: numpy.ndarray, E0: float, unperturbed_energies: numpy.ndarray, unperturbed_states: numpy.ndarray) -> float
+quantum_approximations_tools.possible_J_values(L: int, S: float) -> List[float]
+quantum_approximations_tools.possible_L_values(l1: int, l2: int) -> List[int]
+quantum_approximations_tools.possible_S_values(n_electrons: int) -> List[float]
+quantum_approximations_tools.spin_orbit_coupling_energy(L: int, S: float, J: float, zeta: float) -> float
+quantum_approximations_tools.term_symbol(L: int, S: float, J: float) -> str
+quantum_approximations_tools.transition_allowed(term1: Tuple[int, float, float], term2: Tuple[int, float, float], strict: bool = True) -> Tuple[bool, str]
+quantum_approximations_tools.variational_energy(trial_function: Callable, hamiltonian_func: Callable, domain: Tuple[float, float] = (-inf, inf), normalize: bool = True) -> float
+quantum_approximations_tools.variational_energy_with_param(param_func: Callable, hamiltonian_func: Callable, param: float, domain: Tuple[float, float] = (-inf, inf)) -> float
+quantum_approximations_tools.z_component(j: float, m: float) -> float
+quantum_mechanics_tools.angular_momentum_magnitude(l: int) -> float
+quantum_mechanics_tools.angular_momentum_z_component(m_l: int) -> float
+quantum_mechanics_tools.angular_nodes(l: int) -> int
+quantum_mechanics_tools.check_normalization(psi_values: numpy.ndarray, x_values: numpy.ndarray, tolerance: float = 1e-06) -> bool
+quantum_mechanics_tools.electron_capacity(n: int) -> int
+quantum_mechanics_tools.energy_to_wavelength(energy: float, in_ev: bool = True) -> float
+quantum_mechanics_tools.energy_to_wavenumber(energy: float, in_joules: bool = True) -> float
+quantum_mechanics_tools.expectation_momentum_box(n: int, L: float) -> float
+quantum_mechanics_tools.expectation_p_squared_box(n: int, L: float) -> float
+quantum_mechanics_tools.expectation_position_box(n: int, L: float) -> float
+quantum_mechanics_tools.expectation_value(psi_func, operator_func, x_min: float = -inf, x_max: float = inf) -> float
+quantum_mechanics_tools.expectation_x_squared_box(n: int, L: float) -> float
+quantum_mechanics_tools.factorial(n, exact=False, extend='zero')
+quantum_mechanics_tools.genlaguerre(n, alpha, monic=False)
+quantum_mechanics_tools.harmonic_oscillator_energy(v: int, frequency: float, in_ev: bool = False) -> float
+quantum_mechanics_tools.harmonic_oscillator_energy_spacing(frequency: float, in_ev: bool = False) -> float
+quantum_mechanics_tools.harmonic_oscillator_frequency(force_constant: float, reduced_mass: float) -> float
+quantum_mechanics_tools.harmonic_oscillator_wavefunction(v: int, x: Union[float, numpy.ndarray], mass: float, frequency: float, normalized: bool = True) -> Union[float, numpy.ndarray]
+quantum_mechanics_tools.harmonic_oscillator_zero_point_energy(frequency: float, in_ev: bool = False) -> float
+quantum_mechanics_tools.heisenberg_limit() -> float
+quantum_mechanics_tools.hermite(n, monic=False)
+quantum_mechanics_tools.hydrogen_energy(n: int, Z: int = 1, in_ev: bool = True) -> float
+quantum_mechanics_tools.hydrogen_ionization_energy(Z: int = 1, in_ev: bool = True) -> float
+quantum_mechanics_tools.hydrogen_radial_wavefunction(n: int, l: int, r: Union[float, numpy.ndarray], Z: int = 1) -> Union[float, numpy.ndarray]
+quantum_mechanics_tools.l_to_orbital(l: int) -> str
+quantum_mechanics_tools.moment_of_inertia(reduced_mass: float, bond_length: float) -> float
+quantum_mechanics_tools.momentum_uncertainty_box(n: int, L: float) -> float
+quantum_mechanics_tools.most_probable_radius(n: int, l: int = 0, Z: int = 1) -> float
+quantum_mechanics_tools.normalize_wavefunction(psi_values: numpy.ndarray, x_values: numpy.ndarray) -> numpy.ndarray
+quantum_mechanics_tools.orbital_count(n: int) -> int
+quantum_mechanics_tools.orbital_name(n: int, l: int) -> str
+quantum_mechanics_tools.orbital_to_l(orbital: str) -> int
+quantum_mechanics_tools.particle_in_box_3d_energy(n_x: int, n_y: int, n_z: int, mass: float, L_x: float, L_y: float, L_z: float) -> float
+quantum_mechanics_tools.particle_in_box_3d_wavefunction(n_x: int, n_y: int, n_z: int, x: float, y: float, z: float, L_x: float, L_y: float, L_z: float) -> float
+quantum_mechanics_tools.particle_in_box_degeneracy(n: int, cubic: bool = True) -> int
+quantum_mechanics_tools.particle_in_box_energy(n: int, mass: float, length: float) -> float
+quantum_mechanics_tools.particle_in_box_energy_ev(n: int, mass: float, length: float) -> float
+quantum_mechanics_tools.particle_in_box_probability(n: int, x: Union[float, numpy.ndarray], length: float) -> Union[float, numpy.ndarray]
+quantum_mechanics_tools.particle_in_box_wavefunction(n: int, x: Union[float, numpy.ndarray], length: float, normalized: bool = True) -> Union[float, numpy.ndarray]
+quantum_mechanics_tools.position_uncertainty_box(n: int, L: float) -> float
+quantum_mechanics_tools.radial_distribution_function(n: int, l: int, r: Union[float, numpy.ndarray], Z: int = 1) -> Union[float, numpy.ndarray]
+quantum_mechanics_tools.radial_nodes(n: int, l: int) -> int
+quantum_mechanics_tools.reduced_mass(m1: float, m2: float) -> float
+quantum_mechanics_tools.reduced_mass_amu(m1_amu: float, m2_amu: float) -> float
+quantum_mechanics_tools.rigid_rotor_degeneracy(J: int) -> int
+quantum_mechanics_tools.rigid_rotor_energy(J: int, B: float, in_cm: bool = True) -> float
+quantum_mechanics_tools.rigid_rotor_energy_joules(J: int, reduced_mass: float, bond_length: float) -> float
+quantum_mechanics_tools.rotational_constant(reduced_mass: float, bond_length: float, in_cm: bool = True) -> float
+quantum_mechanics_tools.rotational_transition_energy(J_initial: int, B: float) -> float
+quantum_mechanics_tools.rotational_transition_frequency(J_initial: int, reduced_mass: float, bond_length: float) -> float
+quantum_mechanics_tools.total_nodes(n: int) -> int
+quantum_mechanics_tools.uncertainty_product_box(n: int, L: float) -> float
+quantum_mechanics_tools.validate_quantum_numbers(n: int, l: int, m_l: int) -> bool
+quantum_mechanics_tools.wavelength_to_energy(wavelength: float, in_ev: bool = True) -> float
+quantum_mechanics_tools.wavenumber_to_energy(wavenumber: float) -> float
+quantum_theory_tools.de_broglie_wavelength(mass, velocity)
+quantum_theory_tools.de_broglie_wavelength_electron(velocity)
+quantum_theory_tools.electron_capacity(n)
+quantum_theory_tools.electrons_in_subshell(l)
+quantum_theory_tools.l_from_subshell(name)
+quantum_theory_tools.m_to_nm(m)
+quantum_theory_tools.m_to_pm(m)
+quantum_theory_tools.orbital_count(n)
+quantum_theory_tools.orbitals_in_subshell(l)
+quantum_theory_tools.subshell_name(l)
+quantum_theory_tools.uncertainty_momentum(uncertainty_position)
+quantum_theory_tools.uncertainty_position(uncertainty_momentum)
+quantum_theory_tools.uncertainty_velocity(mass, uncertainty_position)
+quantum_theory_tools.valid_quantum_numbers(n, l, m_l, m_s)
+quantum_theory_tools.velocity_from_wavelength(mass, wavelength)
+quantum_tunneling_tools.bell_tunneling_correction(barrier_height_eV: float, temperature_K: float, reduced_mass_amu: float, imaginary_frequency_cm1: Optional[float] = None, barrier_width_angstrom: Optional[float] = None) -> float
+quantum_tunneling_tools.gamow_factor(energy_MeV: float, Z_daughter: int, Z_alpha: int = 2) -> float
+quantum_tunneling_tools.rectangular_barrier_T(energy_eV: float, barrier_height_eV: float, width_angstrom: float, mass_amu: float = 1.0) -> float
+quantum_tunneling_tools.triangular_barrier_T(energy_eV: float, barrier_height_eV: float, width_angstrom: float, mass_amu: float = 1.0) -> float
+quantum_tunneling_tools.wkb_transmission(energy_eV: float, V_func: Callable[[float], float], x1: float, x2: float, mass_amu: float, n_points: int = 1000) -> float
+rate_law_tools.calculate_rate(k: float, concentrations: Dict[str, float], orders: Dict[str, int]) -> float
+rate_law_tools.determine_order_initial_rates(conc1: float, rate1: float, conc2: float, rate2: float, other_constant: bool = True) -> int
+rate_law_tools.determine_rate_constant(rate: float, concentrations: Dict[str, float], orders: Dict[str, int]) -> float
+rate_law_tools.method_of_initial_rates(data: List[Dict]) -> Dict[str, int]
+rate_law_tools.overall_order(orders: Dict[str, int]) -> int
+rate_law_tools.rate_constant_units(overall_order: int) -> str
+rate_law_tools.rate_law_from_orders(k: float, orders: Dict[str, int]) -> str
+reaction_classification_tools.assign_oxidation_numbers(formula, charge=0)
+reaction_classification_tools.classify_reaction(reactants, products)
+reaction_classification_tools.identify_redox(reactant_oxidation, product_oxidation)
+reaction_classification_tools.is_soluble(cation, anion)
+reaction_classification_tools.is_strong_acid(formula)
+reaction_classification_tools.is_strong_base(formula)
+reaction_classification_tools.predict_precipitation(reactants)
+reaction_mechanism_tools.calculate_rate_law(mechanism: reaction_mechanism_tools.MechanismType) -> str
+reaction_mechanism_tools.classify_reaction_type(reactants: str, products: str) -> reaction_mechanism_tools.ReactionType
+reaction_mechanism_tools.dataclass(cls=None, /, *, init=True, repr=True, eq=True, order=False, unsafe_hash=False, frozen=False, match_args=True, kw_only=False, slots=False, weakref_slot=False)
+reaction_mechanism_tools.draw_curved_arrows(step_type: str) -> List[str]
+reaction_mechanism_tools.identify_electrophile(species: str) -> Dict
+reaction_mechanism_tools.identify_nucleophile(species: str) -> Dict
+reaction_mechanism_tools.predict_carbanion_stability(carbanion_type: str) -> Tuple[str, int]
+reaction_mechanism_tools.predict_carbocation_stability(carbon_type: str) -> Tuple[str, int]
+reaction_mechanism_tools.predict_elimination_mechanism(substrate: str, base: str, temperature: float) -> reaction_mechanism_tools.MechanismType
+reaction_mechanism_tools.predict_hammond_postulate(transition_state: str, reaction_energy: str) -> str
+reaction_mechanism_tools.predict_mechanism_sn1_sn2(substrate: str, nucleophile: str, solvent: str) -> reaction_mechanism_tools.MechanismType
+reaction_mechanism_tools.predict_radical_stability(radical_type: str) -> Tuple[str, int]
+reaction_mechanism_tools.radical_chain_steps() -> Dict
+reaction_mechanism_tools.reaction_mechanism_summary() -> Dict
+reaction_mechanism_tools.test_carbocation_stability()
+reaction_mechanism_tools.test_mechanism_prediction()
+reaction_mechanism_tools.test_nucleophile_identification()
+reaction_mechanism_tools.test_rate_laws()
+reaction_rate_tools.average_rate(C1: float, C2: float, t1: float, t2: float, reactant: bool = True) -> float
+reaction_rate_tools.convert_rate(rate: float, species1: str, coeff1: int, species2: str, coeff2: int) -> float
+reaction_rate_tools.initial_rate_method(rates: List[float], concentrations: List[float]) -> float
+reaction_rate_tools.instantaneous_rate(concentrations: List[float], times: List[float], t_target: float) -> float
+reaction_rate_tools.rate_from_stoichiometry(rate_known: float, coeff_known: int, coeff_unknown: int) -> float
+reaction_rate_tools.relative_rate_expression(coefficients: Dict[str, int]) -> Dict[str, str]
+retrosynthesis_tools.compare_strategies(n_steps: int, step_yield: float, n_branches: int = 2) -> Dict
+retrosynthesis_tools.convergent_yield(branch_yields: List[List[float]], final_yield: float = 1.0) -> float
+retrosynthesis_tools.find_coupling_method(substrate1: str, substrate2: str) -> List[Dict]
+retrosynthesis_tools.linear_yield(yields: List[float]) -> float
+retrosynthesis_tools.synthon_matcher(synthon_type: str) -> Dict
+rotational_spectroscopy_tools.boltzmann_population(J: int, B: float, T: float) -> float
+rotational_spectroscopy_tools.bond_length_from_B(B: float, m1: float, m2: float) -> float
+rotational_spectroscopy_tools.j_max(B: float, T: float) -> int
+rotational_spectroscopy_tools.moment_of_inertia_diatomic(m1: float, m2: float, r: float) -> float
+rotational_spectroscopy_tools.rotational_constant(I: float) -> float
+rotational_spectroscopy_tools.rotational_energy(J: int, B: float, D: float = 0) -> float
+rotational_spectroscopy_tools.transition_frequency(J_lower: int, B: float, D: float = 0) -> float
+rotational_spectroscopy_tools.wavelength_from_wavenumber(wavenumber: float) -> float
+rotational_spectroscopy_tools.wavenumber_from_wavelength(wavelength_nm: float) -> float
+s_block_elements_tools.alkali_metal_property(element: str, property_name: str) -> float
+s_block_elements_tools.alkaline_earth_property(element: str, property_name: str) -> float
+s_block_elements_tools.compare_alkali_alkaline_earth() -> Dict
+s_block_elements_tools.diagonal_relationship(element1: str, element2: str) -> bool
+s_block_elements_tools.flame_test_color(element: str) -> str
+s_block_elements_tools.group_1_reaction(element: str, reactant: str) -> str
+s_block_elements_tools.group_2_reaction(element: str, reactant: str) -> str
+s_block_elements_tools.s_block_trend(property_type: str) -> str
+s_block_tools.hydration_energy_ranking(group: int) -> dict
+s_block_tools.is_amphoteric(element: str) -> dict
+s_block_tools.oxide_product(element: str) -> dict
+s_block_tools.reacts_with_nitrogen(element: str) -> dict
+s_block_tools.solubility_trend(compound_type: str) -> dict
+solid_state_chemistry_tools.band_gap_classification(band_gap_ev: float) -> str
+solid_state_chemistry_tools.classify_solid(bonding_type: str) -> Dict
+solid_state_chemistry_tools.coordination_number(cell_type: str) -> int
+solid_state_chemistry_tools.density_from_cell(cell_type: str, atomic_mass: float, edge_length: float) -> float
+solid_state_chemistry_tools.packing_efficiency(cell_type: str) -> float
+solid_state_chemistry_tools.predict_conductivity(material_type: str, temperature: float = 298) -> str
+solid_state_chemistry_tools.unit_cell_atoms(cell_type: str) -> int
+solubility_equilibria_tools.Ksp_expression(cation: str, cation_coeff: int, anion: str, anion_coeff: int) -> str
+solubility_equilibria_tools.Ksp_from_solubility_11(s: float) -> float
+solubility_equilibria_tools.Ksp_from_solubility_12(s: float) -> float
+solubility_equilibria_tools.ion_product(cation_conc: float, anion_conc: float, cation_coeff: int = 1, anion_coeff: int = 1) -> float
+solubility_equilibria_tools.molar_solubility_11(Ksp: float) -> float
+solubility_equilibria_tools.molar_solubility_12(Ksp: float) -> float
+solubility_equilibria_tools.molar_solubility_21(Ksp: float) -> float
+solubility_equilibria_tools.precipitate_amount(initial_conc: float, final_conc: float, volume: float, molar_mass: float) -> float
+solubility_equilibria_tools.predict_precipitation(Q: float, Ksp: float) -> str
+solubility_equilibria_tools.solubility_common_ion(Ksp: float, common_ion_conc: float, salt_type: str = '11') -> float
+solubility_tools.get_henry_constant(gas: str, temperature: float = 25) -> float
+solubility_tools.henrys_law(kH: float, P: float) -> float
+solubility_tools.henrys_law_pressure(kH: float, C: float) -> float
+solubility_tools.predict_ionic_solubility(cation: str, anion: str) -> dict
+solubility_tools.saturation_status(mass_solute: float, volume_L: float, solubility_g_per_100mL: float) -> str
+solubility_tools.temperature_effect_on_solubility(substance_type: str) -> str
+solution_concentration_tools.dilution(M1: float, V1: float, M2: float = None, V2: float = None) -> float
+solution_concentration_tools.mass_percent(mass_solute: float, mass_solution: float) -> float
+solution_concentration_tools.molality(moles_solute: float, kg_solvent: float) -> float
+solution_concentration_tools.molality_to_molarity(m: float, density: float, molar_mass_solute: float, molar_mass_solvent: float = 18.015) -> float
+solution_concentration_tools.molarity(moles_solute: float, L_solution: float) -> float
+solution_concentration_tools.molarity_from_moles(moles: float, volume: float, unit: str = 'L') -> float
+solution_concentration_tools.molarity_to_molality(M: float, density: float, molar_mass_solute: float) -> float
+solution_concentration_tools.mole_fraction(components: Dict[str, float]) -> Dict[str, float]
+solution_concentration_tools.parts_per_to_molarity(ppm: float, molar_mass: float, density: float = 1.0) -> float
+solution_concentration_tools.ppm_ppb(concentration: float, unit: str = 'ppm') -> float
+spontaneity_tools.distinguish_spontaneity_from_rate(is_spontaneous_process: bool, observed_rate: str = 'slow') -> Dict
+spontaneity_tools.is_spontaneous(delta_G: float) -> bool
+spontaneity_tools.predict_energy_dispersal(T_hot: float, T_cold: float) -> str
+spontaneity_tools.predict_matter_dispersal(initial_volume: float, final_volume: float) -> str
+spontaneity_tools.spontaneity_direction(delta_G: float) -> str
+statistical_mechanics_tools.boltzmann_factor(energy: float, temperature: float) -> float
+statistical_mechanics_tools.boltzmann_probability(energy: float, partition_function: float, temperature: float) -> float
+statistical_mechanics_tools.de_broglie_wavelength(mass: float, temperature: float) -> float
+statistical_mechanics_tools.energy_to_wavenumber(energy_J: float) -> float
+statistical_mechanics_tools.entropy_from_partition_function(partition_function: float, internal_energy: float, temperature: float, N: int = 1) -> float
+statistical_mechanics_tools.entropy_sackur_tetrode(mass: float, volume: float, temperature: float, N: int = 1) -> float
+statistical_mechanics_tools.fraction_in_vibrational_state(v: int, theta_vib: float, temperature: float) -> float
+statistical_mechanics_tools.frequency_to_wavenumber(frequency_Hz: float) -> float
+statistical_mechanics_tools.get_partition_functions(molecule: str, temperature: float, volume: float = 0.001) -> dict
+statistical_mechanics_tools.gibbs_free_energy(partition_function: float, temperature: float, pressure: float = 101325) -> float
+statistical_mechanics_tools.heat_capacity_rotational(linear: bool = True, molar: bool = False) -> float
+statistical_mechanics_tools.heat_capacity_translational(molar: bool = False) -> float
+statistical_mechanics_tools.heat_capacity_vibrational(frequency_Hz: float, temperature: float, molar: bool = False) -> float
+statistical_mechanics_tools.helmholtz_free_energy(partition_function: float, temperature: float) -> float
+statistical_mechanics_tools.internal_energy_from_Z(partition_function: float, dlnZ_dT: float, temperature: float) -> float
+statistical_mechanics_tools.internal_energy_rotational(temperature: float, linear: bool = True) -> float
+statistical_mechanics_tools.internal_energy_translational(temperature: float) -> float
+statistical_mechanics_tools.internal_energy_vibrational(frequency_Hz: float, temperature: float) -> float
+statistical_mechanics_tools.moment_of_inertia_diatomic(m1: float, m2: float, bond_length: float) -> float
+statistical_mechanics_tools.partition_function_canonical(energies: numpy.ndarray, temperature: float) -> float
+statistical_mechanics_tools.population_ratio(energy1: float, energy2: float, temperature: float) -> float
+statistical_mechanics_tools.reduced_mass(m1: float, m2: float) -> float
+statistical_mechanics_tools.rotational_partition_function(moment_of_inertia: float, temperature: float, sigma: int = 1) -> float
+statistical_mechanics_tools.rotational_partition_function_from_B(B_cm: float, temperature: float, sigma: int = 1) -> float
+statistical_mechanics_tools.rotational_temperature(moment_of_inertia: float) -> float
+statistical_mechanics_tools.translational_partition_function(mass: float, volume: float, temperature: float) -> float
+statistical_mechanics_tools.vibrational_partition_function(frequency_Hz: float, temperature: float, include_zpe: bool = False) -> float
+statistical_mechanics_tools.vibrational_partition_function_from_wavenumber(wavenumber_cm: float, temperature: float, include_zpe: bool = False) -> float
+statistical_mechanics_tools.vibrational_temperature(frequency_Hz: float) -> float
+statistical_mechanics_tools.vibrational_temperature_from_wavenumber(wavenumber_cm: float) -> float
+statistical_mechanics_tools.wavenumber_to_energy(wavenumber_cm: float) -> float
+statistical_mechanics_tools.wavenumber_to_frequency(wavenumber_cm: float) -> float
+statistical_thermodynamics_tools.entropy_rotational(theta_rot: float, temperature: float, sigma: int = 1, linear: bool = True, molar: bool = True) -> float
+statistical_thermodynamics_tools.entropy_sackur_tetrode_molar(mass_amu: float, pressure_Pa: float, temperature: float) -> float
+statistical_thermodynamics_tools.entropy_translational(mass_kg: float, volume_m3: float, temperature: float, N_molecules: int = 1) -> float
+statistical_thermodynamics_tools.entropy_vibrational(wavenumber_cm: float, temperature: float, molar: bool = True) -> float
+statistical_thermodynamics_tools.entropy_vibrational_total(wavenumbers_cm: List[float], temperature: float, molar: bool = True) -> float
+statistical_thermodynamics_tools.equilibrium_constant_from_partition_functions(q_A: float, q_B: float, q_C: float, q_D: float, delta_E0: float, temperature: float, stoichiometry: Tuple[int, int, int, int] = (1, 1, 1, 1)) -> float
+statistical_thermodynamics_tools.equilibrium_constant_translational_contribution(stoichiometry_coeff: int, mass_products_kg: List[float], mass_reactants_kg: List[float], temperature: float) -> float
+statistical_thermodynamics_tools.factorial(n, exact=False, extend='zero')
+statistical_thermodynamics_tools.gibbs_free_energy_ideal_gas(mass_amu: float, pressure_Pa: float, temperature: float) -> float
+statistical_thermodynamics_tools.heat_capacity_rotational(linear: bool = True, molar: bool = True) -> float
+statistical_thermodynamics_tools.heat_capacity_translational(molar: bool = True) -> float
+statistical_thermodynamics_tools.heat_capacity_vibrational(wavenumber_cm: float, temperature: float, molar: bool = True) -> float
+statistical_thermodynamics_tools.heat_capacity_vibrational_total(wavenumbers_cm: List[float], temperature: float, molar: bool = True) -> float
+statistical_thermodynamics_tools.helmholtz_free_energy_translational(mass_kg: float, volume_m3: float, temperature: float, N_molecules: int = 1) -> float
+statistical_thermodynamics_tools.internal_energy_electronic(energy_levels_cm: List[float], degeneracies: List[int], temperature: float, molar: bool = False) -> float
+statistical_thermodynamics_tools.internal_energy_rotational(temperature: float, linear: bool = True, molar: bool = False) -> float
+statistical_thermodynamics_tools.internal_energy_translational(temperature: float, N_molecules: int = 1, molar: bool = False) -> float
+statistical_thermodynamics_tools.internal_energy_vibrational(wavenumber_cm: float, temperature: float, molar: bool = False) -> float
+statistical_thermodynamics_tools.internal_energy_vibrational_high_T(wavenumber_cm: float, temperature: float, molar: bool = False) -> float
+statistical_thermodynamics_tools.thermodynamic_properties_diatomic(mass_amu: float, volume_m3: float, temperature: float, bond_length_m: float, wavenumber_cm: float, sigma: int = 1) -> Dict[str, float]
+statistical_thermodynamics_tools.total_partition_function_diatomic(mass_amu: float, volume_m3: float, temperature: float, bond_length_m: float, wavenumber_cm: float, sigma: int = 1, electronic_degeneracy: int = 1) -> Dict[str, float]
+stereochemistry_tools.assign_cip_priority(substituents: List[str]) -> List[int]
+stereochemistry_tools.assign_r_s_config(center_atoms: List[str], substituent_priorities: List[int]) -> stereochemistry_tools.Stereochemistry
+stereochemistry_tools.calculate_optical_rotation(concentration: float, path_length: float, observed_rotation: float) -> float
+stereochemistry_tools.check_meso_possibility(configurations: List[Tuple[int, int]]) -> bool
+stereochemistry_tools.chiral_drug_examples() -> Dict[str, Dict]
+stereochemistry_tools.count_chiral_centers(molecule_structure: str) -> int
+stereochemistry_tools.dataclass(cls=None, /, *, init=True, repr=True, eq=True, order=False, unsafe_hash=False, frozen=False, match_args=True, kw_only=False, slots=False, weakref_slot=False)
+stereochemistry_tools.determine_enantiomer_relationship(config1: stereochemistry_tools.Stereochemistry, config2: stereochemistry_tools.Stereochemistry) -> stereochemistry_tools.IsomerRelationship
+stereochemistry_tools.enumerate_stereomers(chiral_centers: int) -> List[List[stereochemistry_tools.Stereochemistry]]
+stereochemistry_tools.get_atomic_number(element: str) -> int
+stereochemistry_tools.maximum_stereomers(chiral_centers: int) -> int
+stereochemistry_tools.predict_optical_activity(configurations: List[stereochemistry_tools.Stereochemistry]) -> str
+stereochemistry_tools.test_cip_priorities()
+stereochemistry_tools.test_enantiomer_relationship()
+stereochemistry_tools.test_optical_rotation()
+stereochemistry_tools.test_stereomers()
+stoichiometric_conversion_tools.mass_to_mass(mass_A, molar_mass_A, molar_mass_B, coeff_A, coeff_B)
+stoichiometric_conversion_tools.mass_to_moles(mass, molar_mass)
+stoichiometric_conversion_tools.mole_to_mole(mol_A, coeff_A, coeff_B)
+stoichiometric_conversion_tools.moles_to_mass(mol, molar_mass)
+stoichiometric_conversion_tools.moles_to_particles(mol)
+stoichiometric_conversion_tools.particles_to_moles(particles)
+stoichiometric_conversion_tools.solution_molarity(mol, volume_L)
+stoichiometric_conversion_tools.solution_moles(molarity, volume_L)
+surface_chemistry_tools.langmuir_constant(theta: float, P: float) -> dict
+surface_chemistry_tools.langmuir_coverage(P: float, b: float) -> dict
+surface_chemistry_tools.langmuir_linear_analysis(P_data: list, V_data: list) -> dict
+surface_chemistry_tools.langmuir_linear_form(P: float, V: float, V_mono: float, b: float) -> dict
+surface_chemistry_tools.langmuir_pressure(theta: float, b: float) -> dict
+surface_chemistry_tools.langmuir_temperature_effect(b1: float, T1: float, T2: float, delta_H: float) -> dict
+# SKIP test_molecular_spectroscopy_tools.py: attempted relative import with no known parent package
+# SKIP test_phase_equilibria_tools.py: attempted relative import with no known parent package
+thermal_analysis_tools.analyze_tga_thermogram(data_points: List[Tuple[float, float]], initial_molar_mass: Optional[float] = None) -> List[thermal_analysis_tools.TGAStep]
+thermal_analysis_tools.calculate_heat_of_fusion(peak_area: float, calibration_constant: float, sample_mass: float) -> float
+thermal_analysis_tools.dataclass(cls=None, /, *, init=True, repr=True, eq=True, order=False, unsafe_hash=False, frozen=False, match_args=True, kw_only=False, slots=False, weakref_slot=False)
+thermal_analysis_tools.dsc_calibration_constant(known_enthalpy: float, measured_area: float) -> float
+thermal_analysis_tools.dsc_crystallinity(measured_enthalpy: float, enthalpy_100_crystalline: float) -> float
+thermal_analysis_tools.dsc_enthalpy(peak_area: float, calibration_constant: float) -> float
+thermal_analysis_tools.dsc_glass_transition(baseline_shift: float, heating_rate: float, mass: float) -> float
+thermal_analysis_tools.dsc_heat_capacity(heat_flow: float, heating_rate: float, mass: float) -> float
+thermal_analysis_tools.dta_peak_type(Delta_T: float) -> str
+thermal_analysis_tools.dta_temperature_difference(T_sample: float, T_reference: float) -> float
+thermal_analysis_tools.estimate_purity_from_melting(melting_point_pure: float, melting_point_observed: float, entropy_of_fusion: float = 50.0) -> float
+thermal_analysis_tools.identify_thermal_process(temperature_range: Tuple[float, float], mass_change: Optional[float] = None, heat_flow_direction: Optional[str] = None) -> List[Dict]
+thermal_analysis_tools.phase_transition_identification(peak_type: str, temperature: float, has_mass_change: bool) -> Dict[str, str]
+thermal_analysis_tools.tga_decomposition_temperature(mass_data: List[Tuple[float, float]], method: str = 'onset') -> float
+thermal_analysis_tools.tga_identify_product(calculated_mass_loss: float, candidates: List[Tuple[str, float]], tolerance: float = 2.0) -> Optional[str]
+thermal_analysis_tools.tga_mass_loss_molar(mass_loss_percent: float, initial_molar_mass: float) -> float
+thermal_analysis_tools.tga_mass_percent(initial_mass: float, final_mass: float) -> float
+thermal_analysis_tools.tga_mixture_analysis(total_mass: float, mass_loss_step: float, gas_molar_mass: float, compound_molar_mass: float, gas_per_mole_compound: float = 1.0) -> float
+thermal_analysis_tools.tga_residual_mass(initial_mass: float, formula_initial: str, formula_final: str, molar_mass_initial: float, molar_mass_final: float) -> float
+thermodynamic_data_tools.calculate_hess_law(products: dict[str, float], reactants: dict[str, float]) -> float
+thermodynamic_data_tools.calculate_reaction_entropy(products: dict[str, float], reactants: dict[str, float]) -> float
+thermodynamic_data_tools.calculate_reaction_gibbs(products: dict[str, float], reactants: dict[str, float]) -> float
+thermodynamic_data_tools.lookup_formation_enthalpy(species: str) -> float
+thermodynamic_data_tools.lookup_formation_gibbs(species: str) -> float
+thermodynamic_data_tools.lookup_heat_capacity(species: str) -> float
+thermodynamic_data_tools.lookup_standard_entropy(species: str) -> float
+thermodynamic_data_tools.test_database_size()
+thermodynamic_data_tools.test_hess_combustion_methane()
+thermodynamic_data_tools.test_hess_water_formation()
+thermodynamic_data_tools.test_lookup_case_insensitive()
+thermodynamic_data_tools.test_lookup_enthalpy()
+thermodynamic_data_tools.test_lookup_entropy()
+thermodynamic_data_tools.test_lookup_gibbs()
+thermodynamic_data_tools.test_missing_species_raises()
+thermodynamic_data_tools.test_reaction_entropy()
+thermodynamic_data_tools.test_reaction_gibbs()
+thermodynamics_laws_tools.calculate_Suniv_from_process(delta_S_sys: float, delta_H_sys: float, T: float) -> Dict
+thermodynamics_laws_tools.entropy_surroundings(delta_H: float, T: float) -> float
+thermodynamics_laws_tools.entropy_universe(delta_S_sys: float, delta_S_surr: float) -> float
+thermodynamics_laws_tools.spontaneity_from_Suniv(delta_S_univ: float) -> str
+thermodynamics_laws_tools.standard_entropy_reaction(S_values: Dict, reactants: list, products: list, coeffs: Dict = None) -> float
+thermodynamics_laws_tools.third_law_entropy(W: float = 1) -> float
+titration_tools.equivalence_pH_weak_acid(V_analyte: float, C_analyte: float, Ka: float) -> float
+titration_tools.equivalence_volume(analyte_mol: float, titrant_conc: float, stoichiometry: int = 1) -> float
+titration_tools.half_equivalence_pH(pKa: float) -> float
+titration_tools.indicator_range(indicator: str) -> Tuple[float, float]
+titration_tools.select_indicator(equivalence_pH: float) -> str
+titration_tools.titration_curve_points(V_analyte: float, C_acid: float, C_base: float, Ka: float = None, is_weak_acid: bool = False) -> Dict
+titration_tools.titration_pH_strong_strong(V_titrant: float, V_analyte: float, C_analyte: float, C_titrant: float, analyte_is_acid: bool = True) -> float
+transition_metals_tools.common_oxidation_states(element: str) -> list
+transition_metals_tools.count_d_electrons(element: str, charge: int) -> int
+transition_metals_tools.count_unpaired_electrons(d_count: int, geometry: str = 'octahedral', high_spin: bool = True) -> int
+transition_metals_tools.ion_electron_config(element: str, charge: int) -> str
+transition_metals_tools.superscript(n: int) -> str
+unit_conversion_tools.calculate_molar_mass(formula: 'str') -> 'float'
+unit_conversion_tools.convert_concentration(value: 'float', from_unit: 'str', to_unit: 'str', molar_mass: 'Optional[float]' = None) -> 'float'
+unit_conversion_tools.convert_energy(value: 'float', from_unit: 'str', to_unit: 'str') -> 'float'
+unit_conversion_tools.convert_length(value: 'float', from_unit: 'str', to_unit: 'str') -> 'float'
+unit_conversion_tools.convert_mass(value: 'float', from_unit: 'str', to_unit: 'str') -> 'float'
+unit_conversion_tools.convert_pressure(value: 'float', from_unit: 'str', to_unit: 'str') -> 'float'
+unit_conversion_tools.convert_temperature(value: 'float', from_unit: 'str', to_unit: 'str') -> 'float'
+unit_conversion_tools.convert_volume(value: 'float', from_unit: 'str', to_unit: 'str') -> 'float'
+unit_conversion_tools.ideal_gas_law(pressure: 'Optional[float]' = None, volume: 'Optional[float]' = None, moles: 'Optional[float]' = None, temperature: 'Optional[float]' = None, solve_for: 'str' = 'unknown') -> 'float'
+unit_conversion_tools.mass_to_moles(mass: 'float', molar_mass: 'float') -> 'float'
+unit_conversion_tools.moles_to_mass(moles: 'float', molar_mass: 'float') -> 'float'
+unit_conversion_tools.test_calculate_molar_mass()
+unit_conversion_tools.test_convert_concentration()
+unit_conversion_tools.test_convert_energy()
+unit_conversion_tools.test_convert_length()
+unit_conversion_tools.test_convert_mass()
+unit_conversion_tools.test_convert_pressure()
+unit_conversion_tools.test_convert_temperature()
+unit_conversion_tools.test_convert_volume()
+unit_conversion_tools.test_ideal_gas_law()
+unit_conversion_tools.test_invalid_units()
+unit_conversion_tools.test_moles_mass()
+unit_conversion_tools.test_zero_division()
+uv_vis_tools.absorbance(epsilon: float, path_length: float, concentration: float) -> float
+uv_vis_tools.absorbance_from_transmittance(T: float) -> float
+uv_vis_tools.calibration_curve_params(concentrations: list, absorbances: list) -> Tuple[float, float, float]
+uv_vis_tools.concentration_from_absorbance(A: float, epsilon: float, path_length: float = 1.0) -> float
+uv_vis_tools.concentration_from_calibration(A: float, slope: float, intercept: float = 0.0) -> float
+uv_vis_tools.concentration_two_components(A1: float, A2: float, epsilon1_comp1: float, epsilon1_comp2: float, epsilon2_comp1: float, epsilon2_comp2: float, path_length: float = 1.0) -> Tuple[float, float]
+uv_vis_tools.diluted_concentration(initial_conc: float, dilution_factor: float) -> float
+uv_vis_tools.dilution_factor(final_volume: float, initial_volume: float) -> float
+uv_vis_tools.is_absorbance_valid(A: float, min_A: float = 0.1, max_A: float = 1.0) -> bool
+uv_vis_tools.molar_absorptivity(A: float, path_length: float, concentration: float) -> float
+uv_vis_tools.original_concentration(measured_conc: float, dilution_factor: float) -> float
+uv_vis_tools.percent_transmittance_from_absorbance(A: float) -> float
+uv_vis_tools.recommended_dilution(A_measured: float, target_A: float = 0.5) -> float
+uv_vis_tools.standard_addition_concentration(sample_absorbance: float, spiked_absorbance: float, spike_concentration: float) -> float
+uv_vis_tools.transmittance_from_absorbance(A: float) -> float
