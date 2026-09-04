@@ -21,6 +21,20 @@ This protocol evaluates the current ChemTester chemistry skill runtime on an unt
 
 The frozen runtime delegates required image observation to the same fixed vision profile in every arm. The evaluated model produces every final chemistry answer.
 
+## Final Skill Snapshot Composition
+
+The frozen runtime contains 1,073 versioned skill-source files:
+
+- `L2_principles`: 847 files. This comprises 766 broad chemistry knowledge and reasoning documents, the compact guide, its structured registry, the L2 index, and 78 detailed retrospective gap-skill documents.
+- `L3_functions`: 226 files. This comprises 217 Python chemistry-tool modules, the function registry and catalog, and seven Markdown index or tool-use documents.
+- Compact registry state: 71 active capabilities and 7 retired or merged capabilities.
+
+In a skills-enabled arm, `tool_skill.enabled=true`. The runtime considers all 71 registry capabilities when selecting question-relevant compact sections, permits model-directed retrieval across the complete L2 tree, and permits model-directed discovery and execution of cataloged L3 functions. The full corpus is available to the runtime but is not inserted wholesale into each prompt.
+
+In a skills-disabled arm, the same frozen source tree remains physically present to preserve the runtime control, but `tool_skill.enabled=false`; no compact-skill selection, L2 knowledge search, L3 tool search, or L3 tool call is exposed to the answering model.
+
+Python may create `__pycache__/*.pyc` files inside an isolated runtime during execution. These derived bytecode files are excluded from skill-source integrity comparisons.
+
 ## Controlled Skill Ablation
 
 Each model is run twice. The only intended within-model change is:
@@ -34,13 +48,27 @@ Both arms retain the same model, provider, reasoning setting, maximum token budg
 
 | Model | Reasoning | Skills enabled | Skills disabled | Status |
 |---|---|---:|---:|---|
-| GPT-5.6-sol | xhigh | 368/400 (92.00%) | Running | Current frozen snapshot |
+| GPT-5.6-sol | xhigh | 368/400 (92.00%) | 359/400 (89.75%) | Complete |
 | GLM-5.3-flash | high, thinking enabled | 346/400 (86.50%) | 344/400 (86.00%) | Complete |
-| Kimi K3 | high, thinking enabled | Running | Running | Fresh controlled pair |
-| Qwen 3.8 Max snapshot `qwen3.8-max-0902` | xhigh | Running | Running | Credential and one-item smoke test passed |
-| DeepSeek V4 Pro snapshot `deepseek-v4-pro-0813` | max | Running | Running | Credential and one-item smoke test passed |
+| Kimi K3 | high, thinking enabled | 325/400 (81.25%) | 338/400 (84.50%) | Complete |
+| Qwen 3.8 Max snapshot `qwen3.8-max-0902` | xhigh | 347/400; 9 provider failures | 344/400; 11 provider failures | Incomplete; provider retries required |
+| DeepSeek V4 Pro snapshot `deepseek-v4-pro-0813` | max | 350/400 (87.50%) | 352/400 (88.00%) | Complete |
 
 The July Kimi K3 results, 328/400 with skills and 333/400 without skills, used `runtime_20260726_221207`. They are historical context and are excluded from the current controlled ablation.
+
+## Final Snapshot Audit
+
+The current run artifacts were re-audited against `runtime_20260831_161726`. For both the enabled and disabled arm of every model listed below, the selection manifest references the frozen snapshot, its `snapshot.json` hash is `47e1e00b55a376f62563c4e5a6db402574eb2d8480646f648634d00b7b7593bc`, and all 1,073 L2/L3 source files match the frozen source tree exactly.
+
+| Model | Enabled arm | Disabled arm | Full skill-tree match | Run completeness |
+|---|---:|---:|---:|---|
+| GPT-5.6-sol | Correct final snapshot | Correct final snapshot | Exact in both arms | Complete |
+| GLM-5.3-flash | Correct final snapshot | Correct final snapshot | Exact in both arms | Complete |
+| Kimi K3 | Correct final snapshot | Correct final snapshot | Exact in both arms | Complete |
+| Qwen 3.8 Max | Correct final snapshot | Correct final snapshot | Exact in both arms | Incomplete due to provider failures |
+| DeepSeek V4 Pro | Correct final snapshot | Correct final snapshot | Exact in both arms | Complete |
+
+Older run directories that reference earlier runtime snapshots remain historical artifacts and must not be substituted into this matrix.
 
 ## Request Controls
 
