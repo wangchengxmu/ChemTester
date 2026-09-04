@@ -21,19 +21,19 @@ evaluation.
 
 ## Important status
 
-This first GitHub version is a **private collaborator preview**. The current
-multimodel benchmark matrix was already launched from an immutable local
-snapshot before this repository was created. Do not make the repository public
-until those runs finish and the release checklist in `RELEASE_STATUS.md` is
-closed.
+This first GitHub version is a **public collaborator preview**, disclosed on
+September 4, 2026. The multimodel benchmark matrix was launched from an
+immutable local snapshot before disclosure, but unfinished runs and replacement
+rows completed after disclosure must be labeled post-release. The remaining
+final-release work is tracked in `RELEASE_STATUS.md`.
 
 The development export withholds the text and answer content of 319 GPQA-derived
 families. Their identifiers and cryptographic hashes remain available for audit,
 but the upstream GPQA access terms request that examples not be posted online.
 
-The 400-question acceptance file excludes all 11 diagnostic items. Once that
-file is made public, the suite is no longer secret and any later results must be
-labeled post-release rather than pooled with the controlled pre-release runs.
+The 400-question acceptance file excludes all 11 diagnostic items. It is now
+public, so the suite is no longer secret and later results must be labeled
+post-release rather than pooled with controlled pre-release runs.
 
 ## Validation
 
@@ -50,4 +50,3 @@ Repository-authored code is provided under the MIT license. Dataset records
 retain their upstream terms and attribution requirements; see
 `DATA_LICENSES.md`. No blanket relicensing of third-party question content is
 claimed.
-

@@ -151,7 +151,7 @@
   "duplicate_items_skipped": 4295,
   "raw_archival_item_count": 7381,
   "record_count": 3086,
-  "records_sha256": "9a0ef019703eea3b92e61a5122ee18881b6793d872534f188d60cd2c4f11e664",
+  "records_sha256": "8a0adcdab7f464bd4522b0818b8de5813efbef445e9f278d4eb982e492f15f87",
   "schema_version": "chemtester-skill-development-manifest/v1",
   "semantic_applied_pair_count": 20492,
   "semantic_auto_approved_pair_count": 426,

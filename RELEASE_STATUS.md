@@ -2,7 +2,7 @@
 
 ## Current phase
 
-Private collaborator preview. Not approved for public visibility.
+Public collaborator preview. This is not the final archival release.
 
 ## Completed
 
@@ -14,7 +14,7 @@ Private collaborator preview. Not approved for public visibility.
 - Exported the current hierarchical skill snapshot and deterministic functions.
 - Added automated release validation and contribution/security guidance.
 
-## Required before public release
+## Required before final archival release
 
 - Finish the pre-release GPT, Kimi, Qwen, DeepSeek, and GLM comparison matrix.
 - Retry only provider-failed Kimi and Qwen rows where applicable.
@@ -24,14 +24,12 @@ Private collaborator preview. Not approved for public visibility.
   underlying source right.
 - Confirm that all visual assets are covered by the stated dataset or generator
   terms.
-- Decide whether the 400-question suite should be made public immediately or
-  released after an embargo.
 - Replace preview version metadata with the final release version and DOI.
 
 ## Benchmark integrity boundary
 
 The local suite was sealed on 2026-08-31. This GitHub repository was created
-after the current benchmark jobs had been launched. Keeping this preview private
-avoids public disclosure during those runs. Public disclosure permanently ends
-the suite's use as a secret acceptance set.
-
+after the current benchmark jobs had been launched and was made public on
+2026-09-04 (Asia/Taipei). That disclosure permanently ended the suite's use as
+a secret acceptance set. Unfinished runs or replacement rows completed after
+disclosure are post-release evaluations.

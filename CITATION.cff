@@ -6,8 +6,7 @@ authors:
   - family-names: Wang
     given-names: Cheng
     email: wangchengxmu@xmu.edu.cn
-version: 0.1.0-preview
+version: 0.1.1-public-preview
 date-released: 2026-09-04
 repository-code: "https://github.com/wangchengxmu/ChemTester"
 license: MIT
-

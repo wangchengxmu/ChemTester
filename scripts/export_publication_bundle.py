@@ -193,7 +193,7 @@ def export_development_set(project_root: Path, output_root: Path) -> dict[str, A
         else:
             record.update(
                 {
-                    "content_status": "included-private-preview",
+                    "content_status": "included-public-preview",
                     "problem": sanitize_local_paths(problem),
                 }
             )
@@ -210,7 +210,7 @@ def export_development_set(project_root: Path, output_root: Path) -> dict[str, A
         ),
         "record_count": len(records),
         "content_included_count": sum(
-            record["content_status"] == "included-private-preview" for record in records
+            record["content_status"] == "included-public-preview" for record in records
         ),
         "content_withheld_count": sum(
             record["content_status"] == "withheld" for record in records

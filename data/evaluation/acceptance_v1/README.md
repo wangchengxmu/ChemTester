@@ -8,8 +8,7 @@ The file joins each performer-visible problem with its benchmark-recorded
 answer key for reproducibility. `original_seal.json` records the hashes of the
 original split performer/evaluator artifacts and the frozen runtime snapshot.
 
-This repository is currently private. Making this directory public ends the
-suite's secrecy. Results generated after that event must be labeled
-post-release and should not be compared as if they were controlled pre-release
-measurements.
-
+This repository and evaluation set were made public on 2026-09-04
+(Asia/Taipei), ending the suite's secrecy. Results generated after disclosure
+must be labeled post-release and should not be compared as if they were
+controlled pre-release measurements.
