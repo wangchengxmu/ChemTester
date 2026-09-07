@@ -1,0 +1,4 @@
+interface:
+  display_name: "Toxicology Evidence"
+  short_description: "Chemical species, exposure context, and toxicology evidence"
+  default_prompt: "Use $chem-toxicology for the relevant chemistry subproblem, loading only the necessary references."

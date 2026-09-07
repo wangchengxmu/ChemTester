@@ -1,0 +1,126 @@
+{
+  "schema_version": "chemtester-curated-support-policy/v1",
+  "model_decides_retrieval": true,
+  "promote_model_tool_result_to_direct_payload": false,
+  "knowledge": {
+    "managed_topics_registry": "L2_principles/chemtester_compact_problem_solving_skill.registry.json",
+    "quarantine_manifest": "configs/chemistry_support_quarantine.json",
+    "include_dirs": [
+      "L2_principles",
+      "L4_reference"
+    ],
+    "exclude_path_patterns": [
+      "(^|/)benchmark[_-]",
+      "(^|/)generated[_-]frontier",
+      "(^|/)wave[0-9]+",
+      "(^|/)chemtester_compact_problem_solving_skill\\.md$",
+      "advanced_inorganic_polymer_kinetics_crystal_support_20260717"
+    ],
+    "min_score": 3.0,
+    "min_query_coverage": 0.4,
+    "min_anchor_hits": 2,
+    "max_chunk_chars": 3200
+  },
+  "tools": {
+    "contracts": {
+      "equation_balancing_tools.balance_by_inspection": {
+        "max_items_combined": {
+          "parameters": [
+            "reactant_formulas",
+            "product_formulas"
+          ],
+          "maximum": 6
+        },
+        "result_type": "object",
+        "required_result_keys": [
+          "reactants",
+          "products"
+        ]
+      }
+    },
+    "active_tiers": [
+      "core"
+    ],
+    "core_modules": [
+      "acid_base_constants_tools",
+      "acid_base_tools",
+      "amount_conversion_tools",
+      "atomic_composition_tools",
+      "buffer_calculator",
+      "chemometrics_tools",
+      "crystal_structures_tools",
+      "crystallography_tools",
+      "density_tools",
+      "electrolysis_tools",
+      "enthalpy_tools",
+      "equation_balancing_tools",
+      "equilibrium_constant_tools",
+      "equilibrium_tools",
+      "functional_group_tools",
+      "gas_laws_tools",
+      "gibbs_free_energy_tools",
+      "hazardous_waste_compatibility",
+      "ideal_gas_law_tools",
+      "integrated_rate_law_tools",
+      "mass_spec_tools",
+      "nernst_equation",
+      "nmr_splitting_tools",
+      "nmr_tools",
+      "periodic_trends_tools",
+      "ph_calculations_tools",
+      "rate_law_solver",
+      "solution_concentration_tools",
+      "stoichiometric_conversion_tools",
+      "thermodynamic_data_tools",
+      "unit_conversion_tools",
+      "uv_vis_tools"
+    ],
+    "quarantine_patterns": [
+      "(^|_)benchmark(_|$)",
+      "frontier",
+      "answer[_-]?key"
+    ],
+    "hide_undocumented": true,
+    "min_score": 3.0,
+    "max_per_module": 2,
+    "retired_tool_ids": [
+      "amount_conversion_tools.mass_to_moles",
+      "amount_conversion_tools.moles_to_mass",
+      "amount_conversion_tools.moles_to_particles",
+      "amount_conversion_tools.particles_to_moles",
+      "amount_conversion_tools.sigfig_round",
+      "atomic_composition_tools.charge_balance_ok",
+      "atomic_composition_tools.empirical_formula",
+      "atomic_composition_tools.simple_ionic_name",
+      "density_tools.test_buoyancy_correction",
+      "density_tools.test_calculate_density",
+      "density_tools.test_mass_from_density",
+      "density_tools.test_specific_gravity",
+      "density_tools.test_volume_from_density",
+      "density_tools.test_zero_division_errors",
+      "thermodynamic_data_tools.test_database_size",
+      "thermodynamic_data_tools.test_hess_combustion_methane",
+      "thermodynamic_data_tools.test_hess_water_formation",
+      "thermodynamic_data_tools.test_lookup_case_insensitive",
+      "thermodynamic_data_tools.test_lookup_enthalpy",
+      "thermodynamic_data_tools.test_lookup_entropy",
+      "thermodynamic_data_tools.test_lookup_gibbs",
+      "thermodynamic_data_tools.test_missing_species_raises",
+      "thermodynamic_data_tools.test_reaction_entropy",
+      "thermodynamic_data_tools.test_reaction_gibbs",
+      "unit_conversion_tools.test_calculate_molar_mass",
+      "unit_conversion_tools.test_convert_concentration",
+      "unit_conversion_tools.test_convert_energy",
+      "unit_conversion_tools.test_convert_length",
+      "unit_conversion_tools.test_convert_mass",
+      "unit_conversion_tools.test_convert_pressure",
+      "unit_conversion_tools.test_convert_temperature",
+      "unit_conversion_tools.test_convert_volume",
+      "unit_conversion_tools.test_ideal_gas_law",
+      "unit_conversion_tools.test_invalid_units",
+      "unit_conversion_tools.test_moles_mass",
+      "unit_conversion_tools.test_zero_division"
+    ],
+    "retirement_record": "archive/skill_retirements_20260906/resolution.json"
+  }
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Aqueous Equilibria"
+  short_description: "Acid-base, buffers, solubility, and speciation"
+  default_prompt: "Use $chem-aqueous-equilibria for the relevant chemistry subproblem, loading only the necessary references."

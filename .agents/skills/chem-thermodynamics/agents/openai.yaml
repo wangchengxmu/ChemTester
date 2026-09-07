@@ -1,0 +1,4 @@
+interface:
+  display_name: "Thermodynamics"
+  short_description: "Gas states, energy balances, and thermodynamic limits"
+  default_prompt: "Use $chem-thermodynamics for the relevant chemistry subproblem, loading only the necessary references."

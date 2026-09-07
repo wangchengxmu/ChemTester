@@ -1,0 +1,19 @@
+{
+  "schema_version": "native-chemistry-calculators/v1",
+  "tools": {
+    "hazardous_waste_compatibility.lookup_chemical_storage_compatibility": {
+      "contract": {},
+      "description": "Look up an EPA hazardous-waste compatibility chart class pair.\n\nUse this discoverable entry point when a question names two material or\nchemical classes from the EPA chemical-storage compatibility table, such\nas combustible or flammable miscellaneous materials and alkali or\nalkaline-earth metals. Inputs may be EPA group numbers or published class\nnames. The result contains published hazard codes and decoded consequences.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "lookup_chemical_storage_compatibility(chemical_class_a: int | str, chemical_class_b: int | str)",
+      "summary": "Look up an EPA hazardous-waste compatibility chart class pair."
+    },
+    "hazardous_waste_compatibility.lookup_hazardous_waste_compatibility": {
+      "contract": {},
+      "description": "Look up EPA-600/2-80-076 hazards for two reactivity groups.\n\nParameters:\n    group_a: EPA group number or full class name, such as \"Metals, Alkali\n        and Alkaline Earth, Elemental\", \"strong oxidizing agents\", or\n        \"combustible and flammable materials, miscellaneous\".\n    group_b: A different EPA group number or class name.\n\nReturns:\n    Exact chart codes and decoded consequences with source provenance.\n    Empty codes mean only that the chart cell is blank; they do not prove\n    that a mixture is safe. Group 107 always returns the chart's explicit\n    do-not-mix warning.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "lookup_hazardous_waste_compatibility(group_a: int | str, group_b: int | str)",
+      "summary": "Look up EPA-600/2-80-076 hazards for two reactivity groups."
+    }
+  }
+}

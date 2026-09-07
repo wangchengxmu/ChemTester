@@ -1,0 +1,312 @@
+{
+  "schema_version": "native-chemistry-calculators/v1",
+  "tools": {
+    "atomic_composition_tools.average_atomic_mass": {
+      "contract": {},
+      "description": "isotopes: [(mass, fractional_abundance), ...]",
+      "scientific_validity": "not_independently_verified",
+      "signature": "average_atomic_mass(isotopes: list[tuple[float, float]])",
+      "summary": "isotopes: [(mass, fractional_abundance), ...]"
+    },
+    "atomic_composition_tools.empirical_formula_from_percent": {
+      "contract": {},
+      "description": "Determine empirical formula from mass percentages.\n\nArgs:\n    percent_dict: {\"C\": 40.0, \"H\": 6.7, \"O\": 53.3}\n    atomic_masses: Optional element -> mass dict",
+      "scientific_validity": "not_independently_verified",
+      "signature": "empirical_formula_from_percent(percent_dict: dict[str, float], atomic_masses: dict | None=None)",
+      "summary": "Determine empirical formula from mass percentages."
+    },
+    "atomic_composition_tools.molar_mass_from_formula": {
+      "contract": {},
+      "description": "Calculate molar mass from formula string. Handles parentheses like Ca3(PO4)2.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "molar_mass_from_formula(formula: str, atomic_masses: dict | None=None)",
+      "summary": "Calculate molar mass from formula string. Handles parentheses like Ca3(PO4)2."
+    },
+    "atomic_composition_tools.molarity": {
+      "contract": {},
+      "description": "Calculate molarity from mass, molar mass, and solution volume.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "molarity(mass_g: float, molar_mass_gmol: float, volume_L: float)",
+      "summary": "Calculate molarity from mass, molar mass, and solution volume."
+    },
+    "atomic_composition_tools.percent_composition": {
+      "contract": {},
+      "description": "Calculate mass percent of target_element in formula string.\n\nArgs:\n    formula: Chemical formula like \"H2O\", \"NH4NO3\"\n    target_element: Element symbol like \"N\"\n    atomic_masses: Dict of element -> mass (optional, uses defaults if None)\n\nReturns:\n    Mass percent as float (0-100)",
+      "scientific_validity": "not_independently_verified",
+      "signature": "percent_composition(formula: str, target_element: str, atomic_masses: dict | None=None)",
+      "summary": "Calculate mass percent of target_element in formula string."
+    },
+    "electrolysis_tools.charge_from_current_time": {
+      "contract": {},
+      "description": "Calculate total charge passed.\n\nQ = I x t\n\nArgs:\n    current: Current (amperes)\n    time: Time (seconds)\n\nReturns:\n    Charge (coulombs)",
+      "scientific_validity": "not_independently_verified",
+      "signature": "charge_from_current_time(current: float, time: float)",
+      "summary": "Calculate total charge passed."
+    },
+    "electrolysis_tools.compare_galvanic_vs_electrolytic": {
+      "contract": {},
+      "description": "Determine if cell is galvanic or electrolytic.\n\nArgs:\n    E_cell: Cell potential (V)\n\nReturns:\n    Cell type description",
+      "scientific_validity": "not_independently_verified",
+      "signature": "compare_galvanic_vs_electrolytic(E_cell: float)",
+      "summary": "Determine if cell is galvanic or electrolytic."
+    },
+    "electrolysis_tools.current_for_mass": {
+      "contract": {},
+      "description": "Calculate current needed to produce given mass in given time.\n\nI = (m x n x F) / (M x t)\n\nArgs:\n    mass: Desired mass (g)\n    time: Time (seconds)\n    molar_mass: Molar mass (g/mol)\n    n_electrons: Electrons per ion transferred\n\nReturns:\n    Current (amperes)",
+      "scientific_validity": "not_independently_verified",
+      "signature": "current_for_mass(mass: float, time: float, molar_mass: float, n_electrons: int)",
+      "summary": "Calculate current needed to produce given mass in given time."
+    },
+    "electrolysis_tools.electrons_transferred": {
+      "contract": {},
+      "description": "Calculate moles of electrons from charge.\n\nn(e-) = Q / F\n\nArgs:\n    charge: Charge (coulombs)\n\nReturns:\n    Moles of electrons",
+      "scientific_validity": "not_independently_verified",
+      "signature": "electrons_transferred(charge: float)",
+      "summary": "Calculate moles of electrons from charge."
+    },
+    "electrolysis_tools.gas_volume_at_stp": {
+      "contract": {},
+      "description": "Calculate gas volume at STP (22.4 L/mol).\n\nArgs:\n    moles: Moles of gas\n\nReturns:\n    Volume at STP (L)",
+      "scientific_validity": "not_independently_verified",
+      "signature": "gas_volume_at_stp(moles: float)",
+      "summary": "Calculate gas volume at STP (22.4 L/mol)."
+    },
+    "electrolysis_tools.mass_from_electrolysis": {
+      "contract": {},
+      "description": "Calculate mass of product from electrolysis using Faraday's law.\n\nm = (M x I x t) / (n x F)\n\nArgs:\n    current: Current (amperes)\n    time: Time (seconds)\n    molar_mass: Molar mass of product (g/mol)\n    n_electrons: Electrons per ion transferred\n\nReturns:\n    Mass of product (g)\n\nExamples:\n    >>> mass_from_electrolysis(2.0, 3600, 63.55, 2)\n    2.37",
+      "scientific_validity": "not_independently_verified",
+      "signature": "mass_from_electrolysis(current: float, time: float, molar_mass: float, n_electrons: int)",
+      "summary": "Calculate mass of product from electrolysis using Faraday's law."
+    },
+    "electrolysis_tools.minimum_voltage_for_electrolysis": {
+      "contract": {},
+      "description": "Calculate minimum voltage needed for electrolysis.\n\nFor nonspontaneous cell (E_cell < 0), minimum voltage = |E_cell|\n\nArgs:\n    E_cell: Cell potential (V) - will be negative for electrolysis\n\nReturns:\n    Minimum voltage (positive value)",
+      "scientific_validity": "not_independently_verified",
+      "signature": "minimum_voltage_for_electrolysis(E_cell: float)",
+      "summary": "Calculate minimum voltage needed for electrolysis."
+    },
+    "electrolysis_tools.moles_from_electrolysis": {
+      "contract": {},
+      "description": "Calculate moles of product from electrolysis.\n\nArgs:\n    current: Current (amperes)\n    time: Time (seconds)\n    n_electrons: Electrons per ion transferred\n\nReturns:\n    Moles of product",
+      "scientific_validity": "not_independently_verified",
+      "signature": "moles_from_electrolysis(current: float, time: float, n_electrons: int)",
+      "summary": "Calculate moles of product from electrolysis."
+    },
+    "electrolysis_tools.time_for_mass": {
+      "contract": {},
+      "description": "Calculate time needed to produce given mass by electrolysis.\n\nt = (m x n x F) / (M x I)\n\nArgs:\n    mass: Desired mass (g)\n    current: Current (amperes)\n    molar_mass: Molar mass (g/mol)\n    n_electrons: Electrons per ion transferred\n\nReturns:\n    Time (seconds)",
+      "scientific_validity": "not_independently_verified",
+      "signature": "time_for_mass(mass: float, current: float, molar_mass: float, n_electrons: int)",
+      "summary": "Calculate time needed to produce given mass by electrolysis."
+    },
+    "equation_balancing_tools.balance_by_inspection": {
+      "contract": {
+        "max_items_combined": {
+          "maximum": 6,
+          "parameters": [
+            "reactant_formulas",
+            "product_formulas"
+          ]
+        },
+        "required_result_keys": [
+          "reactants",
+          "products"
+        ],
+        "result_type": "object"
+      },
+      "description": "Balance equation using systematic coefficient search.\n\nFor simple equations, tries integer coefficients up to max_coeff.\n\nParameters:\n    reactant_formulas: list of formula strings\n    product_formulas: list of formula strings\n    max_coeff: maximum coefficient to try (default 20)\n\nReturns:\n    dict: {'reactants': [(formula, coeff), ...], \n           'products': [(formula, coeff), ...]}\n    or None if cannot balance\n\nExamples:\n    >>> balance_by_inspection([\"H2\", \"O2\"], [\"H2O\"])\n    {'reactants': [('H2', 2), ('O2', 1)], 'products': [('H2O', 2)]}",
+      "scientific_validity": "not_independently_verified",
+      "signature": "balance_by_inspection(reactant_formulas, product_formulas, max_coeff=20)",
+      "summary": "Balance equation using systematic coefficient search."
+    },
+    "equation_balancing_tools.balance_redox_half_reaction": {
+      "contract": {},
+      "description": "Balance a one-reactant/one-product redox half-reaction.\n\nThe caller supplies formulas without charge suffixes and integer species\ncharges separately. The function balances the conserved redox-active atoms\nfirst, then H/O and charge with H2O, H+, OH-, and electrons. It returns a\nstructured atom/charge audit plus the electron side and count.\n\nExamples:\n    balance_redox_half_reaction(\"MnO4\", -1, \"Mn\", 2, \"acidic\")\n    balance_redox_half_reaction(\"MnO4\", -1, \"MnO2\", 0, \"basic\")",
+      "scientific_validity": "not_independently_verified",
+      "signature": "balance_redox_half_reaction(reactant_formula, reactant_charge, product_formula, product_charge, medium='acidic')",
+      "summary": "Balance a one-reactant/one-product redox half-reaction."
+    },
+    "equation_balancing_tools.check_balance": {
+      "contract": {},
+      "description": "Check if equation is balanced.\n\nParameters:\n    reactants: list of (formula, coefficient) tuples\n    products: list of (formula, coefficient) tuples\n\nReturns:\n    tuple: (is_balanced: bool, element_counts: dict)\n    element_counts: {element: (reactant_count, product_count)} for debugging\n\nExamples:\n    >>> check_balance([(\"H2\", 2), (\"O2\", 1)], [(\"H2O\", 2)])\n    (True, {'H': (4, 4), 'O': (2, 2)})\n    >>> check_balance([(\"H2\", 1), (\"O2\", 1)], [(\"H2O\", 1)])\n    (False, {'H': (2, 2), 'O': (2, 1)})",
+      "scientific_validity": "not_independently_verified",
+      "signature": "check_balance(reactants, products)",
+      "summary": "Check if equation is balanced."
+    },
+    "equation_balancing_tools.complete_to_net_ionic": {
+      "contract": {},
+      "description": "Remove spectator ions from complete ionic equation.\n\nParameters:\n    complete_ionic_eq: dict with 'reactants' and 'products' as lists of (ion, coeff, original)\n\nReturns:\n    dict with 'reactants' and 'products' as lists of (ion, coeff)\n\nExamples:\n    >>> eq = {\n    ...     'reactants': [('Ag+', 1, 'AgNO3'), ('Cl-', 1, 'NaCl'), ('Na+', 1, 'NaCl'), ('NO3-', 1, 'AgNO3')],\n    ...     'products': [('AgCl', 1, 'AgCl'), ('Na+', 1, 'Na+'), ('NO3-', 1, 'NO3-')]\n    ... }\n    >>> complete_to_net_ionic(eq)\n    {'reactants': [('Ag+', 1), ('Cl-', 1)], 'products': [('AgCl', 1)]}",
+      "scientific_validity": "not_independently_verified",
+      "signature": "complete_to_net_ionic(complete_ionic_eq)",
+      "summary": "Remove spectator ions from complete ionic equation."
+    },
+    "equation_balancing_tools.count_atoms": {
+      "contract": {},
+      "description": "Count atoms in a chemical formula with coefficient.\n\nParameters:\n    formula: chemical formula string (e.g., \"H2O\", \"Ca(OH)2\")\n    coefficient: coefficient in equation\n\nReturns:\n    dict: {element: count}\n\nExamples:\n    >>> count_atoms(\"H2O\", coefficient=2)\n    {'H': 4, 'O': 2}",
+      "scientific_validity": "not_independently_verified",
+      "signature": "count_atoms(formula, coefficient=1)",
+      "summary": "Count atoms in a chemical formula with coefficient."
+    },
+    "equation_balancing_tools.format_equation": {
+      "contract": {},
+      "description": "Format a balanced equation dict as a readable string.\n\nParameters:\n    balanced_eq: dict with 'reactants' and 'products' lists\n\nReturns:\n    str: formatted equation\n\nExamples:\n    >>> format_equation({'reactants': [('H2', 2), ('O2', 1)], 'products': [('H2O', 2)]})\n    '2 H2 + O2 -> 2 H2O'",
+      "scientific_validity": "not_independently_verified",
+      "signature": "format_equation(balanced_eq)",
+      "summary": "Format a balanced equation dict as a readable string."
+    },
+    "equation_balancing_tools.molecular_to_ionic": {
+      "contract": {},
+      "description": "Convert molecular equation to complete ionic equation.\n\nParameters:\n    molecular_eq: dict with 'reactants' and 'products' lists of (formula, coeff, state)\n                  state should be 'aq', 's', 'l', or 'g'\n    solubility_rules: optional dict mapping ions to solubility (True = soluble)\n                      If None, uses basic rules\n\nReturns:\n    dict with 'reactants' and 'products' as lists of (ion_formula, coeff, original_compound)\n\nNote: This is a simplified implementation for common ionic compounds.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "molecular_to_ionic(molecular_eq, solubility_rules=None)",
+      "summary": "Convert molecular equation to complete ionic equation."
+    },
+    "equation_balancing_tools.parse_formula": {
+      "contract": {},
+      "description": "Parse a chemical formula into element counts.\n\nHandles:\n- Simple formulas: H2O, NaCl\n- Parentheses: Ca(OH)2, Al2(SO4)3\n- Nested not supported for simplicity\n\nParameters:\n    formula: chemical formula string (e.g., \"H2O\", \"Ca(OH)2\")\n\nReturns:\n    dict: {element: count}\n\nExamples:\n    >>> parse_formula(\"H2O\")\n    {'H': 2, 'O': 1}\n    >>> parse_formula(\"Ca(OH)2\")\n    {'Ca': 1, 'O': 2, 'H': 2}",
+      "scientific_validity": "not_independently_verified",
+      "signature": "parse_formula(formula)",
+      "summary": "Parse a chemical formula into element counts."
+    },
+    "nernst_equation.cell_potential_from_K": {
+      "contract": {},
+      "description": "Calculate standard cell potential from equilibrium constant.\n\nEdeg = (RT/nF) ln(K) = (0.05916/n) log10(K) at 25degC\n\nArgs:\n    E0: Not used, kept for API consistency\n    n: Number of electrons transferred\n    K: Equilibrium constant\n\nReturns:\n    Standard cell potential (V)\n\nExamples:\n    >>> # Reverse calculation\n    >>> E0_calc = cell_potential_from_K(0, 2, 3e15)\n    >>> round(E0_calc, 2)\n    0.46",
+      "scientific_validity": "not_independently_verified",
+      "signature": "cell_potential_from_K(E0: float, n: float, K: float)",
+      "summary": "Calculate standard cell potential from equilibrium constant."
+    },
+    "nernst_equation.cell_potential_from_half_reactions": {
+      "contract": {},
+      "description": "Calculate cell potential from half-reaction potentials.\n\nEdeg_cell = Edeg_cathode - Edeg_anode\n\nArgs:\n    E0_cathode: Standard reduction potential of cathode (V)\n    E0_anode: Standard reduction potential of anode (V)\n    n: Number of electrons transferred\n    Q: Reaction quotient (default 1 for standard conditions)\n    T: Temperature (K)\n\nReturns:\n    Cell potential (V)\n\nExamples:\n    >>> # Zn/Cu galvanic cell\n    >>> E = cell_potential_from_half_reactions(0.34, -0.76, 2)  # Cu2+/Cu, Zn2+/Zn\n    >>> round(E, 2)\n    1.1",
+      "scientific_validity": "not_independently_verified",
+      "signature": "cell_potential_from_half_reactions(E0_cathode: float, E0_anode: float, n: float, Q: float=1.0, T: float=298.15)",
+      "summary": "Calculate cell potential from half-reaction potentials."
+    },
+    "nernst_equation.concentration_cell_potential": {
+      "contract": {},
+      "description": "Calculate potential of a concentration cell.\n\nE = (RT/nF) ln(c_cathode/c_anode)\n\nFor a concentration cell, Edeg = 0 (same electrode materials)\n\nArgs:\n    n: Number of electrons transferred\n    c_anode: Concentration at anode (M)\n    c_cathode: Concentration at cathode (M)\n    T: Temperature (K)\n\nReturns:\n    Cell potential (V)\n\nExamples:\n    >>> E = concentration_cell_potential(1, 0.01, 0.1)  # 10x difference\n    >>> round(E, 4)\n    0.0592\n    >>> E = concentration_cell_potential(2, 0.01, 0.1)\n    >>> round(E, 4)\n    0.0296",
+      "scientific_validity": "not_independently_verified",
+      "signature": "concentration_cell_potential(n: float, c_anode: float, c_cathode: float, T: float=298.15)",
+      "summary": "Calculate potential of a concentration cell."
+    },
+    "nernst_equation.equilibrium_constant_from_potential": {
+      "contract": {},
+      "description": "Calculate equilibrium constant K from standard cell potential.\n\nK = exp(nFEdeg/RT)\n\nAlso: log10(K) = nEdeg/0.05916 at 25degC\n\nArgs:\n    E0: Standard cell potential (V)\n    n: Number of electrons transferred\n    T: Temperature (K)\n\nReturns:\n    Equilibrium constant K\n\nExamples:\n    >>> K = equilibrium_constant_from_potential(0.46, 2)\n    >>> round(K, 0)\n    3.0e+15\n    >>> K = equilibrium_constant_from_potential(1.10, 2)  # Zn/Cu\n    >>> K > 1e30\n    True",
+      "scientific_validity": "not_independently_verified",
+      "signature": "equilibrium_constant_from_potential(E0: float, n: float, T: float=298.15)",
+      "summary": "Calculate equilibrium constant K from standard cell potential."
+    },
+    "nernst_equation.free_energy_from_potential": {
+      "contract": {},
+      "description": "Calculate Gibbs free energy change from cell potential.\n\nDeltaG = -nFE\n\nArgs:\n    E: Cell potential (V)\n    n: Number of electrons transferred\n\nReturns:\n    DeltaG in Joules per mole\n\nExamples:\n    >>> dG = free_energy_from_potential(1.10, 2)  # Zn/Cu cell\n    >>> round(dG / 1000, 1)  # kJ/mol\n    -212.3",
+      "scientific_validity": "not_independently_verified",
+      "signature": "free_energy_from_potential(E: float, n: float)",
+      "summary": "Calculate Gibbs free energy change from cell potential."
+    },
+    "nernst_equation.nernst_equation": {
+      "contract": {},
+      "description": "Calculate cell potential using the Nernst equation.\n\nE = Edeg - (RT/nF) ln(Q)\n\nAt 25degC (298.15 K), this simplifies to:\nE = Edeg - (0.05916/n) log10(Q)\n\nArgs:\n    E0: Standard cell potential (V)\n    n: Number of electrons transferred\n    Q: Reaction quotient (products/reactants)\n    T: Temperature (K), default 298.15 K (25degC)\n\nReturns:\n    Cell potential (V)\n\nExamples:\n    >>> E = nernst_equation(0.76, 2, 0.01)  # Zn/Cu cell\n    >>> round(E, 3)\n    0.819\n    >>> E = nernst_equation(1.10, 2, 1.0)  # Standard conditions\n    >>> E\n    1.1",
+      "scientific_validity": "not_independently_verified",
+      "signature": "nernst_equation(E0: float, n: float, Q: float, T: float=298.15)",
+      "summary": "Calculate cell potential using the Nernst equation."
+    },
+    "nernst_equation.nernst_equation_25C": {
+      "contract": {},
+      "description": "Calculate cell potential at 25degC using simplified Nernst equation.\n\nE = Edeg - (0.05916/n) log10(Q)\n\nArgs:\n    E0: Standard cell potential (V)\n    n: Number of electrons transferred\n    Q: Reaction quotient\n\nReturns:\n    Cell potential (V)\n\nExamples:\n    >>> E = nernst_equation_25C(0.46, 2, 100)\n    >>> round(E, 3)\n    0.401",
+      "scientific_validity": "not_independently_verified",
+      "signature": "nernst_equation_25C(E0: float, n: float, Q: float)",
+      "summary": "Calculate cell potential at 25degC using simplified Nernst equation."
+    },
+    "nernst_equation.nernst_factor": {
+      "contract": {},
+      "description": "Calculate the Nernst factor (RT/F x ln(10) = 0.05916 V at 25degC).\n\nThis is the factor for: E = Edeg - (factor/n) x log10(Q)\n\nArgs:\n    T: Temperature (K)\n\nReturns:\n    Nernst factor in Volts\n\nExamples:\n    >>> factor = nernst_factor()\n    >>> round(factor, 5)\n    0.05916",
+      "scientific_validity": "not_independently_verified",
+      "signature": "nernst_factor(T: float=298.15)",
+      "summary": "Calculate the Nernst factor (RT/F x ln(10) = 0.05916 V at 25degC)."
+    },
+    "nernst_equation.ph_from_hydrogen_electrode": {
+      "contract": {},
+      "description": "Calculate pH from hydrogen electrode potential.\n\nFor 2H+ + 2e- -> H2, E = -0.05916 x pH (at 1 atm H2)\n\npH = -E / 0.05916\n\nArgs:\n    E: Measured electrode potential vs SHE (V)\n    T: Temperature (K)\n\nReturns:\n    pH value\n\nExamples:\n    >>> ph = ph_from_hydrogen_electrode(-0.30)\n    >>> round(ph, 1)\n    5.1",
+      "scientific_validity": "not_independently_verified",
+      "signature": "ph_from_hydrogen_electrode(E: float, T: float=298.15)",
+      "summary": "Calculate pH from hydrogen electrode potential."
+    },
+    "nernst_equation.potential_from_free_energy": {
+      "contract": {},
+      "description": "Calculate cell potential from Gibbs free energy change.\n\nE = -DeltaG/(nF)\n\nArgs:\n    dG: Gibbs free energy change (J/mol)\n    n: Number of electrons transferred\n\nReturns:\n    Cell potential (V)\n\nExamples:\n    >>> E = potential_from_free_energy(-212267, 2)\n    >>> round(E, 2)\n    1.1",
+      "scientific_validity": "not_independently_verified",
+      "signature": "potential_from_free_energy(dG: float, n: float)",
+      "summary": "Calculate cell potential from Gibbs free energy change."
+    },
+    "nernst_equation.potential_from_ph": {
+      "contract": {},
+      "description": "Calculate hydrogen electrode potential at given pH.\n\nE = -0.05916 x pH (at 25degC, 1 atm H2)\n\nArgs:\n    pH: pH value\n    T: Temperature (K)\n\nReturns:\n    Electrode potential (V)\n\nExamples:\n    >>> E = potential_from_ph(7.0)\n    >>> round(E, 3)\n    -0.414",
+      "scientific_validity": "not_independently_verified",
+      "signature": "potential_from_ph(pH: float, T: float=298.15)",
+      "summary": "Calculate hydrogen electrode potential at given pH."
+    },
+    "nernst_equation.reaction_quotient": {
+      "contract": {},
+      "description": "Calculate reaction quotient Q from concentrations.\n\nQ = \u03a0([products]^coefficients) / \u03a0([reactants]^coefficients)\n\nArgs:\n    concentrations_products: Dict of {species: concentration} for products\n    concentrations_reactants: Dict of {species: concentration} for reactants\n    stoich_products: Stoichiometric coefficients for products (default 1)\n    stoich_reactants: Stoichiometric coefficients for reactants (default 1)\n\nReturns:\n    Reaction quotient Q\n\nExamples:\n    >>> # For reaction: Zn(s) + Cu2+ -> Zn2+ + Cu(s)\n    >>> # Q = [Zn2+] / [Cu2+] (solids have activity = 1)\n    >>> Q = reaction_quotient({'Zn2+': 0.1}, {'Cu2+': 1.0})\n    >>> Q\n    0.1",
+      "scientific_validity": "not_independently_verified",
+      "signature": "reaction_quotient(concentrations_products: Dict[str, float], concentrations_reactants: Dict[str, float], stoich_products: Optional[Dict[str, float]]=None, stoich_reactants: Optional[Dict[str, float]]=None)",
+      "summary": "Calculate reaction quotient Q from concentrations."
+    },
+    "nernst_equation.standard_free_energy_from_potential": {
+      "contract": {},
+      "description": "Calculate standard Gibbs free energy change from standard cell potential.\n\nDeltaGdeg = -nFEdeg\n\nArgs:\n    E0: Standard cell potential (V)\n    n: Number of electrons transferred\n\nReturns:\n    DeltaGdeg in Joules per mole\n\nExamples:\n    >>> dG0 = standard_free_energy_from_potential(1.10, 2)\n    >>> round(dG0 / 1000, 1)  # kJ/mol\n    -212.3",
+      "scientific_validity": "not_independently_verified",
+      "signature": "standard_free_energy_from_potential(E0: float, n: float)",
+      "summary": "Calculate standard Gibbs free energy change from standard cell potential."
+    },
+    "nernst_equation.temperature_correction_factor": {
+      "contract": {},
+      "description": "Calculate temperature correction for the Nernst equation.\n\nReturns RT/F in volts.\n\nArgs:\n    T: Temperature (K)\n\nReturns:\n    RT/F in Volts\n\nExamples:\n    >>> factor = temperature_correction_factor(298.15)\n    >>> round(factor * 1000, 2)  # mV\n    25.69",
+      "scientific_validity": "not_independently_verified",
+      "signature": "temperature_correction_factor(T: float)",
+      "summary": "Calculate temperature correction for the Nernst equation."
+    },
+    "periodic_trends_tools.bond_type_prediction": {
+      "contract": {},
+      "description": "Predict bond type between two elements based on electronegativity.\n\nArgs:\n    element1, element2: Element symbols\n\nReturns:\n    Predicted bond type from approximate legacy Pauling-scale\n    electronegativities. The table provenance is unverified and missing\n    values raise ``ValueError`` rather than being treated as zero.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "bond_type_prediction(element1: str, element2: str)",
+      "summary": "Predict bond type between two elements based on electronegativity."
+    },
+    "periodic_trends_tools.classify_element": {
+      "contract": {},
+      "description": "Classify element as metal, nonmetal, or metalloid.\n\nArgs:\n    element: Element symbol\n\nReturns:\n    Classification string",
+      "scientific_validity": "not_independently_verified",
+      "signature": "classify_element(element: str)",
+      "summary": "Classify element as metal, nonmetal, or metalloid."
+    },
+    "periodic_trends_tools.compare_electronegativity": {
+      "contract": {},
+      "description": "Compare electronegativities of two elements.\n\nArgs:\n    element1, element2: Element symbols\n\nReturns:\n    Dict with approximate legacy Pauling-scale EN values and comparison.\n    The table provenance is unverified; ``difference`` is computed from\n    stored precision, equal values are ties at stored table precision, and\n    missing values raise ``ValueError``.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "compare_electronegativity(element1: str, element2: str)",
+      "summary": "Compare electronegativities of two elements."
+    },
+    "periodic_trends_tools.oxide_type": {
+      "contract": {},
+      "description": "Predict if element oxide is acidic, basic, or amphoteric.\n\nArgs:\n    element: Element symbol\n\nReturns:\n    Oxide type for the exact conventional highest-period-3 oxide in\n    ``OXIDE_TYPE_MAP``: Na2O, MgO, Al2O3, SiO2, P4O10, SO3, or Cl2O7.\n    Elements outside that limited map raise ``ValueError``.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "oxide_type(element: str)",
+      "summary": "Predict if element oxide is acidic, basic, or amphoteric."
+    },
+    "periodic_trends_tools.predict_atomic_radius_trend": {
+      "contract": {},
+      "description": "Predict which element has larger atomic radius.\n\nArgs:\n    element1, element2: Element symbols\n\nReturns:\n    Comparison result. The comparison uses approximate legacy values in\n    ``ATOMIC_RADII`` with units of pm; the radius definition and provenance\n    are not specified or independently verified, so this is not an\n    authoritative exact-radius claim. Equal values are ties at stored\n    table precision. Missing values raise ``ValueError``.\n\nExamples:\n    >>> predict_atomic_radius_trend('Na', 'K')\n    'K has larger radius'",
+      "scientific_validity": "not_independently_verified",
+      "signature": "predict_atomic_radius_trend(element1: str, element2: str)",
+      "summary": "Predict which element has larger atomic radius."
+    },
+    "periodic_trends_tools.predict_ionization_energy_trend": {
+      "contract": {},
+      "description": "Predict which element has higher ionization energy.\n\nArgs:\n    element1, element2: Element symbols\n\nReturns:\n    Comparison result using approximate legacy first-ionization-energy\n    values in kJ/mol. The table provenance is unverified; equal values are\n    ties at stored table precision, and missing values raise ``ValueError``.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "predict_ionization_energy_trend(element1: str, element2: str)",
+      "summary": "Predict which element has higher ionization energy."
+    }
+  }
+}

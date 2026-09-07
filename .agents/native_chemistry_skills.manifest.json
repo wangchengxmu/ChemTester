@@ -1,0 +1,744 @@
+{
+  "calculator_interface_omissions": {
+    "chemometrics_tools.one_way_anova": "Positional-only or variadic interface is not supported by the keyword-only JSON adapter."
+  },
+  "capability_count": 70,
+  "exporter_sha256": "500a009fc1cdc8b5b446b08e5ca1b6c063bde59ee1141bf9f7603d90268be897",
+  "files": {
+    "chem-analytical-quantitation/SKILL.md": "46092bd94d8f3f09f35b354008356a775c39d8acd86903fa021bd42324b170f5",
+    "chem-analytical-quantitation/agents/openai.yaml": "592662d6080b2e4562c90df2cb75dabeaa0fa87088a92ec4120ea43e65e561a3",
+    "chem-analytical-quantitation/references/answer_output_representation_and_provenance.md": "49489cde510c0fe6912cb0af40f9b2908c2f34979d870ea0f0257173bc43fad5",
+    "chem-analytical-quantitation/references/calculators.md": "ff44270f52e822e555fd46c15bc99696f928ff00f34c31722ce5ada3d2ca7c3e",
+    "chem-analytical-quantitation/references/coupled_back_titration_standardization_balance.md": "6473dd40a9c875f367d08cb9f81237c755e8ba863bb55efa2cd205a78d941451",
+    "chem-analytical-quantitation/references/dimeric_acidic_extractant_stoichiometry.md": "daf111fccb3d5c6a5b1396d46a3579a1312ea50ef8f7d3bbbe0f620a5c524147",
+    "chem-analytical-quantitation/references/purification_phase_and_byproduct_audit.md": "df61b8d17b1313bb22d3df56e18bcf04313d65b4bb8357aeaaebdbcad40c2828",
+    "chem-analytical-quantitation/references/reaction_based_assay_scope_verification.md": "99238cb593315bf5a4949a9bf140da17bf67398e16db0a57dc36c41f870b1a0f",
+    "chem-analytical-quantitation/scripts/calculate.py": "aacd3c5a95c4861f8bbb5be3faa695277ad16b99ed8d2be2854cd16ccd40b6d4",
+    "chem-analytical-quantitation/scripts/catalog.json": "9c10b632ada4be2f3261860adcccb189172ce1860077778b48148d40a599f952",
+    "chem-analytical-quantitation/scripts/tools/amount_conversion_tools.py": "fdd48182fbf76313e2fef0786b342953b85061ad92de325cec2feebc87a636ce",
+    "chem-analytical-quantitation/scripts/tools/density_tools.py": "4a9150c5ebee739868828df2b960c25597581542e4601a83b9fa97bf136b5903",
+    "chem-analytical-quantitation/scripts/tools/solution_concentration_tools.py": "a81fa70b02eaa30254f4e2566270c65ade7011a65ed43be76df25fa67c86bf20",
+    "chem-analytical-quantitation/scripts/tools/stoichiometric_conversion_tools.py": "7aacec7025802dd25a12eb453bd4f821df7f1ff8a132f925d2d6b6a78d456da6",
+    "chem-analytical-quantitation/scripts/tools/unit_conversion_tools.py": "db27e9d82a762c077c7becadc714f743053fb5a951f3d9dd2ad785949118d811",
+    "chem-aqueous-equilibria/SKILL.md": "0f22e7c8e513dfc63fed20793de1b9d86ebea1a2b34129022f2430b900edd3a5",
+    "chem-aqueous-equilibria/agents/openai.yaml": "7fb378e84a3109c5e4ab3a6b0be82d252cc6d18e7fb07a586ffebd2c9472af3f",
+    "chem-aqueous-equilibria/references/calculators.md": "0a4262cd2ace479627041c86d172411f7c59815ba7e5536df81bcd0ebc113043",
+    "chem-aqueous-equilibria/references/colligative_partial_ionization_particle_balance.md": "b7c3bdcdc26b735a3f3c7c9fcf7b207b18bd646b1ebad9749b60c46d2e7343b1",
+    "chem-aqueous-equilibria/references/coupled_solubility_acid_base_regression.md": "61c71b514572f6c8efde2138b1fce0418ab52226c3d99fd5d8cf3372feefaca6",
+    "chem-aqueous-equilibria/references/matched_acid_counteranion_trend_audit.md": "5dfb6d8cb8be690d5539ed48bb6e3790435ae848029c3e3c962a6b1396a5f7a9",
+    "chem-aqueous-equilibria/references/qualitative_ionic_solubility_causticity_screening.md": "127dbf9cd7819a9afa8baae8cd32f91eee9254f219f49f9131a91fb0836f949c",
+    "chem-aqueous-equilibria/references/temperature_shifted_carbonate_scale_limit.md": "51edda73969995ac27b4b41e8680810faa767ce1b623777120a5d943032b9d57",
+    "chem-aqueous-equilibria/requirements.txt": "e09f656c130b9c08b2c5ab7187c891295e449ed77febea2a6ceee9cc98ccb0fc",
+    "chem-aqueous-equilibria/scripts/calculate.py": "aacd3c5a95c4861f8bbb5be3faa695277ad16b99ed8d2be2854cd16ccd40b6d4",
+    "chem-aqueous-equilibria/scripts/catalog.json": "f91aba8c03db004e2070244a083d7cdf170f9e39f569c753a14a7fedd2acc440",
+    "chem-aqueous-equilibria/scripts/tools/acid_base_constants_tools.py": "a252f3a95f793a389e956da2bd917ef2923ec7dc5d4029d10ac5dd7c496569d2",
+    "chem-aqueous-equilibria/scripts/tools/acid_base_tools.py": "f57e195a360443084183730a7d0f181a2ce250815ea4b58e3b8c21acac61da6e",
+    "chem-aqueous-equilibria/scripts/tools/buffer_calculator.py": "fb000f6dac68a39a98ec7bb4d4736a91164723462375024fcf722fc1f0d24d4c",
+    "chem-aqueous-equilibria/scripts/tools/equilibrium_constant_tools.py": "82a732f396acd1374ab39616b48d5f85a74a7cc698ea40f9f84b1fa928cc7c40",
+    "chem-aqueous-equilibria/scripts/tools/equilibrium_tools.py": "b73128cb91df3aaede147072fcbad27f6755cc0416a9bfe0bf14aa780fb5c262",
+    "chem-aqueous-equilibria/scripts/tools/ph_calculations_tools.py": "7881e74d9adb2eb2b9a0af84361a1ea991c90933faa830de92368fbe53781ef7",
+    "chem-biomolecular-analysis/SKILL.md": "564404b4f4d91bd5b2b69a3c2fa03dc66cce4efcd14cbdfcb2056c5885f15808",
+    "chem-biomolecular-analysis/agents/openai.yaml": "a0b23a0b81968f77aafd45c08c0f3b52f95b12ee54eaff8d8e2a6b7c61edb8d4",
+    "chem-biomolecular-analysis/references/calculators.md": "4ef35f9479ceeac2d67790e577c71f7db155091fd20d86c6dfe992a90d47fc65",
+    "chem-biomolecular-analysis/references/competitive_itc_affinity_identifiability.md": "907736d98e3aa4a2eb6ab82ce70da87960b3a97b02ce8599997b3951dbcf463c",
+    "chem-biomolecular-analysis/references/conformational_rigidity_binding_stage_separation.md": "3016cca5b13a4784396562c9dd45a656e43b4f085993e418ab8c67a9ed172dbb",
+    "chem-biomolecular-analysis/references/early_virtual_screening_profile_comparison.md": "0b239f1717b622492ce175e5ab0f70389433107196d0ebaba9e66a9093fbf872",
+    "chem-biomolecular-analysis/references/low_template_pcr_directional_outcome_screening.md": "1f080e885ddbdbb747f5f42e42cc3ee76e995eafbb70b60908fde6d8d2023a91",
+    "chem-biomolecular-analysis/references/protein_iex_selection_workflow_ordering.md": "2f9deacb225389f5f200756e67ad4744fd89ca3d9afb42d9bced1a9ce532ef2a",
+    "chem-biomolecular-analysis/requirements.txt": "929337ba97056cac80c12a93f418056d95655f13ad8a7dbe9f1bb8e6caedbc49",
+    "chem-biomolecular-analysis/scripts/calculate.py": "aacd3c5a95c4861f8bbb5be3faa695277ad16b99ed8d2be2854cd16ccd40b6d4",
+    "chem-biomolecular-analysis/scripts/catalog.json": "fff62452ae8091f702c1089121d08caf330f6c2d79dca244d38e6b5860b14e62",
+    "chem-biomolecular-analysis/scripts/tools/chemometrics_tools.py": "41404818c77a3ce60a0a97ca791505de79763d7f32fbdc867c1dbe3aa1eaa7b5",
+    "chem-crystal-structures/SKILL.md": "872d7d3a57754f4e52b73e9e31925e54b573948a9e90fbbea9f9c58589966fa6",
+    "chem-crystal-structures/agents/openai.yaml": "a6e033f5adff9a1cd07f0e27b2eb084d0e1099e3e855f41a59eefce16cd4da6a",
+    "chem-crystal-structures/references/calculators.md": "9cb55495c3d885606a756f5916c1d131b69288e5bbb385c56c1e3083701f7c55",
+    "chem-crystal-structures/references/fractional_coordinate_polyhedron_metrics.md": "632ff0be34f4d6a559b31ab599468500ce2f619c50de4eef0e1930d4d85f5e4c",
+    "chem-crystal-structures/references/peroxo_crystal_speciation_tga_closure.md": "c7d12923fa42df8bbb5ed0da7a3053b460e719a8f0a7c1d1a3d11a9a734aeec2",
+    "chem-crystal-structures/references/unit_cell_density_composition_triangulation.md": "4d5b4cd92d713707ac5e0af636ec2412a6f3b1bb8b69d51da625c5fa4c91dbfa",
+    "chem-crystal-structures/scripts/calculate.py": "aacd3c5a95c4861f8bbb5be3faa695277ad16b99ed8d2be2854cd16ccd40b6d4",
+    "chem-crystal-structures/scripts/catalog.json": "403f425a85d5c4c43e6985b3b13bf3745f530557e8236eff5c2dbe0ea03cd2d2",
+    "chem-crystal-structures/scripts/tools/crystal_structures_tools.py": "342b1f84f8af513009b3f29ef50a56b310f921495e5fde4cef1277fbf00031c2",
+    "chem-crystal-structures/scripts/tools/crystallography_tools.py": "dc20a5ce3c7fc881331340b6ce501d5385a8683efb60b4050e39de5110154032",
+    "chem-inorganic-reactions/SKILL.md": "fc5d44487f928126a092c8aabbdae0d149504f22308ccdf5499456289921b164",
+    "chem-inorganic-reactions/agents/openai.yaml": "c9f23662ccda6e1847295ff927ef2468d1867128a0baa958fdfcdd76559c9f56",
+    "chem-inorganic-reactions/references/calculators.md": "17522ad1526e7fe5494a3915b7764c3da0e5977b5e5eaa8297d44ded755fd4a6",
+    "chem-inorganic-reactions/references/coordination_salt_composition_symmetry_speciation.md": "b8adffb14c0461f1a4e406996093109fd28a1a314dc64ac1e95b0a8228f4c434",
+    "chem-inorganic-reactions/references/exact_tabulated_periodic_property_disambiguation.md": "d30c204ead4cff861c748ad6348a009c731d85daa9c1e334440377a4f5fb7f36",
+    "chem-inorganic-reactions/references/f_block_scorpionate_condition_speciation.md": "7aa7e6ee4c3cc90cc8e43b76e129b874dc952fc2a365770a1cbca20c4cd18a44",
+    "chem-inorganic-reactions/references/inorganic_gas_trap_stoichiometry.md": "6f38251329702b2d85a6b1b3ddb8a3be659fe0a4fec6f386a07cf8bb838cf12c",
+    "chem-inorganic-reactions/references/inorganic_reaction_constraint_ledger.md": "8070c778242fbc57d1782845fc955da4991970a7fe128c03cf1ff63b23b97106",
+    "chem-inorganic-reactions/references/pressure_coupled_spin_orbital_geometry.md": "18bba29a86342085d10df50c94cdd8080440ce8d85c4ae7750f752380e8f66fc",
+    "chem-inorganic-reactions/references/qualitative_inorganic_constraint_deduction.md": "47d8a2409eda8d4ebe54408090bf3a0b8dbe7bd5926228b2352949439084605f",
+    "chem-inorganic-reactions/references/redox_half_reaction_atom_electron_ledger.md": "ff36ca064b52416aa819a6b7aebdcd3025365fb1ec43a26684cf7182ec7317d2",
+    "chem-inorganic-reactions/scripts/calculate.py": "aacd3c5a95c4861f8bbb5be3faa695277ad16b99ed8d2be2854cd16ccd40b6d4",
+    "chem-inorganic-reactions/scripts/catalog.json": "e905f7c1773b1a28668c802ab199d1640a573aceefda7762fcdc72aa448af6a0",
+    "chem-inorganic-reactions/scripts/tools/atomic_composition_tools.py": "900b4140c25abf6765f22bd960ac4fd633d3c6fb5e30909e530829f08df03bf2",
+    "chem-inorganic-reactions/scripts/tools/electrolysis_tools.py": "fc81355b326aaf8ca5ce6245ef6edbe1378acee3c733af8ae55737abfe7711ab",
+    "chem-inorganic-reactions/scripts/tools/equation_balancing_tools.py": "7f15975af05639aea973ec96af0b17cc70f593e49c3a356e849e682392d20807",
+    "chem-inorganic-reactions/scripts/tools/nernst_equation.py": "504296583cf831c4cae259c55493c527df98e37c1848cf7322293a99c6a8b8c4",
+    "chem-inorganic-reactions/scripts/tools/periodic_trends_tools.py": "63cf0aa83fa0f1f07374b145161a45b3ef4d2a37ad14a27a915cc3203db1c5cc",
+    "chem-inorganic-reactions/scripts/tools/unit_conversion_tools.py": "db27e9d82a762c077c7becadc714f743053fb5a951f3d9dd2ad785949118d811",
+    "chem-kinetics-reactors/SKILL.md": "77b796b6d7439334d29bc839e48a12a401a8c225a505818654cf756dd980ff0b",
+    "chem-kinetics-reactors/agents/openai.yaml": "bc6c9a6d796f005e2583725282a1ce60e9f142e65d0592390781d43e06121552",
+    "chem-kinetics-reactors/references/calculators.md": "ac66054b719c0f49274948cba486380365719abe2f76362c4156ddf65633c0e5",
+    "chem-kinetics-reactors/references/direction_aware_empirical_activation_energy.md": "1526a89477e841c1a43aa58f9a4051a519ae74310bdbcfc6651e39f4a519588b",
+    "chem-kinetics-reactors/references/reactor_arrangement_reciprocal_rate_axis_disambiguation.md": "5efeb717a944d5404329cc70d15236394c6fa196199dcd372daf64cd246e52f7",
+    "chem-kinetics-reactors/references/role_scoped_quantity_binding.md": "8f79f135acff0ed7ee516f08ad0fdd19f9b2f30188601530e683c9e83ecee07f",
+    "chem-kinetics-reactors/references/secondary_deuterium_isotope_effect_rate_ranking.md": "d393a07afac838fbe74b61199372e483fe2d55d73e095fa3347eb4744d5c5801",
+    "chem-kinetics-reactors/requirements.txt": "1978c5330a34a48fac00c1107de3949b8c8da3bd11517f59ca9b4510363c6c8a",
+    "chem-kinetics-reactors/scripts/calculate.py": "aacd3c5a95c4861f8bbb5be3faa695277ad16b99ed8d2be2854cd16ccd40b6d4",
+    "chem-kinetics-reactors/scripts/catalog.json": "2ca93953d13c768d0a6c42c21109367c4515ef4e939affc158a12723c25e5c49",
+    "chem-kinetics-reactors/scripts/tools/integrated_rate_law_tools.py": "00768d2810061aa1dba73d6a2ba510038d53c91916ba8fddba724506f30b9a28",
+    "chem-kinetics-reactors/scripts/tools/rate_law_solver.py": "a3ed21561725848f9999a7aa0b428abfbd2a0e173b62c9f60216719a0d11fa9a",
+    "chem-organic-mechanisms/SKILL.md": "060f132bdec8374d10a225a792f7daf6d911eefe02cb1850165f063c5090b37f",
+    "chem-organic-mechanisms/agents/openai.yaml": "7a84ca5d997e5e0f66f636c296639b742b7be3d413da7a8a05f01d8e8f98ba3d",
+    "chem-organic-mechanisms/references/addition_mechanism_selectivity_disambiguation.md": "0395522e8388c0ce2cd26ecf0eecbf805419df9f73ac5b863da3ec87dbc07f39",
+    "chem-organic-mechanisms/references/calculators.md": "4ff2a0a3504030e6ca9d5783c2b0e144f76c7ba7a4ba4485691dfbf3db87bef2",
+    "chem-organic-mechanisms/references/cannizzaro_eligibility_competing_pathways.md": "134d5531bf412e012f07c451f22002c144c08e922f88475095447c297c6fccea",
+    "chem-organic-mechanisms/references/diels_alder_bridged_stereochemistry.md": "da3da59381681075092e29671900e4023c44be872a4c34f5b92cc40ffb1526cc",
+    "chem-organic-mechanisms/references/evidence_ranked_structural_aromaticity_check.md": "aae7206b4fb69bef732b57105b4dd61b50b236ee1d31d1c307706459cd649709",
+    "chem-organic-mechanisms/references/michael_enolate_product_pair_matching.md": "eec2faa287f86d947bae7b6a07485346f42d12b39ff9fedc4e88cc36a4f395c3",
+    "chem-organic-mechanisms/references/n_aryl_ketonitrone_activated_alkyne_cascade.md": "4ab7c12dc283b4397285341e04fad177732ff1d81dadcf76bab2ba6beb63e727",
+    "chem-organic-mechanisms/references/nitroactivated_aromatic_substitution_site_triage.md": "62a5e92e2cbc224dce8b6e65ee92e373408487b92493f716d349bb7b983dc296",
+    "chem-organic-mechanisms/references/nucleophile_strained_ring_initiation_disambiguation.md": "e78ad5b3fc7c42a5ddf8d0028e21d67676070a4778c914567a99dd2754cfe49f",
+    "chem-organic-mechanisms/references/reaction_center_stereochemical_descriptor_audit.md": "671814c2e56ccf4896dd5e4d35b79f7dec550ad210455633eeb4067030166180",
+    "chem-organic-mechanisms/references/stagewise_organic_structure_to_proton_multiplicity.md": "7bc0dc735e4f1eb1f38fb2e2da120a37169306e16e1cb6cf19128f3b58744072",
+    "chem-organic-mechanisms/scripts/calculate.py": "aacd3c5a95c4861f8bbb5be3faa695277ad16b99ed8d2be2854cd16ccd40b6d4",
+    "chem-organic-mechanisms/scripts/catalog.json": "c107b7380f7bd19396aa20e06365afd21e7d50b7d6b5baf675cb93e4efea4be5",
+    "chem-organic-mechanisms/scripts/tools/functional_group_tools.py": "2da0f35dcfc27f88b6505b62e30912a72ddab0f4d6001dfbea24861c6004f99c",
+    "chem-quantum-models/SKILL.md": "c0dfe18f1fa4b77f6fc52740308cdc70f5860b04b679507763a997530a816522",
+    "chem-quantum-models/agents/openai.yaml": "3ac07a70a96f538d6199380b0ec4b458a0836d218f504cabd9b6b8a8a3505839",
+    "chem-quantum-models/references/atomic_spectroscopy_model_limit_discrimination.md": "631798cf0bb097fcff3cc272c85bb49bc89c174317b379f5b9d83d86e42f0c33",
+    "chem-quantum-models/references/finite_rectangular_barrier_transmission.md": "dd5d17717063a8fa71a4b363b77973fe042625ff5d94e3fdd0358fe81a9db273",
+    "chem-quantum-models/references/vibrational_partition_approximation_thresholds.md": "5ea1211c965b1f8fb87ab7a6b6e103445b6a91830ed2116d97fd294780687964",
+    "chem-safety-references/SKILL.md": "9373a0d54a371bbbc2c117f5f599051c905e85b9a0a144d8daab664087687252",
+    "chem-safety-references/agents/openai.yaml": "8e5f3840647c1c666b5124ea984149985709ec1a4a461d416d4ca9d5cd375f8e",
+    "chem-safety-references/references/calculators.md": "e0eb5dd50a38285241241ec8803748cf18feb1db7553c7596eaf2305e3b8225c",
+    "chem-safety-references/references/chemical_application_scope_verification.md": "bf756f554dcfc14f0fe98745073ea1229287b5b4483ff423c52d27474995c24d",
+    "chem-safety-references/references/corrosive_exposure_first_aid.md": "0b63c6b709f08b139265ef478ca95b68759d5b762b4078cb30c86c4146f84936",
+    "chem-safety-references/references/diazonium_salt_isolation_safety.md": "c39072d2461e07b53c98514445b3d1dc51c58a18016dca0bfd20d073f91012b9",
+    "chem-safety-references/references/empirical_compatibility_table_disambiguation.md": "db76ea611faf02ccd43cb917571606097f3be50d42fd9a5f294449b8c4661c5f",
+    "chem-safety-references/references/explosive_performance_metric_role_disambiguation.md": "ec0d25de56eb5ffdd21a0fe7e1af0019a1c8dfe99efac65968aeac185b8ff320",
+    "chem-safety-references/references/organic_nitro_oxidizer_hazard_comparison.md": "e7e543aa2e7aeb8b0c1be43588ceb1e8778a11ff33e32d226a097fbac622a8ac",
+    "chem-safety-references/references/peroxide_former_visible_degradation_response.md": "e476dbcb92cc5a8aa27e33d1646e8ae7f66a35c72d3bd9f46a39f4a192475284",
+    "chem-safety-references/references/phase_aware_release_response_selection.md": "90d12dd57103810bf5a0d798512ff65f7fca8c646124a82d6dcde748d457ff49",
+    "chem-safety-references/scripts/calculate.py": "aacd3c5a95c4861f8bbb5be3faa695277ad16b99ed8d2be2854cd16ccd40b6d4",
+    "chem-safety-references/scripts/catalog.json": "b09e2091fd5b3b6fa26e8fe030398c1b7126d86844e0a898a9bac6441147e2a0",
+    "chem-safety-references/scripts/tools/hazardous_waste_compatibility.py": "5dc07801e3095432692da5abab50351b93527a019db250f0156c7fb89995cd7b",
+    "chem-spectroscopy/SKILL.md": "1ea4da12e2a289e06834f72e3f205041ca19c3b24fd48292ec0ab722dd1e9080",
+    "chem-spectroscopy/agents/openai.yaml": "45aaaa75f539e86a1cf17daf363cb14b2f8105cd715187809be40b8f4f11e377",
+    "chem-spectroscopy/references/aromatic_carbonyl_ir_positional_effects.md": "26233c6d036694b96acdfb9e1379053d31485bacd51938955359ec2dfce27a5c",
+    "chem-spectroscopy/references/calculators.md": "ee9e9e72c1092aecf3de2d0fabb7ee23554961e0c03f4f632f556a6db5faaa4d",
+    "chem-spectroscopy/references/diastereotopic_methylene_nmr.md": "154bfc3edd4a347883340bd472dcb92be0447325e090497845231d442cf9d0c9",
+    "chem-spectroscopy/references/halogen_isotope_envelope_comparison.md": "24b25535589127c7fefd38c189b835e3f2cbe92ec0ca0b9f91bb451c691d4f8a",
+    "chem-spectroscopy/references/heteronuclear_proton_nmr_multiplicity.md": "08d00f41d191bd81414d9b7afa5ac30371078b51a698b31e7d516d2af62c4cb6",
+    "chem-spectroscopy/references/nmr_experiment_selection_by_information_channel.md": "d363a5d188ec300d9d79e03dfb80d883c4f1e17af0e5dfb99ddd33dd2f82dcaa",
+    "chem-spectroscopy/references/phosphorus_nmr_stagewise_environment_counting.md": "657c3182786611fd9cee288a7a2499901cd174c645c39f554c1656c4c80826dc",
+    "chem-spectroscopy/references/photophysics_color_energy_direction.md": "65d157fd9377a543a2f0e56d52a2334c122d017ff2ed4878427eabb81ff6d4cd",
+    "chem-spectroscopy/scripts/calculate.py": "aacd3c5a95c4861f8bbb5be3faa695277ad16b99ed8d2be2854cd16ccd40b6d4",
+    "chem-spectroscopy/scripts/catalog.json": "d43f7f483abfe8cfc76b8847ab1c20bd20514129c3ae8f1764b1d7850a1f6fb9",
+    "chem-spectroscopy/scripts/tools/mass_spec_tools.py": "ce0b70100982debe9b59f079767ca98ec42c6a99eee0eb9861b409f0e6326b18",
+    "chem-spectroscopy/scripts/tools/nmr_splitting_tools.py": "3466f34dd7b58ef94e49fb39974ddbedf1aa52d5c9d8ca2b24b0a55b019450cb",
+    "chem-spectroscopy/scripts/tools/nmr_tools.py": "e19961df13a940f7cb11710c1927cd74942fd9c12f2c37e99d8af9de0646e682",
+    "chem-spectroscopy/scripts/tools/uv_vis_tools.py": "9ed70f3b0ff165db25cde1d81df7551d55be19af8765b2b2a2a0bc56dc6fda02",
+    "chem-thermodynamics/SKILL.md": "4297912ca512de78274a832dcb3a90408a15d9de9d942d33d74a3cddf3282c49",
+    "chem-thermodynamics/agents/openai.yaml": "ddea3cbc28fb054b28920eb52378f028f4a88dfc26600deba7ac34784dc1ba59",
+    "chem-thermodynamics/references/calculators.md": "e59b20ba197dbf48db147076efa60ce7bb7a000a4437d98f45a31e4d3f36cf6f",
+    "chem-thermodynamics/references/coupled_real_gas_equilibrium_error_analysis.md": "2aa4318a502d8b40c748a501b9741a82956764c373d37a10e16ecd7afe3f186e",
+    "chem-thermodynamics/references/equilibrium_limited_catalytic_conversion.md": "9c5ec2ad92bceee2e62c35cb4ba5f46973f2eb5a33857a95dd01205f579401e1",
+    "chem-thermodynamics/references/fixed_volume_real_gas_enthalpy.md": "fca9fff156245f5237f591e1d9ba085a90f75939acd0ff01894fd4c157803fe8",
+    "chem-thermodynamics/references/monatomic_ideal_gas_entropy.md": "a6053bdb1664bf8a355b46d14958b0f6e4f867d608b164f296965bbda9a2f38e",
+    "chem-thermodynamics/references/oxygen_redox_thermodynamics_kinetics_separation.md": "e3b90dc3a75f64e057ac9175b025f927b0012bc7271cd7af28437df06c9e63e9",
+    "chem-thermodynamics/references/real_gas_compressibility_state_selection.md": "31f49ad9f5f18c967bb72c567a7c0a52c16bd6079ae9a17a960bfd67e98367fe",
+    "chem-thermodynamics/references/reversible_isothermal_heat_entropy.md": "19560504c63bef80eaea929929f974697f690b5aec03751c21468fc1ab7ba33b",
+    "chem-thermodynamics/scripts/calculate.py": "aacd3c5a95c4861f8bbb5be3faa695277ad16b99ed8d2be2854cd16ccd40b6d4",
+    "chem-thermodynamics/scripts/catalog.json": "f385faf34ed0e4c4571cb96bec273bb8be8c541204953efbe2a4e739dbca6d90",
+    "chem-thermodynamics/scripts/tools/enthalpy_tools.py": "a4d0766d36e294c296264b568df77a383d0cc880ec422415dcfbc6b108f57f3e",
+    "chem-thermodynamics/scripts/tools/gas_laws_tools.py": "101e65e6f45a83aaa469cc8d173e540907730bd12e490e87e4630cdbf2186163",
+    "chem-thermodynamics/scripts/tools/gibbs_free_energy_tools.py": "599cd0c344fba7b72701d5b3e47ad6c3eddea378fe339ce938cb163986396baf",
+    "chem-thermodynamics/scripts/tools/ideal_gas_law_tools.py": "f27d3787d2af16a214fe03a0651296b7e96188a925909ab374b4a13bf88fad88",
+    "chem-thermodynamics/scripts/tools/thermodynamic_data_tools.py": "2abde26f28e653e10487bbac8e2490f1554f9e0239bad1365a2434088ce04ada",
+    "chem-toxicology/SKILL.md": "6f747dd41c55a0651e12f3fc3fd53be4ea688e547ab41a2588815a529c8128ad",
+    "chem-toxicology/agents/openai.yaml": "b9bec2add1a96d37b53ac321d344e326c7b49e1060649253c752d7533703f94f",
+    "chem-toxicology/references/class_level_toxicity_scope_control.md": "1774b732e727450b274747f8883a11a980ab85ea98d801e6251aaa23d43d4869",
+    "chem-toxicology/references/heme_toxicant_target_and_oxidation_state_scope.md": "cec3df41bd2f58abdc869eb952ca1b23480e75119b227eb8412f924853e4a837",
+    "chem-toxicology/references/mercury_toxicology_speciation_timecourse.md": "f681b870556b1f9011dc8587a9d48db6911daf09d287af4ba20390daf226104d",
+    "chem-toxicology/references/natural_toxin_process_fate_and_mechanism.md": "7e56b10e19e9726b80a9536ad0e957083c44b680a1a0888ea22ed5d65ddab63e",
+    "chem-toxicology/references/nitrate_nitrite_oxidizer_toxicity.md": "93b237ca6a5354e3cc5cf038195599cf944317239832478e1ed655756c5b9d8d"
+  },
+  "schema_version": "chemtester-native-skill-export/v1",
+  "scope": "Procedures and active calculators only; source corpus retained. No historical answers, evidence records, model routing, or evaluation data exported.",
+  "skill_count": 12,
+  "skills": [
+    {
+      "advertised_modules": [
+        "enthalpy_tools",
+        "gas_laws_tools",
+        "gibbs_free_energy_tools",
+        "ideal_gas_law_tools",
+        "thermodynamic_data_tools"
+      ],
+      "bundled_modules": [
+        "enthalpy_tools",
+        "gas_laws_tools",
+        "gibbs_free_energy_tools",
+        "ideal_gas_law_tools",
+        "thermodynamic_data_tools"
+      ],
+      "calculator_count": 44,
+      "capabilities": [
+        "fixed_volume_real_gas_enthalpy",
+        "monatomic_ideal_gas_entropy",
+        "reversible_isothermal_heat_entropy",
+        "real_gas_compressibility_state_selection",
+        "oxygen_redox_thermodynamics_kinetics_separation",
+        "equilibrium_limited_catalytic_conversion",
+        "coupled_real_gas_equilibrium_error_analysis"
+      ],
+      "name": "chem-thermodynamics",
+      "optional_dependencies": []
+    },
+    {
+      "advertised_modules": [
+        "acid_base_constants_tools",
+        "acid_base_tools",
+        "buffer_calculator",
+        "equilibrium_constant_tools",
+        "equilibrium_tools",
+        "ph_calculations_tools"
+      ],
+      "bundled_modules": [
+        "acid_base_constants_tools",
+        "acid_base_tools",
+        "buffer_calculator",
+        "equilibrium_constant_tools",
+        "equilibrium_tools",
+        "ph_calculations_tools"
+      ],
+      "calculator_count": 68,
+      "capabilities": [
+        "colligative_partial_ionization_particle_balance",
+        "coupled_solubility_acid_base_regression",
+        "qualitative_ionic_solubility_causticity_screening",
+        "matched_acid_counteranion_trend_audit",
+        "temperature_shifted_carbonate_scale_limit"
+      ],
+      "name": "chem-aqueous-equilibria",
+      "optional_dependencies": [
+        "numpy"
+      ]
+    },
+    {
+      "advertised_modules": [
+        "integrated_rate_law_tools",
+        "rate_law_solver"
+      ],
+      "bundled_modules": [
+        "integrated_rate_law_tools",
+        "rate_law_solver"
+      ],
+      "calculator_count": 30,
+      "capabilities": [
+        "reactor_arrangement_reciprocal_rate_axis_disambiguation",
+        "role_scoped_quantity_binding",
+        "secondary_deuterium_isotope_effect_rate_ranking",
+        "direction_aware_empirical_activation_energy"
+      ],
+      "name": "chem-kinetics-reactors",
+      "optional_dependencies": [
+        "numpy",
+        "scipy"
+      ]
+    },
+    {
+      "advertised_modules": [
+        "functional_group_tools"
+      ],
+      "bundled_modules": [
+        "functional_group_tools"
+      ],
+      "calculator_count": 9,
+      "capabilities": [
+        "michael_enolate_product_pair_matching",
+        "diels_alder_bridged_stereochemistry",
+        "addition_mechanism_selectivity_disambiguation",
+        "evidence_ranked_structural_aromaticity_check",
+        "cannizzaro_eligibility_competing_pathways",
+        "stagewise_organic_structure_to_proton_multiplicity",
+        "nitroactivated_aromatic_substitution_site_triage",
+        "reaction_center_stereochemical_descriptor_audit",
+        "nucleophile_strained_ring_initiation_disambiguation",
+        "n_aryl_ketonitrone_activated_alkyne_cascade"
+      ],
+      "name": "chem-organic-mechanisms",
+      "optional_dependencies": []
+    },
+    {
+      "advertised_modules": [
+        "mass_spec_tools",
+        "nmr_splitting_tools",
+        "nmr_tools",
+        "uv_vis_tools"
+      ],
+      "bundled_modules": [
+        "mass_spec_tools",
+        "nmr_splitting_tools",
+        "nmr_tools",
+        "uv_vis_tools"
+      ],
+      "calculator_count": 32,
+      "capabilities": [
+        "photophysics_color_energy_direction",
+        "phosphorus_nmr_stagewise_environment_counting",
+        "halogen_isotope_envelope_comparison",
+        "aromatic_carbonyl_ir_positional_effects",
+        "diastereotopic_methylene_nmr",
+        "nmr_experiment_selection_by_information_channel",
+        "heteronuclear_proton_nmr_multiplicity"
+      ],
+      "name": "chem-spectroscopy",
+      "optional_dependencies": []
+    },
+    {
+      "advertised_modules": [
+        "atomic_composition_tools",
+        "electrolysis_tools",
+        "equation_balancing_tools",
+        "nernst_equation",
+        "periodic_trends_tools"
+      ],
+      "bundled_modules": [
+        "atomic_composition_tools",
+        "electrolysis_tools",
+        "equation_balancing_tools",
+        "nernst_equation",
+        "periodic_trends_tools",
+        "unit_conversion_tools"
+      ],
+      "calculator_count": 42,
+      "capabilities": [
+        "inorganic_gas_trap_stoichiometry",
+        "qualitative_inorganic_constraint_deduction",
+        "exact_tabulated_periodic_property_disambiguation",
+        "pressure_coupled_spin_orbital_geometry",
+        "coordination_salt_composition_symmetry_speciation",
+        "f_block_scorpionate_condition_speciation",
+        "redox_half_reaction_atom_electron_ledger",
+        "inorganic_reaction_constraint_ledger"
+      ],
+      "name": "chem-inorganic-reactions",
+      "optional_dependencies": []
+    },
+    {
+      "advertised_modules": [
+        "amount_conversion_tools",
+        "density_tools",
+        "solution_concentration_tools",
+        "stoichiometric_conversion_tools",
+        "unit_conversion_tools"
+      ],
+      "bundled_modules": [
+        "amount_conversion_tools",
+        "density_tools",
+        "solution_concentration_tools",
+        "stoichiometric_conversion_tools",
+        "unit_conversion_tools"
+      ],
+      "calculator_count": 44,
+      "capabilities": [
+        "coupled_back_titration_standardization_balance",
+        "answer_output_representation_and_provenance",
+        "purification_phase_and_byproduct_audit",
+        "reaction_based_assay_scope_verification",
+        "dimeric_acidic_extractant_stoichiometry"
+      ],
+      "name": "chem-analytical-quantitation",
+      "optional_dependencies": []
+    },
+    {
+      "advertised_modules": [
+        "crystal_structures_tools",
+        "crystallography_tools"
+      ],
+      "bundled_modules": [
+        "crystal_structures_tools",
+        "crystallography_tools"
+      ],
+      "calculator_count": 33,
+      "capabilities": [
+        "unit_cell_density_composition_triangulation",
+        "fractional_coordinate_polyhedron_metrics",
+        "peroxo_crystal_speciation_tga_closure"
+      ],
+      "name": "chem-crystal-structures",
+      "optional_dependencies": []
+    },
+    {
+      "advertised_modules": [
+        "hazardous_waste_compatibility"
+      ],
+      "bundled_modules": [
+        "hazardous_waste_compatibility"
+      ],
+      "calculator_count": 2,
+      "capabilities": [
+        "corrosive_exposure_first_aid",
+        "peroxide_former_visible_degradation_response",
+        "empirical_compatibility_table_disambiguation",
+        "diazonium_salt_isolation_safety",
+        "explosive_performance_metric_role_disambiguation",
+        "organic_nitro_oxidizer_hazard_comparison",
+        "chemical_application_scope_verification",
+        "phase_aware_release_response_selection"
+      ],
+      "name": "chem-safety-references",
+      "optional_dependencies": []
+    },
+    {
+      "advertised_modules": [],
+      "bundled_modules": [],
+      "calculator_count": 0,
+      "capabilities": [
+        "nitrate_nitrite_oxidizer_toxicity",
+        "natural_toxin_process_fate_and_mechanism",
+        "heme_toxicant_target_and_oxidation_state_scope",
+        "mercury_toxicology_speciation_timecourse",
+        "class_level_toxicity_scope_control"
+      ],
+      "name": "chem-toxicology",
+      "optional_dependencies": []
+    },
+    {
+      "advertised_modules": [
+        "chemometrics_tools"
+      ],
+      "bundled_modules": [
+        "chemometrics_tools"
+      ],
+      "calculator_count": 35,
+      "capabilities": [
+        "protein_iex_selection_workflow_ordering",
+        "low_template_pcr_directional_outcome_screening",
+        "early_virtual_screening_profile_comparison",
+        "competitive_itc_affinity_identifiability",
+        "conformational_rigidity_binding_stage_separation"
+      ],
+      "name": "chem-biomolecular-analysis",
+      "optional_dependencies": [
+        "numpy",
+        "scikit-learn",
+        "scipy"
+      ]
+    },
+    {
+      "advertised_modules": [],
+      "bundled_modules": [],
+      "calculator_count": 0,
+      "capabilities": [
+        "atomic_spectroscopy_model_limit_discrimination",
+        "vibrational_partition_approximation_thresholds",
+        "finite_rectangular_barrier_transmission"
+      ],
+      "name": "chem-quantum-models",
+      "optional_dependencies": []
+    }
+  ],
+  "source_resources": {
+    "addition_mechanism_selectivity_disambiguation": [
+      "chem-memory/L2_principles/alkene_chemistry.md",
+      "chem-memory/L2_principles/openstax_organic_ch08_alkene_reactions.md",
+      "chem-memory/L2_principles/conjugated_compounds.md"
+    ],
+    "answer_output_representation_and_provenance": [
+      "chem-memory/L2_principles/chemtester_gap_skills/answer_output_representation_and_provenance.md"
+    ],
+    "aromatic_carbonyl_ir_positional_effects": [
+      "chem-memory/L2_principles/spectroscopy.md",
+      "chem-memory/L2_principles/molecular_spectroscopy.md",
+      "chem-memory/L2_principles/physical_organic_chemistry.md"
+    ],
+    "atomic_spectroscopy_model_limit_discrimination": [
+      "chem-memory/L2_principles/zielinski_ch09_multielectron_atoms.md"
+    ],
+    "cannizzaro_eligibility_competing_pathways": [
+      "chem-memory/L2_principles/openstax_organic_ch23_carbonyl_condensations.md"
+    ],
+    "chemical_application_scope_verification": [],
+    "class_level_toxicity_scope_control": [
+      "chem-memory/L2_principles/4_toxicology.md",
+      "chem-memory/L2_principles/4_1_toxicokinetics.md",
+      "chem-memory/L2_principles/4_2_toxicodynamics_and_molecular_interactions.md",
+      "chem-memory/L2_principles/3_2_hazard_concepts.md"
+    ],
+    "colligative_partial_ionization_particle_balance": [
+      "chem-memory/L2_principles/colligative_properties.md",
+      "chem-memory/L2_principles/acid_base_constants.md"
+    ],
+    "competitive_itc_affinity_identifiability": [],
+    "conformational_rigidity_binding_stage_separation": [],
+    "coordination_salt_composition_symmetry_speciation": [
+      "chem-memory/L2_principles/chemtester_gap_skills/coordination_salt_composition_symmetry_speciation.md",
+      "chem-memory/L2_principles/coordination_chemistry.md",
+      "chem-memory/L2_principles/stereochemistry_chirality.md",
+      "chem-memory/L2_principles/symmetry_group_theory.md",
+      "chem-memory/L2_principles/equation_writing_and_balancing.md"
+    ],
+    "corrosive_exposure_first_aid": [
+      "https://www.ccohs.ca/oshanswers/chemicals/firstaid.html",
+      "L2_principles/3_1_introduction_to_hazards_of_chemistry.md"
+    ],
+    "coupled_back_titration_standardization_balance": [
+      "chem-memory/L2_principles/titrations.md"
+    ],
+    "coupled_real_gas_equilibrium_error_analysis": [
+      "chem-memory/L2_principles/reaction_equilibrium_thermo.md",
+      "chem-memory/L2_principles/non_ideal_gases.md",
+      "chem-memory/L2_principles/gas_mixtures.md",
+      "chem-memory/L2_principles/chemtester_gap_skills/real_gas_compressibility_state_selection.md"
+    ],
+    "coupled_solubility_acid_base_regression": [
+      "chem-memory/L2_principles/solubility_equilibria.md",
+      "chem-memory/L2_principles/ph_calculations.md",
+      "chem-memory/L2_principles/chemometrics_calibration_regression.md",
+      "chem-memory/L3_functions/chemometrics_tools.py"
+    ],
+    "diastereotopic_methylene_nmr": [
+      "chem-memory/L2_principles/chemtester_gap_skills/proton_nmr_equivalence_and_coupling_core.md",
+      "chem-memory/L2_principles/nmr_spectroscopy.md",
+      "chem-memory/L2_principles/spectroscopy_rules.md",
+      "chem-memory/L2_principles/stereochemistry_chirality.md"
+    ],
+    "diazonium_salt_isolation_safety": [
+      "chem-memory/L2_principles/chemtester_gap_skills/diazonium_salt_isolation_safety.md"
+    ],
+    "diels_alder_bridged_stereochemistry": [
+      "chem-memory/L2_principles/chemtester_gap_skills/diels_alder_bridged_stereochemistry.md",
+      "chem-memory/L2_principles/openstax_organic_ch30_pericyclic_reactions.md",
+      "chem-memory/L2_principles/stereochemistry_chirality.md",
+      "https://goldbook.iupac.org/terms/view/E02094/plain",
+      "https://pubchem.ncbi.nlm.nih.gov/compound/10899051",
+      "https://pubchem.ncbi.nlm.nih.gov/compound/92139829"
+    ],
+    "dimeric_acidic_extractant_stoichiometry": [
+      "chem-memory/L2_principles/chemtester_gap_skills/dimeric_acidic_extractant_stoichiometry.md"
+    ],
+    "direction_aware_empirical_activation_energy": [
+      "chem-memory/L2_principles/enthalpy_and_thermochemistry.md"
+    ],
+    "early_virtual_screening_profile_comparison": [
+      "chem-memory/L2_principles/medicinal_chemistry_principles.md",
+      "chem-memory/L2_principles/qsar.md"
+    ],
+    "empirical_compatibility_table_disambiguation": [
+      "chem-memory/L2_principles/epa_hazardous_waste_compatibility_lookup.md",
+      "chem-memory/L3_functions/hazardous_waste_compatibility.py",
+      "chem-memory/L2_principles/chemtester_gap_skills/empirical_compatibility_table_disambiguation.md"
+    ],
+    "equilibrium_limited_catalytic_conversion": [],
+    "evidence_ranked_structural_aromaticity_check": [
+      "chem-memory/L2_principles/aromatic_chemistry.md",
+      "chem-memory/L2_principles/organic_reaction_mechanisms.md"
+    ],
+    "exact_tabulated_periodic_property_disambiguation": [
+      "chem-memory/L2_principles/periodic_trends.md",
+      "chem-memory/L3_functions/periodic_trends_tools.py"
+    ],
+    "explosive_performance_metric_role_disambiguation": [],
+    "f_block_scorpionate_condition_speciation": [
+      "chem-memory/L2_principles/chemtester_gap_skills/coordination_salt_composition_symmetry_speciation.md",
+      "chem-memory/L2_principles/chemtester_gap_skills/exact_tabulated_periodic_property_disambiguation.md",
+      "chem-memory/L2_principles/coordination_chemistry.md"
+    ],
+    "finite_rectangular_barrier_transmission": [
+      "chem-memory/L2_principles/quantum_tunneling.md"
+    ],
+    "fixed_volume_real_gas_enthalpy": [
+      "L2_principles/non_ideal_gases.md"
+    ],
+    "fractional_coordinate_polyhedron_metrics": [],
+    "halogen_isotope_envelope_comparison": [
+      "chem-memory/L4_reference/spectroscopy_tables.md",
+      "chem-memory/L2_principles/atomic_mass_spectrometry.md"
+    ],
+    "heme_toxicant_target_and_oxidation_state_scope": [
+      "chem-memory/L2_principles/chemtester_gap_skills/nitrate_nitrite_oxidizer_toxicity.md",
+      "chem-memory/L2_principles/coordination_chemistry.md"
+    ],
+    "heteronuclear_proton_nmr_multiplicity": [
+      "chem-memory/L2_principles/nmr_spectroscopy.md"
+    ],
+    "inorganic_gas_trap_stoichiometry": [
+      "L2_principles/inorganic_gas_trap_stoichiometry_support.md"
+    ],
+    "inorganic_reaction_constraint_ledger": [
+      "chem-memory/L2_principles/chemtester_gap_skills/inorganic_reaction_constraint_ledger.md",
+      "chem-memory/L2_principles/equation_writing_and_balancing.md",
+      "chem-memory/L3_functions/equation_balancing_tools.py",
+      "https://webbook.nist.gov/cgi/cbook.cgi?ID=B6000546",
+      "https://pubchem.ncbi.nlm.nih.gov/compound/6452562"
+    ],
+    "low_template_pcr_directional_outcome_screening": [
+      "chem-memory/L2_principles/pcr.md"
+    ],
+    "matched_acid_counteranion_trend_audit": [],
+    "mercury_toxicology_speciation_timecourse": [],
+    "michael_enolate_product_pair_matching": [
+      "L2_principles/michael_enolate_product_pair_support.md"
+    ],
+    "monatomic_ideal_gas_entropy": [
+      "L2_principles/statistical_thermodynamics.md",
+      "L2_principles/statistical_mechanics.md"
+    ],
+    "n_aryl_ketonitrone_activated_alkyne_cascade": [],
+    "natural_toxin_process_fate_and_mechanism": [
+      "chem-memory/L2_principles/chemtester_gap_skills/purification_phase_and_byproduct_audit.md",
+      "chem-memory/L2_principles/chemtester_gap_skills/chemical_application_scope_verification.md"
+    ],
+    "nitrate_nitrite_oxidizer_toxicity": [
+      "chem-memory/L2_principles/chemtester_gap_skills/nitrate_nitrite_oxidizer_toxicity.md",
+      "chem-memory/L2_principles/thermo_electronic_nitrate_screening_support.md"
+    ],
+    "nitroactivated_aromatic_substitution_site_triage": [
+      "chem-memory/L2_principles/aromatic_chemistry.md",
+      "chem-memory/L2_principles/organic_reaction_mechanisms.md"
+    ],
+    "nmr_experiment_selection_by_information_channel": [],
+    "nucleophile_strained_ring_initiation_disambiguation": [
+      "chem-memory/L2_principles/openstax_organic_ch18_ethers_epoxides.md"
+    ],
+    "organic_nitro_oxidizer_hazard_comparison": [],
+    "oxygen_redox_thermodynamics_kinetics_separation": [
+      "chem-memory/L2_principles/electrocatalysis.md",
+      "chem-memory/L2_principles/electrochemical_thermodynamics.md",
+      "chem-memory/L2_principles/dioxygen_activation.md"
+    ],
+    "peroxide_former_visible_degradation_response": [
+      "chem-memory/L2_principles/chemtester_gap_skills/peroxide_former_visible_degradation_response.md",
+      "chem-memory/L2_principles/peroxide_former_visual_hazard_response.md",
+      "chem-memory/L2_principles/aldoxime_peroxidation_distillation_hazard.md"
+    ],
+    "peroxo_crystal_speciation_tga_closure": [
+      "chem-memory/L2_principles/thermal_analysis.md",
+      "chem-memory/L3_functions/equation_balancing_tools.py",
+      "chem-memory/L2_principles/symmetry_group_theory.md"
+    ],
+    "phase_aware_release_response_selection": [
+      "chem-memory/L2_principles/chemtester_gap_skills/phase_aware_release_response_selection.md"
+    ],
+    "phosphorus_nmr_stagewise_environment_counting": [
+      "chem-memory/L2_principles/nmr_spectroscopy.md",
+      "chem-memory/L2_principles/stereochemistry_chirality.md",
+      "chem-memory/L2_principles/formal_charges_and_resonance.md"
+    ],
+    "photophysics_color_energy_direction": [
+      "L2_principles/photophysics_color_absorption_energy.md"
+    ],
+    "pressure_coupled_spin_orbital_geometry": [
+      "chem-memory/L2_principles/organometallic_chemistry.md",
+      "chem-memory/L2_principles/crystal_field_theory.md",
+      "chem-memory/L2_principles/magnetic_properties.md",
+      "chem-memory/L2_principles/coordination_chemistry.md"
+    ],
+    "protein_iex_selection_workflow_ordering": [],
+    "purification_phase_and_byproduct_audit": [
+      "chem-memory/L2_principles/chemtester_gap_skills/purification_phase_and_byproduct_audit.md"
+    ],
+    "qualitative_inorganic_constraint_deduction": [
+      "L2_principles/qualitative_inorganic_constraint_deduction.md",
+      "L2_principles/reaction_classification_and_patterns.md",
+      "L2_principles/solubility_equilibria.md",
+      "L2_principles/coordination_chemistry.md"
+    ],
+    "qualitative_ionic_solubility_causticity_screening": [
+      "chem-memory/L2_principles/solubility.md"
+    ],
+    "reaction_based_assay_scope_verification": [
+      "chem-memory/L2_principles/aromatic_chemistry.md",
+      "chem-memory/L2_principles/quantitative_chemical_analysis.md",
+      "chem-memory/L2_principles/chemtester_gap_skills/coupled_back_titration_standardization_balance.md"
+    ],
+    "reaction_center_stereochemical_descriptor_audit": [
+      "chem-memory/L2_principles/chemtester_gap_skills/reaction_center_stereochemical_descriptor_audit.md"
+    ],
+    "reactor_arrangement_reciprocal_rate_axis_disambiguation": [],
+    "real_gas_compressibility_state_selection": [
+      "chem-memory/L2_principles/non_ideal_gases.md"
+    ],
+    "redox_half_reaction_atom_electron_ledger": [
+      "chem-memory/L2_principles/electrochemistry.md",
+      "chem-memory/L2_principles/organic_redox.md",
+      "chem-memory/L2_principles/equation_writing_and_balancing.md",
+      "chem-memory/L3_functions/equation_balancing_tools.py"
+    ],
+    "reversible_isothermal_heat_entropy": [
+      "L2_principles/thermo_electronic_nitrate_screening_support.md"
+    ],
+    "role_scoped_quantity_binding": [
+      "chem-memory/L2_principles/chemtester_gap_skills/role_scoped_quantity_binding.md",
+      "chem-memory/L2_principles/polymerization_kinetics.md",
+      "chem-memory/L3_functions/integrated_rate_law_tools.py"
+    ],
+    "secondary_deuterium_isotope_effect_rate_ranking": [
+      "chem-memory/L2_principles/alkene_chemistry.md",
+      "chem-memory/L2_principles/organic_reaction_mechanisms.md"
+    ],
+    "stagewise_organic_structure_to_proton_multiplicity": [
+      "chem-memory/L2_principles/chemtester_gap_skills/stagewise_organic_structure_to_proton_multiplicity.md",
+      "chem-memory/L2_principles/openstax_organic_ch08_alkene_reactions.md",
+      "chem-memory/L2_principles/organic_reaction_mechanisms.md",
+      "chem-memory/L2_principles/carbonyl_chemistry.md"
+    ],
+    "temperature_shifted_carbonate_scale_limit": [
+      "chem-memory/L2_principles/thermodynamics_vant_hoff_equilibrium_tables.md",
+      "chem-memory/L2_principles/coupled_equilibria.md",
+      "chem-memory/L2_principles/solubility_equilibria.md",
+      "chem-memory/L2_principles/ph_calculations.md"
+    ],
+    "unit_cell_density_composition_triangulation": [
+      "chem-memory/L2_principles/crystallography.md",
+      "chem-memory/L3_functions/crystallography_tools.py",
+      "chem-memory/L2_principles/mof_synthesis_characterization.md"
+    ],
+    "vibrational_partition_approximation_thresholds": [
+      "chem-memory/L2_principles/statistical_mechanics.md"
+    ]
+  },
+  "sources": {
+    "chem-memory/L2_principles/chemtester_compact_problem_solving_skill.registry.json": "f92c9461890109c2424066d2b18993cd28bd558234b2c7df07821da4ecbf9599",
+    "chem-memory/L3_functions/acid_base_constants_tools.py": "a252f3a95f793a389e956da2bd917ef2923ec7dc5d4029d10ac5dd7c496569d2",
+    "chem-memory/L3_functions/acid_base_tools.py": "f57e195a360443084183730a7d0f181a2ce250815ea4b58e3b8c21acac61da6e",
+    "chem-memory/L3_functions/amount_conversion_tools.py": "fdd48182fbf76313e2fef0786b342953b85061ad92de325cec2feebc87a636ce",
+    "chem-memory/L3_functions/atomic_composition_tools.py": "900b4140c25abf6765f22bd960ac4fd633d3c6fb5e30909e530829f08df03bf2",
+    "chem-memory/L3_functions/buffer_calculator.py": "fb000f6dac68a39a98ec7bb4d4736a91164723462375024fcf722fc1f0d24d4c",
+    "chem-memory/L3_functions/chemometrics_tools.py": "41404818c77a3ce60a0a97ca791505de79763d7f32fbdc867c1dbe3aa1eaa7b5",
+    "chem-memory/L3_functions/crystal_structures_tools.py": "342b1f84f8af513009b3f29ef50a56b310f921495e5fde4cef1277fbf00031c2",
+    "chem-memory/L3_functions/crystallography_tools.py": "dc20a5ce3c7fc881331340b6ce501d5385a8683efb60b4050e39de5110154032",
+    "chem-memory/L3_functions/density_tools.py": "4a9150c5ebee739868828df2b960c25597581542e4601a83b9fa97bf136b5903",
+    "chem-memory/L3_functions/electrolysis_tools.py": "fc81355b326aaf8ca5ce6245ef6edbe1378acee3c733af8ae55737abfe7711ab",
+    "chem-memory/L3_functions/enthalpy_tools.py": "a4d0766d36e294c296264b568df77a383d0cc880ec422415dcfbc6b108f57f3e",
+    "chem-memory/L3_functions/equation_balancing_tools.py": "7f15975af05639aea973ec96af0b17cc70f593e49c3a356e849e682392d20807",
+    "chem-memory/L3_functions/equilibrium_constant_tools.py": "82a732f396acd1374ab39616b48d5f85a74a7cc698ea40f9f84b1fa928cc7c40",
+    "chem-memory/L3_functions/equilibrium_tools.py": "b73128cb91df3aaede147072fcbad27f6755cc0416a9bfe0bf14aa780fb5c262",
+    "chem-memory/L3_functions/functional_group_tools.py": "2da0f35dcfc27f88b6505b62e30912a72ddab0f4d6001dfbea24861c6004f99c",
+    "chem-memory/L3_functions/gas_laws_tools.py": "101e65e6f45a83aaa469cc8d173e540907730bd12e490e87e4630cdbf2186163",
+    "chem-memory/L3_functions/gibbs_free_energy_tools.py": "599cd0c344fba7b72701d5b3e47ad6c3eddea378fe339ce938cb163986396baf",
+    "chem-memory/L3_functions/hazardous_waste_compatibility.py": "5dc07801e3095432692da5abab50351b93527a019db250f0156c7fb89995cd7b",
+    "chem-memory/L3_functions/ideal_gas_law_tools.py": "f27d3787d2af16a214fe03a0651296b7e96188a925909ab374b4a13bf88fad88",
+    "chem-memory/L3_functions/integrated_rate_law_tools.py": "00768d2810061aa1dba73d6a2ba510038d53c91916ba8fddba724506f30b9a28",
+    "chem-memory/L3_functions/mass_spec_tools.py": "ce0b70100982debe9b59f079767ca98ec42c6a99eee0eb9861b409f0e6326b18",
+    "chem-memory/L3_functions/nernst_equation.py": "504296583cf831c4cae259c55493c527df98e37c1848cf7322293a99c6a8b8c4",
+    "chem-memory/L3_functions/nmr_splitting_tools.py": "3466f34dd7b58ef94e49fb39974ddbedf1aa52d5c9d8ca2b24b0a55b019450cb",
+    "chem-memory/L3_functions/nmr_tools.py": "e19961df13a940f7cb11710c1927cd74942fd9c12f2c37e99d8af9de0646e682",
+    "chem-memory/L3_functions/periodic_trends_tools.py": "63cf0aa83fa0f1f07374b145161a45b3ef4d2a37ad14a27a915cc3203db1c5cc",
+    "chem-memory/L3_functions/ph_calculations_tools.py": "7881e74d9adb2eb2b9a0af84361a1ea991c90933faa830de92368fbe53781ef7",
+    "chem-memory/L3_functions/rate_law_solver.py": "a3ed21561725848f9999a7aa0b428abfbd2a0e173b62c9f60216719a0d11fa9a",
+    "chem-memory/L3_functions/solution_concentration_tools.py": "a81fa70b02eaa30254f4e2566270c65ade7011a65ed43be76df25fa67c86bf20",
+    "chem-memory/L3_functions/stoichiometric_conversion_tools.py": "7aacec7025802dd25a12eb453bd4f821df7f1ff8a132f925d2d6b6a78d456da6",
+    "chem-memory/L3_functions/thermodynamic_data_tools.py": "2abde26f28e653e10487bbac8e2490f1554f9e0239bad1365a2434088ce04ada",
+    "chem-memory/L3_functions/unit_conversion_tools.py": "db27e9d82a762c077c7becadc714f743053fb5a951f3d9dd2ad785949118d811",
+    "chem-memory/L3_functions/uv_vis_tools.py": "9ed70f3b0ff165db25cde1d81df7551d55be19af8765b2b2a2a0bc56dc6fda02",
+    "configs/chemistry_support_policy.json": "8e23e154781d1522d4fe850f74eced65823a9219d16d1afa07885ee2eb32180c",
+    "configs/native_chemistry_skills.json": "c34e4ea19ffb41fdf1259d318db548b6c3c5d7d37f08671d6a4c4ccaa86c9761",
+    "scripts/chemistry_expert/native_skill_calculate.py": "aacd3c5a95c4861f8bbb5be3faa695277ad16b99ed8d2be2854cd16ccd40b6d4"
+  }
+}

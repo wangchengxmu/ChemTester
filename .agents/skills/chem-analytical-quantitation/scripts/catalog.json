@@ -1,0 +1,313 @@
+{
+  "schema_version": "native-chemistry-calculators/v1",
+  "tools": {
+    "amount_conversion_tools.convert_amount": {
+      "contract": {},
+      "description": "Generic converter among: mass_g, moles, particles.\nUses moles as bridge.\n\nSolver Instructions (for AI Agent):\n\nWhen you encounter amount/mass/mole/particle conversion or dilution problems, follow this decision tree:\n\nStep 1: Identify what is given and what is asked\nStep 2: Choose the correct function\nStep 3: Handle special cases\n\nExamples:\n    mass_to_moles(18.0, 18.015) -> 0.999 mol H2O\n    dilution_volume(6.0, 0.5, 1.0) -> 0.0833 L",
+      "scientific_validity": "not_independently_verified",
+      "signature": "convert_amount(value: float, from_type: str, to_type: str, molar_mass_g_per_mol: float | None=None)",
+      "summary": "Generic converter among: mass_g, moles, particles."
+    },
+    "amount_conversion_tools.dilution_final_conc": {
+      "contract": {},
+      "description": "Calculate final concentration after dilution: M2 = M1*V1/V2.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "dilution_final_conc(M1: float, V1: float, V2: float)",
+      "summary": "Calculate final concentration after dilution: M2 = M1*V1/V2."
+    },
+    "amount_conversion_tools.dilution_volume": {
+      "contract": {},
+      "description": "Calculate V1 needed for dilution: M1*V1 = M2*V2.\n\nArgs:\n    M1: initial concentration (stock)\n    M2: desired final concentration\n    V2: desired final volume\n\nReturns:\n    V1: volume of stock solution needed",
+      "scientific_validity": "not_independently_verified",
+      "signature": "dilution_volume(M1: float, M2: float, V2: float)",
+      "summary": "Calculate V1 needed for dilution: M1*V1 = M2*V2."
+    },
+    "density_tools.buoyancy_correction": {
+      "contract": {},
+      "description": "Apply air buoyancy correction to a mass measurement.\n\nCorrects for the buoyant force of air on both the sample and the weights.\n\nm_true = m_air * (1 - \u03c1_air/\u03c1_weights) / (1 - \u03c1_air/\u03c1_sample)\n\nArgs:\n    mass_air: Mass measured in air (g).\n    density_sample: Density of the sample (g/mL).\n    density_air: Density of air (g/mL), default 0.0012.\n    density_weights: Density of calibration weights (g/mL), default 8.0.\n\nReturns:\n    True (corrected) mass in grams.\n\nRaises:\n    ValueError: If density_sample or density_weights is zero.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "buoyancy_correction(mass_air: float, density_sample: float, density_air: float=0.0012, density_weights: float=8.0)",
+      "summary": "Apply air buoyancy correction to a mass measurement."
+    },
+    "density_tools.calculate_density": {
+      "contract": {},
+      "description": "Calculate density (g/mL or g/cm3) from mass (g) and volume (mL).\n## Solver Instructions (for AI Agent)\n\nWhen you encounter density/specific gravity/buoyancy problems, follow this decision tree:\n\n### Step 1: Identify what is given and what is asked\n- **Given**: mass and volume, or density and one of mass/volume, or specific gravity\n- **Asked**: density, mass, volume, specific gravity, buoyancy-corrected mass\n\n### Step 2: Choose the correct function\n| Task | Function | Key Parameters |\n|---|---|---|\n| Calculate density | `calculate_density(mass, volume)` | mass (g), volume (mL) |\n| Mass from density | `mass_from_density(density, volume)` | \u03c1, V |\n| Volume from density | `volume_from_density(density, mass)` | \u03c1, m |\n| Buoyancy correction | `buoyancy_correction(mass_air, density_sample, density_air, density_weights)` | measured mass, \u03c1_sample |\n| Specific gravity | `calculate_specific_gravity(density, reference_density)` | \u03c1, ref \u03c1 (default 1.0) |\n\n### Step 3: Handle special cases\n- SG is dimensionless; default reference = water at 4degC (1.0 g/mL)\n- Buoyancy correction: true mass > mass measured in air\n- All units: g and mL (or g/cm3)\n\n### Examples\n1. **Density**: `calculate_density(50.0, 25.0)` -> 2.0 g/mL\n2. **SG of Hg**: `calculate_specific_gravity(13.6)` -> 13.6\n3. **Buoyancy**: `buoyancy_correction(10.0, 1.0)` -> ~10.0015 g\n\n\n    Args:\n        mass: Mass in grams.\n        volume: Volume in mL.\n\n    Returns:\n        Density in g/mL.\n\n    Raises:\n        ValueError: If volume is zero or negative.\n    ",
+      "scientific_validity": "not_independently_verified",
+      "signature": "calculate_density(mass: float, volume: float)",
+      "summary": "Calculate density (g/mL or g/cm3) from mass (g) and volume (mL)."
+    },
+    "density_tools.calculate_specific_gravity": {
+      "contract": {},
+      "description": "Calculate specific gravity (dimensionless).\n\nArgs:\n    density: Density of substance (g/mL).\n    reference_density: Reference density (default 1.0 g/mL for water at 4degC).\n\nReturns:\n    Specific gravity (dimensionless ratio).\n\nRaises:\n    ValueError: If reference_density is zero.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "calculate_specific_gravity(density: float, reference_density: float=1.0)",
+      "summary": "Calculate specific gravity (dimensionless)."
+    },
+    "density_tools.mass_from_density": {
+      "contract": {},
+      "description": "Calculate mass from density and volume.\n\nArgs:\n    density: Density in g/mL.\n    volume: Volume in mL.\n\nReturns:\n    Mass in grams.\n\nRaises:\n    ValueError: If volume is negative.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "mass_from_density(density: float, volume: float)",
+      "summary": "Calculate mass from density and volume."
+    },
+    "density_tools.volume_from_density": {
+      "contract": {},
+      "description": "Calculate volume from density and mass.\n\nArgs:\n    density: Density in g/mL.\n    mass: Mass in grams.\n\nReturns:\n    Volume in mL.\n\nRaises:\n    ValueError: If density is zero or negative.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "volume_from_density(density: float, mass: float)",
+      "summary": "Calculate volume from density and mass."
+    },
+    "solution_concentration_tools.dilution": {
+      "contract": {},
+      "description": "Calculate dilution using M1V1 = M2V2.\n\nArgs:\n    M1, V1: Initial concentration and volume\n    M2, V2: Final concentration and volume (one must be None)\n\nReturns:\n    The missing value\n\nExamples:\n    >>> dilution(M1=1, V1=100, M2=0.5)\n    200.0",
+      "scientific_validity": "not_independently_verified",
+      "signature": "dilution(M1: float, V1: float, M2: float=None, V2: float=None)",
+      "summary": "Calculate dilution using M1V1 = M2V2."
+    },
+    "solution_concentration_tools.mass_percent": {
+      "contract": {},
+      "description": "Calculate mass percentage.\n\nArgs:\n    mass_solute: Mass of solute\n    mass_solution: Total mass of solution\n\nReturns:\n    Mass percentage\n\nExamples:\n    >>> mass_percent(10, 100)\n    10.0",
+      "scientific_validity": "not_independently_verified",
+      "signature": "mass_percent(mass_solute: float, mass_solution: float)",
+      "summary": "Calculate mass percentage."
+    },
+    "solution_concentration_tools.molality": {
+      "contract": {},
+      "description": "Calculate molality of a solution.\n\nArgs:\n    moles_solute: Moles of solute\n    kg_solvent: Mass of solvent in kilograms\n\nReturns:\n    Molality (mol/kg)\n\nExamples:\n    >>> molality(2, 0.5)\n    4.0",
+      "scientific_validity": "not_independently_verified",
+      "signature": "molality(moles_solute: float, kg_solvent: float)",
+      "summary": "Calculate molality of a solution."
+    },
+    "solution_concentration_tools.molality_to_molarity": {
+      "contract": {},
+      "description": "Convert molality to molarity.\n\nArgs:\n    m: Molality (mol/kg)\n    density: Solution density (g/mL)\n    molar_mass_solute: Molar mass of solute (g/mol)\n    molar_mass_solvent: Molar mass of solvent (g/mol, default water)\n\nReturns:\n    Molarity (mol/L)\n\nExamples:\n    >>> molality_to_molarity(1, 1.05, 58.44)  # 1m NaCl\n    1.02...",
+      "scientific_validity": "not_independently_verified",
+      "signature": "molality_to_molarity(m: float, density: float, molar_mass_solute: float, molar_mass_solvent: float=18.015)",
+      "summary": "Convert molality to molarity."
+    },
+    "solution_concentration_tools.molarity": {
+      "contract": {},
+      "description": "Calculate molarity of a solution.\n\nArgs:\n    moles_solute: Moles of solute\n    L_solution: Volume of solution in liters\n\nReturns:\n    Molarity (mol/L)\n\nExamples:\n    >>> molarity(0.5, 2)\n    0.25",
+      "scientific_validity": "not_independently_verified",
+      "signature": "molarity(moles_solute: float, L_solution: float)",
+      "summary": "Calculate molarity of a solution."
+    },
+    "solution_concentration_tools.molarity_from_moles": {
+      "contract": {},
+      "description": "Calculate molarity from moles and volume.\n\nArgs:\n    moles: Moles of solute\n    volume: Volume value\n    unit: Volume unit ('L', 'mL')\n\nReturns:\n    Molarity (mol/L)\n\nExamples:\n    >>> molarity_from_moles(0.5, 250, \"mL\")\n    2.0",
+      "scientific_validity": "not_independently_verified",
+      "signature": "molarity_from_moles(moles: float, volume: float, unit: str='L')",
+      "summary": "Calculate molarity from moles and volume."
+    },
+    "solution_concentration_tools.molarity_to_molality": {
+      "contract": {},
+      "description": "Convert molarity to molality.\n\nArgs:\n    M: Molarity (mol/L)\n    density: Solution density (g/mL)\n    molar_mass_solute: Molar mass of solute (g/mol)\n\nReturns:\n    Molality (mol/kg)\n\nExamples:\n    >>> molarity_to_molality(1, 1.05, 58.44)  # 1M NaCl\n    1.04...",
+      "scientific_validity": "not_independently_verified",
+      "signature": "molarity_to_molality(M: float, density: float, molar_mass_solute: float)",
+      "summary": "Convert molarity to molality."
+    },
+    "solution_concentration_tools.mole_fraction": {
+      "contract": {},
+      "description": "Calculate mole fractions for all components.\n\nArgs:\n    components: Dictionary of {substance: moles}\n\nReturns:\n    Dictionary of {substance: mole_fraction}\n\nExamples:\n    >>> mole_fraction({'A': 1, 'B': 3})\n    {'A': 0.25, 'B': 0.75}",
+      "scientific_validity": "not_independently_verified",
+      "signature": "mole_fraction(components: Dict[str, float])",
+      "summary": "Calculate mole fractions for all components."
+    },
+    "solution_concentration_tools.parts_per_to_molarity": {
+      "contract": {},
+      "description": "Convert ppm to molarity for aqueous solutions.\n\nArgs:\n    ppm: Concentration in ppm (mg/L for dilute aqueous)\n    molar_mass: Molar mass in g/mol\n    density: Solution density (default 1.0 g/mL)\n\nReturns:\n    Molarity (mol/L)\n\nExamples:\n    >>> parts_per_to_molarity(100, 58.44)  # 100 ppm NaCl\n    0.00171...",
+      "scientific_validity": "not_independently_verified",
+      "signature": "parts_per_to_molarity(ppm: float, molar_mass: float, density: float=1.0)",
+      "summary": "Convert ppm to molarity for aqueous solutions."
+    },
+    "solution_concentration_tools.ppm_ppb": {
+      "contract": {},
+      "description": "Convert between ppm and ppb.\n\nArgs:\n    concentration: Concentration value\n    unit: 'ppm' or 'ppb'\n\nReturns:\n    Concentration in the other unit\n\nExamples:\n    >>> ppm_ppb(1, 'ppm')\n    1000",
+      "scientific_validity": "not_independently_verified",
+      "signature": "ppm_ppb(concentration: float, unit: str='ppm')",
+      "summary": "Convert between ppm and ppb."
+    },
+    "stoichiometric_conversion_tools.empirical_formula": {
+      "contract": {},
+      "description": "Determine empirical formula from percent composition.\n\nArgs:\n    percent_composition_dict: Dict of {element: mass_percent}\n\nReturns:\n    Empirical formula string (e.g., 'CH2O')\n\nExamples:\n    >>> empirical_formula({'C': 40.0, 'H': 6.7, 'O': 53.3})\n    'CH2O'",
+      "scientific_validity": "not_independently_verified",
+      "signature": "empirical_formula(percent_composition_dict)",
+      "summary": "Determine empirical formula from percent composition."
+    },
+    "stoichiometric_conversion_tools.ideal_gas_moles": {
+      "contract": {},
+      "description": "Calculate moles from ideal gas law: n = PV/RT\n\nArgs:\n    P: Pressure (atm)\n    V: Volume (L)\n    T: Temperature (K)\n    R: Gas constant (default 0.08206 L\u00b7atm/(mol\u00b7K))\n\nReturns:\n    moles (float)",
+      "scientific_validity": "not_independently_verified",
+      "signature": "ideal_gas_moles(P, V, T, R=0.08206)",
+      "summary": "Calculate moles from ideal gas law: n = PV/RT"
+    },
+    "stoichiometric_conversion_tools.limiting_reactant": {
+      "contract": {},
+      "description": "Identify limiting reactant and theoretical yield.\n\nArgs:\n    reactants_dict: Dict of {species: moles available}\n    stoichiometry: Dict of {species: stoichiometric coefficient}\n\nReturns:\n    (limiting_species, theoretical_yield_dict) where theoretical_yield_dict\n    contains the moles of each product that can be formed\n\nExamples:\n    >>> limiting_reactant({'Na': 1.5, 'Cl2': 1.0}, {'Na': 2, 'Cl2': 1, 'NaCl': 2})\n    ('Na', {'NaCl': 1.5})",
+      "scientific_validity": "not_independently_verified",
+      "signature": "limiting_reactant(reactants_dict, stoichiometry)",
+      "summary": "Identify limiting reactant and theoretical yield."
+    },
+    "stoichiometric_conversion_tools.mass_from_moles": {
+      "contract": {},
+      "description": "Alias for moles_to_mass.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "mass_from_moles(moles, molar_mass)",
+      "summary": "Alias for moles_to_mass."
+    },
+    "stoichiometric_conversion_tools.mass_to_mass": {
+      "contract": {},
+      "description": "Convert mass of substance A to mass of substance B.\n\nmass_B = mass_A x (1/M_A) x (coeff_B/coeff_A) x M_B\n\nParameters:\n    mass_A: mass of A in grams (float)\n    molar_mass_A: molar mass of A in g/mol (float)\n    molar_mass_B: molar mass of B in g/mol (float)\n    coeff_A: coefficient of A in balanced equation\n    coeff_B: coefficient of B in balanced equation\n\nReturns:\n    mass_B: mass of B in grams (float)\n\nRaises:\n    ValueError: if molar_mass_A or coeff_A is zero/negative",
+      "scientific_validity": "not_independently_verified",
+      "signature": "mass_to_mass(mass_A, molar_mass_A, molar_mass_B, coeff_A, coeff_B)",
+      "summary": "Convert mass of substance A to mass of substance B."
+    },
+    "stoichiometric_conversion_tools.mass_to_moles": {
+      "contract": {},
+      "description": "Convert mass to moles.\n\nmol = mass / molar_mass\n\nParameters:\n    mass: mass in grams (float)\n    molar_mass: molar mass in g/mol (float)\n\nReturns:\n    moles (float)\n\nRaises:\n    ValueError: if molar_mass is zero or negative",
+      "scientific_validity": "not_independently_verified",
+      "signature": "mass_to_moles(mass, molar_mass)",
+      "summary": "Convert mass to moles."
+    },
+    "stoichiometric_conversion_tools.mole_to_mole": {
+      "contract": {},
+      "description": "Convert moles of substance A to moles of substance B.\n\nmol_B = mol_A x (coeff_B / coeff_A)\n\nParameters:\n    mol_A: moles of reactant/product A (float)\n    coeff_A: coefficient of A in balanced equation (int or float)\n    coeff_B: coefficient of B in balanced equation (int or float)\n\nReturns:\n    mol_B: moles of reactant/product B (float)\n\nRaises:\n    ValueError: if coeff_A is zero",
+      "scientific_validity": "not_independently_verified",
+      "signature": "mole_to_mole(mol_A, coeff_A, coeff_B)",
+      "summary": "Convert moles of substance A to moles of substance B."
+    },
+    "stoichiometric_conversion_tools.moles_from_mass": {
+      "contract": {},
+      "description": "Alias for mass_to_moles.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "moles_from_mass(mass_g, molar_mass)",
+      "summary": "Alias for mass_to_moles."
+    },
+    "stoichiometric_conversion_tools.moles_to_mass": {
+      "contract": {},
+      "description": "Convert moles to mass.\n\nmass = mol x molar_mass\n\nParameters:\n    mol: amount in moles (float)\n    molar_mass: molar mass in g/mol (float)\n\nReturns:\n    mass in grams (float)",
+      "scientific_validity": "not_independently_verified",
+      "signature": "moles_to_mass(mol, molar_mass)",
+      "summary": "Convert moles to mass."
+    },
+    "stoichiometric_conversion_tools.moles_to_particles": {
+      "contract": {},
+      "description": "Convert moles to number of particles using Avogadro's number.\n\nparticles = mol x 6.022 x 10^23\n\nParameters:\n    mol: amount in moles (float)\n\nReturns:\n    number of particles (float)",
+      "scientific_validity": "not_independently_verified",
+      "signature": "moles_to_particles(mol)",
+      "summary": "Convert moles to number of particles using Avogadro's number."
+    },
+    "stoichiometric_conversion_tools.particles_to_moles": {
+      "contract": {},
+      "description": "Convert number of particles to moles using Avogadro's number.\n\nmol = particles / 6.022 x 10^23\n\nParameters:\n    particles: number of particles (float)\n\nReturns:\n    amount in moles (float)",
+      "scientific_validity": "not_independently_verified",
+      "signature": "particles_to_moles(particles)",
+      "summary": "Convert number of particles to moles using Avogadro's number."
+    },
+    "stoichiometric_conversion_tools.percent_yield": {
+      "contract": {},
+      "description": "Calculate percent yield.\n\nArgs:\n    actual: Actual yield (mass or moles)\n    theoretical: Theoretical yield (same units)\n\nReturns:\n    Percent yield (float)",
+      "scientific_validity": "not_independently_verified",
+      "signature": "percent_yield(actual, theoretical)",
+      "summary": "Calculate percent yield."
+    },
+    "stoichiometric_conversion_tools.solution_molarity": {
+      "contract": {},
+      "description": "Calculate molarity from moles and volume.\n\nM = mol / V\n\nParameters:\n    mol: moles of solute (float)\n    volume_L: volume in liters (float)\n\nReturns:\n    molarity in mol/L (float)\n\nRaises:\n    ValueError: if volume is zero or negative",
+      "scientific_validity": "not_independently_verified",
+      "signature": "solution_molarity(mol, volume_L)",
+      "summary": "Calculate molarity from moles and volume."
+    },
+    "stoichiometric_conversion_tools.solution_moles": {
+      "contract": {},
+      "description": "Calculate moles from solution molarity and volume.\n\nmol = M x V\n\nParameters:\n    molarity: concentration in mol/L (float)\n    volume_L: volume in liters (float)\n\nReturns:\n    moles of solute (float)\n\nRaises:\n    ValueError: if molarity is negative",
+      "scientific_validity": "not_independently_verified",
+      "signature": "solution_moles(molarity, volume_L)",
+      "summary": "Calculate moles from solution molarity and volume."
+    },
+    "stoichiometric_conversion_tools.stoichiometric_calculation": {
+      "contract": {},
+      "description": "Full stoichiometric calculation: moles of given \u2192 mass of target.\n\nArgs:\n    given_moles: Moles of given substance\n    given_coeff: Stoichiometric coefficient of given substance\n    target_coeff: Stoichiometric coefficient of target substance\n    target_molar_mass: Molar mass of target substance (g/mol)\n\nReturns:\n    Mass of target substance in grams",
+      "scientific_validity": "not_independently_verified",
+      "signature": "stoichiometric_calculation(given_moles, given_coeff, target_coeff, target_molar_mass)",
+      "summary": "Full stoichiometric calculation: moles of given \u2192 mass of target."
+    },
+    "unit_conversion_tools.calculate_molar_mass": {
+      "contract": {},
+      "description": "Calculate molar mass (g/mol) from a chemical formula (e.g. 'H2O', 'C6H12O6', 'Ca(OH)2').",
+      "scientific_validity": "not_independently_verified",
+      "signature": "calculate_molar_mass(formula: str)",
+      "summary": "Calculate molar mass (g/mol) from a chemical formula (e.g. 'H2O', 'C6H12O6', 'Ca(OH)2')."
+    },
+    "unit_conversion_tools.convert_concentration": {
+      "contract": {},
+      "description": "Convert concentration between M, mM, muM, g/L, %w/v, ppm, ppb.\n\nConversions involving g/L, %w/v, ppm, or ppb require *molar_mass* (g/mol).",
+      "scientific_validity": "not_independently_verified",
+      "signature": "convert_concentration(value: float, from_unit: str, to_unit: str, molar_mass: Optional[float]=None)",
+      "summary": "Convert concentration between M, mM, muM, g/L, %w/v, ppm, ppb."
+    },
+    "unit_conversion_tools.convert_energy": {
+      "contract": {},
+      "description": "Convert energy between J, kJ, cal, kcal, eV, L\u00b7atm.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "convert_energy(value: float, from_unit: str, to_unit: str)",
+      "summary": "Convert energy between J, kJ, cal, kcal, eV, L\u00b7atm."
+    },
+    "unit_conversion_tools.convert_length": {
+      "contract": {},
+      "description": "Convert length between m, cm, mm, nm, pm, \u00c5, in.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "convert_length(value: float, from_unit: str, to_unit: str)",
+      "summary": "Convert length between m, cm, mm, nm, pm, \u00c5, in."
+    },
+    "unit_conversion_tools.convert_mass": {
+      "contract": {},
+      "description": "Convert mass between g, kg, mg, lb, oz, amu.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "convert_mass(value: float, from_unit: str, to_unit: str)",
+      "summary": "Convert mass between g, kg, mg, lb, oz, amu."
+    },
+    "unit_conversion_tools.convert_pressure": {
+      "contract": {},
+      "description": "Convert pressure between atm, Pa, kPa, bar, mmHg, torr.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "convert_pressure(value: float, from_unit: str, to_unit: str)",
+      "summary": "Convert pressure between atm, Pa, kPa, bar, mmHg, torr."
+    },
+    "unit_conversion_tools.convert_temperature": {
+      "contract": {},
+      "description": "Convert temperature between C, K, F.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "convert_temperature(value: float, from_unit: str, to_unit: str)",
+      "summary": "Convert temperature between C, K, F."
+    },
+    "unit_conversion_tools.convert_volume": {
+      "contract": {},
+      "description": "Convert volume between L, mL, m3, cm3, gal, fl_oz.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "convert_volume(value: float, from_unit: str, to_unit: str)",
+      "summary": "Convert volume between L, mL, m3, cm3, gal, fl_oz."
+    },
+    "unit_conversion_tools.ideal_gas_law": {
+      "contract": {},
+      "description": "Solve PV = nRT for the unknown variable.\n\nPass None for the variable to solve for, or set solve_for to 'P', 'V', 'n', or 'T'.\nUnits: P in atm, V in L, n in mol, T in K.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "ideal_gas_law(pressure: Optional[float]=None, volume: Optional[float]=None, moles: Optional[float]=None, temperature: Optional[float]=None, solve_for: str='unknown')",
+      "summary": "Solve PV = nRT for the unknown variable."
+    },
+    "unit_conversion_tools.mass_to_moles": {
+      "contract": {},
+      "description": "Convert mass (g) to moles.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "mass_to_moles(mass: float, molar_mass: float)",
+      "summary": "Convert mass (g) to moles."
+    },
+    "unit_conversion_tools.moles_to_mass": {
+      "contract": {},
+      "description": "Convert moles to mass (g).",
+      "scientific_validity": "not_independently_verified",
+      "signature": "moles_to_mass(moles: float, molar_mass: float)",
+      "summary": "Convert moles to mass (g)."
+    }
+  }
+}

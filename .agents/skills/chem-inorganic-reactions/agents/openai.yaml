@@ -1,0 +1,4 @@
+interface:
+  display_name: "Inorganic Reactions"
+  short_description: "Coordination, inorganic deductions, and redox ledgers"
+  default_prompt: "Use $chem-inorganic-reactions for the relevant chemistry subproblem, loading only the necessary references."

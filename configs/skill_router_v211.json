@@ -1,0 +1,60 @@
+{
+  "schema_version": "chemtester-skill-router-config/v1",
+  "router_version": "v2",
+  "router_revision": "v2.1.1",
+  "activation": "adaptive",
+  "preserve_deterministic_runtime": false,
+  "preselect_tools": false,
+  "catalog_access": "model_search_only",
+  "max_rounds": 2,
+  "initial_tool_count": 0,
+  "search_tool_count": 4,
+  "knowledge_top_k": 2,
+  "action_max_tokens": 0,
+  "max_result_chars": 3000,
+  "compact_skill_path": "L2_principles/chemtester_compact_problem_solving_skill.md",
+  "compact_skill_max_chars": 3500,
+  "compact_skill_max_capabilities": 1,
+  "compact_skill_min_anchor_coverage": 0.65,
+  "compact_skill_min_anchor_hits": 2,
+  "compact_skill_min_margin": 0.1,
+  "exact_linked_skill_documents": 1,
+  "planner_for_tool_signals": true,
+  "planner_for_reference_signals": true,
+  "capability_contracts": {
+    "protein_iex_selection_workflow_ordering": {
+      "required_patterns": ["\\b(protein|peptide|IEX|chromatograph\\w*|exchanger)\\b"]
+    },
+    "answer_output_representation_and_provenance": {
+      "required_patterns": ["\\b(tolerance|rounding|percent error|relative error|absolute error|precision|deviation)\\b"]
+    },
+    "role_scoped_quantity_binding": {
+      "required_patterns": ["\\b(polymeri[sz]ation|polyesterification|Carothers|step.growth|functional.group concentration)\\b"]
+    },
+    "coupled_real_gas_equilibrium_error_analysis": {
+      "required_patterns": [
+        "\\b(van der Waals|real.gas|non.ideal|equation.of.state|EOS|fugacit\\w*)\\b",
+        "\\b(equilibrium|extent|composition)\\b"
+      ]
+    },
+    "early_virtual_screening_profile_comparison": {
+      "evidence": "tool",
+      "operation": "SMILES molecular descriptors molecular weight logP TPSA",
+      "required_patterns": ["\\b(SMILES|oral|drug.likeness|developability|bioavailability)\\b"]
+    },
+    "fixed_volume_real_gas_enthalpy": {
+      "linked_headings": ["van der Waals Constants", "Fixed-Volume Enthalpy Change"],
+      "required_patterns": [
+        "\\b(enthalpy|delta H|heat)\\b",
+        "\\b(fixed|constant|rigid|isochoric|confined)\\b"
+      ]
+    },
+    "empirical_compatibility_table_disambiguation": {
+      "evidence": "reference"
+    },
+    "exact_tabulated_periodic_property_disambiguation": {
+      "evidence": "reference",
+      "empty_knowledge_fallback": "search_tools"
+    }
+  }
+}

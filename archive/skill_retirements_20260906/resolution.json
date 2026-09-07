@@ -1,0 +1,23 @@
+{
+  "schema_version": "chemtester-skill-retirement-resolution/v1",
+  "resolved_at": "2026-09-06T07:10:35.458821+08:00",
+  "plan_sha256": "2790df04d57371d22a29e33facbbc92b160cb718b6653202a6986625e3d7dde4",
+  "removed_file_count": 230,
+  "removed_public_tool_count": 1699,
+  "retired_internal_endpoints": 36,
+  "active_tool_count": 343,
+  "active_document_count": 852,
+  "active_chunk_count": 8927,
+  "unresolved_quarantined_documents": 0,
+  "unresolved_quarantined_tools": 0,
+  "source_checked_recoveries": 0,
+  "active_tools_and_documents_unchanged": true,
+  "archival_hashes_verified": true,
+  "active_configs": {
+    "configs/chemistry_support_policy.json": "ac1418febb28ab4b881c7811ef001a2217f38f4f57956c42c243be12e536d23c",
+    "configs/chemistry_support_quarantine.json": "0e5f3f295024014f03f40558c08e7e4ca52a45000b6427181148d725ac66cc25",
+    "chem-memory/L2_principles/chemtester_compact_problem_solving_skill.registry.json": "6b1b299dfa2caecd49901b9212f46ea3ac10db07fad21b01416853dff043cfb4"
+  },
+  "questions_read": 0,
+  "model_calls": 0
+}

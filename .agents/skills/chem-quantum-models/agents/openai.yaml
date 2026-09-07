@@ -1,0 +1,4 @@
+interface:
+  display_name: "Quantum Models"
+  short_description: "Atomic models, partition functions, and barrier transmission"
+  default_prompt: "Use $chem-quantum-models for the relevant chemistry subproblem, loading only the necessary references."

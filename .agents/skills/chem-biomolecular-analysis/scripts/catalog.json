@@ -1,0 +1,250 @@
+{
+  "schema_version": "native-chemistry-calculators/v1",
+  "tools": {
+    "chemometrics_tools.biplot_data": {
+      "contract": {},
+      "description": "Prepare coordinates for a biplot.\n\nParameters\n----------\nmodel : dict\n    Fitted PCA model\npc_x : int\n    Principal component for x-axis (1-indexed)\npc_y : int\n    Principal component for y-axis (1-indexed)\nloading_scale : float\n    Scale factor for loading vectors\n\nReturns\n-------\nscores_xy : np.ndarray\n    Score coordinates (n_samples, 2)\nloadings_xy : np.ndarray\n    Loading vectors (n_variables, 2)\n\nExamples\n--------\n>>> model = pca_fit(X)\n>>> scores_xy, loadings_xy = biplot_data(model, pc_x=1, pc_y=2)\n>>> # Plot scores as points, loadings as arrows",
+      "scientific_validity": "not_independently_verified",
+      "signature": "biplot_data(model: Dict, pc_x: int=1, pc_y: int=2, loading_scale: float=1.0)",
+      "summary": "Prepare coordinates for a biplot."
+    },
+    "chemometrics_tools.chromatography_resolution": {
+      "contract": {},
+      "description": "Calculate chromatographic resolution Rs = 2(tR2-tR1)/(w1+w2).",
+      "scientific_validity": "not_independently_verified",
+      "signature": "chromatography_resolution(tR1, tR2, w1, w2)",
+      "summary": "Calculate chromatographic resolution Rs = 2(tR2-tR1)/(w1+w2)."
+    },
+    "chemometrics_tools.cls_calibration": {
+      "contract": {},
+      "description": "Classical Least Squares calibration (Beer's law approach).\n\nDetermines molar absorptivities from known concentrations.\n\nParameters\n----------\nA : np.ndarray\n    Absorbance matrix (samples x wavelengths)\nC : np.ndarray\n    Concentration matrix (samples x analytes)\n\nReturns\n-------\nK : np.ndarray\n    Molar absorptivity matrix (analytes x wavelengths)\n\nExamples\n--------\n>>> # 3 analytes, 10 wavelengths, 5 calibration samples\n>>> A = np.random.rand(5, 10)  # Absorbance\n>>> C = np.random.rand(5, 3)   # Concentrations\n>>> K = cls_calibration(A, C)  # Shape: (3, 10)\n\nNotes\n-----\nCLS assumes: A = C @ K\nRequires all analytes in mixture to be known.\nSolves: K = (C^T C)^{-1} C^T A",
+      "scientific_validity": "not_independently_verified",
+      "signature": "cls_calibration(A: np.ndarray, C: np.ndarray)",
+      "summary": "Classical Least Squares calibration (Beer's law approach)."
+    },
+    "chemometrics_tools.cls_predict": {
+      "contract": {},
+      "description": "Predict concentrations from absorbance using CLS.\n\nParameters\n----------\nA : np.ndarray\n    Absorbance matrix (samples x wavelengths)\nK : np.ndarray\n    Molar absorptivity matrix (analytes x wavelengths)\n\nReturns\n-------\nC : np.ndarray\n    Predicted concentrations (samples x analytes)\n\nNotes\n-----\nSolves: C = A @ K^T @ (K @ K^T)^{-1}",
+      "scientific_validity": "not_independently_verified",
+      "signature": "cls_predict(A: np.ndarray, K: np.ndarray)",
+      "summary": "Predict concentrations from absorbance using CLS."
+    },
+    "chemometrics_tools.confidence_interval": {
+      "contract": {},
+      "description": "Calculate confidence interval for the mean.\n\nParameters\n----------\ndata : np.ndarray or list\n    Sample data\nconfidence : float\n    Confidence level (default 0.95)\naxis : int\n    Axis for calculation (for arrays)\n\nReturns\n-------\nlower : float or np.ndarray\n    Lower bound\nupper : float or np.ndarray\n    Upper bound\n\nExamples\n--------\n>>> lower, upper = confidence_interval(measurements, confidence=0.99)\n>>> print(f\"99% CI: [{lower:.3f}, {upper:.3f}]\")",
+      "scientific_validity": "not_independently_verified",
+      "signature": "confidence_interval(data: np.ndarray, confidence: float=0.95, axis: int=0)",
+      "summary": "Calculate confidence interval for the mean."
+    },
+    "chemometrics_tools.cross_validate": {
+      "contract": {},
+      "description": "Cross-validation for component selection.\n\nParameters\n----------\nX : np.ndarray\n    Predictor matrix\nY : np.ndarray\n    Response matrix\nmethod : str\n    'pls' or 'pcr'\nmax_components : int\n    Maximum number of components to test\ncv_folds : int\n    Number of cross-validation folds\n\nReturns\n-------\nresults : dict\n    - rmsecv : np.ndarray (RMSECV for each n_components)\n    - optimal_components : int\n    - optimal_rmsecv : float\n\nExamples\n--------\n>>> cv_result = cross_validate(X, Y, method='pls', max_components=10)\n>>> print(f\"Optimal components: {cv_result['optimal_components']}\")",
+      "scientific_validity": "not_independently_verified",
+      "signature": "cross_validate(X: np.ndarray, Y: np.ndarray, method: str='pls', max_components: int=10, cv_folds: int=5)",
+      "summary": "Cross-validation for component selection."
+    },
+    "chemometrics_tools.descriptive_stats": {
+      "contract": {},
+      "description": "Calculate comprehensive descriptive statistics.\n\nParameters\n----------\ndata : np.ndarray\n    Input data\naxis : int\n    Axis for calculations\n\nReturns\n-------\nstats_dict : dict\n    - mean, median, std, var\n    - skewness, kurtosis\n    - min, max, range\n    - q1, q3, iqr\n\nExamples\n--------\n>>> stats = descriptive_stats(X, axis=0)\n>>> print(f\"Mean: {stats['mean']}\")\n>>> print(f\"Skewness: {stats['skewness']}\")",
+      "scientific_validity": "not_independently_verified",
+      "signature": "descriptive_stats(data: np.ndarray, axis: int=0)",
+      "summary": "Calculate comprehensive descriptive statistics."
+    },
+    "chemometrics_tools.hypothesis_test": {
+      "contract": {},
+      "description": "Perform common hypothesis tests.\n\nParameters\n----------\nsample1 : np.ndarray\n    First sample\nsample2 : np.ndarray, optional\n    Second sample (for two-sample tests)\ntest : str\n    't-test', 'paired-t', 'f-test', 'chi2'\nalpha : float\n    Significance level\n\nReturns\n-------\nresult : dict\n    - statistic : test statistic\n    - p_value : p-value\n    - reject_H0 : bool (whether to reject null hypothesis)\n    - confidence_level : 1 - alpha\n\nExamples\n--------\n>>> result = hypothesis_test(method_A, method_B, test='t-test')\n>>> if result['reject_H0']:\n>>>     print(\"Significant difference found!\")",
+      "scientific_validity": "not_independently_verified",
+      "signature": "hypothesis_test(sample1: np.ndarray, sample2: Optional[np.ndarray]=None, test: str='t-test', alpha: float=0.05)",
+      "summary": "Perform common hypothesis tests."
+    },
+    "chemometrics_tools.internal_standard": {
+      "contract": {},
+      "description": "Internal standard method.\n\nsample_signals: analyte signals for samples\nstandard_signals: internal standard signals for same samples  \nis_concentration: known IS concentration (if needed)\n\nReturns dict with response_ratios, mean_ratio.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "internal_standard(sample_signals, standard_signals, is_concentration=None)",
+      "summary": "Internal standard method."
+    },
+    "chemometrics_tools.leverage": {
+      "contract": {},
+      "description": "Calculate leverage for samples in PCA/PLS model.\n\nParameters\n----------\nn_samples : int\n    Number of samples\nn_components : int\n    Number of components\n\nReturns\n-------\nh : np.ndarray\n    Leverage values (diagonal of hat matrix)\n\nNotes\n-----\nHigh leverage samples have strong influence on the model.\nLeverage > 2 * (n_components + 1) / n_samples is considered high.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "leverage(n_samples: int, n_components: int)",
+      "summary": "Calculate leverage for samples in PCA/PLS model."
+    },
+    "chemometrics_tools.linear_regression": {
+      "contract": {},
+      "description": "Simple linear regression y = mx + b.\n\nReturns slope, intercept, r_squared, std_err (of slope).",
+      "scientific_validity": "not_independently_verified",
+      "signature": "linear_regression(x, y)",
+      "summary": "Simple linear regression y = mx + b."
+    },
+    "chemometrics_tools.mean_center": {
+      "contract": {},
+      "description": "Mean-center data by subtracting column (or row) means.\n\nParameters\n----------\ndata : np.ndarray\n    Input data matrix (samples x variables)\naxis : int\n    Axis along which to center (0=columns, 1=rows)\n\nReturns\n-------\ncentered : np.ndarray\n    Mean-centered data\nmeans : np.ndarray\n    Mean values subtracted\n\nExamples\n--------\n>>> X = np.array([[1, 2], [3, 4], [5, 6]])\n>>> Xc, means = mean_center(X)\n>>> means\narray([3., 4.])\n\nNotes\n-----\nMean centering is essential for PCA as it ensures the first principal\ncomponent passes through the centroid of the data.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "mean_center(data: np.ndarray, axis: int=0)",
+      "summary": "Mean-center data by subtracting column (or row) means."
+    },
+    "chemometrics_tools.msc": {
+      "contract": {},
+      "description": "Multiplicative Scatter Correction (MSC).\n\nCorrects for scatter effects in spectroscopic data.\n\nParameters\n----------\ndata : np.ndarray\n    Spectral data (samples x wavelengths)\nreference : np.ndarray, optional\n    Reference spectrum (default: mean spectrum)\n\nReturns\n-------\ncorrected : np.ndarray\n    MSC-corrected spectra\nreference : np.ndarray\n    Reference spectrum used\n\nNotes\n-----\nMSC fits each spectrum to the reference using linear regression,\nthen corrects for additive and multiplicative effects.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "msc(data: np.ndarray, reference: Optional[np.ndarray]=None)",
+      "summary": "Multiplicative Scatter Correction (MSC)."
+    },
+    "chemometrics_tools.outlier_detection": {
+      "contract": {},
+      "description": "Detect outliers in PCA/PLS model.\n\nParameters\n----------\nmodel : dict\n    Fitted model\nresiduals : np.ndarray\n    Model residuals (X - X_reconstructed) or Y - Y_pred\nthreshold_leverage : float\n    Leverage threshold multiplier\nthreshold_residual : float\n    Residual threshold (standard deviations)\n\nReturns\n-------\noutliers : dict\n    - leverage_outliers : indices of high leverage samples\n    - residual_outliers : indices of high residual samples\n    - total_outliers : combined outlier indices",
+      "scientific_validity": "not_independently_verified",
+      "signature": "outlier_detection(model: Dict, residuals: np.ndarray, threshold_leverage: float=2.0, threshold_residual: float=3.0)",
+      "summary": "Detect outliers in PCA/PLS model."
+    },
+    "chemometrics_tools.pca_fit": {
+      "contract": {},
+      "description": "Fit a PCA model to data.\n\nParameters\n----------\ndata : np.ndarray\n    Input data matrix (samples x variables)\nn_components : int, optional\n    Number of components to retain (default: all)\ncenter : bool\n    Whether to mean-center the data\nscale : bool\n    Whether to standardize variables\n\nReturns\n-------\nmodel : dict\n    PCA model containing:\n    - scores : np.ndarray (samples x n_components)\n    - loadings : np.ndarray (variables x n_components)\n    - explained_variance : np.ndarray\n    - explained_variance_ratio : np.ndarray\n    - singular_values : np.ndarray\n    - mean : np.ndarray\n    - scale : np.ndarray (if scale=True)\n\nExamples\n--------\n>>> X = np.random.randn(50, 10)\n>>> model = pca_fit(X, n_components=3)\n>>> model['explained_variance_ratio']\narray([...])\n\nNotes\n-----\nPCA finds orthogonal directions of maximum variance.\nFor spectral data, use center=True, scale=False.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "pca_fit(data: np.ndarray, n_components: Optional[int]=None, center: bool=True, scale: bool=False)",
+      "summary": "Fit a PCA model to data."
+    },
+    "chemometrics_tools.pca_transform": {
+      "contract": {},
+      "description": "Transform new data using fitted PCA model.\n\nParameters\n----------\ndata : np.ndarray\n    New data to transform (samples x variables)\nmodel : dict\n    Fitted PCA model from pca_fit()\n\nReturns\n-------\nscores : np.ndarray\n    Scores for new samples\n\nExamples\n--------\n>>> model = pca_fit(X_train, n_components=3)\n>>> X_test_scores = pca_transform(X_test, model)",
+      "scientific_validity": "not_independently_verified",
+      "signature": "pca_transform(data: np.ndarray, model: Dict)",
+      "summary": "Transform new data using fitted PCA model."
+    },
+    "chemometrics_tools.pcr_fit": {
+      "contract": {},
+      "description": "Principal Component Regression.\n\nCombines PCA dimensionality reduction with linear regression.\n\nParameters\n----------\nX : np.ndarray\n    Predictor matrix (samples x variables)\nY : np.ndarray\n    Response matrix (samples x responses)\nn_components : int\n    Number of principal components to use\n\nReturns\n-------\nmodel : dict\n    PCR model containing PCA model and regression coefficients\n\nNotes\n-----\nPCR is simpler than PLS but may require more components\nto achieve the same predictive power.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "pcr_fit(X: np.ndarray, Y: np.ndarray, n_components: int=2)",
+      "summary": "Principal Component Regression."
+    },
+    "chemometrics_tools.pcr_predict": {
+      "contract": {},
+      "description": "Predict using PCR model.\n\nParameters\n----------\nX : np.ndarray\n    Predictor data\nmodel : dict\n    Fitted PCR model\n\nReturns\n-------\nY_pred : np.ndarray\n    Predictions",
+      "scientific_validity": "not_independently_verified",
+      "signature": "pcr_predict(X: np.ndarray, model: Dict)",
+      "summary": "Predict using PCR model."
+    },
+    "chemometrics_tools.plate_count": {
+      "contract": {},
+      "description": "Calculate number of theoretical plates N = 16*(tR/w)^2.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "plate_count(tR, w)",
+      "summary": "Calculate number of theoretical plates N = 16*(tR/w)^2."
+    },
+    "chemometrics_tools.plate_height": {
+      "contract": {},
+      "description": "Calculate plate height H = L/N.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "plate_height(L, N)",
+      "summary": "Calculate plate height H = L/N."
+    },
+    "chemometrics_tools.pls_fit": {
+      "contract": {},
+      "description": "Fit a PLS regression model.\n\nParameters\n----------\nX : np.ndarray\n    Predictor matrix (samples x variables)\nY : np.ndarray\n    Response matrix (samples x responses)\nn_components : int\n    Number of latent variables\ncenter : bool\n    Mean-center X and Y\nscale : bool\n    Standardize X and Y\n\nReturns\n-------\nmodel : dict\n    PLS model containing:\n    - X_scores : np.ndarray (T)\n    - X_loadings : np.ndarray (P)\n    - Y_scores : np.ndarray (U)\n    - Y_loadings : np.ndarray (Q)\n    - weights : np.ndarray (W)\n    - coefficients : np.ndarray (B)\n    - X_mean, Y_mean : np.ndarray\n    - X_scale, Y_scale : np.ndarray\n\nExamples\n--------\n>>> X = np.random.randn(50, 10)\n>>> Y = np.random.randn(50, 1)\n>>> model = pls_fit(X, Y, n_components=3)\n\nNotes\n-----\nPLS finds latent variables that maximize covariance with Y.\nUse cross-validation to select optimal n_components.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "pls_fit(X: np.ndarray, Y: np.ndarray, n_components: int=2, center: bool=True, scale: bool=False)",
+      "summary": "Fit a PLS regression model."
+    },
+    "chemometrics_tools.pls_predict": {
+      "contract": {},
+      "description": "Predict Y values from X using fitted PLS model.\n\nParameters\n----------\nX : np.ndarray\n    Predictor data (samples x variables)\nmodel : dict\n    Fitted PLS model from pls_fit()\n\nReturns\n-------\nY_pred : np.ndarray\n    Predicted Y values\n\nExamples\n--------\n>>> model = pls_fit(X_train, Y_train, n_components=3)\n>>> Y_pred = pls_predict(X_test, model)",
+      "scientific_validity": "not_independently_verified",
+      "signature": "pls_predict(X: np.ndarray, model: Dict)",
+      "summary": "Predict Y values from X using fitted PLS model."
+    },
+    "chemometrics_tools.propagation_uncertainty": {
+      "contract": {},
+      "description": "Error propagation.\n\nFor multiplication/division: relative uncertainties add.\nFor addition/subtraction: absolute uncertainties add.\n\nvalues: list of measured values\nuncertainties: list of uncertainties (same length)\noperation: 'multiply', 'divide', 'add', 'subtract', or formula string\n\nReturns propagated uncertainty.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "propagation_uncertainty(values, uncertainties, operation='multiply')",
+      "summary": "Error propagation."
+    },
+    "chemometrics_tools.propagation_uncertainty_expression": {
+      "contract": {},
+      "description": "Error propagation via partial derivatives.\n\nGiven f(x1, x2, ...) = result_value, and a list of partial derivatives\nevaluated at the measurement points, computes:\n\u03b4f = sqrt( \u03a3 (\u2202f/\u2202xi)\u00b2 \u00d7 \u03b4xi\u00b2 )\n\nParameters\n----------\nresult_value : float\n    The computed result (f)\npartial_derivatives : list of float\n    \u2202f/\u2202x1, \u2202f/\u2202x2, ... evaluated at the measurement points\nuncertainties : list of float\n    Uncertainties \u03b4x1, \u03b4x2, ... for each variable\n\nReturns\n-------\ndict with result, uncertainty, relative_uncertainty\n\nExamples\n--------\n>>> # FW = gRT/(PV), \u2202FW/\u2202g = RT/(PV), etc.\n>>> propagation_uncertainty_expression(16.04, [135.9, 0.0003, 0.0538, -22.15], \n...                                   [0.002, 0.000001, 0.1, 0.003])",
+      "scientific_validity": "not_independently_verified",
+      "signature": "propagation_uncertainty_expression(result_value, partial_derivatives, uncertainties)",
+      "summary": "Error propagation via partial derivatives."
+    },
+    "chemometrics_tools.rmsec_rmsep": {
+      "contract": {},
+      "description": "Calculate calibration/prediction error metrics.\n\nParameters\n----------\nY_true : np.ndarray\n    True values\nY_pred : np.ndarray\n    Predicted values\ntype : str\n    'RMSEC' (calibration) or 'RMSEP' (prediction)\n\nReturns\n-------\nmetrics : dict\n    - rmse : Root mean squared error\n    - r2 : R-squared\n    - bias : Mean prediction error\n    - sep : Standard error of prediction\n\nExamples\n--------\n>>> metrics = rmsec_rmsep(Y_test, Y_pred, type='RMSEP')\n>>> print(f\"R2 = {metrics['r2']:.4f}\")",
+      "scientific_validity": "not_independently_verified",
+      "signature": "rmsec_rmsep(Y_true: np.ndarray, Y_pred: np.ndarray, type: str='RMSEC')",
+      "summary": "Calculate calibration/prediction error metrics."
+    },
+    "chemometrics_tools.rsd": {
+      "contract": {},
+      "description": "Relative standard deviation (RSD) = std/mean * 100 (%).",
+      "scientific_validity": "not_independently_verified",
+      "signature": "rsd(data)",
+      "summary": "Relative standard deviation (RSD) = std/mean * 100 (%)."
+    },
+    "chemometrics_tools.scores_loadings": {
+      "contract": {},
+      "description": "Extract scores and loadings from PCA model.\n\nParameters\n----------\nmodel : dict\n    Fitted PCA model\n\nReturns\n-------\nscores : np.ndarray\n    Sample scores\nloadings : np.ndarray\n    Variable loadings\n\nNotes\n-----\nScores show sample positions in PC space.\nLoadings show variable contributions to each PC.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "scores_loadings(model: Dict)",
+      "summary": "Extract scores and loadings from PCA model."
+    },
+    "chemometrics_tools.scree_plot_data": {
+      "contract": {},
+      "description": "Generate data for scree plot.\n\nParameters\n----------\nmodel : dict\n    Fitted PCA model\n\nReturns\n-------\ncomponents : np.ndarray\n    Component numbers (1, 2, 3, ...)\nvariance : np.ndarray\n    Variance explained by each component\n\nExamples\n--------\n>>> model = pca_fit(X)\n>>> comp_nums, var = scree_plot_data(model)\n>>> # Plot: plt.plot(comp_nums, var, 'o-')",
+      "scientific_validity": "not_independently_verified",
+      "signature": "scree_plot_data(model: Dict)",
+      "summary": "Generate data for scree plot."
+    },
+    "chemometrics_tools.single_point_standard_addition": {
+      "contract": {},
+      "description": "Single-point standard addition with multi-step dilution support.\n\nFor problems where a sample undergoes dilution steps before standard addition:\n\nStep 1: Compute concentration of analyte in the MEASUREMENT flask (unspiked):\n    C_analyte_flask = C_sample * V_aliquot / V_flask_final\n    (where C_sample is concentration in the stock flask)\n\nStep 2: Compute concentration of standard added to the MEASUREMENT flask:\n    C_std_flask = C_std * V_std / V_flask_final\n\nStep 3: From signal ratio:\n    C_analyte_flask = C_std_flask * S_unspiked / (S_spiked - S_unspiked)\n\nStep 4: Back-calculate to original:\n    C_stock = C_analyte_flask * V_flask_final / V_aliquot\n    mass_analyte = C_stock * V_stock_flask (if in ppm = mg/L, multiply by L to get mg)\n    weight_percent = mass_analyte / mass_sample_g * 100 (if mass_sample_g provided)\n\nParameters\n----------\nS_unspiked : float - signal for unspiked measurement flask\nS_spiked : float - signal for spiked measurement flask  \nC_std : float - concentration of standard solution (ppm or same units as desired result)\nV_std : float - volume of standard added (mL)\nV_aliquot : float - volume of aliquot taken from stock flask (mL)\nV_flask_final : float - final volume of measurement flask (mL)\nV_stock_flask : float - volume of original stock flask (mL)\nmass_sample_g : float - original sample mass in grams (for weight_percent)\n\nReturns dict with concentration_ppm, weight_percent (if mass_sample_g given),\nand intermediate values for verification.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "single_point_standard_addition(S_unspiked, S_spiked, C_std, V_std, V_aliquot=None, V_flask_final=None, V_stock_flask=None, mass_sample_g=None)",
+      "summary": "Single-point standard addition with multi-step dilution support."
+    },
+    "chemometrics_tools.snv": {
+      "contract": {},
+      "description": "Standard Normal Variate (SNV) transformation.\n\nEach spectrum is standardized independently (row-wise).\nCommon preprocessing for NIR spectroscopy.\n\nParameters\n----------\ndata : np.ndarray\n    Spectral data (samples x wavelengths)\n\nReturns\n-------\nsnv_data : np.ndarray\n    SNV-transformed spectra\n\nNotes\n-----\nSNV removes scatter effects and baseline variations.\nApply before mean-centering for PCA of spectral data.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "snv(data: np.ndarray)",
+      "summary": "Standard Normal Variate (SNV) transformation."
+    },
+    "chemometrics_tools.standard_addition": {
+      "contract": {},
+      "description": "Standard addition method to determine concentration.\n\nTwo methods available for handling dilution effects:\n\n**Method 1 - 'simple' (default)**: Plot S vs V_spike\n- Used when spike volume is negligible compared to sample volume (V_spike << V_sample)\n- Simpler calculation, but may underestimate concentration if dilution is significant\n- x-intercept = -C_sample \u00d7 V_sample / C_spike\n\n**Method 2 - 'dilution_corrected'**: Plot S \u00d7 (V_sample + V_spike) vs V_spike\n- Corrects for dilution of the original analyte when spike volumes are significant\n- Recommended when spike volume > 1% of sample volume\n- x-intercept = -C_sample \u00d7 V_sample / C_spike\n- The transformation S\u00d7(V_sample+V_spike) accounts for dilution effect\n\nHarvey textbook (Analytical Chemistry 2.1) recommends:\n- Use 'simple' when V_spike < 1% of V_sample\n- Use 'dilution_corrected' for larger spike volumes\n\nParameters\n----------\nsample_signal : float\n    Signal for unspiked sample\nspike_data : list\n    List of (spike_volume, signal) tuples (excluding the 0-spike point)\n    Spike volumes should be in same units as v_sample\nc_spike : float, optional\n    Concentration of standard spike solution (same units as desired result)\nv_sample : float, optional\n    Volume of original sample (required for 'dilution_corrected' method)\nmethod : str, optional\n    'simple' (default) or 'dilution_corrected'\n\nReturns\n-------\ndict with:\n    - concentration: calculated sample concentration (if c_spike and v_sample provided)\n    - slope: regression slope\n    - intercept: regression intercept\n    - x_intercept: absolute value of x-intercept (volume of spike at S=0)\n    - method: which method was used\n\nExamples\n--------\n>>> # Simple method (default)\n>>> result = standard_addition(15.0, [(0.10, 45.0), (0.20, 75.0)], \n...                            c_spike=600, v_sample=5.0)\n>>> result['concentration']\n6.0\n\n>>> # Dilution-corrected method\n>>> result = standard_addition(15.0, [(0.10, 45.0), (0.20, 75.0)], \n...                            c_spike=600, v_sample=5.0, method='dilution_corrected')",
+      "scientific_validity": "not_independently_verified",
+      "signature": "standard_addition(sample_signal, spike_data, c_spike=None, v_sample=None, method='simple')",
+      "summary": "Standard addition method to determine concentration."
+    },
+    "chemometrics_tools.standardize": {
+      "contract": {},
+      "description": "Z-score standardization: center and scale to unit variance.\n\nParameters\n----------\ndata : np.ndarray\n    Input data matrix\naxis : int\n    Axis along which to standardize\n\nReturns\n-------\nstandardized : np.ndarray\n    Standardized data (mean=0, std=1)\nmeans : np.ndarray\n    Column/row means\nstds : np.ndarray\n    Column/row standard deviations\n\nExamples\n--------\n>>> X = np.array([[1, 2], [3, 4], [5, 6]])\n>>> Xs, means, stds = standardize(X)\n\nNotes\n-----\nUse standardization when variables have different units or scales.\nFor spectroscopic data, mean-centering alone is often sufficient.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "standardize(data: np.ndarray, axis: int=0)",
+      "summary": "Z-score standardization: center and scale to unit variance."
+    },
+    "chemometrics_tools.t_test": {
+      "contract": {},
+      "description": "One-sample t-test comparing data mean to true_value.\n\nReturns dict with t_calc, df, t_critical, p_value, significant.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "t_test(data, true_value=None, alpha=0.05)",
+      "summary": "One-sample t-test comparing data mean to true_value."
+    },
+    "chemometrics_tools.van_deemter": {
+      "contract": {},
+      "description": "Van Deemter equation: H = A + B/u + C*u.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "van_deemter(u, A, B, C)",
+      "summary": "Van Deemter equation: H = A + B/u + C*u."
+    },
+    "chemometrics_tools.variance_explained": {
+      "contract": {},
+      "description": "Get variance explained by each principal component.\n\nParameters\n----------\nmodel : dict\n    Fitted PCA model\ncumulative : bool\n    Return cumulative variance\n\nReturns\n-------\nvariance : np.ndarray\n    Variance explained (individual or cumulative)\n\nExamples\n--------\n>>> model = pca_fit(X)\n>>> cum_var = variance_explained(model, cumulative=True)\n>>> # Find components for 95% variance\n>>> n_comp = np.argmax(cum_var >= 0.95) + 1",
+      "scientific_validity": "not_independently_verified",
+      "signature": "variance_explained(model: Dict, cumulative: bool=False)",
+      "summary": "Get variance explained by each principal component."
+    }
+  }
+}

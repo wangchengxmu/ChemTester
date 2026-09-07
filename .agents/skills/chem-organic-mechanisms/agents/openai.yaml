@@ -1,0 +1,4 @@
+interface:
+  display_name: "Organic Mechanisms"
+  short_description: "Organic pathways, selectivity, and stereochemistry"
+  default_prompt: "Use $chem-organic-mechanisms for the relevant chemistry subproblem, loading only the necessary references."

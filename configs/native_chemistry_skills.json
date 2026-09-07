@@ -1,0 +1,298 @@
+{
+  "schema_version": "chemtester-native-skill-packaging/v1",
+  "registry": "chem-memory/L2_principles/chemtester_compact_problem_solving_skill.registry.json",
+  "support_policy": "configs/chemistry_support_policy.json",
+  "tools_root": "chem-memory/L3_functions",
+  "calculator_contracts": {
+    "crystal_structures_tools.cubic_lattice_radius": {
+      "allowed_values": {"cell_type": ["simple_cubic", "bcc", "fcc"]},
+      "positive_parameters": ["edge_length"]
+    },
+    "crystal_structures_tools.edge_length_from_radius": {
+      "allowed_values": {"cell_type": ["simple_cubic", "bcc", "fcc"]},
+      "positive_parameters": ["radius"]
+    }
+  },
+  "skills": [
+    {
+      "name": "chem-thermodynamics",
+      "display_name": "Thermodynamics",
+      "description": "Use for gas-state changes, enthalpy, entropy, free energy, real-gas corrections, and equilibrium-limited conversion. Not for kinetic rate fitting or aqueous titration speciation.",
+      "short_description": "Gas states, energy balances, and thermodynamic limits",
+      "capabilities": [
+        "fixed_volume_real_gas_enthalpy",
+        "monatomic_ideal_gas_entropy",
+        "reversible_isothermal_heat_entropy",
+        "real_gas_compressibility_state_selection",
+        "oxygen_redox_thermodynamics_kinetics_separation",
+        "equilibrium_limited_catalytic_conversion",
+        "coupled_real_gas_equilibrium_error_analysis"
+      ],
+      "modules": [
+        "enthalpy_tools",
+        "gas_laws_tools",
+        "gibbs_free_energy_tools",
+        "ideal_gas_law_tools",
+        "thermodynamic_data_tools"
+      ],
+      "workflow": [
+        "Define system, state variables, process constraints, sign convention, and molar versus total quantities.",
+        "Choose the equation of state and thermodynamic identity before substituting numbers; retain correction terms until cancellation is shown.",
+        "Separate equilibrium feasibility from kinetic accessibility. Check limiting cases, units, and state-function closure."
+      ]
+    },
+    {
+      "name": "chem-aqueous-equilibria",
+      "display_name": "Aqueous Equilibria",
+      "description": "Use for acid-base, buffer, solubility, ionic speciation, colligative ionization, or temperature-dependent carbonate equilibria. Not for general gas thermodynamics or instrumental assay selection.",
+      "short_description": "Acid-base, buffers, solubility, and speciation",
+      "capabilities": [
+        "colligative_partial_ionization_particle_balance",
+        "coupled_solubility_acid_base_regression",
+        "qualitative_ionic_solubility_causticity_screening",
+        "matched_acid_counteranion_trend_audit",
+        "temperature_shifted_carbonate_scale_limit"
+      ],
+      "modules": [
+        "acid_base_constants_tools",
+        "acid_base_tools",
+        "buffer_calculator",
+        "equilibrium_constant_tools",
+        "equilibrium_tools",
+        "ph_calculations_tools"
+      ],
+      "workflow": [
+        "Write species, mass balances, charge balance, and equilibrium definitions using compatible activities or stated concentration approximations.",
+        "Identify the temperature and convention of each constant; do not assume pH + pOH = 14 at every temperature.",
+        "Solve coupled balances before selecting a limiting approximation, then check positivity, charge closure, and approximation validity."
+      ]
+    },
+    {
+      "name": "chem-kinetics-reactors",
+      "display_name": "Kinetics And Reactors",
+      "description": "Use for integrated rate laws, rate-law fitting, isotope-effect rankings, activation-energy direction, or batch/CSTR/PFR comparisons. Not for equilibrium-only conversion or thermodynamic favorability.",
+      "short_description": "Rate laws, activation energies, and reactor comparisons",
+      "capabilities": [
+        "reactor_arrangement_reciprocal_rate_axis_disambiguation",
+        "role_scoped_quantity_binding",
+        "secondary_deuterium_isotope_effect_rate_ranking",
+        "direction_aware_empirical_activation_energy"
+      ],
+      "modules": [
+        "integrated_rate_law_tools",
+        "rate_law_solver"
+      ],
+      "workflow": [
+        "Bind every quantity to its species, experimental stage, and forward or reverse direction.",
+        "Read rate-plot axes and reactor assumptions explicitly before comparing areas or fitting a model.",
+        "Check rate units, kinetic order, fit identifiability, and whether an empirical constant is actually supplied; do not substitute thermodynamics for a measured rate."
+      ]
+    },
+    {
+      "name": "chem-organic-mechanisms",
+      "display_name": "Organic Mechanisms",
+      "description": "Use for organic reaction pathways, competing mechanisms, regiochemistry, aromaticity, stereochemical descriptors, or reaction-stage product assignment. Not for standalone spectral peak assignment.",
+      "short_description": "Organic pathways, selectivity, and stereochemistry",
+      "capabilities": [
+        "michael_enolate_product_pair_matching",
+        "diels_alder_bridged_stereochemistry",
+        "addition_mechanism_selectivity_disambiguation",
+        "evidence_ranked_structural_aromaticity_check",
+        "cannizzaro_eligibility_competing_pathways",
+        "stagewise_organic_structure_to_proton_multiplicity",
+        "nitroactivated_aromatic_substitution_site_triage",
+        "reaction_center_stereochemical_descriptor_audit",
+        "nucleophile_strained_ring_initiation_disambiguation",
+        "n_aryl_ketonitrone_activated_alkyne_cascade"
+      ],
+      "modules": [
+        "functional_group_tools"
+      ],
+      "workflow": [
+        "Recover the exact substrate connectivity, reagents, medium, and reaction stage before naming a mechanism.",
+        "Track atom connectivity and competing pathways; use analogy only after checking its structural and condition requirements.",
+        "Recompute stereochemical descriptors after the reaction. Distinguish spatial retention/inversion from changes in CIP labels."
+      ]
+    },
+    {
+      "name": "chem-spectroscopy",
+      "display_name": "Spectroscopy",
+      "description": "Use for NMR environments and splitting, IR interpretation, isotope envelopes, optical transition energies, or selecting spectroscopic experiments. Not for bulk analytical standardization or atomic-model theory.",
+      "short_description": "NMR, IR, isotope patterns, and optical spectroscopy",
+      "capabilities": [
+        "photophysics_color_energy_direction",
+        "phosphorus_nmr_stagewise_environment_counting",
+        "halogen_isotope_envelope_comparison",
+        "aromatic_carbonyl_ir_positional_effects",
+        "diastereotopic_methylene_nmr",
+        "nmr_experiment_selection_by_information_channel",
+        "heteronuclear_proton_nmr_multiplicity"
+      ],
+      "modules": [
+        "mass_spec_tools",
+        "nmr_splitting_tools",
+        "nmr_tools",
+        "uv_vis_tools"
+      ],
+      "workflow": [
+        "Identify the observed nucleus, experiment, structure, timescale, solvent, and coupling or exchange assumptions.",
+        "Count environments and allowed interactions before mapping them to peaks; distinguish chemical equivalence from magnetic equivalence.",
+        "Use trends as conditional evidence, not unique identification. Report degeneracies, unresolved assignments, and what measurement would discriminate them."
+      ]
+    },
+    {
+      "name": "chem-inorganic-reactions",
+      "display_name": "Inorganic Reactions",
+      "description": "Use for inorganic reaction-network deduction, coordination composition and symmetry, redox balancing, periodic-property lookup, and condition-dependent metal speciation. Not for unit-cell geometry or aqueous buffer calculations.",
+      "short_description": "Coordination, inorganic deductions, and redox ledgers",
+      "capabilities": [
+        "inorganic_gas_trap_stoichiometry",
+        "qualitative_inorganic_constraint_deduction",
+        "exact_tabulated_periodic_property_disambiguation",
+        "pressure_coupled_spin_orbital_geometry",
+        "coordination_salt_composition_symmetry_speciation",
+        "f_block_scorpionate_condition_speciation",
+        "redox_half_reaction_atom_electron_ledger",
+        "inorganic_reaction_constraint_ledger"
+      ],
+      "modules": [
+        "atomic_composition_tools",
+        "electrolysis_tools",
+        "equation_balancing_tools",
+        "nernst_equation",
+        "periodic_trends_tools"
+      ],
+      "workflow": [
+        "Maintain an explicit ledger of atoms, charge, electrons, oxidation state, ligands, and phase for each reaction stage.",
+        "Use all independent composition, gas, color, symmetry, and condition constraints; do not force a familiar species from one clue.",
+        "Require a cited table for exact empirical ordering. Distinguish bookkeeping oxidation state from physical charge and ligand-field assumptions from measured spin states."
+      ]
+    },
+    {
+      "name": "chem-analytical-quantitation",
+      "display_name": "Analytical Quantitation",
+      "description": "Use for standardization, back titration, concentration and amount conversions, purification accounting, extraction stoichiometry, or assay specificity. Not for NMR structure assignment or protein workflow selection.",
+      "short_description": "Assay balances, concentrations, and extraction accounting",
+      "capabilities": [
+        "coupled_back_titration_standardization_balance",
+        "answer_output_representation_and_provenance",
+        "purification_phase_and_byproduct_audit",
+        "reaction_based_assay_scope_verification",
+        "dimeric_acidic_extractant_stoichiometry"
+      ],
+      "modules": [
+        "amount_conversion_tools",
+        "density_tools",
+        "solution_concentration_tools",
+        "stoichiometric_conversion_tools",
+        "unit_conversion_tools"
+      ],
+      "workflow": [
+        "Define the measurand, aliquot, dilution chain, stoichiometric reaction, blank, and calibration or standardization dependency.",
+        "Track phase transfer, recovery, interfering species, and which chemical response the assay actually measures.",
+        "Carry units and uncertainty through the balance; render the requested quantity without converting a calculation into an unsupported identity or selectivity claim."
+      ]
+    },
+    {
+      "name": "chem-crystal-structures",
+      "display_name": "Crystal Structures",
+      "description": "Use for crystallographic density, formula units per cell, fractional-coordinate geometry, lattice metrics, or structure/TGA composition closure. Not for molecular stereochemical nomenclature.",
+      "short_description": "Unit cells, coordinate geometry, and composition closure",
+      "capabilities": [
+        "unit_cell_density_composition_triangulation",
+        "fractional_coordinate_polyhedron_metrics",
+        "peroxo_crystal_speciation_tga_closure"
+      ],
+      "modules": [
+        "crystal_structures_tools",
+        "crystallography_tools"
+      ],
+      "workflow": [
+        "Distinguish cell, formula unit, site occupancy, asymmetric unit, and bulk composition.",
+        "Transform fractional coordinates with the correct metric and periodic images; do not treat a nonorthogonal cell as Cartesian.",
+        "Cross-check density, stoichiometry, charge, and mass loss. State structural ambiguity when independent constraints do not determine a unique composition."
+      ]
+    },
+    {
+      "name": "chem-safety-references",
+      "display_name": "Safety Reference Review",
+      "description": "Use for interpreting SDS or compatibility evidence, chemical application scope, phase-dependent hazard distinctions, or recognizing unstable-material warning signs. Not for hazardous synthesis optimization, emergency treatment, or authorization to handle or mix chemicals.",
+      "short_description": "Source-bound hazard and compatibility interpretation",
+      "capabilities": [
+        "corrosive_exposure_first_aid",
+        "peroxide_former_visible_degradation_response",
+        "empirical_compatibility_table_disambiguation",
+        "diazonium_salt_isolation_safety",
+        "explosive_performance_metric_role_disambiguation",
+        "organic_nitro_oxidizer_hazard_comparison",
+        "chemical_application_scope_verification",
+        "phase_aware_release_response_selection"
+      ],
+      "modules": [
+        "hazardous_waste_compatibility"
+      ],
+      "workflow": [
+        "For actual exposure or unstable material, prioritize emergency services, site safety staff, and current product-specific SDS instructions; do not infer a safe procedure from these notes.",
+        "Bind every claim to chemical identity, concentration, phase, contact time, material, and source scope. A missing table entry does not establish compatibility.",
+        "Use these procedures for conceptual discrimination and source interpretation only. Do not optimize energetic formulations, prescribe treatment, or authorize handling from an unverified calculation."
+      ]
+    },
+    {
+      "name": "chem-toxicology",
+      "display_name": "Toxicology Evidence",
+      "description": "Use for interpreting chemical toxicology mechanisms, species-specific exposure evidence, toxin process fate, or limits of class-level hazard comparisons. Not for diagnosis, antidote selection, dosing, or individual treatment advice.",
+      "short_description": "Chemical species, exposure context, and toxicology evidence",
+      "capabilities": [
+        "nitrate_nitrite_oxidizer_toxicity",
+        "natural_toxin_process_fate_and_mechanism",
+        "heme_toxicant_target_and_oxidation_state_scope",
+        "mercury_toxicology_speciation_timecourse",
+        "class_level_toxicity_scope_control"
+      ],
+      "modules": [],
+      "workflow": [
+        "Specify chemical species, exposure route, dose context, timing, and endpoint before interpreting a toxicology claim.",
+        "Distinguish molecular mechanism from clinical diagnosis, and processing conditions from evidence that a toxin was removed.",
+        "Use current authoritative sources for consequential claims. For a real exposure, refer to poison control or emergency care rather than extrapolating a treatment from mechanism."
+      ]
+    },
+    {
+      "name": "chem-biomolecular-analysis",
+      "display_name": "Biomolecular Analysis",
+      "description": "Use for protein ion-exchange workflows, low-template PCR interpretation, competitive ITC identifiability, or early virtual-screening and binding-stage comparisons. Not for clinical diagnosis or unconstrained affinity prediction.",
+      "short_description": "Protein workflows, binding models, and assay interpretation",
+      "capabilities": [
+        "protein_iex_selection_workflow_ordering",
+        "low_template_pcr_directional_outcome_screening",
+        "early_virtual_screening_profile_comparison",
+        "competitive_itc_affinity_identifiability",
+        "conformational_rigidity_binding_stage_separation"
+      ],
+      "modules": [
+        "chemometrics_tools"
+      ],
+      "workflow": [
+        "Identify the experimental stage, observable, controls, sample regime, and intended biological quantity.",
+        "Distinguish measurement sensitivity and identifiability from mechanistic plausibility; separate binding, conformational reorganization, and downstream effects.",
+        "Compare candidates on matched assay conditions and supported endpoints. State when sparse observations cannot identify a unique parameter or outcome."
+      ]
+    },
+    {
+      "name": "chem-quantum-models",
+      "display_name": "Quantum Models",
+      "description": "Use for atomic-spectroscopy model limits, vibrational partition approximations, or finite-barrier transmission. Not for routine NMR peak assignment or unrestricted numerical modeling.",
+      "short_description": "Atomic models, partition functions, and barrier transmission",
+      "capabilities": [
+        "atomic_spectroscopy_model_limit_discrimination",
+        "vibrational_partition_approximation_thresholds",
+        "finite_rectangular_barrier_transmission"
+      ],
+      "modules": [],
+      "workflow": [
+        "State the Hamiltonian or statistical model, assumptions, energy origin, boundary conditions, and dimensional convention.",
+        "Choose the expression appropriate to the energy regime; evaluate continuous limiting cases separately when a direct formula becomes singular.",
+        "Check dimensions, normalization, probability bounds, approximation error, and whether the model can represent the observed phenomenon."
+      ]
+    }
+  ]
+}

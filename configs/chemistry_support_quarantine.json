@@ -1,0 +1,429 @@
+{
+  "schema_version": "chemtester-support-quarantine/v1",
+  "review_basis": "docs/skill_corpus_audit_20260906.md#f16",
+  "release_policy": "Explicit source-based review required; a changed hash does not release a document.",
+  "documents": [],
+  "resource_warnings": [
+    {
+      "path": "L2_principles/atomic_identity_formula_and_nomenclature.md",
+      "target": "../L5_examples/composition_nomenclature/",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Historical link candidate; require actual evidence only when the conclusion depends on it."
+    },
+    {
+      "path": "L2_principles/atomic_theory_and_subatomic_structure.md",
+      "target": "../L5_examples/composition_nomenclature/case-weighted-average-atomic-mass.md",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Historical link candidate; require actual evidence only when the conclusion depends on it."
+    },
+    {
+      "path": "L2_principles/band_theory.md",
+      "target": "../L5_examples/band_theory/",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Historical link candidate; require actual evidence only when the conclusion depends on it."
+    },
+    {
+      "path": "L2_principles/crystal_structures.md",
+      "target": "../L5_examples/crystal_structures/",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Historical link candidate; require actual evidence only when the conclusion depends on it."
+    },
+    {
+      "path": "L2_principles/crystallography.md",
+      "target": "../L5_examples/crystallography/",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Historical link candidate; require actual evidence only when the conclusion depends on it."
+    },
+    {
+      "path": "L2_principles/electrochemical_analysis.md",
+      "target": "../L5_examples/electrochemical_analysis/",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Historical link candidate; require actual evidence only when the conclusion depends on it."
+    },
+    {
+      "path": "L2_principles/intermolecular_forces.md",
+      "target": "../L5_examples/intermolecular_forces/",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Historical link candidate; require actual evidence only when the conclusion depends on it."
+    },
+    {
+      "path": "L2_principles/liquid_properties.md",
+      "target": "../L5_examples/liquid_properties/",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Historical link candidate; require actual evidence only when the conclusion depends on it."
+    },
+    {
+      "path": "L2_principles/matter_classification_and_change_typing.md",
+      "target": "../L5_examples/measurement/case-physical-vs-chemical-change.md",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Historical link candidate; require actual evidence only when the conclusion depends on it."
+    },
+    {
+      "path": "L2_principles/nanomaterials_overview.md",
+      "target": "./nanomaterials_synthesis.md",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Historical link candidate; require actual evidence only when the conclusion depends on it."
+    },
+    {
+      "path": "L2_principles/nanoparticles.md",
+      "target": "./nanomaterials_synthesis.md",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Historical link candidate; require actual evidence only when the conclusion depends on it."
+    },
+    {
+      "path": "L2_principles/quantitative_measurement_and_uncertainty.md",
+      "target": "../L5_examples/measurement/",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Historical link candidate; require actual evidence only when the conclusion depends on it."
+    },
+    {
+      "path": "L2_principles/semiconducting_nanowires.md",
+      "target": "./nanomaterials_synthesis.md",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Historical link candidate; require actual evidence only when the conclusion depends on it."
+    },
+    {
+      "path": "L2_principles/solid_state_chemistry.md",
+      "target": "../L5_examples/solid_state/",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Historical link candidate; require actual evidence only when the conclusion depends on it."
+    },
+    {
+      "path": "L2_principles/thermal_analysis.md",
+      "target": "../L5_examples/thermal_analysis/",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Historical link candidate; require actual evidence only when the conclusion depends on it."
+    },
+    {
+      "path": "L2_principles/alkane_nomenclature.md",
+      "target": "../L3_functions/alkane_tools.py",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Target was removed from the active release, not awaiting approval. Do not treat this link as available evidence."
+    },
+    {
+      "path": "L2_principles/alkene_chemistry.md",
+      "target": "../L3_functions/alkene_tools.py",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Target was removed from the active release, not awaiting approval. Do not treat this link as available evidence."
+    },
+    {
+      "path": "L2_principles/alkyl_halide_chemistry.md",
+      "target": "../L3_functions/alkyl_halide_tools.py",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Target was removed from the active release, not awaiting approval. Do not treat this link as available evidence."
+    },
+    {
+      "path": "L2_principles/alkyne_chemistry.md",
+      "target": "../L3_functions/alkyne_tools.py",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Target was removed from the active release, not awaiting approval. Do not treat this link as available evidence."
+    },
+    {
+      "path": "L2_principles/amino_acid_properties.md",
+      "target": "protein_structure.md",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Target was removed from the active release, not awaiting approval. Do not treat this link as available evidence."
+    },
+    {
+      "path": "L2_principles/amino_acid_properties.md",
+      "target": "enzyme_kinetics.md",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Target was removed from the active release, not awaiting approval. Do not treat this link as available evidence."
+    },
+    {
+      "path": "L2_principles/analytical_method_design.md",
+      "target": "../L3_functions/analytical_validation_tools.py",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Target was removed from the active release, not awaiting approval. Do not treat this link as available evidence."
+    },
+    {
+      "path": "L2_principles/aromatic_chemistry.md",
+      "target": "../L3_functions/pericyclic_tools.py",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Target was removed from the active release, not awaiting approval. Do not treat this link as available evidence."
+    },
+    {
+      "path": "L2_principles/band_theory.md",
+      "target": "../L3_functions/band_theory_tools.py",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Target was removed from the active release, not awaiting approval. Do not treat this link as available evidence."
+    },
+    {
+      "path": "L2_principles/band_theory.md",
+      "target": "../L3_functions/band_theory_tools.py",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Target was removed from the active release, not awaiting approval. Do not treat this link as available evidence."
+    },
+    {
+      "path": "L2_principles/biomolecules.md",
+      "target": "../L3_functions/protein_tools.py",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Target was removed from the active release, not awaiting approval. Do not treat this link as available evidence."
+    },
+    {
+      "path": "L2_principles/buffer_system.md",
+      "target": "../L4_reference/buffer/protocol-buffer-design-and-prep.md",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Target was removed from the active release, not awaiting approval. Do not treat this link as available evidence."
+    },
+    {
+      "path": "L2_principles/buffer_system.md",
+      "target": "../L3_functions/buffer_calculators.py",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Target was removed from the active release, not awaiting approval. Do not treat this link as available evidence."
+    },
+    {
+      "path": "L2_principles/buffer_systems.md",
+      "target": "../L3_functions/buffer_calculators.py",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Target was removed from the active release, not awaiting approval. Do not treat this link as available evidence."
+    },
+    {
+      "path": "L2_principles/buffer_systems.md",
+      "target": "../L4_reference/buffer/protocol-buffer-design-and-prep.md",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Target was removed from the active release, not awaiting approval. Do not treat this link as available evidence."
+    },
+    {
+      "path": "L2_principles/chromatographic_methods.md",
+      "target": "../L3_functions/chromatography_tools.py",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Target was removed from the active release, not awaiting approval. Do not treat this link as available evidence."
+    },
+    {
+      "path": "L2_principles/chromatography.md",
+      "target": "../L3_functions/chromatography_tools.py",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Target was removed from the active release, not awaiting approval. Do not treat this link as available evidence."
+    },
+    {
+      "path": "L2_principles/conformational_analysis.md",
+      "target": "../L3_functions/conformation_tools.py",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Target was removed from the active release, not awaiting approval. Do not treat this link as available evidence."
+    },
+    {
+      "path": "L2_principles/electrochemical_analysis.md",
+      "target": "../L3_functions/electrochemical_analysis_tools.py",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Target was removed from the active release, not awaiting approval. Do not treat this link as available evidence."
+    },
+    {
+      "path": "L2_principles/gravimetric_methods.md",
+      "target": "../L3_functions/quantitative_analysis_tools.py",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Target was removed from the active release, not awaiting approval. Do not treat this link as available evidence."
+    },
+    {
+      "path": "L2_principles/intermolecular_forces.md",
+      "target": "../L3_functions/intermolecular_forces_tools.py",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Target was removed from the active release, not awaiting approval. Do not treat this link as available evidence."
+    },
+    {
+      "path": "L2_principles/intermolecular_forces.md",
+      "target": "../L3_functions/intermolecular_forces_tools.py",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Target was removed from the active release, not awaiting approval. Do not treat this link as available evidence."
+    },
+    {
+      "path": "L2_principles/intermolecular_forces.md",
+      "target": "phase_diagrams.md",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Target was removed from the active release, not awaiting approval. Do not treat this link as available evidence."
+    },
+    {
+      "path": "L2_principles/liquid_properties.md",
+      "target": "../L3_functions/liquid_properties_tools.py",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Target was removed from the active release, not awaiting approval. Do not treat this link as available evidence."
+    },
+    {
+      "path": "L2_principles/liquid_properties.md",
+      "target": "../L3_functions/liquid_properties_tools.py",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Target was removed from the active release, not awaiting approval. Do not treat this link as available evidence."
+    },
+    {
+      "path": "L2_principles/liquid_properties.md",
+      "target": "phase_diagrams.md",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Target was removed from the active release, not awaiting approval. Do not treat this link as available evidence."
+    },
+    {
+      "path": "L2_principles/main_group_chemistry_groups_13_16.md",
+      "target": "../L3_functions/main_group_tools.py",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Target was removed from the active release, not awaiting approval. Do not treat this link as available evidence."
+    },
+    {
+      "path": "L2_principles/matter_classification_and_change_typing.md",
+      "target": "../L3_functions/measurement_quant_tools.py",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Target was removed from the active release, not awaiting approval. Do not treat this link as available evidence."
+    },
+    {
+      "path": "L2_principles/molecular_orbital_theory.md",
+      "target": "../L3_functions/molecular_orbital_tools.py",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Target was removed from the active release, not awaiting approval. Do not treat this link as available evidence."
+    },
+    {
+      "path": "L2_principles/organic_reaction_mechanisms.md",
+      "target": "../L3_functions/reaction_mechanism_tools.py",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Target was removed from the active release, not awaiting approval. Do not treat this link as available evidence."
+    },
+    {
+      "path": "L2_principles/organic_redox.md",
+      "target": "../L3_functions/reaction_mechanism_tools.py",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Target was removed from the active release, not awaiting approval. Do not treat this link as available evidence."
+    },
+    {
+      "path": "L2_principles/organometallic_chemistry.md",
+      "target": "../L3_functions/transition_metals_tools.py",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Target was removed from the active release, not awaiting approval. Do not treat this link as available evidence."
+    },
+    {
+      "path": "L2_principles/protecting_group_strategies.md",
+      "target": "retrosynthetic_analysis.md",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Target was removed from the active release, not awaiting approval. Do not treat this link as available evidence."
+    },
+    {
+      "path": "L2_principles/protein_secondary_structure.md",
+      "target": "enzyme_kinetics.md",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Target was removed from the active release, not awaiting approval. Do not treat this link as available evidence."
+    },
+    {
+      "path": "L2_principles/p_block_elements.md",
+      "target": "../L3_functions/p_block_elements_tools.py",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Target was removed from the active release, not awaiting approval. Do not treat this link as available evidence."
+    },
+    {
+      "path": "L2_principles/p_block_elements.md",
+      "target": "../L3_functions/p_block_elements_tools.py",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Target was removed from the active release, not awaiting approval. Do not treat this link as available evidence."
+    },
+    {
+      "path": "L2_principles/quantitative_measurement_and_uncertainty.md",
+      "target": "../L3_functions/measurement_quant_tools.py",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Target was removed from the active release, not awaiting approval. Do not treat this link as available evidence."
+    },
+    {
+      "path": "L2_principles/quantitative_measurement_and_uncertainty.md",
+      "target": "../L3_functions/measurement_quant_tools.py",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Target was removed from the active release, not awaiting approval. Do not treat this link as available evidence."
+    },
+    {
+      "path": "L2_principles/quantum_mechanics_core.md",
+      "target": "../L3_functions/quantum_mechanics_tools.py",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Target was removed from the active release, not awaiting approval. Do not treat this link as available evidence."
+    },
+    {
+      "path": "L2_principles/quantum_mechanics_core.md",
+      "target": "../L3_functions/quantum_approximations_tools.py",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Target was removed from the active release, not awaiting approval. Do not treat this link as available evidence."
+    },
+    {
+      "path": "L2_principles/solid_state_chemistry.md",
+      "target": "../L3_functions/solid_state_chemistry_tools.py",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Target was removed from the active release, not awaiting approval. Do not treat this link as available evidence."
+    },
+    {
+      "path": "L2_principles/solid_state_chemistry.md",
+      "target": "../L3_functions/solid_state_chemistry_tools.py",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Target was removed from the active release, not awaiting approval. Do not treat this link as available evidence."
+    },
+    {
+      "path": "L2_principles/stereochemistry_chirality.md",
+      "target": "../L3_functions/stereochemistry_tools.py",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Target was removed from the active release, not awaiting approval. Do not treat this link as available evidence."
+    },
+    {
+      "path": "L2_principles/symmetry_group_theory.md",
+      "target": "../L3_functions/group_theory_tools.py",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Target was removed from the active release, not awaiting approval. Do not treat this link as available evidence."
+    },
+    {
+      "path": "L2_principles/thermal_analysis.md",
+      "target": "../L3_functions/thermal_analysis_tools.py",
+      "warning": "missing_reference_resource",
+      "blocking": false,
+      "note": "Target was removed from the active release, not awaiting approval. Do not treat this link as available evidence."
+    }
+  ],
+  "resolution_record": "archive/skill_retirements_20260906/resolution.json"
+}

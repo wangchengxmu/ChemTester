@@ -12,6 +12,8 @@ Public collaborator preview. This is not the final archival release.
 - Exported exactly 400 non-diagnostic acceptance questions and answer keys.
 - Preserved the original acceptance seal metadata and source artifact hashes.
 - Exported the current hierarchical skill snapshot and deterministic functions.
+- Published 12 native Codex chemistry skills covering 70 reviewed procedures.
+- Published the Skill Router V2.1.1 implementation, policy, and evidence layer.
 - Added automated release validation and contribution/security guidance.
 
 ## Required before final archival release
@@ -19,6 +21,8 @@ Public collaborator preview. This is not the final archival release.
 - Finish the pre-release GPT, Kimi, Qwen, DeepSeek, and GLM comparison matrix.
 - Retry only provider-failed Kimi and Qwen rows where applicable.
 - Freeze and publish aggregate result tables with paired statistical analyses.
+- Publish the ongoing post-release native-skill 400-question run only after its
+  completion and comparison audit.
 - Complete source-by-source review for adapted QCBench/SciBench and textbook
   material; upstream dataset-level metadata does not automatically settle every
   underlying source right.

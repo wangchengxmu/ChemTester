@@ -1,0 +1,229 @@
+{
+  "schema_version": "native-chemistry-calculators/v1",
+  "tools": {
+    "mass_spec_tools.exact_mass": {
+      "contract": {},
+      "description": "Calculate exact mass using isotope masses.\n\nArgs:\n    formula: Dictionary like {'C': 5, 'H': 12}\n\nReturns:\n    Exact mass in amu\n\nExample:\n    >>> exact_mass({'C': 5, 'H': 12})\n    72.09396",
+      "scientific_validity": "not_independently_verified",
+      "signature": "exact_mass(formula: dict)",
+      "summary": "Calculate exact mass using isotope masses."
+    },
+    "mass_spec_tools.fragment_mass": {
+      "contract": {},
+      "description": "Calculate fragment mass from loss.\n\nArgs:\n    molecular_ion: M+ value\n    lost_mass: Mass of lost fragment\n\nReturns:\n    Fragment m/z value\n\nExample:\n    >>> fragment_mass(86, 29)  # hexane losing C2H5\n    57",
+      "scientific_validity": "not_independently_verified",
+      "signature": "fragment_mass(molecular_ion: int, lost_mass: int)",
+      "summary": "Calculate fragment mass from loss."
+    },
+    "mass_spec_tools.identify_fragment_loss": {
+      "contract": {},
+      "description": "Identify the fragment lost from molecular ion.\n\nArgs:\n    molecular_ion: M+ value\n    fragment_mz: Observed fragment m/z\n\nReturns:\n    Dictionary with lost mass and possible identity\n\nExample:\n    >>> identify_fragment_loss(86, 57)\n    {'lost_mass': 29, 'possible': 'C2H5 (ethyl)'}",
+      "scientific_validity": "not_independently_verified",
+      "signature": "identify_fragment_loss(molecular_ion: int, fragment_mz: int)",
+      "summary": "Identify the fragment lost from molecular ion."
+    },
+    "mass_spec_tools.m_plus_one_intensity": {
+      "contract": {},
+      "description": "Calculate expected M+1 peak intensity.\n\nBased on natural abundance of heavier isotopes:\n- 13C: 1.10% per carbon\n- 2H: 0.015% per hydrogen\n- 15N: 0.366% per nitrogen\n\nArgs:\n    carbons: Number of carbon atoms\n    hydrogens: Number of hydrogen atoms\n    nitrogens: Number of nitrogen atoms\n\nReturns:\n    Expected M+1 intensity as percentage\n\nExample:\n    >>> m_plus_one_intensity(6, 6)  # benzene\n    6.69",
+      "scientific_validity": "not_independently_verified",
+      "signature": "m_plus_one_intensity(carbons: int, hydrogens: int=0, nitrogens: int=0)",
+      "summary": "Calculate expected M+1 peak intensity."
+    },
+    "mass_spec_tools.m_plus_two_intensity": {
+      "contract": {},
+      "description": "Calculate expected M+2 peak intensity.\n\nArgs:\n    carbons: Number of carbon atoms (13C2 contribution)\n    oxygens: Number of oxygen atoms\n    sulfurs: Number of sulfur atoms\n    chlorines: Number of chlorine atoms\n    bromines: Number of bromine atoms\n\nReturns:\n    Expected M+2 intensity as percentage",
+      "scientific_validity": "not_independently_verified",
+      "signature": "m_plus_two_intensity(carbons: int, oxygens: int=0, sulfurs: int=0, chlorines: int=0, bromines: int=0)",
+      "summary": "Calculate expected M+2 peak intensity."
+    },
+    "mass_spec_tools.molecular_weight": {
+      "contract": {},
+      "description": "Calculate molecular weight from formula.\n\nArgs:\n    formula: Dictionary like {'C': 6, 'H': 12, 'O': 6}\n\nReturns:\n    Molecular weight in g/mol\n\nExample:\n    >>> molecular_weight({'C': 6, 'H': 12, 'O': 6})\n    180.156",
+      "scientific_validity": "not_independently_verified",
+      "signature": "molecular_weight(formula: dict)",
+      "summary": "Calculate molecular weight from formula."
+    },
+    "mass_spec_tools.nominal_mass": {
+      "contract": {},
+      "description": "Calculate nominal mass (integer mass of most abundant isotopes).\n\nArgs:\n    formula: Dictionary like {'C': 6, 'H': 12, 'O': 6}\n\nReturns:\n    Nominal mass as integer",
+      "scientific_validity": "not_independently_verified",
+      "signature": "nominal_mass(formula: dict)",
+      "summary": "Calculate nominal mass (integer mass of most abundant isotopes)."
+    },
+    "nmr_splitting_tools.coupling_relationship": {
+      "contract": {},
+      "description": "Identify coupled proton groups from coupling constants.\n\nCoupled protons share the same J value.\n\nArgs:\n    j_values: Dictionary mapping proton groups to their J values\n              e.g., {'A': 7, 'B': 7, 'C': 3}\n\nReturns:\n    List of coupled group pairs\n\nExample:\n    >>> coupling_relationship({'A': 7, 'B': 7, 'C': 3})\n    [['A', 'B']]",
+      "scientific_validity": "not_independently_verified",
+      "signature": "coupling_relationship(j_values: dict)",
+      "summary": "Identify coupled proton groups from coupling constants."
+    },
+    "nmr_splitting_tools.intensity_ratios": {
+      "contract": {},
+      "description": "Calculate intensity ratios using n + 1 rule (Pascal's triangle).\n\nArgs:\n    n_neighbors: Number of equivalent neighboring protons\n\nReturns:\n    List of relative intensities\n\nExample:\n    >>> intensity_ratios(3)\n    [1, 3, 3, 1]",
+      "scientific_validity": "not_independently_verified",
+      "signature": "intensity_ratios(n_neighbors: int)",
+      "summary": "Calculate intensity ratios using n + 1 rule (Pascal's triangle)."
+    },
+    "nmr_splitting_tools.multiplet_name": {
+      "contract": {},
+      "description": "Return multiplet name from number of peaks.\n\nArgs:\n    n_peaks: Number of peaks in the multiplet\n\nReturns:\n    Multiplet name (singlet, doublet, triplet, etc.)\n\nExample:\n    >>> multiplet_name(4)\n    'quartet'",
+      "scientific_validity": "not_independently_verified",
+      "signature": "multiplet_name(n_peaks: int)",
+      "summary": "Return multiplet name from number of peaks."
+    },
+    "nmr_splitting_tools.neighbors_from_multiplet": {
+      "contract": {},
+      "description": "Calculate number of neighboring protons from multiplet name.\n\nArgs:\n    multiplet: Multiplet name (singlet, doublet, triplet, etc.)\n\nReturns:\n    Number of neighboring protons\n\nExample:\n    >>> neighbors_from_multiplet('quartet')\n    3",
+      "scientific_validity": "not_independently_verified",
+      "signature": "neighbors_from_multiplet(multiplet: str)",
+      "summary": "Calculate number of neighboring protons from multiplet name."
+    },
+    "nmr_splitting_tools.predict_spectrum_group": {
+      "contract": {},
+      "description": "Predict NMR signal for a group of equivalent protons.\n\nArgs:\n    protons: Number of equivalent protons in the group\n    neighbors: Number of neighboring protons\n\nReturns:\n    Dictionary with predicted signal characteristics\n\nExample:\n    >>> predict_spectrum_group(3, 2)  # CH3 with 2 neighbors\n    {'protons': 3, 'multiplet': 'triplet', 'n_peaks': 3, 'intensities': [1, 2, 1]}",
+      "scientific_validity": "not_independently_verified",
+      "signature": "predict_spectrum_group(protons: int, neighbors: int)",
+      "summary": "Predict NMR signal for a group of equivalent protons."
+    },
+    "nmr_splitting_tools.spectrum_group": {
+      "contract": {},
+      "description": "Alias for predict_spectrum_group - for solver compatibility.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "spectrum_group(protons: int, neighbors: int)",
+      "summary": "Alias for predict_spectrum_group - for solver compatibility."
+    },
+    "nmr_splitting_tools.splitting_pattern": {
+      "contract": {},
+      "description": "Return multiplet name and intensity ratios for given neighbors.\n\nUses the n + 1 rule: proton with n equivalent neighbors shows n + 1 peaks.\n\nArgs:\n    n_neighbors: Number of equivalent neighboring protons\n\nReturns:\n    Dictionary with multiplet name and intensity ratios\n\nExample:\n    >>> splitting_pattern(2)\n    {'name': 'triplet', 'n_peaks': 3, 'intensities': [1, 2, 1]}",
+      "scientific_validity": "not_independently_verified",
+      "signature": "splitting_pattern(n_neighbors: int)",
+      "summary": "Return multiplet name and intensity ratios for given neighbors."
+    },
+    "nmr_tools.chemical_shift_to_freq": {
+      "contract": {},
+      "description": "Convert chemical shift (ppm) to frequency offset (Hz).",
+      "scientific_validity": "not_independently_verified",
+      "signature": "chemical_shift_to_freq(delta_ppm: float, freq_mhz: float)",
+      "summary": "Convert chemical shift (ppm) to frequency offset (Hz)."
+    },
+    "nmr_tools.coupling_constant": {
+      "contract": {},
+      "description": "Return J coupling constant in Hz (pass-through for unit consistency).",
+      "scientific_validity": "not_independently_verified",
+      "signature": "coupling_constant(j_hz: float)",
+      "summary": "Return J coupling constant in Hz (pass-through for unit consistency)."
+    },
+    "nmr_tools.multiplicity": {
+      "contract": {},
+      "description": "Predict signal multiplicity from n equivalent neighbors (n+1 rule).",
+      "scientific_validity": "not_independently_verified",
+      "signature": "multiplicity(n_neighbors: int)",
+      "summary": "Predict signal multiplicity from n equivalent neighbors (n+1 rule)."
+    },
+    "uv_vis_tools.absorbance": {
+      "contract": {},
+      "description": "Calculate absorbance from Beer-Lambert law.\n\nA = \u03b5bc\n\nArgs:\n    epsilon: Molar absorptivity (M-1cm-1)\n    path_length: Path length (cm)\n    concentration: Concentration (M)\n\nReturns:\n    Absorbance (dimensionless)\n\nExample:\n    >>> absorbance(15000, 1.0, 5e-5)\n    0.75",
+      "scientific_validity": "not_independently_verified",
+      "signature": "absorbance(epsilon: float, path_length: float, concentration: float)",
+      "summary": "Calculate absorbance from Beer-Lambert law."
+    },
+    "uv_vis_tools.absorbance_from_transmittance": {
+      "contract": {},
+      "description": "Calculate absorbance from transmittance.\n\nA = -log(T)\n\nArgs:\n    T: Transmittance (0-1, not percentage)\n\nReturns:\n    Absorbance (dimensionless)\n\nExample:\n    >>> absorbance_from_transmittance(0.10)\n    1.0",
+      "scientific_validity": "not_independently_verified",
+      "signature": "absorbance_from_transmittance(T: float)",
+      "summary": "Calculate absorbance from transmittance."
+    },
+    "uv_vis_tools.calibration_curve_params": {
+      "contract": {},
+      "description": "Calculate calibration curve parameters by linear regression.\n\nArgs:\n    concentrations: List of concentrations\n    absorbances: List of absorbances\n\nReturns:\n    Tuple of (slope, intercept, R2)\n\nExample:\n    >>> c = [1e-5, 2e-5, 3e-5, 4e-5]\n    >>> A = [0.12, 0.24, 0.36, 0.48]\n    >>> slope, intercept, r2 = calibration_curve_params(c, A)",
+      "scientific_validity": "not_independently_verified",
+      "signature": "calibration_curve_params(concentrations: list, absorbances: list)",
+      "summary": "Calculate calibration curve parameters by linear regression."
+    },
+    "uv_vis_tools.concentration_from_absorbance": {
+      "contract": {},
+      "description": "Calculate concentration from absorbance.\n\nc = A / (\u03b5b)\n\nArgs:\n    A: Absorbance\n    epsilon: Molar absorptivity (M-1cm-1)\n    path_length: Path length (cm), default 1.0 cm\n\nReturns:\n    Concentration (M)\n\nExample:\n    >>> concentration_from_absorbance(0.75, 15000, 1.0)\n    5e-05",
+      "scientific_validity": "not_independently_verified",
+      "signature": "concentration_from_absorbance(A: float, epsilon: float, path_length: float=1.0)",
+      "summary": "Calculate concentration from absorbance."
+    },
+    "uv_vis_tools.concentration_from_calibration": {
+      "contract": {},
+      "description": "Calculate concentration from calibration curve.\n\nc = (A - intercept) / slope\n\nArgs:\n    A: Absorbance\n    slope: Slope of calibration curve (M-1)\n    intercept: Y-intercept (default 0)\n\nReturns:\n    Concentration (M)\n\nExample:\n    >>> concentration_from_calibration(0.425, 12500, 0.02)\n    3.24e-05",
+      "scientific_validity": "not_independently_verified",
+      "signature": "concentration_from_calibration(A: float, slope: float, intercept: float=0.0)",
+      "summary": "Calculate concentration from calibration curve."
+    },
+    "uv_vis_tools.concentration_two_components": {
+      "contract": {},
+      "description": "Calculate concentrations of two components from absorbances at two wavelengths.\n\nUses simultaneous equations:\nA1 = (\u03b51,1 x c1 + \u03b51,2 x c2) x b\nA2 = (\u03b52,1 x c1 + \u03b52,2 x c2) x b\n\nArgs:\n    A1: Absorbance at wavelength 1\n    A2: Absorbance at wavelength 2\n    epsilon1_comp1: Molar absorptivity of component 1 at lambda1\n    epsilon1_comp2: Molar absorptivity of component 2 at lambda1\n    epsilon2_comp1: Molar absorptivity of component 1 at lambda2\n    epsilon2_comp2: Molar absorptivity of component 2 at lambda2\n    path_length: Path length (cm)\n\nReturns:\n    Tuple of (c1, c2) concentrations",
+      "scientific_validity": "not_independently_verified",
+      "signature": "concentration_two_components(A1: float, A2: float, epsilon1_comp1: float, epsilon1_comp2: float, epsilon2_comp1: float, epsilon2_comp2: float, path_length: float=1.0)",
+      "summary": "Calculate concentrations of two components from absorbances at two wavelengths."
+    },
+    "uv_vis_tools.diluted_concentration": {
+      "contract": {},
+      "description": "Calculate concentration after dilution.\n\nCf = Ci / DF\n\nArgs:\n    initial_conc: Initial concentration\n    dilution_factor: Dilution factor\n\nReturns:\n    Final concentration",
+      "scientific_validity": "not_independently_verified",
+      "signature": "diluted_concentration(initial_conc: float, dilution_factor: float)",
+      "summary": "Calculate concentration after dilution."
+    },
+    "uv_vis_tools.dilution_factor": {
+      "contract": {},
+      "description": "Calculate dilution factor.\n\nDF = Vf / Vi\n\nArgs:\n    final_volume: Volume after dilution\n    initial_volume: Volume before dilution\n\nReturns:\n    Dilution factor",
+      "scientific_validity": "not_independently_verified",
+      "signature": "dilution_factor(final_volume: float, initial_volume: float)",
+      "summary": "Calculate dilution factor."
+    },
+    "uv_vis_tools.is_absorbance_valid": {
+      "contract": {},
+      "description": "Check if absorbance is in optimal range.\n\nArgs:\n    A: Absorbance\n    min_A: Minimum recommended absorbance\n    max_A: Maximum recommended absorbance\n\nReturns:\n    True if in optimal range\n\nNote: Absorbances outside 0.1-1.0 have higher relative error",
+      "scientific_validity": "not_independently_verified",
+      "signature": "is_absorbance_valid(A: float, min_A: float=0.1, max_A: float=1.0)",
+      "summary": "Check if absorbance is in optimal range."
+    },
+    "uv_vis_tools.molar_absorptivity": {
+      "contract": {},
+      "description": "Calculate molar absorptivity.\n\n\u03b5 = A / (bc)\n\nArgs:\n    A: Absorbance\n    path_length: Path length (cm)\n    concentration: Concentration (M)\n\nReturns:\n    Molar absorptivity (M-1cm-1)",
+      "scientific_validity": "not_independently_verified",
+      "signature": "molar_absorptivity(A: float, path_length: float, concentration: float)",
+      "summary": "Calculate molar absorptivity."
+    },
+    "uv_vis_tools.original_concentration": {
+      "contract": {},
+      "description": "Calculate original concentration from diluted measurement.\n\nCo = Cm x DF\n\nArgs:\n    measured_conc: Concentration measured\n    dilution_factor: Dilution factor\n\nReturns:\n    Original concentration",
+      "scientific_validity": "not_independently_verified",
+      "signature": "original_concentration(measured_conc: float, dilution_factor: float)",
+      "summary": "Calculate original concentration from diluted measurement."
+    },
+    "uv_vis_tools.percent_transmittance_from_absorbance": {
+      "contract": {},
+      "description": "Calculate percent transmittance from absorbance.\n\n%T = 10^(-A) x 100\n\nArgs:\n    A: Absorbance\n\nReturns:\n    Percent transmittance (0-100)",
+      "scientific_validity": "not_independently_verified",
+      "signature": "percent_transmittance_from_absorbance(A: float)",
+      "summary": "Calculate percent transmittance from absorbance."
+    },
+    "uv_vis_tools.recommended_dilution": {
+      "contract": {},
+      "description": "Calculate recommended dilution factor to achieve target absorbance.\n\nArgs:\n    A_measured: Current absorbance\n    target_A: Target absorbance (default 0.5, optimal range)\n\nReturns:\n    Recommended dilution factor",
+      "scientific_validity": "not_independently_verified",
+      "signature": "recommended_dilution(A_measured: float, target_A: float=0.5)",
+      "summary": "Calculate recommended dilution factor to achieve target absorbance."
+    },
+    "uv_vis_tools.standard_addition_concentration": {
+      "contract": {},
+      "description": "Calculate sample concentration by standard addition.\n\nCsample = (Asample / Aspiked) x Cspike\n\nArgs:\n    sample_absorbance: Absorbance of original sample\n    spiked_absorbance: Absorbance after adding standard\n    spike_concentration: Concentration of added standard\n\nReturns:\n    Original sample concentration\n\nNote: This is the simplified single-point addition",
+      "scientific_validity": "not_independently_verified",
+      "signature": "standard_addition_concentration(sample_absorbance: float, spiked_absorbance: float, spike_concentration: float)",
+      "summary": "Calculate sample concentration by standard addition."
+    },
+    "uv_vis_tools.transmittance_from_absorbance": {
+      "contract": {},
+      "description": "Calculate transmittance from absorbance.\n\nT = 10^(-A)\n\nArgs:\n    A: Absorbance (dimensionless)\n\nReturns:\n    Transmittance (0-1)\n\nExample:\n    >>> transmittance_from_absorbance(1.0)\n    0.1",
+      "scientific_validity": "not_independently_verified",
+      "signature": "transmittance_from_absorbance(A: float)",
+      "summary": "Calculate transmittance from absorbance."
+    }
+  }
+}

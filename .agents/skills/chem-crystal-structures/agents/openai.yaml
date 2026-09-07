@@ -1,0 +1,4 @@
+interface:
+  display_name: "Crystal Structures"
+  short_description: "Unit cells, coordinate geometry, and composition closure"
+  default_prompt: "Use $chem-crystal-structures for the relevant chemistry subproblem, loading only the necessary references."

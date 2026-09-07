@@ -1,0 +1,215 @@
+{
+  "schema_version": "native-chemistry-calculators/v1",
+  "tools": {
+    "integrated_rate_law_tools.calculate_r_squared": {
+      "contract": {},
+      "description": "Calculate R-squared for linear fit.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "calculate_r_squared(x: list, y: list, slope: float)",
+      "summary": "Calculate R-squared for linear fit."
+    },
+    "integrated_rate_law_tools.first_order_concentration": {
+      "contract": {},
+      "description": "Calculate concentration for first-order reaction.\n\nArgs:\n    C0: Initial concentration (M)\n    k: Rate constant (time-1)\n    t: Time\n\nReturns:\n    Concentration at time t\n\nExamples:\n    >>> first_order_concentration(1.0, 0.1, 6.93)\n    0.5",
+      "scientific_validity": "not_independently_verified",
+      "signature": "first_order_concentration(C0: float, k: float, t: float)",
+      "summary": "Calculate concentration for first-order reaction."
+    },
+    "integrated_rate_law_tools.first_order_half_life": {
+      "contract": {},
+      "description": "Calculate half-life for first-order reaction.\n\nArgs:\n    k: Rate constant (time-1)\n\nReturns:\n    Half-life\n\nExamples:\n    >>> first_order_half_life(0.1)\n    6.93",
+      "scientific_validity": "not_independently_verified",
+      "signature": "first_order_half_life(k: float)",
+      "summary": "Calculate half-life for first-order reaction."
+    },
+    "integrated_rate_law_tools.first_order_time": {
+      "contract": {},
+      "description": "Calculate time to reach concentration for first-order reaction.\n\nArgs:\n    C0: Initial concentration (M)\n    Ct: Target concentration (M)\n    k: Rate constant (time-1)\n\nReturns:\n    Time to reach Ct\n\nExamples:\n    >>> first_order_time(1.0, 0.5, 0.1)\n    6.93",
+      "scientific_validity": "not_independently_verified",
+      "signature": "first_order_time(C0: float, Ct: float, k: float)",
+      "summary": "Calculate time to reach concentration for first-order reaction."
+    },
+    "integrated_rate_law_tools.half_life": {
+      "contract": {},
+      "description": "Calculate half-life for any order.\n\nArgs:\n    order: Reaction order (0, 1, or 2)\n    k: Rate constant\n    C0: Initial concentration (required for order 0 and 2)\n\nReturns:\n    Half-life\n\nExamples:\n    >>> half_life(1, 0.1)\n    6.93\n    >>> half_life(2, 0.1, 0.2)\n    50.0\n    >>> half_life(0, 0.1, 1.0)\n    5.0",
+      "scientific_validity": "not_independently_verified",
+      "signature": "half_life(order: int, k: float, C0: float=None)",
+      "summary": "Calculate half-life for any order."
+    },
+    "integrated_rate_law_tools.identify_order_from_data": {
+      "contract": {},
+      "description": "Identify reaction order from concentration vs time data.\n\nArgs:\n    times: List of time values\n    concentrations: List of concentration values\n\nReturns:\n    (order, rate_constant)\n\nExamples:\n    >>> identify_order_from_data([0, 6, 12, 18], [1.0, 0.5, 0.25, 0.125])\n    (1, 0.116)",
+      "scientific_validity": "not_independently_verified",
+      "signature": "identify_order_from_data(times: list, concentrations: list)",
+      "summary": "Identify reaction order from concentration vs time data."
+    },
+    "integrated_rate_law_tools.second_order_concentration": {
+      "contract": {},
+      "description": "Calculate concentration for second-order reaction.\n\nArgs:\n    C0: Initial concentration (M)\n    k: Rate constant (M-1\u00b7time-1)\n    t: Time\n\nReturns:\n    Concentration at time t\n\nExamples:\n    >>> round(second_order_concentration(0.2, 0.1, 10), 3)\n    0.167",
+      "scientific_validity": "not_independently_verified",
+      "signature": "second_order_concentration(C0: float, k: float, t: float)",
+      "summary": "Calculate concentration for second-order reaction."
+    },
+    "integrated_rate_law_tools.second_order_half_life": {
+      "contract": {},
+      "description": "Calculate half-life for second-order reaction.\n\nArgs:\n    C0: Initial concentration (M)\n    k: Rate constant (M-1\u00b7time-1)\n\nReturns:\n    Half-life\n\nExamples:\n    >>> second_order_half_life(0.2, 0.1)\n    50.0",
+      "scientific_validity": "not_independently_verified",
+      "signature": "second_order_half_life(C0: float, k: float)",
+      "summary": "Calculate half-life for second-order reaction."
+    },
+    "integrated_rate_law_tools.second_order_time": {
+      "contract": {},
+      "description": "Calculate time to reach concentration for second-order reaction.\n\nArgs:\n    C0: Initial concentration (M)\n    Ct: Target concentration (M)\n    k: Rate constant (M-1\u00b7time-1)\n\nReturns:\n    Time to reach Ct\n\nExamples:\n    >>> round(second_order_time(0.2, 0.15, 0.1), 1)\n    16.7",
+      "scientific_validity": "not_independently_verified",
+      "signature": "second_order_time(C0: float, Ct: float, k: float)",
+      "summary": "Calculate time to reach concentration for second-order reaction."
+    },
+    "integrated_rate_law_tools.zero_order_concentration": {
+      "contract": {},
+      "description": "Calculate concentration for zero-order reaction.\n\nArgs:\n    C0: Initial concentration (M)\n    k: Rate constant (M\u00b7time-1)\n    t: Time\n\nReturns:\n    Concentration at time t\n\nExamples:\n    >>> zero_order_concentration(1.0, 0.1, 5)\n    0.5",
+      "scientific_validity": "not_independently_verified",
+      "signature": "zero_order_concentration(C0: float, k: float, t: float)",
+      "summary": "Calculate concentration for zero-order reaction."
+    },
+    "integrated_rate_law_tools.zero_order_half_life": {
+      "contract": {},
+      "description": "Calculate half-life for zero-order reaction.\n\nArgs:\n    C0: Initial concentration (M)\n    k: Rate constant (M\u00b7time-1)\n\nReturns:\n    Half-life\n\nExamples:\n    >>> zero_order_half_life(1.0, 0.1)\n    5.0",
+      "scientific_validity": "not_independently_verified",
+      "signature": "zero_order_half_life(C0: float, k: float)",
+      "summary": "Calculate half-life for zero-order reaction."
+    },
+    "integrated_rate_law_tools.zero_order_time": {
+      "contract": {},
+      "description": "Calculate time to reach concentration for zero-order reaction.\n\nArgs:\n    C0: Initial concentration (M)\n    Ct: Target concentration (M)\n    k: Rate constant (M\u00b7time-1)\n\nReturns:\n    Time to reach Ct\n\nExamples:\n    >>> zero_order_time(1.0, 0.5, 0.1)\n    5.0",
+      "scientific_validity": "not_independently_verified",
+      "signature": "zero_order_time(C0: float, Ct: float, k: float)",
+      "summary": "Calculate time to reach concentration for zero-order reaction."
+    },
+    "rate_law_solver.consecutive_first_order": {
+      "contract": {},
+      "description": "Calculate concentrations for consecutive first-order reactions.\n\nA -> B -> C\n\n[A] = [A]0 e^(-k1t)\n[B] = [A]0 k1(e^(-k1t) - e^(-k2t)) / (k2 - k1)  (for k1 != k2)\n[C] = [A]0 - [A] - [B]\n\nArgs:\n    k1: Rate constant for A -> B\n    k2: Rate constant for B -> C\n    A0: Initial concentration of A\n    t: Time array\n\nReturns:\n    Tuple of ([A], [B], [C]) concentration arrays\n\nExamples:\n    >>> import numpy as np\n    >>> t = np.array([0, 1, 2])\n    >>> A, B, C = consecutive_first_order(0.5, 0.3, 1.0, t)\n    >>> round(A[0], 3)\n    1.0",
+      "scientific_validity": "not_independently_verified",
+      "signature": "consecutive_first_order(k1: float, k2: float, A0: float, t: NDArray[np.floating])",
+      "summary": "Calculate concentrations for consecutive first-order reactions."
+    },
+    "rate_law_solver.determine_order_and_constant": {
+      "contract": {},
+      "description": "Automatically determine reaction order and rate constant from data.\n\nTests 0th, 1st, and 2nd order fits and returns best fit.\n\nArgs:\n    t: Time array\n    A: Concentration array\n\nReturns:\n    Dict with order, k, R2, and all fit results\n\nExamples:\n    >>> import numpy as np\n    >>> t = np.array([0, 1, 2, 3, 4])\n    >>> A = 1.0 * np.exp(-0.5 * t)\n    >>> result = determine_order_and_constant(t, A)\n    >>> result['order']\n    1",
+      "scientific_validity": "not_independently_verified",
+      "signature": "determine_order_and_constant(t: NDArray[np.floating], A: NDArray[np.floating])",
+      "summary": "Automatically determine reaction order and rate constant from data."
+    },
+    "rate_law_solver.determine_rate_constant_first_order": {
+      "contract": {},
+      "description": "Determine k from concentration-time data for first-order reaction.\n\nLinear fit: ln([A]) = ln([A]0) - kt\nSlope = -k\n\nArgs:\n    t: Time array\n    A: Concentration array\n\nReturns:\n    Tuple of (k, R2)\n\nExamples:\n    >>> import numpy as np\n    >>> t = np.array([0, 1, 2, 3])\n    >>> A = 1.0 * np.exp(-0.5 * t)\n    >>> k, r2 = determine_rate_constant_first_order(t, A)\n    >>> round(k, 3)\n    0.5",
+      "scientific_validity": "not_independently_verified",
+      "signature": "determine_rate_constant_first_order(t: NDArray[np.floating], A: NDArray[np.floating])",
+      "summary": "Determine k from concentration-time data for first-order reaction."
+    },
+    "rate_law_solver.determine_rate_constant_second_order": {
+      "contract": {},
+      "description": "Determine k from concentration-time data for second-order reaction.\n\nLinear fit: 1/[A] = 1/[A]0 + kt\nSlope = k\n\nArgs:\n    t: Time array\n    A: Concentration array\n\nReturns:\n    Tuple of (k, R2)\n\nExamples:\n    >>> import numpy as np\n    >>> t = np.array([0, 5, 10, 15])\n    >>> A = 1.0 / (1.0/0.1 + 0.5 * t)\n    >>> k, r2 = determine_rate_constant_second_order(t, A)\n    >>> round(k, 2)\n    0.5",
+      "scientific_validity": "not_independently_verified",
+      "signature": "determine_rate_constant_second_order(t: NDArray[np.floating], A: NDArray[np.floating])",
+      "summary": "Determine k from concentration-time data for second-order reaction."
+    },
+    "rate_law_solver.determine_rate_constant_zero_order": {
+      "contract": {},
+      "description": "Determine k from concentration-time data for zero-order reaction.\n\nLinear fit: [A] = [A]0 - kt\nSlope = -k\n\nArgs:\n    t: Time array\n    A: Concentration array\n\nReturns:\n    Tuple of (k, R2)\n\nExamples:\n    >>> import numpy as np\n    >>> t = np.array([0, 1, 2, 3, 4])\n    >>> A = 1.0 - 0.1 * t  # k = 0.1\n    >>> k, r2 = determine_rate_constant_zero_order(t, A)\n    >>> round(k, 3)\n    0.1",
+      "scientific_validity": "not_independently_verified",
+      "signature": "determine_rate_constant_zero_order(t: NDArray[np.floating], A: NDArray[np.floating])",
+      "summary": "Determine k from concentration-time data for zero-order reaction."
+    },
+    "rate_law_solver.half_life_first_order": {
+      "contract": {},
+      "description": "Calculate half-life for a first-order reaction.\n\nt1/2 = ln(2) / k\n\nArgs:\n    k: Rate constant (time-1)\n\nReturns:\n    Half-life (same units as 1/k)\n\nExamples:\n    >>> half_life_first_order(0.0693)  # ~ln(2)/10\n    10.0",
+      "scientific_validity": "not_independently_verified",
+      "signature": "half_life_first_order(k: float)",
+      "summary": "Calculate half-life for a first-order reaction."
+    },
+    "rate_law_solver.half_life_second_order": {
+      "contract": {},
+      "description": "Calculate half-life for a second-order reaction.\n\nt1/2 = 1 / (k x [A]0)\n\nArgs:\n    k: Rate constant (M-1\u00b7time-1)\n    initial_conc: Initial concentration (M)\n\nReturns:\n    Half-life (time units)\n\nExamples:\n    >>> half_life_second_order(0.5, 0.1)\n    20.0",
+      "scientific_validity": "not_independently_verified",
+      "signature": "half_life_second_order(k: float, initial_conc: float)",
+      "summary": "Calculate half-life for a second-order reaction."
+    },
+    "rate_law_solver.half_life_zero_order": {
+      "contract": {},
+      "description": "Calculate half-life for a zero-order reaction.\n\nt1/2 = [A]0 / (2k)\n\nArgs:\n    k: Rate constant (M\u00b7time-1)\n    initial_conc: Initial concentration (M)\n\nReturns:\n    Half-life (time units)\n\nExamples:\n    >>> half_life_zero_order(0.1, 1.0)\n    5.0",
+      "scientific_validity": "not_independently_verified",
+      "signature": "half_life_zero_order(k: float, initial_conc: float)",
+      "summary": "Calculate half-life for a zero-order reaction."
+    },
+    "rate_law_solver.integrated_first_order": {
+      "contract": {},
+      "description": "Calculate concentration vs time for first-order reaction.\n\nln([A]) = ln([A]0) - kt\n[A] = [A]0 x e^(-kt)\n\nArgs:\n    k: Rate constant (time-1)\n    A0: Initial concentration (M)\n    t: Time array\n\nReturns:\n    Concentration array\n\nExamples:\n    >>> import numpy as np\n    >>> t = np.array([0, 1, 2])\n    >>> A = integrated_first_order(0.693, 1.0, t)  # ln(2)\n    >>> round(A[1], 3)  # After one half-life\n    0.5",
+      "scientific_validity": "not_independently_verified",
+      "signature": "integrated_first_order(k: float, A0: float, t: NDArray[np.floating])",
+      "summary": "Calculate concentration vs time for first-order reaction."
+    },
+    "rate_law_solver.integrated_second_order_equal": {
+      "contract": {},
+      "description": "Calculate concentration for second-order A + B -> products with [A]0 = [B]0.\n\nUses same formula as single reactant case.\n\nArgs:\n    k: Rate constant (M-1\u00b7time-1)\n    A0: Initial concentration of A (M)\n    B0: Initial concentration of B (M) - must equal A0\n    t: Time array\n\nReturns:\n    Concentration of A (same as B)\n\nRaises:\n    ValueError: If A0 != B0",
+      "scientific_validity": "not_independently_verified",
+      "signature": "integrated_second_order_equal(k: float, A0: float, B0: float, t: NDArray[np.floating])",
+      "summary": "Calculate concentration for second-order A + B -> products with [A]0 = [B]0."
+    },
+    "rate_law_solver.integrated_second_order_one_reactant": {
+      "contract": {},
+      "description": "Calculate concentration vs time for second-order reaction (A -> products).\n\n1/[A] = 1/[A]0 + kt\n\nArgs:\n    k: Rate constant (M-1\u00b7time-1)\n    A0: Initial concentration (M)\n    t: Time array\n\nReturns:\n    Concentration array\n\nExamples:\n    >>> import numpy as np\n    >>> t = np.array([0, 10])\n    >>> A = integrated_second_order_one_reactant(0.1, 0.1, t)\n    >>> round(A[0], 3)\n    0.1",
+      "scientific_validity": "not_independently_verified",
+      "signature": "integrated_second_order_one_reactant(k: float, A0: float, t: NDArray[np.floating])",
+      "summary": "Calculate concentration vs time for second-order reaction (A -> products)."
+    },
+    "rate_law_solver.integrated_second_order_unequal": {
+      "contract": {},
+      "description": "Calculate concentrations for second-order A + B -> products with [A]0 != [B]0.\n\nln([A]/[B]) = ln([A]0/[B]0) + ([A]0 - [B]0)kt\n\nArgs:\n    k: Rate constant (M-1\u00b7time-1)\n    A0: Initial concentration of A (M)\n    B0: Initial concentration of B (M)\n    t: Time array\n\nReturns:\n    Tuple of (A_concentrations, B_concentrations)\n\nExamples:\n    >>> import numpy as np\n    >>> t = np.array([0, 1, 2])\n    >>> A, B = integrated_second_order_unequal(0.1, 0.2, 0.1, t)\n    >>> A[0], B[0]\n    (0.2, 0.1)",
+      "scientific_validity": "not_independently_verified",
+      "signature": "integrated_second_order_unequal(k: float, A0: float, B0: float, t: NDArray[np.floating])",
+      "summary": "Calculate concentrations for second-order A + B -> products with [A]0 != [B]0."
+    },
+    "rate_law_solver.integrated_zero_order": {
+      "contract": {},
+      "description": "Calculate concentration vs time for zero-order reaction.\n\n[A] = [A]0 - kt\n\nArgs:\n    k: Rate constant (M\u00b7time-1)\n    A0: Initial concentration (M)\n    t: Time array\n\nReturns:\n    Concentration array\n\nExamples:\n    >>> import numpy as np\n    >>> t = np.array([0, 1, 2, 3])\n    >>> A = integrated_zero_order(0.1, 1.0, t)\n    >>> A[0]\n    1.0",
+      "scientific_validity": "not_independently_verified",
+      "signature": "integrated_zero_order(k: float, A0: float, t: NDArray[np.floating])",
+      "summary": "Calculate concentration vs time for zero-order reaction."
+    },
+    "rate_law_solver.parallel_first_order": {
+      "contract": {},
+      "description": "Calculate concentrations for parallel first-order reactions.\n\nA -> B (k1)\nA -> C (k2)\n\n[A] = [A]0 e^(-(k1+k2)t)\n[B] = [A]0 k1(1 - e^(-(k1+k2)t)) / (k1 + k2)\n[C] = [A]0 k2(1 - e^(-(k1+k2)t)) / (k1 + k2)\n\nArgs:\n    k1: Rate constant for A -> B\n    k2: Rate constant for A -> C\n    A0: Initial concentration of A\n    t: Time array\n\nReturns:\n    Tuple of ([A], [B], [C]) concentration arrays",
+      "scientific_validity": "not_independently_verified",
+      "signature": "parallel_first_order(k1: float, k2: float, A0: float, t: NDArray[np.floating])",
+      "summary": "Calculate concentrations for parallel first-order reactions."
+    },
+    "rate_law_solver.reversible_first_order": {
+      "contract": {},
+      "description": "Calculate concentrations for reversible first-order reaction.\n\nA \u21cc B\n\nArgs:\n    kf: Forward rate constant\n    kr: Reverse rate constant\n    A0: Initial concentration of A\n    B0: Initial concentration of B\n    t: Time array\n\nReturns:\n    Tuple of ([A], [B]) concentration arrays",
+      "scientific_validity": "not_independently_verified",
+      "signature": "reversible_first_order(kf: float, kr: float, A0: float, B0: float, t: NDArray[np.floating])",
+      "summary": "Calculate concentrations for reversible first-order reaction."
+    },
+    "rate_law_solver.time_to_fraction_first_order": {
+      "contract": {},
+      "description": "Calculate time to reach a certain fraction of initial concentration.\n\nFor first-order: t = -ln(f) / k\n\nArgs:\n    k: Rate constant\n    fraction: Target fraction (0 to 1)\n\nReturns:\n    Time\n\nExamples:\n    >>> time_to_fraction_first_order(0.693, 0.5)  # Half-life\n    1.0",
+      "scientific_validity": "not_independently_verified",
+      "signature": "time_to_fraction_first_order(k: float, fraction: float)",
+      "summary": "Calculate time to reach a certain fraction of initial concentration."
+    },
+    "rate_law_solver.time_to_fraction_second_order": {
+      "contract": {},
+      "description": "Calculate time to reach a certain fraction of initial concentration.\n\nFor second-order: t = (1/f - 1) / (k x [A]0)\n\nArgs:\n    k: Rate constant\n    A0: Initial concentration\n    fraction: Target fraction (0 to 1)\n\nReturns:\n    Time\n\nExamples:\n    >>> time_to_fraction_second_order(0.1, 0.1, 0.5)\n    100.0",
+      "scientific_validity": "not_independently_verified",
+      "signature": "time_to_fraction_second_order(k: float, A0: float, fraction: float)",
+      "summary": "Calculate time to reach a certain fraction of initial concentration."
+    },
+    "rate_law_solver.time_to_fraction_zero_order": {
+      "contract": {},
+      "description": "Calculate time to reach a certain fraction of initial concentration.\n\nFor zero-order: t = [A]0(1 - f) / k\n\nArgs:\n    k: Rate constant\n    A0: Initial concentration\n    fraction: Target fraction (0 to 1)\n\nReturns:\n    Time\n\nExamples:\n    >>> time_to_fraction_zero_order(0.1, 1.0, 0.5)  # Half-life\n    5.0",
+      "scientific_validity": "not_independently_verified",
+      "signature": "time_to_fraction_zero_order(k: float, A0: float, fraction: float)",
+      "summary": "Calculate time to reach a certain fraction of initial concentration."
+    }
+  }
+}

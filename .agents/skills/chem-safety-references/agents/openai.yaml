@@ -1,0 +1,4 @@
+interface:
+  display_name: "Safety Reference Review"
+  short_description: "Source-bound hazard and compatibility interpretation"
+  default_prompt: "Use $chem-safety-references for the relevant chemistry subproblem, loading only the necessary references."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Kinetics And Reactors"
+  short_description: "Rate laws, activation energies, and reactor comparisons"
+  default_prompt: "Use $chem-kinetics-reactors for the relevant chemistry subproblem, loading only the necessary references."

@@ -1,0 +1,258 @@
+{
+  "schema_version": "native-chemistry-calculators/v1",
+  "tools": {
+    "crystal_structures_tools.atoms_per_area_cubic": {
+      "contract": {},
+      "description": "Count atoms per unit area on crystal face.\n\nArgs:\n    cell_type: Crystal structure type\n\nReturns:\n    Number of atoms per face",
+      "scientific_validity": "not_independently_verified",
+      "signature": "atoms_per_area_cubic(cell_type: str)",
+      "summary": "Count atoms per unit area on crystal face."
+    },
+    "crystal_structures_tools.bravais_lattice_types": {
+      "contract": {},
+      "description": "Return all Bravais lattice types organized by crystal system.\n\nReturns:\n    Dict mapping crystal system to Bravais lattices",
+      "scientific_validity": "not_independently_verified",
+      "signature": "bravais_lattice_types()",
+      "summary": "Return all Bravais lattice types organized by crystal system."
+    },
+    "crystal_structures_tools.cubic_lattice_radius": {
+      "contract": {
+        "allowed_values": {
+          "cell_type": [
+            "simple_cubic",
+            "bcc",
+            "fcc"
+          ]
+        },
+        "positive_parameters": [
+          "edge_length"
+        ]
+      },
+      "description": "Calculate atomic radius from cubic unit cell edge length.\n\nArgs:\n    edge_length: Unit cell edge in pm or \u00c5\n    cell_type: 'simple_cubic', 'bcc', or 'fcc'\n\nReturns:\n    Atomic radius\n\nExamples:\n    >>> cubic_lattice_radius(100, 'simple_cubic')\n    50.0\n    >>> round(cubic_lattice_radius(100, 'fcc'), 2)\n    35.36",
+      "scientific_validity": "not_independently_verified",
+      "signature": "cubic_lattice_radius(edge_length: float, cell_type: str)",
+      "summary": "Calculate atomic radius from cubic unit cell edge length."
+    },
+    "crystal_structures_tools.drude_resistivity": {
+      "contract": {},
+      "description": "Calculate electrical resistivity using the Drude model.\n\nThe Drude model treats electrons as a classical gas. The resistivity is:\n    \u03c1 = m_e / (n \u00d7 e\u00b2 \u00d7 \u03c4)\n\nwhere n is the electron density (in electrons/m\u00b3, NOT cm\u00b3).\n\nArgs:\n    lattice_constant_A: Lattice constant in Angstroms (\u00c5)\n    valence_electrons: Number of conduction electrons per atom\n    scattering_time_fs: Mean scattering time in femtoseconds (fs)\n    atoms_per_cell: Number of atoms per unit cell (default: 4 for fcc)\n    structure: Crystal structure ('fcc', 'bcc', 'sc')\n\nReturns:\n    Dictionary with resistivity in various units\n\nExamples:\n    >>> drude_resistivity(4.046, 3, 11.8)  # Aluminum\n    {'resistivity_ohm_m': 2.65e-08, 'resistivity_uOhm_cm': 2.65}\n\nNote:\n    CRITICAL: The electron density n must be in SI units (electrons/m\u00b3).\n    Using electrons/cm\u00b3 causes a 10\u2076 error in resistivity.\n    \n    Unit conversion:\n    - Lattice constant: \u00c5 \u2192 m: multiply by 1e-10\n    - Scattering time: fs \u2192 s: multiply by 1e-15\n    - Electron density: electrons/\u00c5\u00b3 \u2192 electrons/m\u00b3: multiply by 1e30",
+      "scientific_validity": "not_independently_verified",
+      "signature": "drude_resistivity(lattice_constant_A: float, valence_electrons: int, scattering_time_fs: float, atoms_per_cell: int=4, structure: str='fcc')",
+      "summary": "Calculate electrical resistivity using the Drude model."
+    },
+    "crystal_structures_tools.edge_length_from_radius": {
+      "contract": {
+        "allowed_values": {
+          "cell_type": [
+            "simple_cubic",
+            "bcc",
+            "fcc"
+          ]
+        },
+        "positive_parameters": [
+          "radius"
+        ]
+      },
+      "description": "Calculate unit cell edge length from atomic radius.\n\nArgs:\n    radius: Atomic radius\n    cell_type: Crystal structure type\n\nReturns:\n    Edge length",
+      "scientific_validity": "not_independently_verified",
+      "signature": "edge_length_from_radius(radius: float, cell_type: str)",
+      "summary": "Calculate unit cell edge length from atomic radius."
+    },
+    "crystal_structures_tools.identify_crystal_system": {
+      "contract": {},
+      "description": "Identify crystal system from lattice parameters.\n\nArgs:\n    a, b, c: Lattice constants\n    alpha, beta, gamma: Angles in degrees\n\nReturns:\n    Crystal system name",
+      "scientific_validity": "not_independently_verified",
+      "signature": "identify_crystal_system(a: float, b: float, c: float, alpha: float=90, beta: float=90, gamma: float=90)",
+      "summary": "Identify crystal system from lattice parameters."
+    },
+    "crystal_structures_tools.ionic_radius_ratio_rule": {
+      "contract": {},
+      "description": "Predict coordination number from radius ratio.\n\nArgs:\n    cation_radius: Radius of cation\n    anion_radius: Radius of anion\n\nReturns:\n    Predicted coordination number and geometry\n\nExamples:\n    >>> ionic_radius_ratio_rule(60, 140)\n    'CN=6 (octahedral)'",
+      "scientific_validity": "not_independently_verified",
+      "signature": "ionic_radius_ratio_rule(cation_radius: float, anion_radius: float)",
+      "summary": "Predict coordination number from radius ratio."
+    },
+    "crystal_structures_tools.packing_fraction": {
+      "contract": {},
+      "description": "Calculate packing fraction for different crystal structures.\n\nPacking fraction = volume of atoms / volume of unit cell\n\nArgs:\n    cell_type: 'sc', 'bcc', 'fcc', 'hcp'\n\nReturns:\n    Packing fraction as decimal (e.g., 0.74 for fcc)\n\nExamples:\n    >>> packing_fraction('fcc')\n    0.7405\n    >>> packing_fraction('bcc')\n    0.6802\n    >>> packing_fraction('sc')\n    0.5236",
+      "scientific_validity": "not_independently_verified",
+      "signature": "packing_fraction(cell_type: str)",
+      "summary": "Calculate packing fraction for different crystal structures."
+    },
+    "crystal_structures_tools.unit_cell_volume_cubic": {
+      "contract": {},
+      "description": "Calculate volume of cubic unit cell.\n\nArgs:\n    edge_length: Edge length in same units as desired volume\n\nReturns:\n    Volume in units3",
+      "scientific_validity": "not_independently_verified",
+      "signature": "unit_cell_volume_cubic(edge_length: float)",
+      "summary": "Calculate volume of cubic unit cell."
+    },
+    "crystallography_tools.atomic_radius_from_lattice": {
+      "contract": {},
+      "description": "Calculate atomic radius from lattice parameter for cubic structures.\n\nArgs:\n    edge_length: Unit cell edge length in Angstroms\n    structure_type: 'simple_cubic', 'sc', 'bcc', 'fcc'\n\nReturns:\n    Atomic radius in Angstroms\n\nRaises:\n    ValueError: For unknown structure type\n\nExamples:\n    >>> round(atomic_radius_from_lattice(4.0, 'fcc'), 3)\n    1.414\n    >>> round(atomic_radius_from_lattice(4.0, 'bcc'), 3)\n    1.732\n    >>> atomic_radius_from_lattice(4.0, 'sc')\n    2.0",
+      "scientific_validity": "not_independently_verified",
+      "signature": "atomic_radius_from_lattice(edge_length: float, structure_type: str)",
+      "summary": "Calculate atomic radius from lattice parameter for cubic structures."
+    },
+    "crystallography_tools.atoms_per_unit_cell": {
+      "contract": {},
+      "description": "Return number of atoms per unit cell for common structures.\n\nArgs:\n    cell_type: 'simple_cubic', 'sc', 'bcc', 'fcc', 'hcp', 'diamond'\n\nReturns:\n    Number of atoms per unit cell\n\nExamples:\n    >>> atoms_per_unit_cell('fcc')\n    4\n    >>> atoms_per_unit_cell('bcc')\n    2",
+      "scientific_validity": "not_independently_verified",
+      "signature": "atoms_per_unit_cell(cell_type: str)",
+      "summary": "Return number of atoms per unit cell for common structures."
+    },
+    "crystallography_tools.braggs_angle": {
+      "contract": {},
+      "description": "Calculate Bragg angle from wavelength and d-spacing.\n\nArgs:\n    n: Order of reflection\n    wavelength: X-ray wavelength in Angstroms\n    d_spacing: Interplanar spacing in Angstroms\n\nReturns:\n    Bragg angle in degrees, or None if reflection not possible\n\nExamples:\n    >>> round(braggs_angle(1, 1.5418, 2.0), 2)\n    50.35\n    >>> braggs_angle(3, 1.5418, 1.0) is None\n    True",
+      "scientific_validity": "not_independently_verified",
+      "signature": "braggs_angle(n: int, wavelength: float, d_spacing: float)",
+      "summary": "Calculate Bragg angle from wavelength and d-spacing."
+    },
+    "crystallography_tools.braggs_law": {
+      "contract": {},
+      "description": "Apply Bragg's law: nlambda = 2d sin(\u03b8)\n\nSolve for the missing variable given two of three:\n- wavelength (lambda)\n- d_spacing (d)\n- angle (\u03b8)\n\nArgs:\n    n: Order of reflection (integer \u2265 1)\n    wavelength: X-ray wavelength in Angstroms\n    d_spacing: Interplanar spacing in Angstroms\n    angle_deg: Bragg angle in degrees\n\nReturns:\n    Dict with all parameters including calculated value\n\nRaises:\n    ValueError: If fewer than two of wavelength/d_spacing/angle_deg are provided\n    ValueError: If reflection is not possible (nlambda > 2d)\n\nExamples:\n    >>> result = braggs_law(n=1, wavelength=1.5418, d_spacing=2.0)\n    >>> round(result['angle_deg'], 2)\n    50.35\n    \n    >>> result = braggs_law(n=1, wavelength=1.5418, angle_deg=20.0)\n    >>> round(result['d_spacing'], 3)\n    2.254",
+      "scientific_validity": "not_independently_verified",
+      "signature": "braggs_law(n: int=1, wavelength: Optional[float]=None, d_spacing: Optional[float]=None, angle_deg: Optional[float]=None)",
+      "summary": "Apply Bragg's law: nlambda = 2d sin(\u03b8)"
+    },
+    "crystallography_tools.coordination_number": {
+      "contract": {},
+      "description": "Return coordination number for common crystal structures.\n\nArgs:\n    structure_type: 'simple_cubic', 'sc', 'bcc', 'fcc', 'hcp', 'diamond'\n\nReturns:\n    Coordination number (number of nearest neighbors)\n\nExamples:\n    >>> coordination_number('fcc')\n    12\n    >>> coordination_number('bcc')\n    8\n    >>> coordination_number('diamond')\n    4",
+      "scientific_validity": "not_independently_verified",
+      "signature": "coordination_number(structure_type: str)",
+      "summary": "Return coordination number for common crystal structures."
+    },
+    "crystallography_tools.crystal_density": {
+      "contract": {},
+      "description": "Calculate crystal density from unit cell parameters.\n\n\u03c1 = (n x M) / (V x N_A)\n\nArgs:\n    n_atoms: Number of atoms per unit cell\n    atomic_mass: Molar mass in g/mol\n    volume_angstrom3: Unit cell volume in \u00c53\n\nReturns:\n    Density in g/cm3\n\nExamples:\n    >>> round(crystal_density(4, 58.69, 43.8), 2)  # Ni, FCC\n    8.91",
+      "scientific_validity": "not_independently_verified",
+      "signature": "crystal_density(n_atoms: int, atomic_mass: float, volume_angstrom3: float)",
+      "summary": "Calculate crystal density from unit cell parameters."
+    },
+    "crystallography_tools.d_spacing_cubic": {
+      "contract": {},
+      "description": "Calculate d-spacing for cubic system.\n\nd = a / \u221a(h2 + k2 + l2)\n\nArgs:\n    a: Lattice parameter in Angstroms\n    h, k, l: Miller indices\n\nReturns:\n    d-spacing in Angstroms\n\nRaises:\n    ValueError: If h=k=l=0 (invalid Miller indices)\n\nExamples:\n    >>> round(d_spacing_cubic(4.0, 1, 1, 1), 3)\n    2.309\n    >>> round(d_spacing_cubic(3.0, 1, 0, 0), 3)\n    3.0",
+      "scientific_validity": "not_independently_verified",
+      "signature": "d_spacing_cubic(a: float, h: int, k: int, l: int)",
+      "summary": "Calculate d-spacing for cubic system."
+    },
+    "crystallography_tools.d_spacing_from_bragg": {
+      "contract": {},
+      "description": "Calculate d-spacing from Bragg's law.\n\nArgs:\n    n: Order of reflection\n    wavelength: X-ray wavelength in Angstroms\n    angle_deg: Bragg angle in degrees\n\nReturns:\n    d-spacing in Angstroms\n\nRaises:\n    ValueError: If angle is not in valid range (0 < \u03b8 \u2264 90)\n\nExamples:\n    >>> round(d_spacing_from_bragg(1, 1.5418, 20.0), 3)\n    2.254",
+      "scientific_validity": "not_independently_verified",
+      "signature": "d_spacing_from_bragg(n: int, wavelength: float, angle_deg: float)",
+      "summary": "Calculate d-spacing from Bragg's law."
+    },
+    "crystallography_tools.d_spacing_general": {
+      "contract": {},
+      "description": "Calculate d-spacing for any crystal system.\n\nArgs:\n    crystal_system: 'cubic', 'tetragonal', 'orthorhombic', 'hexagonal',\n                   'monoclinic', 'rhombohedral', 'triclinic'\n    params: Dictionary of lattice parameters\n        - cubic: {'a': value}\n        - tetragonal: {'a': value, 'c': value}\n        - orthorhombic: {'a': value, 'b': value, 'c': value}\n        - hexagonal: {'a': value, 'c': value}\n        - monoclinic: {'a': value, 'b': value, 'c': value, 'beta': degrees}\n    h, k, l: Miller indices\n\nReturns:\n    d-spacing in Angstroms\n\nRaises:\n    ValueError: For unknown crystal system or missing parameters",
+      "scientific_validity": "not_independently_verified",
+      "signature": "d_spacing_general(crystal_system: str, params: Dict[str, float], h: int, k: int, l: int)",
+      "summary": "Calculate d-spacing for any crystal system."
+    },
+    "crystallography_tools.d_spacing_hexagonal": {
+      "contract": {},
+      "description": "Calculate d-spacing for hexagonal system.\n\n1/d2 = (4/3)[(h2 + hk + k2)/a2] + l2/c2\n\nArgs:\n    a, c: Lattice parameters in Angstroms\n    h, k, l: Miller indices\n\nReturns:\n    d-spacing in Angstroms\n\nRaises:\n    ValueError: If all indices are zero\n\nExamples:\n    >>> round(d_spacing_hexagonal(2.5, 4.0, 1, 0, 1), 3)\n    2.113",
+      "scientific_validity": "not_independently_verified",
+      "signature": "d_spacing_hexagonal(a: float, c: float, h: int, k: int, l: int)",
+      "summary": "Calculate d-spacing for hexagonal system."
+    },
+    "crystallography_tools.d_spacing_monoclinic": {
+      "contract": {},
+      "description": "Calculate d-spacing for monoclinic system.\n\n1/d2 = [h2/a2 + k2sin2beta/b2 + l2/c2 - 2hl cosbeta/(ac)] / sin2beta\n\nArgs:\n    a, b, c: Lattice parameters in Angstroms\n    beta_deg: Angle beta in degrees\n    h, k, l: Miller indices\n\nReturns:\n    d-spacing in Angstroms\n\nRaises:\n    ValueError: If all indices are zero\n\nExamples:\n    >>> round(d_spacing_monoclinic(5.0, 4.0, 3.0, 100.0, 1, 1, 1), 3)\n    2.109",
+      "scientific_validity": "not_independently_verified",
+      "signature": "d_spacing_monoclinic(a: float, b: float, c: float, beta_deg: float, h: int, k: int, l: int)",
+      "summary": "Calculate d-spacing for monoclinic system."
+    },
+    "crystallography_tools.d_spacing_orthorhombic": {
+      "contract": {},
+      "description": "Calculate d-spacing for orthorhombic system.\n\n1/d2 = h2/a2 + k2/b2 + l2/c2\n\nArgs:\n    a, b, c: Lattice parameters in Angstroms\n    h, k, l: Miller indices\n\nReturns:\n    d-spacing in Angstroms\n\nRaises:\n    ValueError: If all indices are zero\n\nExamples:\n    >>> round(d_spacing_orthorhombic(3.0, 4.0, 5.0, 1, 1, 1), 3)\n    2.182",
+      "scientific_validity": "not_independently_verified",
+      "signature": "d_spacing_orthorhombic(a: float, b: float, c: float, h: int, k: int, l: int)",
+      "summary": "Calculate d-spacing for orthorhombic system."
+    },
+    "crystallography_tools.d_spacing_tetragonal": {
+      "contract": {},
+      "description": "Calculate d-spacing for tetragonal system.\n\n1/d2 = (h2 + k2)/a2 + l2/c2\n\nArgs:\n    a, c: Lattice parameters in Angstroms\n    h, k, l: Miller indices\n\nReturns:\n    d-spacing in Angstroms\n\nRaises:\n    ValueError: If all indices are zero\n\nExamples:\n    >>> round(d_spacing_tetragonal(3.0, 5.0, 1, 0, 1), 3)\n    2.572",
+      "scientific_validity": "not_independently_verified",
+      "signature": "d_spacing_tetragonal(a: float, c: float, h: int, k: int, l: int)",
+      "summary": "Calculate d-spacing for tetragonal system."
+    },
+    "crystallography_tools.diffraction_angles_for_planes": {
+      "contract": {},
+      "description": "Calculate diffraction angles for multiple crystal planes.\n\nArgs:\n    a: Lattice parameter (for cubic; may need additional params for other systems)\n    planes: List of (h, k, l) Miller indices\n    wavelength: X-ray wavelength in Angstroms\n    crystal_system: Crystal system type\n\nReturns:\n    List of dicts with plane and angle information\n\nExamples:\n    >>> result = diffraction_angles_for_planes(4.0, [(1,0,0), (1,1,0), (1,1,1)])\n    >>> len(result)\n    3",
+      "scientific_validity": "not_independently_verified",
+      "signature": "diffraction_angles_for_planes(a: float, planes: list, wavelength: float=1.5418, crystal_system: str='cubic')",
+      "summary": "Calculate diffraction angles for multiple crystal planes."
+    },
+    "crystallography_tools.get_xray_wavelength": {
+      "contract": {},
+      "description": "Get X-ray wavelength for common sources.\n\nArgs:\n    source: Source name ('Cu', 'Mo', 'Cr', 'Co', 'Fe') or full name ('Cu_Ka')\n\nReturns:\n    Wavelength in Angstroms\n\nRaises:\n    ValueError: If source is not recognized\n\nExamples:\n    >>> get_xray_wavelength('Cu')\n    1.5418\n    >>> get_xray_wavelength('Mo_Ka')\n    0.7107",
+      "scientific_validity": "not_independently_verified",
+      "signature": "get_xray_wavelength(source: str)",
+      "summary": "Get X-ray wavelength for common sources."
+    },
+    "crystallography_tools.higher_order_angles": {
+      "contract": {},
+      "description": "Calculate Bragg angles for higher-order reflections.\n\nArgs:\n    wavelength: X-ray wavelength in Angstroms\n    d_spacing: Interplanar spacing in Angstroms\n    max_order: Maximum order to calculate\n\nReturns:\n    Dict mapping order n to angle in degrees (None if not possible)\n\nExamples:\n    >>> angles = higher_order_angles(1.5418, 2.0, max_order=3)\n    >>> round(angles[1], 2)\n    50.35\n    >>> round(angles[2], 2)\n    90.0  # or None if not possible",
+      "scientific_validity": "not_independently_verified",
+      "signature": "higher_order_angles(wavelength: float, d_spacing: float, max_order: int=5)",
+      "summary": "Calculate Bragg angles for higher-order reflections."
+    },
+    "crystallography_tools.identify_crystal_system_from_params": {
+      "contract": {},
+      "description": "Identify crystal system from lattice parameters.\n\nArgs:\n    a, b, c: Lattice parameters\n    alpha, beta, gamma: Angles in degrees\n\nReturns:\n    Crystal system name\n\nExamples:\n    >>> identify_crystal_system_from_params(4.0, 4.0, 4.0, 90, 90, 90)\n    'cubic'\n    >>> identify_crystal_system_from_params(3.0, 3.0, 5.0, 90, 90, 90)\n    'tetragonal'",
+      "scientific_validity": "not_independently_verified",
+      "signature": "identify_crystal_system_from_params(a: float, b: float, c: float, alpha: float=90.0, beta: float=90.0, gamma: float=90.0)",
+      "summary": "Identify crystal system from lattice parameters."
+    },
+    "crystallography_tools.intercepts_to_miller": {
+      "contract": {},
+      "description": "Convert intercepts to Miller indices.\n\nArgs:\n    intercepts: (x_intercept, y_intercept, z_intercept) in units of a, b, c\n               Use float('inf') for planes parallel to an axis\n\nReturns:\n    Miller indices (h, k, l) as integers\n\nExamples:\n    >>> intercepts_to_miller((1, 1, 1))\n    (1, 1, 1)\n    >>> intercepts_to_miller((1, float('inf'), float('inf')))\n    (1, 0, 0)\n    >>> intercepts_to_miller((1, 2, 3))\n    (6, 3, 2)",
+      "scientific_validity": "not_independently_verified",
+      "signature": "intercepts_to_miller(intercepts: Tuple[float, float, float])",
+      "summary": "Convert intercepts to Miller indices."
+    },
+    "crystallography_tools.is_reflection_possible": {
+      "contract": {},
+      "description": "Check if reflection is possible given n, lambda, and d.\n\nConstraint: nlambda \u2264 2d\n\nArgs:\n    n: Order of reflection\n    wavelength: X-ray wavelength in Angstroms\n    d_spacing: Interplanar spacing in Angstroms\n\nReturns:\n    True if reflection is possible\n\nExamples:\n    >>> is_reflection_possible(1, 1.5418, 2.0)\n    True\n    >>> is_reflection_possible(3, 1.5418, 1.0)\n    False",
+      "scientific_validity": "not_independently_verified",
+      "signature": "is_reflection_possible(n: int, wavelength: float, d_spacing: float)",
+      "summary": "Check if reflection is possible given n, lambda, and d."
+    },
+    "crystallography_tools.lattice_parameter_from_radius": {
+      "contract": {},
+      "description": "Calculate lattice parameter from atomic radius for cubic structures.\n\nArgs:\n    radius: Atomic radius in Angstroms\n    structure_type: 'simple_cubic', 'sc', 'bcc', 'fcc'\n\nReturns:\n    Lattice parameter (edge length) in Angstroms\n\nExamples:\n    >>> lattice_parameter_from_radius(1.414, 'fcc')\n    4.0\n    >>> round(lattice_parameter_from_radius(1.732, 'bcc'), 1)\n    4.0",
+      "scientific_validity": "not_independently_verified",
+      "signature": "lattice_parameter_from_radius(radius: float, structure_type: str)",
+      "summary": "Calculate lattice parameter from atomic radius for cubic structures."
+    },
+    "crystallography_tools.miller_to_intercepts": {
+      "contract": {},
+      "description": "Convert Miller indices to intercepts.\n\nArgs:\n    h, k, l: Miller indices\n    a, b, c: Lattice parameters (default to 1 for normalized intercepts)\n\nReturns:\n    Intercepts (x, y, z) in units of a, b, c\n\nExamples:\n    >>> miller_to_intercepts(1, 0, 0)\n    (1.0, inf, inf)\n    >>> miller_to_intercepts(1, 1, 1, a=4.0, b=4.0, c=4.0)\n    (4.0, 4.0, 4.0)",
+      "scientific_validity": "not_independently_verified",
+      "signature": "miller_to_intercepts(h: int, k: int, l: int, a: float=1.0, b: float=1.0, c: float=1.0)",
+      "summary": "Convert Miller indices to intercepts."
+    },
+    "crystallography_tools.packing_fraction": {
+      "contract": {},
+      "description": "Return packing fraction (efficiency) for common crystal structures.\n\nPacking fraction = Volume of atoms / Volume of unit cell\n\nArgs:\n    structure_type: 'simple_cubic', 'sc', 'bcc', 'fcc', 'hcp', 'diamond'\n\nReturns:\n    Packing fraction (0 to 1)\n\nExamples:\n    >>> packing_fraction('fcc')\n    0.74\n    >>> packing_fraction('bcc')\n    0.68\n    >>> packing_fraction('diamond')\n    0.34",
+      "scientific_validity": "not_independently_verified",
+      "signature": "packing_fraction(structure_type: str)",
+      "summary": "Return packing fraction (efficiency) for common crystal structures."
+    },
+    "crystallography_tools.path_difference": {
+      "contract": {},
+      "description": "Calculate path difference between rays from adjacent planes.\n\nPath difference = 2d sin(\u03b8)\n\nArgs:\n    d_spacing: Interplanar spacing in Angstroms\n    angle_deg: Angle in degrees\n\nReturns:\n    Path difference in Angstroms\n\nExamples:\n    >>> round(path_difference(2.0, 30.0), 3)\n    2.0",
+      "scientific_validity": "not_independently_verified",
+      "signature": "path_difference(d_spacing: float, angle_deg: float)",
+      "summary": "Calculate path difference between rays from adjacent planes."
+    },
+    "crystallography_tools.unit_cell_volume": {
+      "contract": {},
+      "description": "Calculate unit cell volume for any crystal system.\n\nArgs:\n    cell_type: 'cubic', 'tetragonal', 'orthorhombic', 'hexagonal',\n              'monoclinic', 'rhombohedral', 'triclinic'\n    a, b, c: Lattice parameters in Angstroms\n    alpha, beta, gamma: Angles in degrees\n\nReturns:\n    Volume in \u00c53\n\nExamples:\n    >>> unit_cell_volume('cubic', a=4.0)\n    64.0\n    >>> round(unit_cell_volume('hexagonal', a=2.0, c=3.0), 2)\n    10.39",
+      "scientific_validity": "not_independently_verified",
+      "signature": "unit_cell_volume(cell_type: str, a: float, b: Optional[float]=None, c: Optional[float]=None, alpha: float=90.0, beta: float=90.0, gamma: float=90.0)",
+      "summary": "Calculate unit cell volume for any crystal system."
+    }
+  }
+}

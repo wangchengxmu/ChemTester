@@ -1,0 +1,4 @@
+interface:
+  display_name: "Spectroscopy"
+  short_description: "NMR, IR, isotope patterns, and optical spectroscopy"
+  default_prompt: "Use $chem-spectroscopy for the relevant chemistry subproblem, loading only the necessary references."

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Analytical Quantitation"
+  short_description: "Assay balances, concentrations, and extraction accounting"
+  default_prompt: "Use $chem-analytical-quantitation for the relevant chemistry subproblem, loading only the necessary references."

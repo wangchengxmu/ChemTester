@@ -1,0 +1,4 @@
+interface:
+  display_name: "Biomolecular Analysis"
+  short_description: "Protein workflows, binding models, and assay interpretation"
+  default_prompt: "Use $chem-biomolecular-analysis for the relevant chemistry subproblem, loading only the necessary references."

@@ -1,0 +1,481 @@
+{
+  "schema_version": "native-chemistry-calculators/v1",
+  "tools": {
+    "acid_base_constants_tools.Ka_Kb_relationship": {
+      "contract": {},
+      "description": "Calculate Ka from Kb or vice versa.\n\nKa x Kb = Kw\n\nArgs:\n    Ka: Acid ionization constant\n    Kb: Base ionization constant\n    temperature: Temperature in degC\n\nReturns:\n    The other constant\n\nExamples:\n    >>> Ka_Kb_relationship(Kb=1.8e-5)\n    5.6e-10",
+      "scientific_validity": "not_independently_verified",
+      "signature": "Ka_Kb_relationship(Ka: float=None, Kb: float=None, temperature: float=25.0)",
+      "summary": "Calculate Ka from Kb or vice versa."
+    },
+    "acid_base_constants_tools.compare_acid_strengths": {
+      "contract": {},
+      "description": "Compare relative acid strengths.\n\nArgs:\n    Ka1: First acid's Ka\n    Ka2: Second acid's Ka\n\nReturns:\n    Comparison result\n\nExamples:\n    >>> compare_acid_strengths(1.8e-5, 4.6e-4)\n    'Acid 2 is stronger'",
+      "scientific_validity": "not_independently_verified",
+      "signature": "compare_acid_strengths(Ka1: float, Ka2: float)",
+      "summary": "Compare relative acid strengths."
+    },
+    "acid_base_constants_tools.conjugate_base_strength": {
+      "contract": {},
+      "description": "Calculate Kb of conjugate base.\n\nArgs:\n    Ka: Acid ionization constant\n    temperature: Temperature in degC\n\nReturns:\n    Kb of conjugate base\n\nExamples:\n    >>> conjugate_base_strength(1.8e-5)\n    5.6e-10",
+      "scientific_validity": "not_independently_verified",
+      "signature": "conjugate_base_strength(Ka: float, temperature: float=25.0)",
+      "summary": "Calculate Kb of conjugate base."
+    },
+    "acid_base_constants_tools.is_strong_acid": {
+      "contract": {},
+      "description": "Determine if acid is strong based on Ka.\n\nArgs:\n    Ka: Acid ionization constant\n\nReturns:\n    True if strong acid\n\nExamples:\n    >>> is_strong_acid(1e6)\n    True\n    >>> is_strong_acid(1.8e-5)\n    False",
+      "scientific_validity": "not_independently_verified",
+      "signature": "is_strong_acid(Ka: float)",
+      "summary": "Determine if acid is strong based on Ka."
+    },
+    "acid_base_constants_tools.is_strong_base": {
+      "contract": {},
+      "description": "Determine if base is strong based on Kb.\n\nArgs:\n    Kb: Base ionization constant\n\nReturns:\n    True if strong base\n\nExamples:\n    >>> is_strong_base(1e6)\n    True",
+      "scientific_validity": "not_independently_verified",
+      "signature": "is_strong_base(Kb: float)",
+      "summary": "Determine if base is strong based on Kb."
+    },
+    "acid_base_constants_tools.percent_ionization": {
+      "contract": {},
+      "description": "Calculate percent ionization of a weak acid.\n\nArgs:\n    h3o_conc: Equilibrium [H3O+]\n    initial_conc: Initial acid concentration\n\nReturns:\n    Percent ionization\n\nExamples:\n    >>> percent_ionization(0.001, 0.1)\n    1.0",
+      "scientific_validity": "not_independently_verified",
+      "signature": "percent_ionization(h3o_conc: float, initial_conc: float)",
+      "summary": "Calculate percent ionization of a weak acid."
+    },
+    "acid_base_constants_tools.validate_approximation": {
+      "contract": {},
+      "description": "Check if small x approximation is valid.\n\nValid when x/C0 < 5%, i.e., when Ka << C0\n\nArgs:\n    Ka: Acid ionization constant\n    C0: Initial concentration\n    threshold: Maximum acceptable ratio\n\nReturns:\n    True if approximation valid\n\nExamples:\n    >>> validate_approximation(1.8e-5, 0.1)\n    True\n    >>> validate_approximation(0.1, 0.01)\n    False",
+      "scientific_validity": "not_independently_verified",
+      "signature": "validate_approximation(Ka: float, C0: float, threshold: float=0.05)",
+      "summary": "Check if small x approximation is valid."
+    },
+    "acid_base_constants_tools.weak_acid_pH": {
+      "contract": {},
+      "description": "Calculate pH of weak acid solution.\n\nUses quadratic formula when Ka/C > 0.01 (5% ionization threshold),\notherwise uses the sqrt approximation.\n\nArgs:\n    Ka: Acid ionization constant\n    initial_conc: Initial concentration (M)\n\nReturns:\n    pH value\n\nExamples:\n    >>> round(weak_acid_pH(1.8e-5, 0.1), 2)\n    2.87\n    >>> round(weak_acid_pH(1.8e-4, 0.1), 2)\n    2.38",
+      "scientific_validity": "not_independently_verified",
+      "signature": "weak_acid_pH(Ka: float, initial_conc: float)",
+      "summary": "Calculate pH of weak acid solution."
+    },
+    "acid_base_constants_tools.weak_base_pH": {
+      "contract": {},
+      "description": "Calculate pH of weak base solution.\n\nUses quadratic formula when Kb/C > 0.01 (5% ionization threshold),\notherwise uses the sqrt approximation.\n\nArgs:\n    Kb: Base ionization constant\n    initial_conc: Initial concentration (M)\n\nReturns:\n    pH value\n\nExamples:\n    >>> round(weak_base_pH(1.8e-5, 0.1), 2)\n    11.13",
+      "scientific_validity": "not_independently_verified",
+      "signature": "weak_base_pH(Kb: float, initial_conc: float)",
+      "summary": "Calculate pH of weak base solution."
+    },
+    "acid_base_tools.calculate_pka_conjugate": {
+      "contract": {},
+      "description": "Calculate pKb from pKa (in water at 25degC). pKa + pKb = 14.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "calculate_pka_conjugate(pka: float)",
+      "summary": "Calculate pKb from pKa (in water at 25degC). pKa + pKb = 14."
+    },
+    "acid_base_tools.hsab_classify": {
+      "contract": {},
+      "description": "Classify acid as hard, soft, or borderline based on hardness parameter.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "hsab_classify(acid_hardness: float, base_hardness: float=None)",
+      "summary": "Classify acid as hard, soft, or borderline based on hardness parameter."
+    },
+    "acid_base_tools.hsab_compatibility": {
+      "contract": {},
+      "description": "Predict acid-base adduct stability: hard-hard, soft-soft preferred.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "hsab_compatibility(acid_type: str, base_type: str)",
+      "summary": "Predict acid-base adduct stability: hard-hard, soft-soft preferred."
+    },
+    "buffer_calculator.buffer_after_strong_acid": {
+      "contract": {},
+      "description": "Calculate new pH after adding strong acid to buffer.\n\nA- + H+ -> HA\n\nArgs:\n    pKa: Acid pKa\n    acid_mol: Initial moles of HA\n    base_mol: Initial moles of A-\n    added_H_mol: Moles of H+ added\n    volume: Total volume (L)\n\nReturns:\n    Tuple of (new_pH, new_acid_conc, new_base_conc)\n\nExamples:\n    >>> pH, ha, a = buffer_after_strong_acid(4.76, 0.01, 0.01, 0.001, 0.1)\n    >>> round(pH, 2)\n    4.67",
+      "scientific_validity": "not_independently_verified",
+      "signature": "buffer_after_strong_acid(pKa: float, acid_mol: float, base_mol: float, added_H_mol: float, volume: float)",
+      "summary": "Calculate new pH after adding strong acid to buffer."
+    },
+    "buffer_calculator.buffer_after_strong_base": {
+      "contract": {},
+      "description": "Calculate new pH after adding strong base to buffer.\n\nHA + OH- -> A- + H2O\n\nArgs:\n    pKa: Acid pKa\n    acid_mol: Initial moles of HA\n    base_mol: Initial moles of A-\n    added_OH_mol: Moles of OH- added\n    volume: Total volume (L)\n\nReturns:\n    Tuple of (new_pH, new_acid_conc, new_base_conc)\n\nExamples:\n    >>> pH, ha, a = buffer_after_strong_base(4.76, 0.01, 0.01, 0.001, 0.1)\n    >>> round(pH, 2)\n    4.85",
+      "scientific_validity": "not_independently_verified",
+      "signature": "buffer_after_strong_base(pKa: float, acid_mol: float, base_mol: float, added_OH_mol: float, volume: float)",
+      "summary": "Calculate new pH after adding strong base to buffer."
+    },
+    "buffer_calculator.buffer_capacity_approximate": {
+      "contract": {},
+      "description": "Approximate buffer capacity near pKa.\n\nMaximum at pH = pKa: beta_max ~ 0.576 x C_total\n\nArgs:\n    total_conc: [acid] + [base] (M)\n    pH: Buffer pH\n    pKa: Acid pKa\n\nReturns:\n    Approximate buffer capacity\n\nExamples:\n    >>> beta = buffer_capacity_approximate(0.2, 4.76, 4.76)\n    >>> round(beta, 4)\n    0.1152",
+      "scientific_validity": "not_independently_verified",
+      "signature": "buffer_capacity_approximate(total_conc: float, pH: float, pKa: float)",
+      "summary": "Approximate buffer capacity near pKa."
+    },
+    "buffer_calculator.buffer_capacity_exact": {
+      "contract": {},
+      "description": "Calculate exact buffer capacity using the Van Slyke equation.\n\nbeta = 2.303 x [HA][A-] / ([HA] + [A-]) + [H+] + [OH-]\n\nArgs:\n    acid_conc: Concentration of weak acid (M)\n    base_conc: Concentration of conjugate base (M)\n    Ka: Acid dissociation constant\n    Kw: Water ion product (default 1e-14)\n\nReturns:\n    Buffer capacity (mol/L per pH unit)\n\nExamples:\n    >>> beta = buffer_capacity_exact(0.1, 0.1, 1.8e-5)\n    >>> round(beta, 4)\n    0.0576",
+      "scientific_validity": "not_independently_verified",
+      "signature": "buffer_capacity_exact(acid_conc: float, base_conc: float, Ka: float, Kw: float=1e-14)",
+      "summary": "Calculate exact buffer capacity using the Van Slyke equation."
+    },
+    "buffer_calculator.buffer_concentrations_from_ratio": {
+      "contract": {},
+      "description": "Calculate acid and base concentrations from total concentration and ratio.\n\nArgs:\n    total_conc: [acid] + [base] (M)\n    ratio: [base]/[acid]\n\nReturns:\n    Tuple of (acid_conc, base_conc)\n\nExamples:\n    >>> acid, base = buffer_concentrations_from_ratio(0.2, 1.0)\n    >>> round(acid, 3), round(base, 3)\n    (0.1, 0.1)",
+      "scientific_validity": "not_independently_verified",
+      "signature": "buffer_concentrations_from_ratio(total_conc: float, ratio: float)",
+      "summary": "Calculate acid and base concentrations from total concentration and ratio."
+    },
+    "buffer_calculator.buffer_pH_with_activity": {
+      "contract": {},
+      "description": "Calculate buffer pH with activity correction.\n\npH = pKa + log10([A-]/[HA]) - log10(gamma_H)\n\nArgs:\n    pKa: Thermodynamic pKa\n    acid_conc: Concentration of HA (M)\n    base_conc: Concentration of A- (M)\n    gamma_H: Activity coefficient of H+\n\nReturns:\n    pH with activity correction\n\nExamples:\n    >>> pH = buffer_pH_with_activity(4.76, 0.1, 0.1, 0.8)\n    >>> round(pH, 2)\n    4.86",
+      "scientific_validity": "not_independently_verified",
+      "signature": "buffer_pH_with_activity(pKa: float, acid_conc: float, base_conc: float, gamma_H: float=1.0)",
+      "summary": "Calculate buffer pH with activity correction."
+    },
+    "buffer_calculator.buffer_range": {
+      "contract": {},
+      "description": "Calculate effective buffer range.\n\nStandard range: pKa \u00b1 1 (ratio from 0.1 to 10)\n\nArgs:\n    pKa: Acid pKa\n    effectiveness: Minimum fraction of max capacity (default 0.1)\n\nReturns:\n    Tuple of (min_pH, max_pH)\n\nExamples:\n    >>> buffer_range(4.76)\n    (3.76, 5.76)",
+      "scientific_validity": "not_independently_verified",
+      "signature": "buffer_range(pKa: float, effectiveness: float=0.1)",
+      "summary": "Calculate effective buffer range."
+    },
+    "buffer_calculator.carbonate_buffer": {
+      "contract": {},
+      "description": "Calculate pH of carbonate buffer.\n\nH2CO3/HCO3-: pKa1 = 6.35\nHCO3-/CO32-: pKa2 = 10.33\n\nArgs:\n    H2CO3_conc: Concentration of H2CO3 or HCO3- (M)\n    HCO3_conc: Concentration of HCO3- or CO32- (M)\n    use_first_Ka: Use first dissociation (H2CO3/HCO3-)\n\nReturns:\n    pH value\n\nExamples:\n    >>> pH = carbonate_buffer(0.1, 0.1, True)  # H2CO3/HCO3-\n    >>> round(pH, 2)\n    6.35",
+      "scientific_validity": "not_independently_verified",
+      "signature": "carbonate_buffer(H2CO3_conc: float, HCO3_conc: float, use_first_Ka: bool=True)",
+      "summary": "Calculate pH of carbonate buffer."
+    },
+    "buffer_calculator.citrate_buffer": {
+      "contract": {},
+      "description": "Calculate pH of citrate buffer.\n\npKa1 = 3.13 (H3Cit/H2Cit-)\npKa2 = 4.76 (H2Cit-/HCit2-)\npKa3 = 6.40 (HCit2-/Cit3-)\n\nArgs:\n    CitH2_conc: Concentration of more protonated form (M)\n    CitH_conc: Concentration of less protonated form (M)\n    which_pair: Which pKa to use (1, 2, or 3)\n\nReturns:\n    pH value",
+      "scientific_validity": "not_independently_verified",
+      "signature": "citrate_buffer(CitH2_conc: float, CitH_conc: float, which_pair: int=2)",
+      "summary": "Calculate pH of citrate buffer."
+    },
+    "buffer_calculator.debye_huckel_activity": {
+      "contract": {},
+      "description": "Calculate activity coefficient using Debye-H\u00fcckel limiting law.\n\nlog10(gamma) = -A x z2 x \u221aI\n\nArgs:\n    ionic_strength: Ionic strength (M)\n    charge: Ion charge\n    A: Debye-H\u00fcckel constant (0.509 for water at 25degC)\n\nReturns:\n    Activity coefficient gamma\n\nExamples:\n    >>> gamma = debye_huckel_activity(0.1, 1)\n    >>> round(gamma, 2)\n    0.78",
+      "scientific_validity": "not_independently_verified",
+      "signature": "debye_huckel_activity(ionic_strength: float, charge: int, A: float=0.509)",
+      "summary": "Calculate activity coefficient using Debye-H\u00fcckel limiting law."
+    },
+    "buffer_calculator.design_buffer": {
+      "contract": {},
+      "description": "Design a buffer to achieve target pH.\n\nArgs:\n    target_pH: Desired pH\n    pKa: pKa of weak acid\n    total_conc: Total concentration [acid] + [base] (M)\n\nReturns:\n    Tuple of (acid_conc, base_conc) in M\n\nExamples:\n    >>> acid, base = design_buffer(5.0, 4.76, 0.2)\n    >>> round(acid, 3), round(base, 3)\n    (0.073, 0.127)",
+      "scientific_validity": "not_independently_verified",
+      "signature": "design_buffer(target_pH: float, pKa: float, total_conc: float)",
+      "summary": "Design a buffer to achieve target pH."
+    },
+    "buffer_calculator.dilution_effect": {
+      "contract": {},
+      "description": "Estimate pH change upon dilution.\n\nFor most buffers, dilution has minimal effect on pH\n(because ratio stays constant).\n\nArgs:\n    pH_initial: Initial pH\n    pKa: Acid pKa\n    dilution_factor: Final volume / initial volume\n\nReturns:\n    New pH (approximately same as initial for good buffers)\n\nExamples:\n    >>> dilution_effect(5.0, 4.76, 2.0)  # 2x dilution\n    5.0",
+      "scientific_validity": "not_independently_verified",
+      "signature": "dilution_effect(pH_initial: float, pKa: float, dilution_factor: float)",
+      "summary": "Estimate pH change upon dilution."
+    },
+    "buffer_calculator.grams_needed": {
+      "contract": {},
+      "description": "Calculate grams of compound needed.\n\nArgs:\n    molar_mass: Molar mass (g/mol)\n    moles: Moles needed\n\nReturns:\n    Mass in grams\n\nExamples:\n    >>> grams_needed(82.03, 0.1)  # Sodium acetate\n    8.203",
+      "scientific_validity": "not_independently_verified",
+      "signature": "grams_needed(molar_mass: float, moles: float)",
+      "summary": "Calculate grams of compound needed."
+    },
+    "buffer_calculator.henderson_hasselbalch": {
+      "contract": {},
+      "description": "Calculate buffer pH using Henderson-Hasselbalch equation.\n\npH = pKa + log10([base]/[acid])\n\nArgs:\n    pKa: Acid dissociation constant (as pKa)\n    base_conc: Concentration of conjugate base (M)\n    acid_conc: Concentration of weak acid (M)\n\nReturns:\n    pH value\n\nExamples:\n    >>> round(henderson_hasselbalch(4.76, 0.1, 0.1), 2)\n    4.76\n    >>> round(henderson_hasselbalch(4.76, 0.2, 0.1), 2)\n    5.06",
+      "scientific_validity": "not_independently_verified",
+      "signature": "henderson_hasselbalch(pKa: float, base_conc: float, acid_conc: float)",
+      "summary": "Calculate buffer pH using Henderson-Hasselbalch equation."
+    },
+    "buffer_calculator.ionic_strength": {
+      "contract": {},
+      "description": "Calculate ionic strength of a solution.\n\nI = 0.5 x \u03a3(ci x zi2)\n\nArgs:\n    concentrations: Dict of {ion_name: (concentration_M, charge)}\n\nReturns:\n    Ionic strength (M)\n\nExamples:\n    >>> I = ionic_strength({'Na+': (0.1, 1), 'Cl-': (0.1, -1)})\n    >>> round(I, 2)\n    0.1",
+      "scientific_validity": "not_independently_verified",
+      "signature": "ionic_strength(concentrations: Dict[str, Tuple[float, int]])",
+      "summary": "Calculate ionic strength of a solution."
+    },
+    "buffer_calculator.is_effective_buffer": {
+      "contract": {},
+      "description": "Check if pKa is suitable for target pH.\n\nRule: pKa should be within \u00b11 of target pH\n\nArgs:\n    target_pH: Desired buffer pH\n    pKa: Acid pKa\n\nReturns:\n    True if suitable\n\nExamples:\n    >>> is_effective_buffer(5.0, 4.76)\n    True\n    >>> is_effective_buffer(8.0, 4.76)\n    False",
+      "scientific_validity": "not_independently_verified",
+      "signature": "is_effective_buffer(target_pH: float, pKa: float)",
+      "summary": "Check if pKa is suitable for target pH."
+    },
+    "buffer_calculator.phosphate_buffer": {
+      "contract": {},
+      "description": "Calculate pH of phosphate buffer (H2PO4-/HPO42-).\n\npKa2 = 7.20\n\nArgs:\n    H2PO4_conc: Concentration of H2PO4- (M)\n    HPO4_conc: Concentration of HPO42- (M)\n\nReturns:\n    pH value\n\nExamples:\n    >>> pH = phosphate_buffer(0.05, 0.05)\n    >>> round(pH, 2)\n    7.2",
+      "scientific_validity": "not_independently_verified",
+      "signature": "phosphate_buffer(H2PO4_conc: float, HPO4_conc: float)",
+      "summary": "Calculate pH of phosphate buffer (H2PO4-/HPO42-)."
+    },
+    "buffer_calculator.polyprotic_buffer_pH": {
+      "contract": {},
+      "description": "Calculate pH for polyprotic buffer system (H2A/HA-/A2-).\n\nUses the appropriate Henderson-Hasselbalch equation based on\ndominant species.\n\nArgs:\n    pKa1: First dissociation constant\n    pKa2: Second dissociation constant\n    H2A_conc: Concentration of H2A (M)\n    HA_conc: Concentration of HA- (M)\n    A_conc: Concentration of A2- (M)\n\nReturns:\n    pH value\n\nExamples:\n    >>> # Phosphate buffer H2PO4-/HPO42-\n    >>> pH = polyprotic_buffer_pH(2.14, 7.20, 0.0, 0.1, 0.1)\n    >>> round(pH, 2)\n    7.2",
+      "scientific_validity": "not_independently_verified",
+      "signature": "polyprotic_buffer_pH(pKa1: float, pKa2: float, H2A_conc: float, HA_conc: float, A_conc: float)",
+      "summary": "Calculate pH for polyprotic buffer system (H2A/HA-/A2-)."
+    },
+    "buffer_calculator.prepare_buffer_by_mixing": {
+      "contract": {},
+      "description": "Calculate masses needed to prepare buffer by mixing acid and base salts.\n\nArgs:\n    target_pH: Desired pH\n    pKa: pKa of weak acid\n    total_volume: Final buffer volume (L)\n    total_conc: Total concentration (M)\n    acid_molar_mass: Molar mass of acid form (g/mol)\n    base_molar_mass: Molar mass of conjugate base form (g/mol)\n\nReturns:\n    Tuple of (grams_acid, grams_base)\n\nExamples:\n    >>> g_acid, g_base = prepare_buffer_by_mixing(5.0, 4.76, 0.5, 0.1, 60.05, 82.03)\n    >>> round(g_acid, 2), round(g_base, 2)\n    (2.19, 5.21)",
+      "scientific_validity": "not_independently_verified",
+      "signature": "prepare_buffer_by_mixing(target_pH: float, pKa: float, total_volume: float, total_conc: float, acid_molar_mass: float, base_molar_mass: float)",
+      "summary": "Calculate masses needed to prepare buffer by mixing acid and base salts."
+    },
+    "buffer_calculator.prepare_buffer_by_neutralization": {
+      "contract": {},
+      "description": "Calculate volumes needed to prepare buffer by partial neutralization.\n\nMix weak acid with strong base to create buffer.\n\nArgs:\n    target_pH: Desired pH\n    pKa: pKa of weak acid\n    total_volume: Final buffer volume (L)\n    acid_concentration: Stock weak acid concentration (M)\n    base_concentration: Stock strong base concentration (M)\n    Ka: Acid dissociation constant\n\nReturns:\n    Tuple of (volume_acid, volume_base)",
+      "scientific_validity": "not_independently_verified",
+      "signature": "prepare_buffer_by_neutralization(target_pH: float, pKa: float, total_volume: float, acid_concentration: float, base_concentration: float, Ka: float)",
+      "summary": "Calculate volumes needed to prepare buffer by partial neutralization."
+    },
+    "equilibrium_constant_tools.Kc_to_Kp": {
+      "contract": {},
+      "description": "Convert Kc to Kp.\n\nKp = Kc(RT)^Deltan\n\nArgs:\n    Kc: Equilibrium constant (concentration)\n    delta_n: Change in moles of gas (products - reactants)\n    T: Temperature (K)\n\nReturns:\n    Kp value\n\nExamples:\n    >>> Kc_to_Kp(1.0, -1, 298)\n    0.041",
+      "scientific_validity": "not_independently_verified",
+      "signature": "Kc_to_Kp(Kc: float, delta_n: int, T: float)",
+      "summary": "Convert Kc to Kp."
+    },
+    "equilibrium_constant_tools.Kp_to_Kc": {
+      "contract": {},
+      "description": "Convert Kp to Kc.\n\nKc = Kp(RT)^(-Deltan)\n\nArgs:\n    Kp: Equilibrium constant (pressure)\n    delta_n: Change in moles of gas\n    T: Temperature (K)\n\nReturns:\n    Kc value\n\nExamples:\n    >>> Kp_to_Kc(1.0, -1, 298)\n    24.5",
+      "scientific_validity": "not_independently_verified",
+      "signature": "Kp_to_Kc(Kp: float, delta_n: int, T: float)",
+      "summary": "Convert Kp to Kc."
+    },
+    "equilibrium_constant_tools.Q_expression_string": {
+      "contract": {},
+      "description": "Generate Q expression string.\n\nArgs:\n    products: Dict of {product: coefficient}\n    reactants: Dict of {reactant: coefficient}\n\nReturns:\n    Q expression string\n\nExamples:\n    >>> Q_expression_string({'NH3': 2}, {'N2': 1, 'H2': 3})\n    'Q = [NH3]^2 / ([N2][H2]^3)'",
+      "scientific_validity": "not_independently_verified",
+      "signature": "Q_expression_string(products: Dict[str, int], reactants: Dict[str, int])",
+      "summary": "Generate Q expression string."
+    },
+    "equilibrium_constant_tools.calculate_Kc": {
+      "contract": {},
+      "description": "Calculate Kc from equilibrium concentrations.\n\nArgs:\n    equilibrium_concentrations: Dict of {species: concentration}\n    products: Dict of {product: coefficient}\n    reactants: Dict of {reactant: coefficient}\n\nReturns:\n    Kc value\n\nExamples:\n    >>> calculate_Kc({'HI': 0.1, 'H2': 0.01, 'I2': 0.01},\n    ...              {'HI': 2}, {'H2': 1, 'I2': 1})\n    100.0",
+      "scientific_validity": "not_independently_verified",
+      "signature": "calculate_Kc(equilibrium_concentrations: Dict[str, float], products: Dict[str, int], reactants: Dict[str, int])",
+      "summary": "Calculate Kc from equilibrium concentrations."
+    },
+    "equilibrium_constant_tools.calculate_Qp": {
+      "contract": {},
+      "description": "Calculate Qp from partial pressures.\n\nArgs:\n    partial_pressures: Dict of {species: pressure (atm)}\n    products: Dict of {product: coefficient}\n    reactants: Dict of {reactant: coefficient}\n\nReturns:\n    Qp value\n\nExamples:\n    >>> calculate_Qp({'NH3': 0.5, 'N2': 0.1, 'H2': 0.2},\n    ...              {'NH3': 2}, {'N2': 1, 'H2': 3})\n    625.0",
+      "scientific_validity": "not_independently_verified",
+      "signature": "calculate_Qp(partial_pressures: Dict[str, float], products: Dict[str, int], reactants: Dict[str, int])",
+      "summary": "Calculate Qp from partial pressures."
+    },
+    "equilibrium_constant_tools.concentration_from_Kc": {
+      "contract": {},
+      "description": "Calculate unknown equilibrium concentration from Kc.\n\nArgs:\n    Kc: Equilibrium constant\n    known_concs: Dict of known equilibrium concentrations\n    unknown_species: Species to solve for\n    coeff: Coefficient of unknown species in K expression\n    products: Product coefficients\n    reactants: Reactant coefficients\n\nReturns:\n    Unknown concentration\n\nExamples:\n    >>> concentration_from_Kc(4.0, {'H2': 0.5, 'I2': 0.5},\n    ...                       'HI', 2, {'HI': 2}, {'H2': 1, 'I2': 1})\n    1.0",
+      "scientific_validity": "not_independently_verified",
+      "signature": "concentration_from_Kc(Kc: float, known_concs: Dict[str, float], unknown_species: str, coeff: int, products: Dict[str, int], reactants: Dict[str, int])",
+      "summary": "Calculate unknown equilibrium concentration from Kc."
+    },
+    "equilibrium_constant_tools.interpret_K": {
+      "contract": {},
+      "description": "Interpret the meaning of K value.\n\nArgs:\n    K: Equilibrium constant\n\nReturns:\n    Interpretation string\n\nExamples:\n    >>> interpret_K(1000)\n    'Products strongly favored'\n    >>> interpret_K(0.001)\n    'Reactants strongly favored'",
+      "scientific_validity": "not_independently_verified",
+      "signature": "interpret_K(K: float)",
+      "summary": "Interpret the meaning of K value."
+    },
+    "equilibrium_tools.equilibrium_concentrations": {
+      "contract": {},
+      "description": "Solve ICE table to find equilibrium concentrations given K and initial conditions.\n\nSupports the common patterns:\n- aA + bB \u21cc cC + dD with all species having initial concentrations\n- Symmetric initial concentrations (e.g., [A]\u2080=[B]\u2080) -> simplifies to linear\n- Large K -> assume 100% forward, then small reverse\n- Small K -> assume x \u2248 0 change from initial\n\nArgs:\n    initial_concentrations: Dict of {species: initial concentration} in M\n        Species not listed default to 0.\n    reaction_stoichiometry: List of (coeff, formula, phase) tuples.\n        Negative = reactant, positive = product.\n        e.g., H2 + I2 \u21cc 2HI: [(-1,'H2','g'), (-1,'I2','g'), (2,'HI','g')]\n    K: Equilibrium constant Kc (must be > 0)\n    mode: 'auto', 'quadratic', 'large_K', 'small_K'\n        'auto' chooses based on K magnitude.\n    tol: Convergence tolerance for iterative methods.\n\nReturns:\n    Dict of {species: equilibrium concentration}\n\nExamples:\n    >>> # H2 + I2 <=> 2HI, K=54, [H2]=[I2]=0.172\n    >>> eq = equilibrium_concentrations(\n    ...     {'H2': 0.172, 'I2': 0.172},\n    ...     [(-1,'H2','g'), (-1,'I2','g'), (2,'HI','g')],\n    ...     K=54)\n    >>> round(eq['HI'], 2)\n    0.27\n    >>> round(eq['H2'], 3)\n    0.037\n    \n    >>> # H2 + C2H4 <=> C2H6, K=9.6e18, [H2]=0.200, [C2H4]=0.155\n    >>> eq = equilibrium_concentrations(\n    ...     {'H2': 0.200, 'C2H4': 0.155},\n    ...     [(-1,'H2','g'), (-1,'C2H4','g'), (1,'C2H6','g')],\n    ...     K=9.6e18)\n    >>> round(eq['C2H6'], 3)\n    0.155",
+      "scientific_validity": "not_independently_verified",
+      "signature": "equilibrium_concentrations(initial_concentrations, reaction_stoichiometry, K, mode='auto', tol=1e-10)",
+      "summary": "Solve ICE table to find equilibrium concentrations given K and initial conditions."
+    },
+    "equilibrium_tools.equilibrium_constant": {
+      "contract": {},
+      "description": "Calculate Kc from equilibrium concentrations using signed stoichiometry.\n\nArgs:\n    concentrations_dict: Dict of {species: equilibrium concentration}\n    reaction_stoichiometry: List of (coeff, formula, phase) tuples.\n        Negative coeff = reactant, positive = product.\n        e.g., 2NOBr(g) \u21cc 2NO(g) + Br2(g): [(-2,'NOBr','g'), (2,'NO','g'), (1,'Br2','g')]\n\nReturns:\n    Kc value\n\nExamples:\n    >>> equilibrium_constant({'NOBr': 0.423, 'NO': 1.29, 'Br2': 10.52},\n    ...                     [(-2,'NOBr','g'), (2,'NO','g'), (1,'Br2','g')])\n    97.8...",
+      "scientific_validity": "not_independently_verified",
+      "signature": "equilibrium_constant(concentrations_dict, reaction_stoichiometry)",
+      "summary": "Calculate Kc from equilibrium concentrations using signed stoichiometry."
+    },
+    "equilibrium_tools.equilibrium_expression": {
+      "contract": {},
+      "description": "Generate equilibrium constant expression.\n\nArgs:\n    products: Dict of {product: coefficient}\n    reactants: Dict of {reactant: coefficient}\n\nReturns:\n    K expression string\n\nExamples:\n    >>> equilibrium_expression({'NH3': 2}, {'N2': 1, 'H2': 3})\n    'K = [NH3]^2 / ([N2][H2]^3)'",
+      "scientific_validity": "not_independently_verified",
+      "signature": "equilibrium_expression(products: Dict[str, int], reactants: Dict[str, int])",
+      "summary": "Generate equilibrium constant expression."
+    },
+    "equilibrium_tools.equilibrium_from_composition": {
+      "contract": {},
+      "description": "Calculate K and equilibrium concentrations from initial conditions and extent of reaction.\n\nArgs:\n    initial_concentrations: Dict of {species: initial concentration}\n    reaction_stoichiometry: List of (coeff, formula, phase) tuples (negative=reactant)\n    extent: Extent of reaction (xi)\n\nReturns:\n    (K, equilibrium_concentrations_dict)\n\nExamples:\n    >>> K, eq = equilibrium_from_composition(\n    ...     {'NOBr': 2.0, 'NO': 0.0, 'Br2': 0.0},\n    ...     [(-2,'NOBr','g'), (2,'NO','g'), (1,'Br2','g')],\n    ...     0.789\n    ... )",
+      "scientific_validity": "not_independently_verified",
+      "signature": "equilibrium_from_composition(initial_concentrations, reaction_stoichiometry, extent)",
+      "summary": "Calculate K and equilibrium concentrations from initial conditions and extent of reaction."
+    },
+    "equilibrium_tools.equilibrium_from_rates": {
+      "contract": {},
+      "description": "Calculate equilibrium constant from rate constants.\n\nFor elementary reaction A \u21cc B:\nK = kf/kr\n\nArgs:\n    kf: Forward rate constant\n    kr: Reverse rate constant\n\nReturns:\n    Equilibrium constant K\n\nExamples:\n    >>> equilibrium_from_rates(0.1, 0.01)\n    10.0",
+      "scientific_validity": "not_independently_verified",
+      "signature": "equilibrium_from_rates(kf: float, kr: float)",
+      "summary": "Calculate equilibrium constant from rate constants."
+    },
+    "equilibrium_tools.ice_table": {
+      "contract": {},
+      "description": "Calculate Kc from ICE table data.\n\nArgs:\n    initial: Dict of {species: initial concentration}\n    change: Dict of {species: change in concentration}\n    equilibrium: Dict of {species: equilibrium concentration}\n\nReturns:\n    Kc value calculated from equilibrium concentrations.\n    Note: stoichiometry is inferred from change values (sign and magnitude).\n\nExamples:\n    >>> ice_table({'A': 1.0, 'B': 1.0, 'C': 0.0},\n    ...           {'A': -0.5, 'B': -0.5, 'C': 1.0},\n    ...           {'A': 0.5, 'B': 0.5, 'C': 1.0})\n    4.0",
+      "scientific_validity": "not_independently_verified",
+      "signature": "ice_table(initial, change, equilibrium)",
+      "summary": "Calculate Kc from ICE table data."
+    },
+    "equilibrium_tools.is_homogeneous": {
+      "contract": {},
+      "description": "Check if equilibrium is homogeneous (same phase).\n\nArgs:\n    phases: Dict of {species: phase}\n\nReturns:\n    True if all species in same phase\n\nExamples:\n    >>> is_homogeneous({'H2': 'g', 'I2': 'g', 'HI': 'g'})\n    True\n    >>> is_homogeneous({'CaCO3': 's', 'CaO': 's', 'CO2': 'g'})\n    False",
+      "scientific_validity": "not_independently_verified",
+      "signature": "is_homogeneous(phases: Dict[str, str])",
+      "summary": "Check if equilibrium is homogeneous (same phase)."
+    },
+    "equilibrium_tools.kc_from_kp": {
+      "contract": {},
+      "description": "Convert Kp to Kc: Kc = Kp / (RT)^delta_n\n\nArgs:\n    Kp: Equilibrium constant in pressure units\n    delta_n: Change in moles of gas (moles gas products - moles gas reactants)\n    temperature_K: Temperature in Kelvin\n\nReturns:\n    Kc value",
+      "scientific_validity": "not_independently_verified",
+      "signature": "kc_from_kp(Kp, delta_n, temperature_K)",
+      "summary": "Convert Kp to Kc: Kc = Kp / (RT)^delta_n"
+    },
+    "equilibrium_tools.kp_from_kc": {
+      "contract": {},
+      "description": "Convert Kc to Kp: Kp = Kc * (RT)^delta_n\n\nArgs:\n    Kc: Equilibrium constant in concentration units\n    delta_n: Change in moles of gas (moles gas products - moles gas reactants)\n    temperature_K: Temperature in Kelvin\n\nReturns:\n    Kp value\n\nExamples:\n    >>> kp_from_kc(97.8, 1, 1000.15)\n    8026.4...",
+      "scientific_validity": "not_independently_verified",
+      "signature": "kp_from_kc(Kc, delta_n, temperature_K)",
+      "summary": "Convert Kc to Kp: Kp = Kc * (RT)^delta_n"
+    },
+    "equilibrium_tools.omit_from_expression": {
+      "contract": {},
+      "description": "Determine if species should be omitted from Q expression.\n\nPure solids, pure liquids, and solvents are omitted.\n\nArgs:\n    species: Species name\n    phase: Phase ('s', 'l', 'g', 'aq')\n    solvent: Name of solvent (if applicable)\n\nReturns:\n    True if species should be omitted\n\nExamples:\n    >>> omit_from_expression('CaCO3', 's')\n    True\n    >>> omit_from_expression('H2O', 'l', solvent='H2O')\n    True",
+      "scientific_validity": "not_independently_verified",
+      "signature": "omit_from_expression(species: str, phase: str, solvent: str=None)",
+      "summary": "Determine if species should be omitted from Q expression."
+    },
+    "equilibrium_tools.predict_direction": {
+      "contract": {},
+      "description": "Predict reaction direction from Q and K comparison.\n\nArgs:\n    Q: Reaction quotient\n    K: Equilibrium constant\n\nReturns:\n    Direction string: 'forward', 'reverse', or 'at equilibrium'\n\nExamples:\n    >>> predict_direction(0.1, 10.0)\n    'forward'\n    >>> predict_direction(100.0, 10.0)\n    'reverse'",
+      "scientific_validity": "not_independently_verified",
+      "signature": "predict_direction(Q: float, K: float)",
+      "summary": "Predict reaction direction from Q and K comparison."
+    },
+    "equilibrium_tools.rate_equality_condition": {
+      "contract": {},
+      "description": "Check if forward and reverse rates are equal.\n\nArgs:\n    kf: Forward rate constant\n    kr: Reverse rate constant\n    conc_A: Reactant concentration\n    conc_B: Product concentration\n\nReturns:\n    True if rates equal (at equilibrium)\n\nExamples:\n    >>> rate_equality_condition(0.1, 0.01, 0.1, 1.0)\n    True",
+      "scientific_validity": "not_independently_verified",
+      "signature": "rate_equality_condition(kf: float, kr: float, conc_A: float, conc_B: float)",
+      "summary": "Check if forward and reverse rates are equal."
+    },
+    "equilibrium_tools.reaction_quotient": {
+      "contract": {},
+      "description": "Calculate reaction quotient Q from concentrations.\n\nArgs:\n    concentrations: Dict of {species: concentration}\n    products: Dict of {product: coefficient}\n    reactants: Dict of {reactant: coefficient}\n\nReturns:\n    Q value\n\nExamples:\n    >>> reaction_quotient({'NH3': 0.5, 'N2': 0.1, 'H2': 0.2}, \n    ...                   {'NH3': 2}, {'N2': 1, 'H2': 3})\n    625.0\n\nNote: This function uses (products_dict, reactants_dict) API.\nFor consistency with equilibrium_constant(stoichiometry_list), \nconsider using reaction_quotient_v2() instead.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "reaction_quotient(concentrations: Dict[str, float], products: Dict[str, int], reactants: Dict[str, int])",
+      "summary": "Calculate reaction quotient Q from concentrations."
+    },
+    "equilibrium_tools.reaction_quotient_v2": {
+      "contract": {},
+      "description": "Calculate reaction quotient Q using the same stoichiometry format as equilibrium_constant.\n\nThis is the preferred function for Q calculations \u2014 consistent API with equilibrium_constant.\n\nArgs:\n    concentrations_dict: Dict of {species: concentration}\n    reaction_stoichiometry: List of (coeff, formula, phase) tuples.\n        Negative = reactant, positive = product.\n        e.g., [(-1,'H2','g'), (-1,'I2','g'), (2,'HI','g')]\n\nReturns:\n    Q value\n\nExamples:\n    >>> reaction_quotient_v2({'SO2': 0.050, 'Cl2': 0.16, 'SO2Cl2': 0.12},\n    ...                     [(-2,'SO2Cl2','g'), (2,'SO2','g'), (1,'Cl2','g')])\n    0.0667",
+      "scientific_validity": "not_independently_verified",
+      "signature": "reaction_quotient_v2(concentrations_dict, reaction_stoichiometry)",
+      "summary": "Calculate reaction quotient Q using the same stoichiometry format as equilibrium_constant."
+    },
+    "ph_calculations_tools.H3O_from_pH": {
+      "contract": {},
+      "description": "Calculate [H3O+] from pH.\n\nArgs:\n    pH: pH value\n\nReturns:\n    [H3O+] in M\n\nExamples:\n    >>> H3O_from_pH(7.0)\n    1e-07",
+      "scientific_validity": "not_independently_verified",
+      "signature": "H3O_from_pH(pH: float)",
+      "summary": "Calculate [H3O+] from pH."
+    },
+    "ph_calculations_tools.Ka_from_pKa": {
+      "contract": {},
+      "description": "Calculate Ka from pKa.\n\nArgs:\n    pKa: pKa value\n\nReturns:\n    Ka value\n\nExamples:\n    >>> Ka_from_pKa(4.74)\n    1.8e-05",
+      "scientific_validity": "not_independently_verified",
+      "signature": "Ka_from_pKa(pKa: float)",
+      "summary": "Calculate Ka from pKa."
+    },
+    "ph_calculations_tools.Kb_from_pKb": {
+      "contract": {},
+      "description": "Calculate Kb from pKb.\n\nArgs:\n    pKb: pKb value\n\nReturns:\n    Kb value\n\nExamples:\n    >>> Kb_from_pKb(4.74)\n    1.8e-05",
+      "scientific_validity": "not_independently_verified",
+      "signature": "Kb_from_pKb(pKb: float)",
+      "summary": "Calculate Kb from pKb."
+    },
+    "ph_calculations_tools.OH_from_pOH": {
+      "contract": {},
+      "description": "Calculate [OH-] from pOH.\n\nArgs:\n    pOH: pOH value\n\nReturns:\n    [OH-] in M\n\nExamples:\n    >>> OH_from_pOH(7.0)\n    1e-07",
+      "scientific_validity": "not_independently_verified",
+      "signature": "OH_from_pOH(pOH: float)",
+      "summary": "Calculate [OH-] from pOH."
+    },
+    "ph_calculations_tools.classify_by_pH": {
+      "contract": {},
+      "description": "Classify solution by pH value.\n\nArgs:\n    pH: pH value\n    temperature: Temperature in degC\n    Kw: Optional water ion product override\n\nReturns:\n    Classification string\n\nNeutral is defined using an explicit +/- 0.001 pH-unit rounding\ntolerance around 0.5*pKw.\n\nExamples:\n    >>> classify_by_pH(7.0)\n    'neutral'\n    >>> classify_by_pH(4.0)\n    'acidic'\n    >>> classify_by_pH(10.0)\n    'basic'",
+      "scientific_validity": "not_independently_verified",
+      "signature": "classify_by_pH(pH: float, temperature: float=25.0, Kw: Optional[float]=None)",
+      "summary": "Classify solution by pH value."
+    },
+    "ph_calculations_tools.pH_from_H3O": {
+      "contract": {},
+      "description": "Calculate pH from hydronium ion concentration.\n\nThis ideal concentration-based conversion assumes a unit activity\ncoefficient (activity coefficient = 1).\n\nArgs:\n    h3o_conc: Equilibrium [H3O+] concentration in M, not an\n        analytical acid concentration\n\nReturns:\n    pH value\n\nExamples:\n    >>> pH_from_H3O(1e-7)\n    7.0\n    >>> pH_from_H3O(0.1)\n    1.0",
+      "scientific_validity": "not_independently_verified",
+      "signature": "pH_from_H3O(h3o_conc: float)",
+      "summary": "Calculate pH from hydronium ion concentration."
+    },
+    "ph_calculations_tools.pH_to_pOH": {
+      "contract": {},
+      "description": "Convert pH to pOH.\n\nArgs:\n    pH: pH value\n    temperature: Temperature in degC\n    Kw: Optional water ion product override\n\nReturns:\n    pOH value\n\nExamples:\n    >>> pH_to_pOH(7.0)\n    7.0",
+      "scientific_validity": "not_independently_verified",
+      "signature": "pH_to_pOH(pH: float, temperature: float=25.0, Kw: Optional[float]=None)",
+      "summary": "Convert pH to pOH."
+    },
+    "ph_calculations_tools.pKa_from_Ka": {
+      "contract": {},
+      "description": "Calculate pKa from Ka.\n\nArgs:\n    Ka: Acid dissociation constant\n\nReturns:\n    pKa value\n\nExamples:\n    >>> pKa_from_Ka(1.8e-5)\n    4.74",
+      "scientific_validity": "not_independently_verified",
+      "signature": "pKa_from_Ka(Ka: float)",
+      "summary": "Calculate pKa from Ka."
+    },
+    "ph_calculations_tools.pKb_from_Kb": {
+      "contract": {},
+      "description": "Calculate pKb from Kb.\n\nArgs:\n    Kb: Base dissociation constant\n\nReturns:\n    pKb value\n\nExamples:\n    >>> pKb_from_Kb(1.8e-5)\n    4.74",
+      "scientific_validity": "not_independently_verified",
+      "signature": "pKb_from_Kb(Kb: float)",
+      "summary": "Calculate pKb from Kb."
+    },
+    "ph_calculations_tools.pOH_from_OH": {
+      "contract": {},
+      "description": "Calculate pOH from hydroxide ion concentration.\n\nThis ideal concentration-based conversion assumes a unit activity\ncoefficient (activity coefficient = 1).\n\nArgs:\n    oh_conc: Equilibrium [OH-] concentration in M, not an\n        analytical base concentration\n\nReturns:\n    pOH value\n\nExamples:\n    >>> pOH_from_OH(1e-7)\n    7.0",
+      "scientific_validity": "not_independently_verified",
+      "signature": "pOH_from_OH(oh_conc: float)",
+      "summary": "Calculate pOH from hydroxide ion concentration."
+    },
+    "ph_calculations_tools.pOH_to_pH": {
+      "contract": {},
+      "description": "Convert pOH to pH.\n\nArgs:\n    pOH: pOH value\n    temperature: Temperature in degC\n    Kw: Optional water ion product override\n\nReturns:\n    pH value\n\nExamples:\n    >>> pOH_to_pH(7.0)\n    7.0",
+      "scientific_validity": "not_independently_verified",
+      "signature": "pOH_to_pH(pOH: float, temperature: float=25.0, Kw: Optional[float]=None)",
+      "summary": "Convert pOH to pH."
+    },
+    "ph_calculations_tools.significant_figures_pH": {
+      "contract": {},
+      "description": "Report pH with appropriate significant figures.\n\nArgs:\n    conc: Equilibrium concentration\n    sig_figs: Number of significant figures in concentration\n\nReturns:\n    pH with correct decimal places\n\nExamples:\n    >>> significant_figures_pH(0.10, 2)\n    1.00",
+      "scientific_validity": "not_independently_verified",
+      "signature": "significant_figures_pH(conc: float, sig_figs: int=2)",
+      "summary": "Report pH with appropriate significant figures."
+    },
+    "ph_calculations_tools.weak_acid_Ka_from_pH": {
+      "contract": {},
+      "description": "Calculate Ka from pH and concentration for a weak acid.\n\nUses the water-corrected relationship from the monoprotic charge and mass\nbalances with unit activity coefficients. The measured pH must be\nfeasible for a finite positive Ka.\n\nArgs:\n    pH: Measured pH of the solution\n    C: Initial acid concentration (M)\n    Kw: Optional water ion product override\n\nReturns:\n    Ka value\n\nExamples:\n    >>> round(weak_acid_Ka_from_pH(2.40, 0.01574), 5)  # Salicylic acid\n    0.00135",
+      "scientific_validity": "not_independently_verified",
+      "signature": "weak_acid_Ka_from_pH(pH: float, C: float, Kw: Optional[float]=None)",
+      "summary": "Calculate Ka from pH and concentration for a weak acid."
+    },
+    "ph_calculations_tools.weak_acid_pH": {
+      "contract": {},
+      "description": "Calculate pH of a weak acid solution.\n\nUses the ideal monoprotic acid charge and mass balance, including water\nautoionization, with unit activity coefficients. ``use_quadratic`` is\nretained for API compatibility as a no-op and does not change the\nwater-corrected solve.\n\nArgs:\n    Ka: Acid dissociation constant\n    C: Initial acid concentration (M)\n    use_quadratic: Retained for API compatibility; ignored by the\n        water-corrected solver\n    Kw: Optional water ion product override\n\nReturns:\n    pH value\n\nExamples:\n    >>> round(weak_acid_pH(1.8e-5, 0.1), 2)  # Acetic acid, dilute\n    2.88\n    >>> round(weak_acid_pH(0.1995, 0.286), 2)  # Benzenesulfonic acid\n    0.8",
+      "scientific_validity": "not_independently_verified",
+      "signature": "weak_acid_pH(Ka: float, C: float, use_quadratic: bool=False, Kw: Optional[float]=None)",
+      "summary": "Calculate pH of a weak acid solution."
+    },
+    "ph_calculations_tools.weak_base_pH": {
+      "contract": {},
+      "description": "Calculate pH of a weak base solution using unit activity coefficients.\n\nArgs:\n    Kb: Base dissociation constant\n    C: Initial base concentration (M)\n    use_quadratic: Retained for API compatibility; ignored by the\n        water-corrected solver\n    Kw: Optional water ion product override\n\nReturns:\n    pH value\n\nExamples:\n    >>> round(weak_base_pH(1.8e-5, 0.1), 2)  # Ammonia\n    11.12",
+      "scientific_validity": "not_independently_verified",
+      "signature": "weak_base_pH(Kb: float, C: float, use_quadratic: bool=False, Kw: Optional[float]=None)",
+      "summary": "Calculate pH of a weak base solution using unit activity coefficients."
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "schema_version": "native-chemistry-calculators/v1",
+  "tools": {
+    "functional_group_tools.classify_electron_effect": {
+      "contract": {},
+      "description": "Classify whether a group is electron-withdrawing or donating.\n\nArgs:\n    group_name: Name of functional group\n\nReturns:\n    \"withdrawing\", \"donating\", or \"neutral\"\n\nExamples:\n    >>> classify_electron_effect(\"nitro\")\n    'withdrawing'\n    >>> classify_electron_effect(\"amine\")\n    'donating'",
+      "scientific_validity": "not_independently_verified",
+      "signature": "classify_electron_effect(group_name: str)",
+      "summary": "Classify whether a group is electron-withdrawing or donating."
+    },
+    "functional_group_tools.determine_principal_group": {
+      "contract": {},
+      "description": "Determine the principal functional group for naming.\n\nThe principal group gets the suffix; others become prefixes.\n\nArgs:\n    groups: List of functional group names\n\nReturns:\n    Name of principal group\n\nNotes:\n    An empty list retains the legacy ``\"alkane\"`` default. For non-empty\n    input, recognized hydrocarbon and prefix-only groups are ignored when\n    a supported characteristic group is present. Thiol is deliberately\n    refused in every mixture until its nomenclature scope is sourced.\n    Inputs with no supported characteristic group raise ``ValueError``;\n    this function is not a full IUPAC parent-selection engine.\n\nExamples:\n    >>> determine_principal_group([\"alcohol\", \"alkene\"])\n    'alcohol'",
+      "scientific_validity": "not_independently_verified",
+      "signature": "determine_principal_group(groups: List[str])",
+      "summary": "Determine the principal functional group for naming."
+    },
+    "functional_group_tools.functional_group_summary": {
+      "contract": {},
+      "description": "Get a summary table of all functional groups.\n\nReturns:\n    Dictionary with functional group information",
+      "scientific_validity": "not_independently_verified",
+      "signature": "functional_group_summary()",
+      "summary": "Get a summary table of all functional groups."
+    },
+    "functional_group_tools.get_naming_priority": {
+      "contract": {},
+      "description": "Get the naming priority of a functional group.\n\nHigher priority = principal group (suffix).\n\nArgs:\n    group_name: Name of functional group\n\nReturns:\n    Priority number (higher = higher priority)\n\nRaises:\n    ValueError: If the group is unknown or outside the supported ordinary\n        acyclic characteristic-group nomenclature scope. Recognized\n        priority-0 groups remain available to the other property getters,\n        but do not have a usable principal-group priority here.\n\nExamples:\n    >>> get_naming_priority(\"carboxylic_acid\")\n    10\n    >>> get_naming_priority(\"alcohol\")\n    2",
+      "scientific_validity": "not_independently_verified",
+      "signature": "get_naming_priority(group_name: str)",
+      "summary": "Get the naming priority of a functional group."
+    },
+    "functional_group_tools.get_prefix": {
+      "contract": {},
+      "description": "Get the IUPAC prefix for a functional group.\n\nArgs:\n    group_name: Name of functional group\n\nReturns:\n    Prefix for naming\n\nExamples:\n    >>> get_prefix(\"alcohol\")\n    'hydroxy'\n    >>> get_prefix(\"nitro\")\n    'nitro'",
+      "scientific_validity": "not_independently_verified",
+      "signature": "get_prefix(group_name: str)",
+      "summary": "Get the IUPAC prefix for a functional group."
+    },
+    "functional_group_tools.get_suffix": {
+      "contract": {},
+      "description": "Get the IUPAC suffix for a functional group.\n\nArgs:\n    group_name: Name of functional group\n\nReturns:\n    Suffix for naming\n\nExamples:\n    >>> get_suffix(\"alcohol\")\n    'ol'\n    >>> get_suffix(\"carboxylic_acid\")\n    'oic acid'",
+      "scientific_validity": "not_independently_verified",
+      "signature": "get_suffix(group_name: str)",
+      "summary": "Get the IUPAC suffix for a functional group."
+    },
+    "functional_group_tools.identify_functional_groups": {
+      "contract": {},
+      "description": "Identify functional groups present in a molecule.\n\nArgs:\n    smiles_or_formula: SMILES string or molecular formula\n\nReturns:\n    List of identified functional group names\n\nExamples:\n    >>> identify_functional_groups(\"CH3CH2OH\")\n    ['alcohol']\n    >>> identify_functional_groups(\"CH3COOH\")\n    ['carboxylic_acid']",
+      "scientific_validity": "not_independently_verified",
+      "signature": "identify_functional_groups(smiles_or_formula: str)",
+      "summary": "Identify functional groups present in a molecule."
+    },
+    "functional_group_tools.predict_boiling_point_trend": {
+      "contract": {},
+      "description": "Predict boiling point trend based on functional groups.\n\nArgs:\n    groups: List of functional groups\n\nReturns:\n    Description of boiling point trend\n\nExamples:\n    >>> predict_boiling_point_trend([\"alcohol\"])\n    'Higher bp due to hydrogen bonding'",
+      "scientific_validity": "not_independently_verified",
+      "signature": "predict_boiling_point_trend(groups: List[str])",
+      "summary": "Predict boiling point trend based on functional groups."
+    },
+    "functional_group_tools.predict_solubility": {
+      "contract": {},
+      "description": "Predict water solubility based on functional groups.\n\nArgs:\n    groups: List of functional groups\n    carbons: Approximate number of carbons\n\nReturns:\n    Solubility description\n\nExamples:\n    >>> predict_solubility([\"alcohol\"], 2)\n    'Highly water soluble (small polar molecule with H-bonding)'",
+      "scientific_validity": "not_independently_verified",
+      "signature": "predict_solubility(groups: List[str], carbons: int=4)",
+      "summary": "Predict water solubility based on functional groups."
+    }
+  }
+}

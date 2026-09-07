@@ -1,0 +1,313 @@
+{
+  "schema_version": "native-chemistry-calculators/v1",
+  "tools": {
+    "enthalpy_tools.delta_H_rxn_from_formation": {
+      "contract": {},
+      "description": "Calculate standard enthalpy of reaction from formation enthalpies.\n\nDeltaHdeg_rxn = \u03a3(n x DeltaHdeg_f products) - \u03a3(n x DeltaHdeg_f reactants)\n\nParameters:\n    reactants: list of tuples [(formula, coefficient), ...]\n    products: list of tuples [(formula, coefficient), ...]\n    delta_H_f_data: optional dict of DeltaHdegf values (uses default if None)\n\nReturns:\n    DeltaHdeg_rxn in kJ/mol",
+      "scientific_validity": "not_independently_verified",
+      "signature": "delta_H_rxn_from_formation(reactants, products, delta_H_f_data=None)",
+      "summary": "Calculate standard enthalpy of reaction from formation enthalpies."
+    },
+    "enthalpy_tools.heat_exchange_poly": {
+      "contract": {},
+      "description": "Calculate heat removed/added for a mixture with polynomial Cp, per component.\n\nParameters:\n    n_mol (float): Total molar flow rate (mol/h or mol/s)\n    cp_coeffs_list: List of (A, B, C, D, mole_fraction) tuples for each component.\n        For equimolar binary: [(A1,B1,C1,D1,0.5), (A2,B2,C2,D2,0.5)]\n    T1 (float): Initial temperature (K)\n    T2 (float): Final temperature (K)\n\nReturns:\n    float: Total enthalpy change in J (per time unit matching n_mol).\n        Negative = heat removed (cooling), positive = heat added.\n\nExample:\n    >>> heat_exchange_poly(1000,\n    ...     [(-4.413, 0.528, -3.119e-4, 6.494e-8, 0.5),\n    ...      (-5.146, 0.6762, -3.651e-4, 7.658e-08, 0.5)],\n    ...     423.15, 358.15)\n    -11889000  # J/h, negative = cooling",
+      "scientific_validity": "not_independently_verified",
+      "signature": "heat_exchange_poly(n_mol, cp_coeffs_list, T1, T2)",
+      "summary": "Calculate heat removed/added for a mixture with polynomial Cp, per component."
+    },
+    "enthalpy_tools.heat_of_combustion_per_gram": {
+      "contract": {},
+      "description": "Calculate heat released per gram of fuel.\n\nParameters:\n    delta_H_comb: enthalpy of combustion in kJ/mol\n    molar_mass: molar mass in g/mol\n\nReturns:\n    heat per gram in kJ/g",
+      "scientific_validity": "not_independently_verified",
+      "signature": "heat_of_combustion_per_gram(delta_H_comb, molar_mass)",
+      "summary": "Calculate heat released per gram of fuel."
+    },
+    "enthalpy_tools.heat_of_combustion_per_volume": {
+      "contract": {},
+      "description": "Calculate heat released per volume of liquid fuel.\n\nParameters:\n    delta_H_comb: enthalpy of combustion in kJ/mol\n    molar_mass: molar mass in g/mol\n    density: density in g/mL\n\nReturns:\n    heat per mL in kJ/mL",
+      "scientific_validity": "not_independently_verified",
+      "signature": "heat_of_combustion_per_volume(delta_H_comb, molar_mass, density)",
+      "summary": "Calculate heat released per volume of liquid fuel."
+    },
+    "enthalpy_tools.heat_phase_change": {
+      "contract": {},
+      "description": "Calculate heat for phase change.\n\nq = n x DeltaH_phase\n\nParameters:\n    moles: amount in mol\n    delta_H_phase: enthalpy of phase change in kJ/mol\n\nReturns:\n    heat in kJ",
+      "scientific_validity": "not_independently_verified",
+      "signature": "heat_phase_change(moles, delta_H_phase)",
+      "summary": "Calculate heat for phase change."
+    },
+    "enthalpy_tools.hess_from_reactions": {
+      "contract": {},
+      "description": "Calculate unknown enthalpy using Hess's Law.\n\nParameters:\n    reaction_data: list of dicts with 'coeff', 'delta_H' keys\n                  coeff = multiplier (negative for reverse)\n    target_delta_H_f: optional, for verification\n\nReturns:\n    calculated DeltaH in kJ",
+      "scientific_validity": "not_independently_verified",
+      "signature": "hess_from_reactions(reaction_data, target_delta_H_f=None)",
+      "summary": "Calculate unknown enthalpy using Hess's Law."
+    },
+    "enthalpy_tools.hess_law_combine": {
+      "contract": {},
+      "description": "Apply Hess's Law to combine reaction enthalpies.\n\nParameters:\n    reactions: list of tuples [(equation_str, delta_H), ...]\n              negative coefficient means reverse reaction\n    target_reaction: optional, the target reaction to verify\n\nReturns:\n    combined DeltaH in kJ",
+      "scientific_validity": "not_independently_verified",
+      "signature": "hess_law_combine(reactions, target_reaction=None)",
+      "summary": "Apply Hess's Law to combine reaction enthalpies."
+    },
+    "enthalpy_tools.integrated_cp_poly": {
+      "contract": {},
+      "description": "Integrate polynomial heat capacity Cp = A + BT + CT\u00b2 + DT\u00b3 from T1 to T2.\n\nReturns \u222b(A + BT + CT\u00b2 + DT\u00b3)dT from T1 to T2\n= A(T\u2082-T\u2081) + (B/2)(T\u2082\u00b2-T\u2081\u00b2) + (C/3)(T\u2082\u00b3-T\u2081\u00b3) + (D/4)(T\u2082\u2074-T\u2081\u2074)\n\nParameters:\n    A (float): Cp coefficient for T\u2070 term (J/mol\u00b7K or as given)\n    B (float): Cp coefficient for T\u00b9 term\n    C (float): Cp coefficient for T\u00b2 term\n    D (float): Cp coefficient for T\u00b3 term\n    T1 (float): Initial temperature in Kelvin\n    T2 (float): Final temperature in Kelvin\n\nReturns:\n    float: Enthalpy change per mole in same energy unit as Cp coefficients.\n        Positive if T2 > T1 (heating), negative if T2 < T1 (cooling).\n\nExamples:\n    >>> integrated_cp_poly(-4.413, 0.528, -3.119e-4, 6.494e-8, 358, 423)\n    10269.6  # J/mol for n-hexane, 358K to 423K\n\nFor mixtures, calculate each component separately:\n    Q_hex = n_hex * integrated_cp_poly(A_hex, B_hex, C_hex, D_hex, T1, T2)\n    Q_hep = n_hep * integrated_cp_poly(A_hep, B_hep, C_hep, D_hep, T1, T2)\n    Q_total = Q_hex + Q_hep",
+      "scientific_validity": "not_independently_verified",
+      "signature": "integrated_cp_poly(A, B, C, D, T1, T2)",
+      "summary": "Integrate polynomial heat capacity Cp = A + BT + CT\u00b2 + DT\u00b3 from T1 to T2."
+    },
+    "enthalpy_tools.multiply_reaction": {
+      "contract": {},
+      "description": "Multiply reaction by factor (multiply DeltaH by factor).",
+      "scientific_validity": "not_independently_verified",
+      "signature": "multiply_reaction(delta_H, factor)",
+      "summary": "Multiply reaction by factor (multiply DeltaH by factor)."
+    },
+    "enthalpy_tools.reverse_reaction": {
+      "contract": {},
+      "description": "Reverse a reaction (multiply DeltaH by -1).",
+      "scientific_validity": "not_independently_verified",
+      "signature": "reverse_reaction(delta_H)",
+      "summary": "Reverse a reaction (multiply DeltaH by -1)."
+    },
+    "enthalpy_tools.total_heat_with_phase_change": {
+      "contract": {},
+      "description": "Calculate total heat for temperature change through phase transition.\n\nq_total = q_solid + q_fusion + q_liquid\n\nParameters:\n    moles: amount in mol\n    c_solid: specific heat of solid (J/g\u00b7degC)\n    c_liquid: specific heat of liquid (J/g\u00b7degC)\n    delta_T_solid: temperature change in solid phase\n    delta_T_liquid: temperature change in liquid phase\n    delta_H_fusion: enthalpy of fusion in kJ/mol\n\nReturns:\n    total heat in kJ",
+      "scientific_validity": "not_independently_verified",
+      "signature": "total_heat_with_phase_change(moles, c_solid, c_liquid, delta_T_solid, delta_T_liquid, delta_H_fusion)",
+      "summary": "Calculate total heat for temperature change through phase transition."
+    },
+    "gas_laws_tools.avogadros_law": {
+      "contract": {},
+      "description": "Apply Avogadro's Law: V1/n1 = V2/n2 (constant P, T).\n\nArgs:\n    V1, n1: Initial volume and moles\n    V2, n2: Final volume and moles\n    Exactly one argument should be None\n\nReturns:\n    The missing value\n\nExamples:\n    >>> avogadros_law(V1=1, n1=1, n2=2)\n    2.0\n    >>> avogadros_law(V1=1, n1=1, V2=0.5)\n    0.5",
+      "scientific_validity": "not_independently_verified",
+      "signature": "avogadros_law(V1: Optional[float]=None, n1: Optional[float]=None, V2: Optional[float]=None, n2: Optional[float]=None)",
+      "summary": "Apply Avogadro's Law: V1/n1 = V2/n2 (constant P, T)."
+    },
+    "gas_laws_tools.boyles_law": {
+      "contract": {},
+      "description": "Apply Boyle's Law: P1V1 = P2V2 (constant T, n).\n\nArgs:\n    P1, V1: Initial pressure and volume\n    P2, V2: Final pressure and volume\n    Exactly one argument should be None (the one to solve for)\n\nReturns:\n    The missing value\n\nExamples:\n    >>> boyles_law(P1=1, V1=2, P2=2)\n    1.0\n    >>> boyles_law(P1=1, V1=2, V2=4)\n    0.5",
+      "scientific_validity": "not_independently_verified",
+      "signature": "boyles_law(P1: Optional[float]=None, V1: Optional[float]=None, P2: Optional[float]=None, V2: Optional[float]=None)",
+      "summary": "Apply Boyle's Law: P1V1 = P2V2 (constant T, n)."
+    },
+    "gas_laws_tools.celsius_to_kelvin": {
+      "contract": {},
+      "description": "Convert Celsius to Kelvin.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "celsius_to_kelvin(celsius: float)",
+      "summary": "Convert Celsius to Kelvin."
+    },
+    "gas_laws_tools.charles_law": {
+      "contract": {},
+      "description": "Apply Charles's Law: V1/T1 = V2/T2 (constant P, n).\n\nArgs:\n    V1, T1: Initial volume and temperature (K)\n    V2, T2: Final volume and temperature (K)\n    Exactly one argument should be None\n\nReturns:\n    The missing value\n\nExamples:\n    >>> charles_law(V1=1, T1=273, T2=546)\n    2.0\n    >>> charles_law(V1=1, T1=273, V2=0.5)\n    136.5",
+      "scientific_validity": "not_independently_verified",
+      "signature": "charles_law(V1: Optional[float]=None, T1: Optional[float]=None, V2: Optional[float]=None, T2: Optional[float]=None)",
+      "summary": "Apply Charles's Law: V1/T1 = V2/T2 (constant P, n)."
+    },
+    "gas_laws_tools.combined_gas_law": {
+      "contract": {},
+      "description": "Apply Combined Gas Law: P1V1/T1 = P2V2/T2 (constant n).\n\nIf n (moles) is provided, the complete initial or final state is checked\nagainst nR within a relative tolerance of 1e-3 for rounded inputs. The\nstandard combined-gas-law equation is then used to solve the missing\nstate value.\n\nArgs:\n    P1, V1, T1: Initial pressure, volume, and temperature (K)\n    P2, V2, T2: Final pressure, volume, and temperature (K)\n    n: Optional moles of gas used as a consistency check\n    R: Gas constant (default 0.08206 L\u00b7atm/(mol\u00b7K))\n    Exactly one of P1,V1,T1,P2,V2,T2 should be None\n\nReturns:\n    The missing value\n\nExamples:\n    >>> combined_gas_law(P1=1, V1=1, T1=273, P2=2, V2=1)\n    546.0\n    >>> combined_gas_law(P1=1, V1=1, T1=273, P2=1, T2=546)\n    2.0\n    >>> # With n provided, the complete state is checked against nR\n    >>> combined_gas_law(P1=1.0, V1=0.08206 * 300, T1=300, P2=2.0, V2=0.08206 * 125, n=1.0)\n    250.0",
+      "scientific_validity": "not_independently_verified",
+      "signature": "combined_gas_law(P1: Optional[float]=None, V1: Optional[float]=None, T1: Optional[float]=None, P2: Optional[float]=None, V2: Optional[float]=None, T2: Optional[float]=None, n: Optional[float]=None, R: float=0.08206)",
+      "summary": "Apply Combined Gas Law: P1V1/T1 = P2V2/T2 (constant n)."
+    },
+    "gas_laws_tools.dalton_law_partial_pressures": {
+      "contract": {},
+      "description": "Calculate all partial pressures from mole amounts and total pressure.\n\nArgs:\n    moles_dict: Dictionary of {'species': moles}\n    total_pressure: Total pressure\n\nReturns:\n    Dictionary of {'species': partial_pressure}\n\nExamples:\n    >>> dalton_law_partial_pressures({'CH4': 0.75, 'C2H6': 0.30, 'C3H8': 0.05}, 306)\n    {'P_CH4': 208.6, 'P_C2H6': 83.5, 'P_C3H8': 13.9}",
+      "scientific_validity": "not_independently_verified",
+      "signature": "dalton_law_partial_pressures(moles_dict: dict, total_pressure: float)",
+      "summary": "Calculate all partial pressures from mole amounts and total pressure."
+    },
+    "gas_laws_tools.gay_lussacs_law": {
+      "contract": {},
+      "description": "Apply Gay-Lussac's Law: P1/T1 = P2/T2 (constant V, n).\n\nArgs:\n    P1, T1: Initial pressure and temperature (K)\n    P2, T2: Final pressure and temperature (K)\n    Exactly one argument should be None\n\nReturns:\n    The missing value\n\nExamples:\n    >>> gay_lussacs_law(P1=1, T1=273, T2=546)\n    2.0\n    >>> gay_lussacs_law(P1=1, T1=273, P2=0.5)\n    136.5",
+      "scientific_validity": "not_independently_verified",
+      "signature": "gay_lussacs_law(P1: Optional[float]=None, T1: Optional[float]=None, P2: Optional[float]=None, T2: Optional[float]=None)",
+      "summary": "Apply Gay-Lussac's Law: P1/T1 = P2/T2 (constant V, n)."
+    },
+    "gas_laws_tools.kelvin_to_celsius": {
+      "contract": {},
+      "description": "Convert Kelvin to Celsius.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "kelvin_to_celsius(kelvin: float)",
+      "summary": "Convert Kelvin to Celsius."
+    },
+    "gas_laws_tools.mole_fraction": {
+      "contract": {},
+      "description": "Calculate mole fraction from component moles and total moles.\n\nX_i = n_i / n_total\n\nArgs:\n    moles_component: Moles of the component\n    total_moles: Total moles in the mixture\n\nReturns:\n    Mole fraction (dimensionless)\n\nExamples:\n    >>> mole_fraction(0.5, 1.0)\n    0.5",
+      "scientific_validity": "not_independently_verified",
+      "signature": "mole_fraction(moles_component: float, total_moles: float)",
+      "summary": "Calculate mole fraction from component moles and total moles."
+    },
+    "gas_laws_tools.partial_pressure_dalton": {
+      "contract": {},
+      "description": "Calculate partial pressure from mole fraction and total pressure.\n\nP_i = X_i * P_total\n\nArgs:\n    mole_fraction: Mole fraction of the gas (n_i / n_total)\n    total_pressure: Total pressure of the gas mixture\n\nReturns:\n    Partial pressure of the gas (same units as total_pressure)\n\nExamples:\n    >>> partial_pressure_dalton(0.5, 2.0)\n    1.0",
+      "scientific_validity": "not_independently_verified",
+      "signature": "partial_pressure_dalton(mole_fraction: float, total_pressure: float)",
+      "summary": "Calculate partial pressure from mole fraction and total pressure."
+    },
+    "gibbs_free_energy_tools.G_from_equilibrium_constant": {
+      "contract": {},
+      "description": "Calculate standard free energy change from equilibrium constant.\n\nDeltaGdeg = -RT ln K\n\nArgs:\n    K: Equilibrium constant\n    T: Temperature (K)\n\nReturns:\n    Standard free energy change (kJ/mol)\n\nExamples:\n    >>> G_from_equilibrium_constant(1000, 298)\n    -17.1",
+      "scientific_validity": "not_independently_verified",
+      "signature": "G_from_equilibrium_constant(K: float, T: float=298.15)",
+      "summary": "Calculate standard free energy change from equilibrium constant."
+    },
+    "gibbs_free_energy_tools.equilibrium_constant_from_G": {
+      "contract": {},
+      "description": "Calculate equilibrium constant from standard free energy change.\n\nDeltaGdeg = -RT ln K\nK = e^(-DeltaGdeg/RT)\n\nArgs:\n    delta_G: Standard free energy change (kJ/mol)\n    T: Temperature (K)\n\nReturns:\n    Equilibrium constant K\n\nExamples:\n    >>> equilibrium_constant_from_G(-5.7, 298)\n    10.0",
+      "scientific_validity": "not_independently_verified",
+      "signature": "equilibrium_constant_from_G(delta_G: float, T: float=298.15)",
+      "summary": "Calculate equilibrium constant from standard free energy change."
+    },
+    "gibbs_free_energy_tools.gibbs_free_energy": {
+      "contract": {},
+      "description": "Calculate Gibbs free energy change.\n\nDeltaG = DeltaH - TDeltaS\n\nArgs:\n    delta_H: Enthalpy change (kJ/mol)\n    delta_S: Entropy change (J/mol\u00b7K)\n    T: Temperature (K)\n\nReturns:\n    Gibbs free energy change (kJ/mol)\n\nExamples:\n    >>> gibbs_free_energy(44.0, 118.8, 298)\n    8.6",
+      "scientific_validity": "not_independently_verified",
+      "signature": "gibbs_free_energy(delta_H: float, delta_S: float, T: float)",
+      "summary": "Calculate Gibbs free energy change."
+    },
+    "gibbs_free_energy_tools.lookup_Gf": {
+      "contract": {},
+      "description": "Look up standard Gibbs free energy of formation.\n\nArgs:\n    species: Chemical formula\n    phase: Phase state ('g', 'l', 's', 'aq'), default 'g'\n\nReturns:\n    DeltaG_f\u00b0 in kJ/mol\n\nRaises:\n    ValueError if species not found\n\nNote:\n    Always specify the correct phase! Using wrong phase gives wrong results.\n    E.g., CH3OH(l) has Gf = -166.3, not -162.0 (gas).",
+      "scientific_validity": "not_independently_verified",
+      "signature": "lookup_Gf(species: str, phase: str='g')",
+      "summary": "Look up standard Gibbs free energy of formation."
+    },
+    "gibbs_free_energy_tools.maximum_work": {
+      "contract": {},
+      "description": "Calculate maximum useful work from a spontaneous process.\n\nw_max = DeltaG (for spontaneous process)\n\nArgs:\n    delta_G: Gibbs free energy change (kJ/mol)\n\nReturns:\n    Maximum useful work (kJ/mol)\n\nExamples:\n    >>> maximum_work(-100.0)\n    -100.0",
+      "scientific_validity": "not_independently_verified",
+      "signature": "maximum_work(delta_G: float)",
+      "summary": "Calculate maximum useful work from a spontaneous process."
+    },
+    "gibbs_free_energy_tools.spontaneity_from_G": {
+      "contract": {},
+      "description": "Determine spontaneity from DeltaG.\n\nArgs:\n    delta_G: Gibbs free energy change (kJ/mol)\n\nReturns:\n    Spontaneity prediction\n\nExamples:\n    >>> spontaneity_from_G(-10.0)\n    'spontaneous (forward)'\n    >>> spontaneity_from_G(10.0)\n    'nonspontaneous (reverse spontaneous)'",
+      "scientific_validity": "not_independently_verified",
+      "signature": "spontaneity_from_G(delta_G: float)",
+      "summary": "Determine spontaneity from DeltaG."
+    },
+    "gibbs_free_energy_tools.standard_G_from_formation": {
+      "contract": {},
+      "description": "Calculate standard free energy change from formation values.\n\nDeltaGdeg = \u03a3\u03bdDeltaG_fdeg(products) - \u03a3\u03bdDeltaG_fdeg(reactants)\n\nArgs:\n    Gf_products: List of DeltaG_fdeg for products (kJ/mol)\n    Gf_reactants: List of DeltaG_fdeg for reactants (kJ/mol)\n    coeffs_products: Stoichiometric coefficients for products\n    coeffs_reactants: Stoichiometric coefficients for reactants\n\nReturns:\n    Standard free energy change (kJ/mol)\n\nExamples:\n    >>> standard_G_from_formation([0, 0], [-58.43], [1, 0.5], [1])\n    58.43",
+      "scientific_validity": "not_independently_verified",
+      "signature": "standard_G_from_formation(Gf_products: list, Gf_reactants: list, coeffs_products: list=None, coeffs_reactants: list=None)",
+      "summary": "Calculate standard free energy change from formation values."
+    },
+    "gibbs_free_energy_tools.temperature_spontaneity_range": {
+      "contract": {},
+      "description": "Determine temperature range for spontaneity.\n\nArgs:\n    delta_H: Enthalpy change (kJ/mol)\n    delta_S: Entropy change (J/mol\u00b7K)\n\nReturns:\n    Dict with temperature range info\n\nExamples:\n    >>> temperature_spontaneity_range(-90.0, -200.0)\n    {'low_T': 'spontaneous', 'high_T': 'nonspontaneous', 'crossover_T': 450.0}",
+      "scientific_validity": "not_independently_verified",
+      "signature": "temperature_spontaneity_range(delta_H: float, delta_S: float)",
+      "summary": "Determine temperature range for spontaneity."
+    },
+    "ideal_gas_law_tools.gas_density": {
+      "contract": {},
+      "description": "Calculate density of a gas.\n\nArgs:\n    P: Pressure (unit must match R)\n    M: Molar mass in g/mol\n    T: Temperature in Kelvin\n    R: Gas constant\n\nReturns:\n    Density in g/L\n\nExamples:\n    >>> gas_density(1, 28.0, 273)  # N2 at STP\n    1.25...",
+      "scientific_validity": "not_independently_verified",
+      "signature": "gas_density(P: float, M: float, T: float, R: float=R_atm)",
+      "summary": "Calculate density of a gas."
+    },
+    "ideal_gas_law_tools.gas_stoichiometry": {
+      "contract": {},
+      "description": "Calculate product amounts from gas volume stoichiometry.\n\nArgs:\n    gas_volume: Volume of gas in liters\n    gas_moles_coeff: Stoichiometric coefficient of gas\n    product_moles_coeff: Stoichiometric coefficient of product\n    molar_mass: Molar mass of product (optional, for mass)\n    conditions: 'STP' or 'SATP'\n\nReturns:\n    Dictionary with moles and optionally mass of product\n\nExamples:\n    >>> gas_stoichiometry(22.4, 1, 1)  # 1 mol gas -> 1 mol product\n    {'product_moles': 1.0}",
+      "scientific_validity": "not_independently_verified",
+      "signature": "gas_stoichiometry(gas_volume: float, gas_moles_coeff: int, product_moles_coeff: int, molar_mass: float=None, conditions: str='STP')",
+      "summary": "Calculate product amounts from gas volume stoichiometry."
+    },
+    "ideal_gas_law_tools.ideal_gas_law": {
+      "contract": {},
+      "description": "Apply the ideal gas law: PV = nRT.\n\nArgs:\n    P: Pressure (unit must match R)\n    V: Volume in liters\n    n: Moles of gas\n    T: Temperature in Kelvin\n    R: Gas constant (default 0.08206 L\u00b7atm/(mol\u00b7K))\n    Exactly one argument should be None\n\nReturns:\n    The missing value\n\nExamples:\n    >>> ideal_gas_law(P=1, V=22.4, n=1, T=273)\n    1.0\n    >>> ideal_gas_law(P=1, n=1, T=273)\n    22.414...",
+      "scientific_validity": "not_independently_verified",
+      "signature": "ideal_gas_law(P: Optional[float]=None, V: Optional[float]=None, n: Optional[float]=None, T: Optional[float]=None, R: float=R_atm)",
+      "summary": "Apply the ideal gas law: PV = nRT."
+    },
+    "ideal_gas_law_tools.mass_at_stp": {
+      "contract": {},
+      "description": "Calculate mass of gas at STP from volume.\n\nArgs:\n    V: Volume in liters\n    M: Molar mass in g/mol\n\nReturns:\n    Mass in grams\n\nExamples:\n    >>> mass_at_stp(22.4, 2.016)  # H2\n    2.016",
+      "scientific_validity": "not_independently_verified",
+      "signature": "mass_at_stp(V: float, M: float)",
+      "summary": "Calculate mass of gas at STP from volume."
+    },
+    "ideal_gas_law_tools.molar_mass_from_gas": {
+      "contract": {},
+      "description": "Calculate molar mass from gas density.\n\nArgs:\n    d: Density in g/L\n    P: Pressure (unit must match R)\n    T: Temperature in Kelvin\n    R: Gas constant\n\nReturns:\n    Molar mass in g/mol\n\nExamples:\n    >>> molar_mass_from_gas(1.25, 1, 273)\n    28.0...",
+      "scientific_validity": "not_independently_verified",
+      "signature": "molar_mass_from_gas(d: float, P: float, T: float, R: float=R_atm)",
+      "summary": "Calculate molar mass from gas density."
+    },
+    "ideal_gas_law_tools.molar_volume": {
+      "contract": {},
+      "description": "Calculate molar volume of ideal gas at given conditions.\n\nArgs:\n    T: Temperature in Kelvin\n    P: Pressure (unit must match R)\n    R: Gas constant\n\nReturns:\n    Molar volume in L/mol\n\nExamples:\n    >>> molar_volume(273.15, 1.0)  # STP\n    22.414...\n    >>> molar_volume(298.15, 1.0)  # SATP\n    24.46...",
+      "scientific_validity": "not_independently_verified",
+      "signature": "molar_volume(T: float=273.15, P: float=1.0, R: float=R_atm)",
+      "summary": "Calculate molar volume of ideal gas at given conditions."
+    },
+    "ideal_gas_law_tools.moles_at_stp": {
+      "contract": {},
+      "description": "Calculate moles of gas at STP (22.4 L/mol).\n\nArgs:\n    V: Volume in liters\n\nReturns:\n    Moles of gas\n\nExamples:\n    >>> moles_at_stp(22.4)\n    1.0\n    >>> moles_at_stp(44.8)\n    2.0",
+      "scientific_validity": "not_independently_verified",
+      "signature": "moles_at_stp(V: float)",
+      "summary": "Calculate moles of gas at STP (22.4 L/mol)."
+    },
+    "ideal_gas_law_tools.volume_at_stp": {
+      "contract": {},
+      "description": "Calculate volume of gas at STP (22.4 L/mol).\n\nArgs:\n    n: Moles of gas\n    mass: Mass in grams (requires M)\n    M: Molar mass in g/mol (used with mass)\n\nReturns:\n    Volume in liters\n\nExamples:\n    >>> volume_at_stp(n=1)\n    22.4\n    >>> volume_at_stp(n=2)\n    44.8\n    >>> volume_at_stp(mass=1.68, M=83.8)  # Kr\n    0.449",
+      "scientific_validity": "not_independently_verified",
+      "signature": "volume_at_stp(n: float=None, mass: float=None, M: float=None)",
+      "summary": "Calculate volume of gas at STP (22.4 L/mol)."
+    },
+    "thermodynamic_data_tools.calculate_hess_law": {
+      "contract": {},
+      "description": "Calculate reaction enthalpy via Hess's law: \u03a3 nDeltaHdegf(products) - \u03a3 nDeltaHdegf(reactants).\n\nArgs:\n    products: dict of species -> stoichiometric coefficient\n    reactants: dict of species -> stoichiometric coefficient\n\nReturns:\n    DeltaHdegrxn in kJ/mol.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "calculate_hess_law(products: dict[str, float], reactants: dict[str, float])",
+      "summary": "Calculate reaction enthalpy via Hess's law: \u03a3 nDeltaHdegf(products) - \u03a3 nDeltaHdegf(reactants)."
+    },
+    "thermodynamic_data_tools.calculate_reaction_entropy": {
+      "contract": {},
+      "description": "DeltaSdegrxn = \u03a3 nSdeg(products) - \u03a3 nSdeg(reactants). Returns J/(mol\u00b7K).",
+      "scientific_validity": "not_independently_verified",
+      "signature": "calculate_reaction_entropy(products: dict[str, float], reactants: dict[str, float])",
+      "summary": "DeltaSdegrxn = \u03a3 nSdeg(products) - \u03a3 nSdeg(reactants). Returns J/(mol\u00b7K)."
+    },
+    "thermodynamic_data_tools.calculate_reaction_gibbs": {
+      "contract": {},
+      "description": "DeltaGdegrxn = \u03a3 nDeltaGdegf(products) - \u03a3 nDeltaGdegf(reactants). Returns kJ/mol.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "calculate_reaction_gibbs(products: dict[str, float], reactants: dict[str, float])",
+      "summary": "DeltaGdegrxn = \u03a3 nDeltaGdegf(products) - \u03a3 nDeltaGdegf(reactants). Returns kJ/mol."
+    },
+    "thermodynamic_data_tools.lookup_formation_enthalpy": {
+      "contract": {},
+      "description": "DeltaHdegf in kJ/mol for the given species.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "lookup_formation_enthalpy(species: str)",
+      "summary": "DeltaHdegf in kJ/mol for the given species."
+    },
+    "thermodynamic_data_tools.lookup_formation_gibbs": {
+      "contract": {},
+      "description": "DeltaGdegf in kJ/mol for the given species.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "lookup_formation_gibbs(species: str)",
+      "summary": "DeltaGdegf in kJ/mol for the given species."
+    },
+    "thermodynamic_data_tools.lookup_heat_capacity": {
+      "contract": {},
+      "description": "Cp in J/(mol\u00b7K) for the given species.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "lookup_heat_capacity(species: str)",
+      "summary": "Cp in J/(mol\u00b7K) for the given species."
+    },
+    "thermodynamic_data_tools.lookup_standard_entropy": {
+      "contract": {},
+      "description": "Sdeg in J/(mol\u00b7K) for the given species.",
+      "scientific_validity": "not_independently_verified",
+      "signature": "lookup_standard_entropy(species: str)",
+      "summary": "Sdeg in J/(mol\u00b7K) for the given species."
+    }
+  }
+}
