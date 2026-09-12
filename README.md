@@ -5,16 +5,20 @@ problem-solving skills and evaluation data. It separates the artifacts used to
 develop the external skill system from the fixed acceptance set used only for
 evaluation.
 
-## Recommended use: native skills only
+## Two recommended options
 
-**Install the 12 native chemistry skills; Skill Router V2.1.1 is not required.**
-Codex can select and use the skills directly. The separate router is an optional
-research component, not an installation dependency. Its additional orchestration
-can make answering slower than necessary. Project testing has shown modest
-answering-performance improvements in some configurations, but these are not
-guaranteed across models or questions and may not justify the added latency.
-For routine use, start with the [native skills](docs/native_chemistry_skills.md)
-without installing or running the router.
+Both versions are valid ways to use the chemistry skills:
+
+| Version | Knowledge and tools | Tradeoff |
+| --- | --- | --- |
+| [12 native Codex skills](docs/native_chemistry_skills.md) | Self-contained packages with selected procedures and optional calculators; Codex handles selection. | Lighter and more efficient, with less orchestration overhead. **Recommended installation for most users.** |
+| [Skill Router V2.1.1](docs/design/skill_router_v2.md) | A custom runtime that selectively retrieves procedures, supporting knowledge, and approved tools from `chem-memory`. | Can improve answering performance, but adds latency through routing, retrieval, and planning. |
+
+**Start by installing the 12 native skills.** They do not require the router
+or the separate `chem-memory` corpus. Choose Router V2.1.1 when access to the
+broader knowledge library and potential performance gains justify the additional
+runtime setup and latency. Performance gains depend on the model and questions;
+the router is not guaranteed to outperform native skills on every task.
 
 ## How these skills were developed
 
@@ -97,8 +101,8 @@ python scripts/validate_release.py
 ```
 
 See [`docs/native_chemistry_skills.md`](docs/native_chemistry_skills.md) for the
-12-skill catalog and usage instructions. Router V2.1.1 is an experimental
-research path and is not required for native Codex skill selection.
+12-skill catalog and usage instructions. Router V2.1.1 is the alternative
+corpus-backed runtime and is not required for native Codex skill selection.
 
 ## Licensing
 
