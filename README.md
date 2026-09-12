@@ -5,6 +5,35 @@ problem-solving skills and evaluation data. It separates the artifacts used to
 develop the external skill system from the fixed acceptance set used only for
 evaluation.
 
+## How these skills were developed
+
+The skills began with textbook-derived notes from an earlier
+**OpenClaw-associated reading and extraction workflow**. The source scope was
+the eight Chemistry LibreTexts shelves: introductory, general, organic,
+inorganic, analytical, physical and theoretical, biological, and environmental
+chemistry. Documented examples include targeted extraction from Averill's
+general chemistry material and Harvey's analytical chemistry material, alongside
+physical chemistry and crystallography sources. These notes were organized into
+chemical principles, executable calculators, and reference resources rather
+than retained only as chapter summaries.
+
+The compact procedures were then refined using **GPT-5.6-sol with xhigh
+reasoning** on **3,086 canonical question families** from historical open
+benchmarks. Incorrect answers prompted diagnosis, repair, and checked reruns
+before useful strategies were promoted into the external skill memory.
+Subsequent scope, content, and tool audits consolidated the published package
+into **12 native Codex skills with 70 procedures**. Codex can select these
+skills and load their references and optional calculators as needed; this is
+external-memory development, **not model-weight training**.
+
+Source coverage is partial: the retained records include targeted extraction,
+overlap-based skips, and blocked sources, and do not establish that every
+LibreTexts book was fully read. See the
+[source provenance audit](docs/paper_chemtester_skill_evolution/supplementary/source_provenance_audit.md)
+for these distinctions and the
+[skill catalog](docs/native_chemistry_skills.md) for the installable packages.
+Source-specific attribution and licensing still apply.
+
 ## Included artifacts
 
 - `.agents/skills/chem-*`: 12 native Codex chemistry skills containing 70
