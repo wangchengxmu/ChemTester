@@ -24,7 +24,7 @@
     "chem-aqueous-equilibria/agents/openai.yaml": "7fb378e84a3109c5e4ab3a6b0be82d252cc6d18e7fb07a586ffebd2c9472af3f",
     "chem-aqueous-equilibria/references/calculators.md": "0a4262cd2ace479627041c86d172411f7c59815ba7e5536df81bcd0ebc113043",
     "chem-aqueous-equilibria/references/colligative_partial_ionization_particle_balance.md": "b7c3bdcdc26b735a3f3c7c9fcf7b207b18bd646b1ebad9749b60c46d2e7343b1",
-    "chem-aqueous-equilibria/references/coupled_solubility_acid_base_regression.md": "61c71b514572f6c8efde2138b1fce0418ab52226c3d99fd5d8cf3372feefaca6",
+    "chem-aqueous-equilibria/references/coupled_solubility_acid_base_regression.md": "79343ef718a181490bb04b1685d792ad60ff60edd2d277af3ec2be97f5b6f27a",
     "chem-aqueous-equilibria/references/matched_acid_counteranion_trend_audit.md": "5dfb6d8cb8be690d5539ed48bb6e3790435ae848029c3e3c962a6b1396a5f7a9",
     "chem-aqueous-equilibria/references/qualitative_ionic_solubility_causticity_screening.md": "127dbf9cd7819a9afa8baae8cd32f91eee9254f219f49f9131a91fb0836f949c",
     "chem-aqueous-equilibria/references/temperature_shifted_carbonate_scale_limit.md": "51edda73969995ac27b4b41e8680810faa767ce1b623777120a5d943032b9d57",
@@ -704,7 +704,7 @@
     ]
   },
   "sources": {
-    "chem-memory/L2_principles/chemtester_compact_problem_solving_skill.registry.json": "f92c9461890109c2424066d2b18993cd28bd558234b2c7df07821da4ecbf9599",
+    "chem-memory/L2_principles/chemtester_compact_problem_solving_skill.registry.json": "43f465f37d75076a2ca954d74d18a674807b55b7405bda657e25862cfd3ae33a",
     "chem-memory/L3_functions/acid_base_constants_tools.py": "a252f3a95f793a389e956da2bd917ef2923ec7dc5d4029d10ac5dd7c496569d2",
     "chem-memory/L3_functions/acid_base_tools.py": "f57e195a360443084183730a7d0f181a2ce250815ea4b58e3b8c21acac61da6e",
     "chem-memory/L3_functions/amount_conversion_tools.py": "fdd48182fbf76313e2fef0786b342953b85061ad92de325cec2feebc87a636ce",

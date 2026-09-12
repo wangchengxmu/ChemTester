@@ -5,6 +5,7 @@
 *.py text eol=lf
 *.yml text eol=lf
 *.yaml text eol=lf
+*.txt text eol=lf
 *.png binary
 
 # The skill manifest is byte-addressed and includes legacy non-UTF-8 files.
