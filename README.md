@@ -5,6 +5,17 @@ problem-solving skills and evaluation data. It separates the artifacts used to
 develop the external skill system from the fixed acceptance set used only for
 evaluation.
 
+## Recommended use: native skills only
+
+**Install the 12 native chemistry skills; Skill Router V2.1.1 is not required.**
+Codex can select and use the skills directly. The separate router is an optional
+research component, not an installation dependency. Its additional orchestration
+can make answering slower than necessary. Project testing has shown modest
+answering-performance improvements in some configurations, but these are not
+guaranteed across models or questions and may not justify the added latency.
+For routine use, start with the [native skills](docs/native_chemistry_skills.md)
+without installing or running the router.
+
 ## How these skills were developed
 
 The skills began with textbook-derived notes from an earlier

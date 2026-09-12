@@ -12,6 +12,13 @@ decides whether to use a calculator. There is no additional chemistry model
 router, forced reasoning loop, or answer-rewriting stage in this path. This is
 a packaging change, not a claim that native selection has higher accuracy.
 
+**Skill Router V2.1.1 does not need to be installed or run to use these skills.**
+It is an optional research component whose additional orchestration can slow
+answering. Modest performance improvements observed in some project test
+configurations may not justify that latency and are not guaranteed for other
+models or questions. Native skills without the router are the recommended
+starting point for routine use.
+
 ## Catalog
 
 | Skill | Procedures | Optional calculator functions |
